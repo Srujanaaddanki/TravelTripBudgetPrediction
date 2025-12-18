@@ -1,0 +1,924 @@
+What is your age?,What is your gender?,Where are you from?,What do you do currently?,What is your approximate monthly travel or personal spending budget?,Which place did you visit recently?,What type of trip was it?,How many days did the trip last?,Which month did you travel?,In Which season do you visited?,What was your approximate total trip budget (in rupees)?,What was your primary mode of travel?,How would you describe your stay/hotel experience?,Rate the local transportation experience.,How good were the sightseeing places?,"Overall, how satisfied were you with the trip?",Would you like to revisit the same destination?,"If you travel again, what kind of experience would you prefer?"
+22,Female,Andhra Pradesh,Student,"Less than â‚¹1,000",Jalandhar ,Solo,3,November,autumn,3241,Bus,Excellent,3,5,5,Yes,Relaxing holiday
+20,Female,uttar pradesh,Student,"Less than â‚¹1,000",Dharamshala ,Friends trip,3,October,summer,3000,Train,Good,4,5,4,Yes,Relaxing holiday
+17,Female,tamil nadu,Student,"Less than â‚¹1,000",Ambala,Friends trip,8,August,Summer,14040,Bus,Good,4,5,5,Yes,Cultural exploration
+22,Female,Himachal Pradesh ,Student,"Less than â‚¹1,000",manali,Friends trip,4,October,summer,3000,Bus,Good,3,5,5,Yes,Nature & sightseeing
+18,Male,uttar pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",hyderabad,Friends trip,2,August,rainy,3036,Train,Excellent,4,4,4,Yes,Nature & sightseeing
+21,Male,andhra pradesh,Business,"â‚¹1,000 â€“ â‚¹3,000",Vrindhavan,Friends trip,4,October,winter,10000,Bike,Excellent,5,5,5,Yes,Luxury travel
+22,Male,Andhra Pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",manali,Friends trip,1,November,Winter,1585,Bus,Average,4,5,4,Yes,Budget travel
+26,Female,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali ,Friends trip,5,February,rainy,7066,Bus,Average,4,4,4,Yes,Nature & sightseeing
+22,Female,Karnataka,Working Professional,"â‚¹3,000 â€“ â‚¹7,000",Manikomda,Friends trip,1,October,winter,500,Car,Good,3,3,3,Yes,Food-focused trip
+19,Female,Haryana,Student,"â‚¹1,000 â€“ â‚¹3,000",Ambala,Solo,2,August,Summer,1500,Bus,Good,4,3,5,Yes,Budget travel
+19,Female,tamil nadu,Student,"â‚¹3,000 â€“ â‚¹7,000",Chennai,Friends trip,1,October,autumn,600,Bus,Good,3,4,5,No,Nature & sightseeing
+22,Male,Uttar Pradesh,Business,"Less than â‚¹1,000",kashmir,Friends trip,8,May,Autumn,6000,Bike,Average,4,5,4,Yes,Budget travel
+17,Male,Patna,Working Professional,"â‚¹7,000 â€“ â‚¹15,000",Kedarnath,Friends trip,5,November,Summer,7745,Flight,Excellent,4,5,4,No,Budget travel
+23,Male,Maharashtra ,Working Professional,"Less than â‚¹1,000",Tirumala,Family trip,4,October,winter,7000,Train,Good,3,3,5,Yes,Adventure trip
+25,Male,Andhra Pradesh,Working Professional,"â‚¹7,000 â€“ â‚¹15,000",kashmir,Family trip,7,February,Summer,5000,Flight,Good,4,5,4,Yes,Nature & sightseeing
+19,Male,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",punjab,Solo,1,November,winter,4500,Bus,Good,4,5,3,Yes,Luxury travel
+21,Female,Chennai,Student,"â‚¹1,000 â€“ â‚¹3,000",Ooty,Friends trip,1,March,rainy,1832,Bus,Good,1,3,4,Yes,Relaxing holiday
+20,Male,punjab,Student,"Less than â‚¹1,000",Amristar ,Friends trip,2,October,rainy,1500,Bike,Good,4,5,5,Yes,Cultural exploration
+21,Male,kerala,Student,"â‚¹3,000 â€“ â‚¹7,000",west bengal,Friends trip,4,January,autumn,12900,Flight,Good,4,4,4,No,Food-focused trip
+18,Female,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",Jalandhar ,Solo,1,November,summer,1500,Car,Average,4,3,3,No,Nature & sightseeing
+21,Female,Haryana ,Student,"â‚¹7,000 â€“ â‚¹15,000",Ooty,Friends trip,4,July,Summer,1500,Car,Good,5,5,5,Yes,Relaxing holiday
+21,Male,gujarat,Student,"â‚¹3,000 â€“ â‚¹7,000",Rajasthan,Family trip,3,October,rainy,3540,Car,Good,4,5,5,No,Nature & sightseeing
+21,Male,madhya pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Dharmasthala,Friends trip,3,January,winter,8000,Bus,Good,4,5,4,Yes,Nature & sightseeing
+17,Male,punjab,Student,"Above â‚¹15,000",Amritsar ,Friends trip,5,December,rainy,8175,Bus,Good,5,5,2,Maybe,Relaxing holiday
+20,Female,Maharashtra ,Student,"Less than â‚¹1,000",Uttar pradesh ,Friends trip,6,December,Winter,1000,Train,Average,4,5,5,Maybe,Luxury travel
+20,Male,Uttar pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar ,Solo,1,November,rainy,1000,Train,Average,4,5,4,Yes,Cultural exploration
+26,Female,gujarat,Student,"â‚¹1,000 â€“ â‚¹3,000",Puri,Solo,1,July,Rainy,1500,Flight,Average,3,4,5,Yes,Luxury travel
+20,Female,haryana,Student,"â‚¹7,000 â€“ â‚¹15,000",Tirumala,Friends trip,1,October,summer,1484,Train,Excellent,4,5,5,Yes,Nature & sightseeing
+21,Male,gujarat,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Friends trip,7,September,winter,10000,Car,Excellent,5,5,5,Yes,Adventure trip
+17,Female,Haryana ,Student,"â‚¹1,000 â€“ â‚¹3,000",Katra,Friends trip,4,November,winter,6011,Train,Good,5,5,3,Yes,Relaxing holiday
+21,Male,Karnataka,Student,"â‚¹7,000 â€“ â‚¹15,000",Mussoorie ,Solo,2,June,rainy,2500,Bus,Average,4,4,4,Maybe,Food-focused trip
+20,Male,gujarat,Student,"â‚¹1,000 â€“ â‚¹3,000",Delhi,Family trip,4,March,autumn,5000,Train,Average,4,5,3,Yes,Relaxing holiday
+19,Female,Karnataka,Student,"â‚¹1,000 â€“ â‚¹3,000",Hyderabad ,Friends trip,4,October,summer,4527,Train,Average,3,4,2,No,Budget travel
+24,Female,Bihar,Student,"Less than â‚¹1,000",Amritsar ,Friends trip,2,November,Winter,2600,Car,Good,3,4,4,Yes,Nature & sightseeing
+22,Female,Agra,Student,"Less than â‚¹1,000",Manali,Friends trip,5,October,summer,5586,Car,Average,3,5,5,Yes,Food-focused trip
+19,Female,Amritsar ,Student,"â‚¹3,000 â€“ â‚¹7,000",Amritsar ,Friends trip,1,May,winter,960,Train,Average,5,5,5,Maybe,Cultural exploration
+21,Female,odisha,Student,"â‚¹1,000 â€“ â‚¹3,000",Haridwar ,Friends trip,5,October,rainy,4651,Train,Good,3,5,5,Maybe,Budget travel
+21,Male,Himachal Pradesh ,Student,"Less than â‚¹1,000",Dharamshala ,Friends trip,1,July,summer,1500,Bike,Average,5,5,5,Yes,Nature & sightseeing
+21,Male,hyderabad,Student,"â‚¹3,000 â€“ â‚¹7,000",Tadkeshwar dham ,Solo,6,October,Winter,6267,Car,Excellent,5,3,5,Yes,Relaxing holiday
+22,Male,punjab,Student,"â‚¹3,000 â€“ â‚¹7,000",manali,Solo,6,March,Winter,3000,Bus,Average,4,5,4,Yes,Budget travel
+20,Female,nagaland,Student,"â‚¹3,000 â€“ â‚¹7,000",tirupati,Friends trip,6,March,rainy,21000,Bus,Good,3,3,3,Yes,Relaxing holiday
+25,Male,Visakhapatnam ,Student,"Above â‚¹15,000",Haridwar,Solo,4,September,Summer,5640,Train,Good,5,4,5,Yes,Adventure trip
+19,Female,Visakhapatnam ,Homemaker,"Less than â‚¹1,000",hyderabad,Family trip,1,April,winter,2557,Train,Good,4,5,3,Yes,Budget travel
+23,Male,punjab,Homemaker,"Less than â‚¹1,000",assam,Friends trip,4,may,Autumn,6395,Bike,Good,4,3,4,Yes,Budget travel
+20,Female,Kerala,Student,"â‚¹1,000 â€“ â‚¹3,000",Triund ,Friends trip,7,October,summer,7112,Bus,Good,5,5,4,Yes,Nature & sightseeing
+18,Female,Andhra radesh,Student,"Less than â‚¹1,000",Jammu ,Friends trip,3,October,summer,6000,Car,Average,4,4,4,Maybe,Relaxing holiday
+20,Male,Karnataka,Student,"â‚¹3,000 â€“ â‚¹7,000",Kukunate,Friends trip,1,October,autumn,1500,Bike,Average,5,5,5,Maybe,Food-focused trip
+20,Female,Andhrapradesh ,Student,"Less than â‚¹1,000",Karnataka ,Family trip,5,July,Rainy,35000,Car,Good,5,5,5,Maybe,Relaxing holiday
+17,Male,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Haridwar ,Solo,4,October,rainy,6141,Train,Excellent,4,5,5,No,Budget travel
+19,Female,kerala,Student,"â‚¹1,000 â€“ â‚¹3,000",Amirtsar,Friends trip,1,November,winter,8000,Bike,Average,1,5,5,Yes,Relaxing holiday
+19,Female,Jharkhand,Student,"â‚¹3,000 â€“ â‚¹7,000",Uttarakhand,Family trip,7,May,Summer,3000,Train,Good,5,5,5,Yes,Nature & sightseeing
+21,Female,tamil nadu,Student,"â‚¹3,000 â€“ â‚¹7,000",Agra,Family trip,5,January,Winter,6301,Car,Excellent,5,5,5,Maybe,Cultural exploration
+23,Female,chhattisgarh,Student,"â‚¹7,000 â€“ â‚¹15,000",Triund,Family trip,7,April,Summer,11939,Train,Good,5,5,4,Yes,Adventure trip
+20,Female,Karnataka,Student,"â‚¹1,000 â€“ â‚¹3,000",punjab,Friends trip,1,November,summer,2000,Bike,Good,3,3,3,No,Food-focused trip
+17,Female,Bihar ,Student,"Above â‚¹15,000",Jammu and Kashmir ,Friends trip,7,August,winter,6658,Car,Good,5,4,5,Yes,Luxury travel
+21,Female,Andhra Pradesh,Student,"Less than â‚¹1,000",Shimla,Friends trip,4,November,summer,9000,Bus,Good,4,5,5,Yes,Adventure trip
+19,Female,odisha,Student,"Above â‚¹15,000",Manali,Friends trip,5,October,rainy,1000,Car,Excellent,4,5,5,Maybe,Adventure trip
+19,Female,hyderabad,Student,"â‚¹3,000 â€“ â‚¹7,000",hyderabad,Solo,1,June,Summer,900,Flight,Excellent,5,5,5,Yes,Relaxing holiday
+18,Female,madhya pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Tirupati ,Family trip,3,May,rainy,7000,Train,Excellent,4,5,4,Yes,Cultural exploration
+20,Female,chhattisgarh,Student,"Above â‚¹15,000",Amritsar ,Friends trip,1,November,rainy,900,Train,Average,5,5,1,Yes,Cultural exploration
+21,Male,Visakhapatnam ,Homemaker,"â‚¹7,000 â€“ â‚¹15,000",Hyderabad ,Family trip,5,April,Spring,7000,Flight,Good,5,5,4,Yes,Luxury travel
+18,Female,uttarakhand,Student,"â‚¹7,000 â€“ â‚¹15,000",Jammu ,Friends trip,2,November,autumn,2720,Bus,Good,1,2,4,Yes,Cultural exploration
+22,Female,Karnataka,Student,"â‚¹3,000 â€“ â‚¹7,000",Dramshala,Friends trip,3,October,summer,5000,Car,Very poor,4,4,4,Maybe,Food-focused trip
+17,Female,west bengal,Student,"Less than â‚¹1,000",Shilma,Friends trip,2,September,winter,2407,Train,Good,4,5,3,Yes,Cultural exploration
+19,Female,uttarakhand,Student,"â‚¹3,000 â€“ â‚¹7,000",Dharmshala ,Friends trip,3,October,rainy,5000,Train,Average,4,5,4,Yes,Budget travel
+19,Female,odisha,Student,"â‚¹7,000 â€“ â‚¹15,000",Tirupati,Solo,3,June,Winter,4382,Bus,Good,3,3,3,Maybe,Relaxing holiday
+21,Female,Bangalore ,Student,"â‚¹7,000 â€“ â‚¹15,000",Kerala ,Friends trip,1,October,Winter,900,Bus,Good,4,5,4,Yes,Relaxing holiday
+24,Male,Andhra pradesh,Working Professional,"Less than â‚¹1,000",Kashmir ,Friends trip,7,October,summer,10690,Bus,Poor,4,5,1,Yes,Nature & sightseeing
+21,Male,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Jalandhar ,Friends trip,2,September,Winter,2641,Train,Good,5,5,5,Yes,Relaxing holiday
+26,Male,karnataka,Student,"â‚¹1,000 â€“ â‚¹3,000",manali,Friends trip,4,March,Spring,4000,Train,Good,5,5,4,Yes,Luxury travel
+20,Female,jalandhar,Student,"Less than â‚¹1,000",Jalandhar,Friends trip,1,October,summer,1000,Bus,Average,3,3,3,Maybe,Relaxing holiday
+26,Male,napal,Business,"â‚¹1,000 â€“ â‚¹3,000",kashmir,Friends trip,8,April,Summer,35000,Flight,Excellent,5,4,4,Yes,Food-focused trip
+19,Male,bihar,Student,"Less than â‚¹1,000",Vishakapatnam,Friends trip,6,September,autumn,8501,Train,Good,3,5,4,Yes,Relaxing holiday
+21,Male,Andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",kashmir,Friends trip,3,May,winter,5175,Train,Excellent,3,5,4,No,Relaxing holiday
+21,Male,punjab,Student,"â‚¹3,000 â€“ â‚¹7,000",kashmir ,Solo,6,November,Spring,6000,Bus,Excellent,5,5,5,Yes,Relaxing holiday
+19,Male,Kerala,Student,"â‚¹1,000 â€“ â‚¹3,000",Triund ,Friends trip,1,May,Autumn,1481,Bus,Average,3,4,5,Yes,Cultural exploration
+21,Female,madhya pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Delhi,Family trip,2,October,autumn,4000,Bus,Poor,4,5,3,No,Relaxing holiday
+20,Male,Maharashtra ,Student,"Above â‚¹15,000",Amristar ,Solo,4,February,summer,5335,Car,Good,4,5,5,Yes,Relaxing holiday
+17,Male,kerala,Student,"â‚¹1,000 â€“ â‚¹3,000",Jalandhar ,Solo,3,December,Spring,4947,Flight,Good,4,5,5,Yes,Relaxing holiday
+20,Male,nepal,Business,"â‚¹1,000 â€“ â‚¹3,000",bhutan,Solo,6,October,winter,28000,Flight,Excellent,5,5,5,Yes,Luxury travel
+21,Male,madhya pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Amritsar,Friends trip,1,September,summer,1574,Flight,Excellent,3,5,3,Yes,Relaxing holiday
+19,Female,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Yadadri,Friends trip,1,August,Spring,900,Bus,Average,4,5,4,Yes,Cultural exploration
+21,Male,Andhra Pradesh,Student,"Above â‚¹15,000",Jalandhar ,Friends trip,2,September,Spring,4000,Car,Excellent,5,4,5,Yes,Relaxing holiday
+20,Female,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar,Friends trip,1,October,autumn,900,Train,Good,4,3,3,No,Nature & sightseeing
+20,Female,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Kashmir ,Friends trip,5,November,winter,8000,Bus,Good,5,5,5,Yes,Budget travel
+20,Male,Maharashtra ,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali,Friends trip,5,November,rainy,5000,Car,Average,5,5,5,No,Relaxing holiday
+19,Female,kerala,Business,"â‚¹3,000 â€“ â‚¹7,000",tirupati,Family trip,4,November,rainy,5469,Bike,Average,3,5,5,Yes,Nature & sightseeing
+18,Female,Karnataka,Student,"Less than â‚¹1,000",Ludhiana,Solo,1,November,summer,1000,Bus,Excellent,5,4,5,Yes,Food-focused trip
+24,Female,telangana,Student,"Less than â‚¹1,000",Ranchi ,Family trip,6,May,winter,10436,Car,Good,4,5,4,Yes,Luxury travel
+17,Male,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",Jyothi chowka,Family trip,5,October,autumn,7582,Train,Good,2,5,4,Maybe,Adventure trip
+17,Male,madhya pradesh,Student,"Less than â‚¹1,000",red fort,Solo,1,November,rainy,1019,Car,Good,3,5,4,Maybe,Budget travel
+20,Female,tripura,Student,"â‚¹3,000 â€“ â‚¹7,000",red fort,Solo,3,May,summer,5400,Flight,Average,4,5,5,Yes,Nature & sightseeing
+20,Female,Tamil Nadu,Student,"Less than â‚¹1,000",Tirupati,Friends trip,7,June,winter,5400,Bus,Good,4,4,4,Yes,Relaxing holiday
+25,Female,manipur,Business,"â‚¹3,000 â€“ â‚¹7,000",America ,Business trip,5,January,Spring,4648,Bike,Good,2,1,1,Yes,Cultural exploration
+20,Male,kerala,Student,"Above â‚¹15,000",dharmashala,Family trip,7,May,winter,5000,Car,Good,3,4,4,Yes,Relaxing holiday
+20,Female,tripura,Student,"Above â‚¹15,000",Ranchi ,Solo,7,July,autumn,1500,Car,Average,5,5,5,Yes,Relaxing holiday
+19,Male,Maharashtra ,Student,"â‚¹7,000 â€“ â‚¹15,000",Ooty,Friends trip,2,November,Spring,2450,Train,Good,5,5,4,No,Relaxing holiday
+20,Female,andhra pradesh,Student,"Above â‚¹15,000",Vijayawada,Solo,5,July,summer,1500,Train,Good,5,5,5,Yes,Nature & sightseeing
+17,Male,Kerala,Student,"Above â‚¹15,000",tirupati,Friends trip,3,July,autumn,3755,Train,Good,3,3,4,No,Cultural exploration
+21,Male,andhra pradesh,Student,"Above â‚¹15,000",Kanyakumari,Solo,4,July,summer,7000,Flight,Good,5,5,5,Yes,Nature & sightseeing
+19,Male,andhra pradesh,Student,"Above â‚¹15,000",tirupati,Solo,12,October,Spring,11181,Train,Good,4,1,5,Yes,Luxury travel
+21,Male,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Punjab,Solo,1,April,Winter,1328,Train,Good,4,3,1,Yes,Nature & sightseeing
+20,Male,tamil nadu,Student,"â‚¹1,000 â€“ â‚¹3,000",Haridwar and rishikesh ,Friends trip,3,October,winter,20000,Bike,Excellent,5,5,5,Yes,Adventure trip
+20,Male,Andhra radesh,Student,"Less than â‚¹1,000",Kanyakumari,Friends trip,1,November,winter,6000,Car,Good,4,4,3,Yes,Relaxing holiday
+24,Male,Karnataka,Student,"Above â‚¹15,000",Shiridi ,Friends trip,7,February,summer,12702,Train,Excellent,3,3,5,Yes,Food-focused trip
+24,Male,kerala,Student,"â‚¹1,000 â€“ â‚¹3,000",Golden temple ,Friends trip,10,October,summer,13566,Flight,Average,4,5,2,Yes,Relaxing holiday
+18,Male,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Gao,Friends trip,1,November,autumn,1412,Train,Excellent,3,4,5,Maybe,Cultural exploration
+23,Male,telangana,Student,"Less than â‚¹1,000",Manikomda,Family trip,6,November,winter,6160,Bus,Good,3,5,4,Yes,Adventure trip
+17,Female,Uttar Pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",tirupati,Friends trip,10,October,summer,10135,Bus,Good,3,4,5,Yes,Budget travel
+22,Female,manipur,Student,"â‚¹3,000 â€“ â‚¹7,000",Palampur ,Family trip,3,August,winter,16300,Car,Good,2,4,4,Yes,Adventure trip
+19,Male,karnataka,Business,"â‚¹1,000 â€“ â‚¹3,000",manali,Solo,1,March,autumn,976,Train,Good,5,4,5,Yes,Adventure trip
+20,Female,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Jalandhar ,Friends trip,1,November,autumn,17500,Bus,Excellent,5,5,5,Yes,Relaxing holiday
+19,Female,Uttar pradesh ,Student,"Less than â‚¹1,000",Triund,Friends trip,8,August,Spring,13657,Bus,Good,4,4,5,Yes,Adventure trip
+19,Male,andhra pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Shiridi ,Friends trip,5,November,Spring,10000,Bike,Good,5,5,5,Yes,Nature & sightseeing
+17,Female,Khammam,Student,"Less than â‚¹1,000",Delhi,Family trip,2,July,Winter,2380,Car,Good,5,3,3,Maybe,Nature & sightseeing
+21,Female,Amritsar ,Student,"Less than â‚¹1,000",Bir biling ,Friends trip,6,July,Summer,7394,Car,Average,5,5,5,Yes,Nature & sightseeing
+22,Male,kerela,Student,"â‚¹7,000 â€“ â‚¹15,000",manali,Solo,8,November,Winter,15000,Train,Average,4,5,4,Yes,Budget travel
+18,Female,odisha,Student,"â‚¹7,000 â€“ â‚¹15,000",Jalandhar ,Family trip,3,November,winter,4859,Flight,Good,4,5,5,Yes,Nature & sightseeing
+28,Female,Tamil Nadu,Working Professional,"Less than â‚¹1,000",Kerala,Family trip,6,June,Summer,45000,Flight,Excellent,5,5,5,Yes,Relaxing holiday
+17,Female,haryana,Student,"â‚¹3,000 â€“ â‚¹7,000",kashmir,Friends trip,3,July,rainy,3134,Flight,Good,1,5,5,Maybe,Cultural exploration
+20,Male,punjab,Student,"Less than â‚¹1,000",Manali,Family trip,4,October,summer,5999,Bike,Excellent,3,5,5,Maybe,Nature & sightseeing
+24,Female,Andhra radesh,Student,"Less than â‚¹1,000",Chennai,Friends trip,6,October,summer,8273,Train,Average,4,4,5,Yes,Relaxing holiday
+23,Male,Uttar pradesh,Student,"Less than â‚¹1,000",Jammu,Friends trip,5,June,winter,7838,Train,Average,3,5,5,Yes,Cultural exploration
+21,Male,Rajasthan ,Student,"â‚¹7,000 â€“ â‚¹15,000",manipur,Solo,2,December,autumn,7500,Bike,Excellent,5,1,4,Yes,Relaxing holiday
+21,Male,Karnataka,Student,"Less than â‚¹1,000",Delhi,Friends trip,7,May,winter,8000,Train,Average,3,4,4,No,Food-focused trip
+21,Female,Tamil Nadu,Student,"Above â‚¹15,000",Sikkim ,Friends trip,5,June,Spring,10000,Train,Good,3,3,4,Yes,Cultural exploration
+18,Female,Andhra Pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",Tirupati ,Family trip,4,July,Summer,10000,Train,Good,5,5,5,Yes,Adventure trip
+20,Female,Andhra Pradesh,Student,"Less than â‚¹1,000",Manali,Friends trip,5,December,winter,1200,Train,Excellent,2,4,4,Yes,Cultural exploration
+19,Female,Andhra pradesh,Student,"Above â‚¹15,000",Delhi,Friends trip,5,July,rainy,2500,Flight,Excellent,1,1,5,Maybe,Adventure trip
+35,Female,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Vaishno devi,Solo,9,November,rainy,15143,Train,Average,2,5,5,No,Relaxing holiday
+17,Female,Uttar Pradesh,Business,"â‚¹3,000 â€“ â‚¹7,000",kashmir,Friends trip,4,July,Autumn,4215,Car,Average,3,5,4,Maybe,Budget travel
+17,Female,odisha,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar,Friends trip,3,January,rainy,3555,Bike,Average,4,5,5,No,Relaxing holiday
+21,Male,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Triund,Friends trip,4,October,Spring,8000,Bike,Excellent,4,5,5,Maybe,Adventure trip
+20,Male,Karnataka,Student,"Above â‚¹15,000",Bangalore ,Friends trip,3,October,rainy,3905,bus,Average,3,4,4,Yes,Relaxing holiday
+19,Female,kerala,Student,"â‚¹7,000 â€“ â‚¹15,000",manali,Family trip,9,May,winter,16229,Bus,Good,3,5,5,Yes,Relaxing holiday
+19,Female,Tamil Nadu,Student,"â‚¹3,000 â€“ â‚¹7,000",Dharmashala ,Friends trip,1,October,winter,1507,Car,Very poor,4,5,4,Maybe,Adventure trip
+20,Female,Uttar Pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",Ujjain ,Family trip,2,January,Winter,15000,Train,Good,3,4,4,Yes,Cultural exploration
+22,Male,Jammu,Student,"â‚¹1,000 â€“ â‚¹3,000",Kashmir,Solo,3,December,Winter,12000,Bus,Poor,4,5,4,No,Adventure trip
+23,Female,Bihar,Student,"â‚¹1,000 â€“ â‚¹3,000",Jalandhar ,Friends trip,5,November,autumn,7729,Car,Good,5,5,4,Yes,Nature & sightseeing
+20,Male,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Friends trip,5,October,winter,10000,Bike,Good,4,5,4,Yes,Budget travel
+20,Female,Delhi,Homemaker,"Less than â‚¹1,000",tirupati,Family trip,10,June,Winter,14288,Flight,Good,4,4,4,Maybe,Relaxing holiday
+31,Male,tamil nadu,Farmer ,"â‚¹1,000 â€“ â‚¹3,000",Tirupati,Family trip,1,October,winter,1000,Bike,Good,5,3,5,Yes,Cultural exploration
+22,Female,Punjab,Student,"â‚¹7,000 â€“ â‚¹15,000",Triund,Friends trip,1,June,Winter,1043,Bus,Average,4,5,4,Yes,Luxury travel
+21,Female,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Delhi ,Friends trip,3,October,winter,5038,Car,Excellent,3,1,5,Maybe,Budget travel
+18,Female,Bihar ,Student,"â‚¹3,000 â€“ â‚¹7,000",Vaishno Devi,Friends trip,3,November,winter,5531,Bike,Good,4,5,4,Yes,Nature & sightseeing
+19,Male,odisha,Student,"â‚¹3,000 â€“ â‚¹7,000",Bangalore ,Friends trip,1,October,rainy,1223,Bus,Average,3,4,4,Yes,Relaxing holiday
+19,Female,Andhra Pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",tirupati,Friends trip,2,September,Winter,2241,Flight,Excellent,4,4,4,No,Relaxing holiday
+20,Male,bihar,Student,"â‚¹7,000 â€“ â‚¹15,000",Jammu,Friends trip,3,October,summer,6000,Train,Average,4,4,4,Maybe,Nature & sightseeing
+20,Female,Amritsar ,Student,"â‚¹1,000 â€“ â‚¹3,000",Bir biling ,Family trip,3,July,Summer,8000,Car,Average,5,5,5,Yes,Nature & sightseeing
+22,Male,Andhra Pradesh,Student,"Less than â‚¹1,000",Amritsar,Friends trip,1,November,autumn,10000,Car,Good,4,5,5,Maybe,Cultural exploration
+21,Male,Karnataka,Student,"â‚¹3,000 â€“ â‚¹7,000",tirupati ,Family trip,1,October,autumn,1900,Bike,Good,3,3,3,Yes,Food-focused trip
+21,Female,Kanpur,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Friends trip,4,November,Winter,10000,Bus,Excellent,4,4,4,Yes,Relaxing holiday
+20,Male,Andhra Pradesh,Student,"Less than â‚¹1,000",kedarnath ,Friends trip,7,October,autumn,12600,Train,Average,3,3,5,Maybe,Adventure trip
+20,Female,Kerala,Student,"Less than â‚¹1,000",Manali,Friends trip,1,October,Summer,1308,Flight,Average,5,5,2,Yes,Adventure trip
+21,Female,uttar pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Bangalore ,Friends trip,5,August,rainy,25000,Flight,Good,4,4,4,Yes,Nature & sightseeing
+20,Female,Haryana ,Student,"â‚¹1,000 â€“ â‚¹3,000",Shilma,Friends trip,4,January,Winter,10000,Bus,Good,4,4,5,Maybe,Adventure trip
+19,Female,Karnataka,Student,"â‚¹1,000 â€“ â‚¹3,000",Haridwar ,Friends trip,8,October,Winter,11843,Train,Average,4,4,4,Maybe,Nature & sightseeing
+21,Male,Uttar pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",dharmshala ,Friends trip,5,November,rainy,3500,Bus,Average,2,3,3,Yes,Adventure trip
+20,Male,jammu,Student,"â‚¹7,000 â€“ â‚¹15,000",Jammu,Friends trip,3,November,winter,3000,Train,Average,3,4,4,Yes,Nature & sightseeing
+20,Female,Punjab ,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar ,Friends trip,3,November,Winter,900,Bus,Average,3,4,4,Maybe,Nature & sightseeing
+22,Female,Maharashtra ,Working Professional,"â‚¹3,000 â€“ â‚¹7,000",Dharamshala ,Friends trip,3,May,Summer,4346,Train,Poor,4,5,4,Maybe,Food-focused trip
+18,Male,Andhra Pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Punjab,Friends trip,3,November,summer,7000,Train,Average,3,3,4,Yes,Cultural exploration
+20,Female,chandigarh,Student,"Less than â‚¹1,000",Jalandhar ,Solo,2,November,summer,3500,Bus,Good,4,5,5,Yes,Relaxing holiday
+22,Female,Rajasthan ,Student,"â‚¹3,000 â€“ â‚¹7,000",Golden temple ,Family trip,1,November,Winter,1000,Bus,Good,3,5,4,Maybe,Relaxing holiday
+20,Female,bihar,Student,"â‚¹1,000 â€“ â‚¹3,000",tirupati,Solo,7,December,summer,25000,Train,Average,3,4,3,No,Relaxing holiday
+19,Female,Andhra Pradesh,Student,"Less than â‚¹1,000",Jyothi chowka,Friends trip,0,November,rainy,900,Bus,Average,3,3,3,No,Cultural exploration
+19,Male,Karnataka,Student,"â‚¹1,000 â€“ â‚¹3,000",Manikomda,Friends trip,4,November,Winter,3952,Bus,Good,4,3,3,Yes,Food-focused trip
+20,Male,uttarakhand,Student,"Less than â‚¹1,000",Manali,Friends trip,5,October,rainy,5000,Bike,Good,4,4,4,Maybe,Nature & sightseeing
+17,Male,punjab,Student,"Less than â‚¹1,000",Yadadri,Friends trip,3,July,winter,5033,Bus,Good,4,4,3,Yes,Relaxing holiday
+23,Male,assam,Student,"Above â‚¹15,000",tirupati,Family trip,8,April,Rainy,8000,Flight,Good,4,5,4,Yes,Nature & sightseeing
+19,Male,Hyderabad,Homemaker,"â‚¹1,000 â€“ â‚¹3,000",kedarnath,Solo,6,February,Summer,4000,Train,Good,4,5,5,Yes,Cultural exploration
+21,Male,andhra pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Ooty,Solo,3,July,summer,3205,Train,Good,5,5,5,Yes,Nature & sightseeing
+28,Female,chhattisgarh,Business,"Above â‚¹15,000",Kohima,Business trip,7,August,winter,15000,Flight,Good,4,5,5,Yes,Luxury travel
+20,Female,ladakh,Student,"â‚¹1,000 â€“ â‚¹3,000",Triund,Solo,1,June,Summer,1476,Train,Good,5,5,5,Yes,Adventure trip
+19,Male,andhra pradesh,Business,"â‚¹7,000 â€“ â‚¹15,000",Ludhiana,Friends trip,3,October,winter,5459,Train,Good,4,5,3,Yes,Relaxing holiday
+20,Male,nagaland,Student,"â‚¹1,000 â€“ â‚¹3,000",lotus temple,Solo,7,May,rainy,16000,Train,Poor,3,3,2,Yes,Relaxing holiday
+23,Female,haryana,Student,"â‚¹3,000 â€“ â‚¹7,000",tirupati,Friends trip,7,October,summer,10359,Train,Good,4,4,4,Maybe,Relaxing holiday
+19,Female,Rajasthan ,Student,"Less than â‚¹1,000",Jaipur,Friends trip,6,September,winter,5452,Flight,Excellent,3,5,4,Maybe,Adventure trip
+21,Female,Uttar pradesh,Student,"Less than â‚¹1,000",Kashmir,Family trip,7,June,Summer,3400,Flight,Good,3,5,5,Yes,Cultural exploration
+19,Female,kerela,Student,"â‚¹1,000 â€“ â‚¹3,000",Malakonda,Family trip,2,November,Spring,5000,Bus,Good,4,5,5,Yes,Nature & sightseeing
+21,Female,delhi,Student,"Less than â‚¹1,000",Agra,Family trip,2,August,rainy,1500,Car,Good,4,5,5,Maybe,Cultural exploration
+20,Male,jharkhand,Student,"â‚¹1,000 â€“ â‚¹3,000",Katara ,Friends trip,4,October,summer,6000,Car,Average,5,5,5,Maybe,Nature & sightseeing
+19,Female,Haryana ,Student,"â‚¹7,000 â€“ â‚¹15,000",Manali,Family trip,5,May,Winter,6000,Car,Good,4,5,4,Maybe,Relaxing holiday
+23,Female,punjab,Student,"â‚¹7,000 â€“ â‚¹15,000",Shirdi,Friends trip,5,October,winter,8673,Train,Good,4,5,4,Yes,Adventure trip
+20,Female,haryana,Student,"â‚¹3,000 â€“ â‚¹7,000",Jalandhar ,Friends trip,1,November,summer,1000,Bus,Average,3,3,3,Yes,Nature & sightseeing
+23,Female,ladakh,Student,"Less than â‚¹1,000",Kanyakumari,Friends trip,7,October,autumn,6597,Bus,Good,4,3,3,No,Adventure trip
+20,Male,Bangalore ,Student,"Less than â‚¹1,000",Hyderabad,Friends trip,4,October,Winter,4850,Car,Excellent,4,5,5,Maybe,Food-focused trip
+19,Male,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Golden temple ,Friends trip,2,October,rainy,2000,Car,Good,2,2,3,Yes,Budget travel
+29,Female,Jharkhand ,Working Professional,"â‚¹3,000 â€“ â‚¹7,000",Shimla,Family trip,6,January,Winter,3490,Train,Good,3,5,4,Yes,Relaxing holiday
+20,Male,Himachal Pradesh ,Student,"Above â‚¹15,000",manali,Friends trip,5,November,rainy,7895,Car,Average,1,5,4,Maybe,Cultural exploration
+21,Male,ladakh,Student,"â‚¹3,000 â€“ â‚¹7,000",Jammu,Friends trip,5,October,Spring,5000,Bus,Good,5,5,5,Yes,Relaxing holiday
+19,Male,chandigarh,Student,"Less than â‚¹1,000",Panipat,Solo,2,October,autumn,3382,Train,Excellent,3,4,5,Yes,Nature & sightseeing
+19,Female,chandigarh,Student,"â‚¹3,000 â€“ â‚¹7,000",Jalandhar ,Family trip,3,October,rainy,3000,Bus,Average,2,2,2,No,Relaxing holiday
+23,Female,punjab,Business,"Less than â‚¹1,000",Kanyakumari,Business trip,6,November,autumn,10284,Train,Excellent,1,5,5,Yes,Adventure trip
+17,Male,tamil nadu,Student,"â‚¹3,000 â€“ â‚¹7,000",Tamilnadu ,Family trip,4,November,autumn,6158,Train,Excellent,5,5,5,Yes,Adventure trip
+20,Female,telangana,Student,"â‚¹7,000 â€“ â‚¹15,000",Shirdi,Family trip,3,May,winter,17000,Train,Good,4,5,4,Yes,Adventure trip
+20,Female,Kerala,Student,"â‚¹1,000 â€“ â‚¹3,000",Punjab,Family trip,3,August,Summer,5000,Flight,Good,3,5,5,Maybe,Nature & sightseeing
+26,Male,Karnataka,Student,"â‚¹3,000 â€“ â‚¹7,000",Triund,Family trip,6,May,Summer,7000,Train,Good,4,5,4,Yes,Budget travel
+20,Female,madhya pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali,Friends trip,4,October,summer,10000,Car,Good,4,5,3,Yes,Nature & sightseeing
+19,Female,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Amritsar,Friends trip,1,October,summer,1000,Train,Good,1,1,1,Yes,Cultural exploration
+19,Male,Andhra Pradesh,Student,"Above â‚¹15,000",Badrinath ,Friends trip,5,October,Spring,8000,Train,Good,2,5,5,Yes,Adventure trip
+18,Male,kerala,Student,"â‚¹7,000 â€“ â‚¹15,000",Himachal ,Friends trip,1,October,Spring,1354,Bus,Average,3,5,2,No,Adventure trip
+21,Male,haryana,Student,"â‚¹3,000 â€“ â‚¹7,000",Dharamshala ,Friends trip,3,October,summer,3100,Bus,Excellent,4,5,5,Yes,Nature & sightseeing
+21,Male,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Haridwar ,Friends trip,4,October,rainy,3000,Train,Excellent,5,5,5,Maybe,Budget travel
+21,Female,odisha,Student,"â‚¹1,000 â€“ â‚¹3,000",Dharmashala ,Friends trip,3,January,autumn,7000,Bus,Very poor,3,3,3,Yes,Nature & sightseeing
+27,Female,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",Delhi,Family trip,3,November,Spring,4720,Bus,Average,3,4,4,Yes,Cultural exploration
+20,Female,gujarat,Student,"â‚¹7,000 â€“ â‚¹15,000",Tadkeshwar dham ,Family trip,1,November,winter,5000,Car,Average,3,5,4,Yes,Nature & sightseeing
+21,Male,jammu,Student,"â‚¹1,000 â€“ â‚¹3,000",Vaishno devi,Friends trip,4,September,summer,5000,Train,Good,4,4,4,Maybe,Cultural exploration
+24,Male,assam,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali,Family trip,6,November,Rainy,7378,Flight,Good,3,5,4,Yes,Nature & sightseeing
+19,Female,Andhra Pradesh ,Student,"Less than â‚¹1,000",Vizag,Solo,2,May,Summer,3500,Train,Excellent,5,5,5,Yes,Food-focused trip
+19,Male,Andhra Pradesh,Student,"Less than â‚¹1,000",Una,Friends trip,2,September,summer,2000,Bike,Average,5,5,2,No,Cultural exploration
+20,Female,Agra,Student,"â‚¹3,000 â€“ â‚¹7,000",Amritsar ,Friends trip,1,September,Spring,2700,Flight,Very poor,1,1,1,No,Luxury travel
+23,Female,Kerala,Student,"â‚¹1,000 â€“ â‚¹3,000",Triund,Friends trip,4,October,Winter,4696,Bus,Good,3,5,5,Yes,Adventure trip
+19,Female,odisha,Student,"â‚¹3,000 â€“ â‚¹7,000",Bali,Family trip,4,April,winter,10000,Car,Excellent,4,5,5,Yes,Nature & sightseeing
+19,Male,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Dharmashala,Friends trip,3,November,summer,3000,Train,Poor,2,4,4,Yes,Budget travel
+23,Female,kerala,Student,"Less than â‚¹1,000",Amirtsar,Family trip,5,October,rainy,7062,Train,Average,1,5,5,Maybe,Relaxing holiday
+23,Female,Bihar ,Student,"â‚¹7,000 â€“ â‚¹15,000",Amritsar ,Friends trip,3,April,Spring,4706,Car,Average,5,3,4,Yes,Luxury travel
+20,Male,andhra pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Jalandhar,Friends trip,2,November,autumn,2060,Bus,Good,4,4,3,No,Relaxing holiday
+21,Female,Andhra Pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Jalandhar1,Friends trip,17,November,Spring,26000,Flight,Good,3,4,3,Maybe,Cultural exploration
+21,Male,west bengal,Student,"Less than â‚¹1,000",Dehli,Solo,2,September,autumn,1946,Flight,Excellent,3,5,5,Maybe,Luxury travel
+17,Male,telangana,Working Professional,"Less than â‚¹1,000",Murdeshwar,Family trip,2,November,summer,3743,Car,Good,4,5,4,Yes,Nature & sightseeing
+19,Female,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",tirupati ,Friends trip,2,June,winter,2500,Train,Good,4,4,4,Yes,Nature & sightseeing
+19,Female,Bihar ,Student,"â‚¹1,000 â€“ â‚¹3,000",Kashmir,Family trip,3,June,winter,4461,Car,Good,3,4,5,Yes,Relaxing holiday
+22,Female,punjab,Student,"â‚¹3,000 â€“ â‚¹7,000",dwarkadhish temple,Friends trip,4,August,rainy,5300,Bike,Average,4,4,3,Yes,Adventure trip
+24,Male,Haryana ,Student,"Less than â‚¹1,000",Panipat,Family trip,2,February,Autumn,1000,Bike,Excellent,4,5,4,Yes,Luxury travel
+20,Female,bihar,Student,"â‚¹7,000 â€“ â‚¹15,000",dwarkadhish temple,Business trip,4,July,summer,10000,Bike,Very poor,1,1,1,No,Relaxing holiday
+19,Male,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Varanasi ,Friends trip,4,November,autumn,5000,Train,Good,5,5,5,Yes,Cultural exploration
+19,Female,punjab,Student,"â‚¹7,000 â€“ â‚¹15,000",Jammu ,Friends trip,6,March,winter,11152,Train,Good,3,3,1,Yes,Relaxing holiday
+22,Male,Andhra pradesh ,Student,"â‚¹7,000 â€“ â‚¹15,000",Vizag,Solo,3,October,Summer,3315,Train,Good,3,2,5,Yes,Food-focused trip
+23,Male,india,Working Professional,"Less than â‚¹1,000",kedarnath,Family trip,2,May,rainy,3474,Car,Good,5,4,4,Maybe,Adventure trip
+22,Female,Andhra pradesh,Student,"Less than â‚¹1,000",Amritsar ,Friends trip,2,October,autumn,2000,Bus,Average,4,4,5,Yes,Relaxing holiday
+20,Female,Andhra radesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Friends trip,3,October,summer,4000,Bus,Average,4,5,4,Yes,Cultural exploration
+21,Female,uttar pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",delhi,Friends trip,3,October,summer,4000,Train,Average,4,4,4,Maybe,Nature & sightseeing
+17,Male,west bengal,Student,"Above â‚¹15,000",Dharmashala,Friends trip,1,February,rainy,2500,Train,Poor,5,5,5,Yes,Cultural exploration
+20,Female,assam,Student,"â‚¹3,000 â€“ â‚¹7,000",Uttar pradesh ,Friends trip,4,January,summer,10000,Bus,Average,3,5,5,Yes,Relaxing holiday
+20,Female,Andhra Pradesh,Student,"Less than â‚¹1,000",Iskon temple ,Friends trip,0,November,winter,18000,Bus,Average,4,3,3,Yes,Relaxing holiday
+20,Female,uttar pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Dharamshala ,Friends trip,5,October,summer,1000,Bus,Good,4,5,5,Maybe,Adventure trip
+18,Female,Uttar pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar,Solo,5,August,autumn,7557,Train,Good,3,3,5,No,Nature & sightseeing
+21,Female,Hyderabad,Student,"Less than â‚¹1,000",Amritsar,Solo,2,June,rainy,2770,Train,Average,3,5,5,Maybe,Relaxing holiday
+20,Female,hyderabad,Student,"â‚¹3,000 â€“ â‚¹7,000",Mussoorie ,Family trip,1,October,Summer,1290,Flight,Excellent,5,5,5,Yes,Nature & sightseeing
+17,Male,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Tirupati,Friends trip,1,October,winter,1800,Train,Good,5,5,3,Yes,Food-focused trip
+23,Male,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Rajahmundry ,Solo,3,November,Spring,2000,Bus,Average,2,4,3,Maybe,Relaxing holiday
+27,Male,andhra pradesh,Working Professional,"â‚¹1,000 â€“ â‚¹3,000",Hyderabad,Friends trip,2,December,rainy,2500,Bus,Good,2,3,4,No,Relaxing holiday
+20,Female,goa,Student,"â‚¹1,000 â€“ â‚¹3,000",dehradun ,Solo,4,July,Spring,9000,Train,Average,3,3,3,Maybe,Nature & sightseeing
+20,Male,Andhra Pradesh,Student,"Above â‚¹15,000",Kedarnath,Friends trip,5,September,winter,21400,Train,Average,3,1,1,Yes,Adventure trip
+20,Female,Uttar pradesh ,Working Professional,"Less than â‚¹1,000",Triund,Friends trip,4,October,Spring,3000,Bus,Good,4,4,5,Yes,Adventure trip
+19,Male,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali,Friends trip,9,February,winter,14475,Car,Good,3,5,3,Maybe,Relaxing holiday
+37,Male,Rajasthan ,Working Professional,"â‚¹3,000 â€“ â‚¹7,000",Hyderabad,Solo,2,November,autumn,10000,Bus,Good,4,5,5,Yes,Relaxing holiday
+17,Female,Kerala ,Student,"â‚¹7,000 â€“ â‚¹15,000",Dharamshala ,Family trip,7,October,Autumn,10066,Car,Good,4,5,5,Yes,Cultural exploration
+17,Female,Hyderabad,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar ,Family trip,4,February,Winter,7384,Car,Average,4,5,5,No,Relaxing holiday
+18,Female,jammu,Student,"â‚¹1,000 â€“ â‚¹3,000",Himachal ,Friends trip,1,July,Spring,1363,Bus,Good,2,5,5,Yes,Adventure trip
+20,Male,punjab,Student,"â‚¹3,000 â€“ â‚¹7,000",Punjab,Solo,1,September,rainy,1000,Train,Average,4,3,3,Maybe,Nature & sightseeing
+17,Female,Rajasthan ,Student,"â‚¹3,000 â€“ â‚¹7,000",Karnataka ,Family trip,9,July,Winter,12473,Car,Very poor,5,5,5,Maybe,Budget travel
+18,Male,haryana,Student,"â‚¹3,000 â€“ â‚¹7,000",Spiti ,Friends trip,5,November,Spring,6649,Car,Average,5,4,4,Yes,Food-focused trip
+25,Female,Punjab,Student,"â‚¹3,000 â€“ â‚¹7,000",Triund,Friends trip,3,June,Rainy,2000,Bus,Average,4,5,5,Yes,Luxury travel
+21,Male,Rajasthan ,Working Professional,"â‚¹3,000 â€“ â‚¹7,000",Delhi,Friends trip,2,May,winter,3244,Car,Average,3,4,4,No,Food-focused trip
+21,Male,Andhra pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",Badrinath ,Family trip,8,July,summer,9782,Bus,Average,5,5,5,Yes,Relaxing holiday
+17,Female,chandigarh,Student,"â‚¹7,000 â€“ â‚¹15,000",Jalandhar1,Friends trip,4,November,rainy,5594,Car,Good,4,5,3,Yes,Adventure trip
+18,Female,tamil nadu,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Friends trip,6,October,Autumn,9530,Train,Good,4,5,5,Maybe,Budget travel
+17,Male,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",Bengaluru ,Friends trip,1,October,rainy,1497,Bus,Good,4,5,5,Yes,Cultural exploration
+22,Male,haryana,Student,"â‚¹3,000 â€“ â‚¹7,000",Delhi ,Friends trip,2,June,winter,2422,Train,Excellent,4,5,4,Yes,Cultural exploration
+19,Male,Haryana ,Student,"â‚¹3,000 â€“ â‚¹7,000",Uttarakhand,Family trip,3,April,rainy,3385,Train,Average,1,5,4,Yes,Nature & sightseeing
+21,Male,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Haridwar,Friends trip,6,November,Spring,2000,Train,Average,5,5,5,Yes,Adventure trip
+20,Female,kerala,Student,"â‚¹3,000 â€“ â‚¹7,000",Vrindavan ,Friends trip,4,October,Spring,19500,Train,Good,4,5,5,Yes,Adventure trip
+27,Male,Andhra Pradesh,Business,"â‚¹3,000 â€“ â‚¹7,000",kashmir,Business trip,8,March,Rainy,2700,Train,Excellent,5,4,5,Yes,Nature & sightseeing
+19,Male,punjab,Student,"â‚¹3,000 â€“ â‚¹7,000",Ludhiana,Friends trip,1,December,autumn,1732,Train,Good,5,5,5,Maybe,Relaxing holiday
+21,Male,Andhra radesh,Student,"â‚¹3,000 â€“ â‚¹7,000",kashmir,Friends trip,7,July,winter,14000,Train,Excellent,4,4,4,Yes,Luxury travel
+21,Female,andhra pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Tamilnadu ,Friends trip,3,February,rainy,5000,Bus,Average,3,4,4,Maybe,Nature & sightseeing
+19,Female,tamil nadu,Business,"â‚¹3,000 â€“ â‚¹7,000",Delhi,Family trip,3,March,rainy,3885,Train,Average,4,5,5,Yes,Relaxing holiday
+19,Male,Punjab,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali,Solo,4,November,Winter,3500,Bus,Very poor,4,5,4,Yes,Luxury travel
+24,Male,andhra pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",tirupati,Solo,1,February,Summer,3500,Bus,Good,4,5,5,Yes,Luxury travel
+32,Male,jharkhand,Student,"â‚¹1,000 â€“ â‚¹3,000","Kedarnath, badrinath ",Friends trip,8,November,summer,14093,Car,Average,3,5,4,Maybe,Nature & sightseeing
+21,Female,Karnataka,Student,"â‚¹1,000 â€“ â‚¹3,000",Himachal ,Friends trip,3,February,winter,10000,Bus,Average,2,3,3,Maybe,Food-focused trip
+25,Male,tamil nadu,Student,"Less than â‚¹1,000",kashmir,Friends trip,7,November,Winter,20000,Flight,Good,4,5,4,Yes,Budget travel
+25,Female,assam,Student,"â‚¹1,000 â€“ â‚¹3,000",tirupati,Friends trip,3,January,Rainy,3334,Flight,Good,5,5,5,Yes,Nature & sightseeing
+21,Male,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",india gate,Friends trip,1,November,summer,3200,Bike,Good,4,4,4,No,Relaxing holiday
+17,Female,Telengana ,Student,"â‚¹1,000 â€“ â‚¹3,000",dwarkadhish temple,Solo,8,October,Winter,8449,Flight,Average,5,5,5,Yes,Relaxing holiday
+27,Male,Visakhapatnam ,Student,"â‚¹1,000 â€“ â‚¹3,000",Agra,Solo,7,June,Summer,5000,Train,Good,5,4,5,Yes,Adventure trip
+19,Female,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",kashmir,Friends trip,5,November,Winter,8000,bus,Average,4,4,5,Yes,Luxury travel
+20,Female,bihar,Student,"â‚¹7,000 â€“ â‚¹15,000",Mussoorie ,Family trip,3,September,autumn,6000,Train,Good,3,5,4,Yes,Adventure trip
+20,Female,madhya pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Manali,Solo,3,July,summer,4799,Car,Good,5,5,4,Maybe,Nature & sightseeing
+19,Female,Maharashtra ,Student,"Less than â‚¹1,000",Chennai,Family trip,7,January,winter,9000,Car,Good,4,4,4,Yes,Nature & sightseeing
+27,Male,Andhra Pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",Tirupati ,Family trip,7,October,Autumn,3500,Train,Good,5,5,4,Yes,Adventure trip
+22,Female,punjab,Student,"â‚¹7,000 â€“ â‚¹15,000",Bangalore ,Friends trip,4,October,winter,4914,Car,Very poor,4,5,4,No,Adventure trip
+21,Male,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Delhi,Friends trip,1,November,rainy,2000,Car,Average,1,2,2,No,Cultural exploration
+19,Male,madhya pradesh,Working Professional,"â‚¹7,000 â€“ â‚¹15,000",Tirumala,Friends trip,1,October,winter,1018,Bike,Good,2,5,5,Yes,Adventure trip
+19,Female,Andhra Pradesh,Student,"Less than â‚¹1,000",Kashmir,Friends trip,5,November,summer,2000,Car,Average,3,5,4,Yes,Adventure trip
+17,Female,uttar pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Ram mandir ,Friends trip,3,October,Spring,6000,Train,Good,4,5,4,Yes,Cultural exploration
+20,Male,Rajasthan ,Student,"â‚¹3,000 â€“ â‚¹7,000",assam,Solo,2,June,Spring,500,Bus,Excellent,3,5,5,Yes,Nature & sightseeing
+20,Male,uttar pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Bangalore ,Friends trip,1,December,rainy,1169,Flight,Good,4,4,4,Maybe,Nature & sightseeing
+21,Male,Andhra Pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Vishakapatnam,Friends trip,7,August,summer,20000,Car,Excellent,5,5,5,Maybe,Budget travel
+17,Female,Uttar Pradesh ,Student,"Less than â‚¹1,000",Amritsar ,Family trip,2,January,Winter,3357,Train,Good,4,4,4,Yes,Cultural exploration
+20,Female,Andhra Pradesh,Student,"Less than â‚¹1,000",Katra,Friends trip,4,November,Summer,4664,Bus,Good,3,5,4,Yes,Food-focused trip
+21,Male,manipur,Student,"â‚¹3,000 â€“ â‚¹7,000",Coorg,Solo,7,November,autumn,21500,Flight,Average,5,5,5,Yes,Relaxing holiday
+20,Male,telangana,Student,"â‚¹7,000 â€“ â‚¹15,000",Murdeshwar,Family trip,5,October,autumn,10000,Car,Good,5,5,5,Yes,Nature & sightseeing
+18,Female,Andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar,Friends trip,1,December,Winter,7000,Car,Average,3,4,3,Yes,Relaxing holiday
+26,Female,Karnataka,Working Professional,"â‚¹1,000 â€“ â‚¹3,000",Coorg,Friends trip,5,October,Autumn,25000,Car,Good,4,4,4,Yes,Relaxing holiday
+27,Male,kerala,Business,"â‚¹7,000 â€“ â‚¹15,000",india gate,Business trip,3,August,autumn,3500,Train,Good,4,5,5,Yes,Adventure trip
+21,Female,Rajasthan ,Student,"â‚¹7,000 â€“ â‚¹15,000",Ridhi Sidhi,Solo,6,October,Autumn,9600,Bike,Good,5,5,5,Yes,Relaxing holiday
+21,Female,assam,Student,"Less than â‚¹1,000",Dharmasthala,Friends trip,6,January,Winter,9604,Flight,Average,3,3,5,Yes,Nature & sightseeing
+20,Female,haryana,Student,"â‚¹7,000 â€“ â‚¹15,000",Jalandhar ,Friends trip,3,November,summer,3335,Car,Average,4,3,3,Yes,Luxury travel
+17,Male,Karnataka,Student,"Less than â‚¹1,000",Kashmir ,Friends trip,7,October,rainy,10902,Train,Good,4,4,4,No,Nature & sightseeing
+21,Female,Andhra Aradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",dwarkadhish temple,Business trip,1,October,summer,1583,Car,Average,5,5,4,Yes,Cultural exploration
+21,Female,andhra pradesh,Student,"Above â‚¹15,000",baga beach,Solo,4,June,summer,26790,Flight,Good,4,4,4,Yes,Adventure trip
+19,Male,jammu,Student,"Above â‚¹15,000",Jammu and Kashmir ,Family trip,2,August,winter,2913,Train,Average,5,5,5,Yes,Cultural exploration
+20,Female,New Delhi,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar,Friends trip,1,November,Autumn,780,Car,Excellent,1,5,5,No,Luxury travel
+22,Male,odisha,Student,"â‚¹3,000 â€“ â‚¹7,000",tirupati,Friends trip,2,April,Rainy,2251,Bike,Good,4,5,5,Yes,Cultural exploration
+21,Female,Kerala,Student,"â‚¹1,000 â€“ â‚¹3,000",Himachal ,Friends trip,3,October,Summer,5000,Bus,Good,3,5,5,Yes,Adventure trip
+19,Female,telangana,Student,"â‚¹1,000 â€“ â‚¹3,000",Himachal pradesh ,Friends trip,7,October,Spring,15000,Car,Excellent,5,5,5,Yes,Adventure trip
+22,Female,Maharashtra ,Student,"â‚¹7,000 â€“ â‚¹15,000",Varanasi ,Friends trip,5,November,winter,7893,Bus,Excellent,3,4,5,Maybe,Nature & sightseeing
+21,Female,uttar pradesh,Student,"Less than â‚¹1,000",Manali,Friends trip,7,August,winter,9428,Flight,Very poor,4,5,5,Yes,Relaxing holiday
+21,Female,telangana,Student,"Less than â‚¹1,000",Jammu Kashmir ,Friends trip,9,August,summer,16611,Train,Good,5,5,5,Maybe,Luxury travel
+21,Male,odisha,Student,"â‚¹3,000 â€“ â‚¹7,000",Coorg,Friends trip,4,November,autumn,6700,Bus,Good,2,1,2,No,Budget travel
+17,Female,telangana,Student,"â‚¹1,000 â€“ â‚¹3,000",Himachal ,Friends trip,1,October,rainy,1169,Bike,Average,4,4,3,No,Relaxing holiday
+22,Male,assam,Student,"â‚¹3,000 â€“ â‚¹7,000",Amritsar ,Friends trip,5,November,winter,5081,Train,Average,4,2,3,Yes,Adventure trip
+19,Female,Andhra Pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Kewadia,Friends trip,1,February,autumn,1162,Train,Average,3,5,5,No,Cultural exploration
+18,Male,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Palampur ,Friends trip,3,November,autumn,3319,Car,Good,4,4,5,Maybe,Cultural exploration
+21,Male,punjab,Student,"â‚¹3,000 â€“ â‚¹7,000",Himachal,Family trip,9,June,autumn,13230,Bus,Average,4,5,3,Yes,Budget travel
+21,Female,uttar pradesh,Working Professional,"Above â‚¹15,000",dwarkadhish temple,Solo,7,November,winter,8862,Bus,Good,2,3,3,Yes,Adventure trip
+17,Male,odisha,Student,"â‚¹3,000 â€“ â‚¹7,000",Jalandhar ,Solo,8,October,Spring,9502,Car,Excellent,4,2,5,Yes,Relaxing holiday
+20,Female,goa,Student,"â‚¹7,000 â€“ â‚¹15,000",Coorg,Solo,5,November,winter,7520,Flight,Poor,3,2,2,No,Nature & sightseeing
+20,Male,goa,Student,"â‚¹3,000 â€“ â‚¹7,000",Agra,Friends trip,3,November,summer,25000,Train,Average,4,5,5,Maybe,Adventure trip
+19,Female,vijayawada,Student,"Above â‚¹15,000",Vijayawada,Friends trip,6,November,summer,9577,Bus,Good,5,5,5,Yes,Relaxing holiday
+20,Male,west bengal,Student,"â‚¹3,000 â€“ â‚¹7,000",Dehli,Solo,1,May,autumn,1700,Flight,Excellent,1,5,5,Yes,Luxury travel
+24,Female,Rajasthan ,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali,Friends trip,4,October,rainy,7469,Bus,Excellent,4,5,5,Yes,Adventure trip
+21,Female,Amritsar ,Student,"â‚¹3,000 â€“ â‚¹7,000",Tirupati ,Friends trip,4,July,Summer,4029,Car,Average,5,5,5,Yes,Nature & sightseeing
+21,Female,chandigarh,Student,"â‚¹3,000 â€“ â‚¹7,000",Jammu and Kashmir ,Family trip,7,August,winter,10000,Car,Good,4,5,5,Yes,Cultural exploration
+17,Female,Andhra radesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Ludhiana,Friends trip,6,November,winter,6644,Car,Good,4,5,1,Maybe,Relaxing holiday
+20,Female,Hyderabad ,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali,Friends trip,6,October,Winter,2000,Car,Average,4,4,4,Yes,Nature & sightseeing
+17,Male,punjab,Student,"Less than â‚¹1,000",Spiti ,Family trip,6,May,winter,6967,Car,Good,4,5,4,Yes,Relaxing holiday
+24,Female,Himachal Pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",Kashmir ,Friends trip,2,October,summer,2086,Bus,Good,4,5,5,Yes,Budget travel
+19,Male,Tamil Nadu,Student,"Less than â‚¹1,000",Manali ,Friends trip,5,October,autumn,22600,Bus,Good,3,4,4,Yes,Nature & sightseeing
+17,Female,Andhra Pradesh ,Student,"Less than â‚¹1,000",Churu,Solo,5,May,Summer,6064,Train,Excellent,5,3,5,Yes,Cultural exploration
+20,Female,madhya pradesh,Student,"Less than â‚¹1,000",Amritsar ,Friends trip,1,November,rainy,2000,Train,Average,4,4,4,Maybe,Relaxing holiday
+26,Male,Patna,Working Professional,"â‚¹7,000 â€“ â‚¹15,000",Hyderabad ,Friends trip,7,May,Summer,18000,Flight,Excellent,4,5,4,Yes,Budget travel
+22,Male,west bengal,Student,"â‚¹3,000 â€“ â‚¹7,000",kashmir,Friends trip,5,February,Rainy,2000,Train,Good,5,5,5,Yes,Cultural exploration
+21,Female,Andhra Pradesh,Student,"Above â‚¹15,000",dwarkadhish temple,Friends trip,3,October,Spring,4000,Train,Average,5,5,5,Yes,Relaxing holiday
+20,Male,Andhra Pradesh,Student,"Less than â‚¹1,000",Haridwar ,Friends trip,3,September,rainy,5000,Bike,Good,3,5,4,Yes,Adventure trip
+21,Male,Tamil Nadu,Student,"â‚¹1,000 â€“ â‚¹3,000",taj mahal,Solo,4,November,rainy,3400,Bus,Good,5,5,5,Yes,Relaxing holiday
+18,Female,andhra pradesh,Student,"Less than â‚¹1,000",Kashmir ,Family trip,2,November,winter,3252,Train,Good,4,4,5,Yes,Nature & sightseeing
+21,Female,Bihar ,Student,"Less than â‚¹1,000",Amritsar ,Friends trip,1,September,Autumn,1300,Car,Average,1,3,5,No,Luxury travel
+24,Female,sri lanka,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Family trip,9,July,summer,22550,Car,Good,4,2,4,Yes,Relaxing holiday
+23,Male,sri lanka,Student,"Less than â‚¹1,000",Amristar ,Friends trip,11,November,rainy,28000,Bike,Excellent,4,1,5,Yes,Cultural exploration
+23,Female,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",Kashmiri ,Friends trip,5,October,Spring,7000,Train,Good,4,4,5,No,Nature & sightseeing
+29,Female,odisha,Student,"â‚¹1,000 â€“ â‚¹3,000",manali,Friends trip,1,January,winter,1048,Car,Average,3,5,5,Yes,Nature & sightseeing
+19,Female,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",Delhi,Family trip,1,March,summer,1124,Train,Good,5,5,4,Yes,Relaxing holiday
+24,Female,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar,Family trip,3,March,Spring,3386,Bus,Average,2,5,3,Yes,Adventure trip
+18,Male,nepal,Student,"â‚¹1,000 â€“ â‚¹3,000",taj mahal,Friends trip,9,May,autumn,23700,Bus,Average,3,5,2,Yes,Adventure trip
+21,Male,goa,Student,"â‚¹1,000 â€“ â‚¹3,000",Bangalore ,Friends trip,4,February,rainy,10000,Car,Average,3,4,4,Yes,Relaxing holiday
+18,Female,Bihar ,Student,"â‚¹3,000 â€“ â‚¹7,000",Panipat,Friends trip,3,July,Spring,3469,Bus,Excellent,4,4,3,Maybe,Nature & sightseeing
+17,Female,Andhra Pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Dehradun ,Family trip,2,October,Summer,3240,Train,Average,3,4,4,Yes,Adventure trip
+33,Male,Karnataka,Working Professional,"Less than â‚¹1,000",Indian subcontinent ,Family trip,5,April,rainy,19900,Car,Good,5,5,4,Yes,Adventure trip
+22,Female,uttar pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",punjab,Family trip,2,October,Summer,3371,Car,Good,5,5,5,No,Relaxing holiday
+25,Female,andhra pradesh,Homemaker,"Less than â‚¹1,000",Hyderabad ,Family trip,3,October,winter,3000,Bus,Average,2,5,2,Maybe,Relaxing holiday
+23,Male,Karnataka,Student,"Less than â‚¹1,000",Mussoorie ,Solo,2,June,autumn,2027,Bus,Average,1,5,5,Maybe,Nature & sightseeing
+20,Male,Rajasthan ,Student,"Less than â‚¹1,000",Spiti ,Friends trip,4,November,winter,10000,Bike,Good,1,5,5,Yes,Adventure trip
+20,Female,Karnataka,Student,"â‚¹7,000 â€“ â‚¹15,000",Agra,Friends trip,1,June,Spring,1609,Bus,Average,4,3,4,Yes,Adventure trip
+20,Male,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Jalandhar,Friends trip,3,September,autumn,4000,Train,Good,1,3,3,Yes,Relaxing holiday
+20,Female,Telengana ,Student,"Less than â‚¹1,000",Goa,Solo,5,October,Winter,2000,Flight,Excellent,5,5,5,Yes,Adventure trip
+21,Female,meghalaya,Student,"â‚¹3,000 â€“ â‚¹7,000",Jhalandar ,Friends trip,4,December,autumn,6600,Bus,Average,1,2,4,Yes,Adventure trip
+17,Female,andhra Pradesh,Business,"Less than â‚¹1,000",Loktak Lake,Solo,9,October,Rainy,16450,Bike,Poor,5,4,5,Yes,Relaxing holiday
+20,Female,andhra pradesh,Student,"Less than â‚¹1,000",Delhi,Family trip,5,September,Spring,5000,Train,Good,3,4,4,Yes,Cultural exploration
+19,Male,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",ooty,Friends trip,5,February,winter,20000,Car,Good,3,5,5,Maybe,Adventure trip
+20,Female,haryana,Student,"â‚¹3,000 â€“ â‚¹7,000",Amritsar,Friends trip,1,November,autumn,1500,Bike,Excellent,2,2,1,Yes,Nature & sightseeing
+19,Female,jammu,Student,"â‚¹3,000 â€“ â‚¹7,000",Khatu Ringus ,Friends trip,1,November,rainy,2700,Bike,Good,4,5,4,Yes,Nature & sightseeing
+17,Male,assam,Student,"Less than â‚¹1,000",Amritsar ,Friends trip,2,November,winter,10000,Train,Average,5,2,3,No,Adventure trip
+18,Female,uttar pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Kedarnath ,Friends trip,5,October,Spring,8000,Car,Average,4,5,5,Yes,Budget travel
+18,Female,Chennai,Student,"Less than â‚¹1,000",Delhi ,Solo,5,October,summer,5376,Car,Average,2,5,3,No,Cultural exploration
+22,Female,nepal,Student,"Above â‚¹15,000",Jammu,Business trip,6,August,winter,8896,Flight,Good,3,5,4,Yes,Nature & sightseeing
+21,Female,Kerala,Student,"Less than â‚¹1,000",Triund ,Friends trip,3,October,Summer,5000,Bus,Good,5,5,5,Yes,Nature & sightseeing
+17,Prefer not to say,punjab,Business,"Less than â‚¹1,000",lotus temple,Business trip,3,November,autumn,6000,Train,Excellent,1,5,5,Yes,Adventure trip
+19,Female,Maharashtra ,Student,"â‚¹1,000 â€“ â‚¹3,000",Jalandhar ,Friends trip,1,November,rainy,7000,Bus,Average,2,3,3,Maybe,Relaxing holiday
+17,Female,Jammu,Student,"â‚¹7,000 â€“ â‚¹15,000",kashmir,Family trip,2,October,Autumn,2000,Bus,Excellent,4,3,4,No,Relaxing holiday
+20,Male,punjab,Student,"Less than â‚¹1,000",Manali,Friends trip,4,October,summer,5733,Car,Average,2,5,5,Maybe,Nature & sightseeing
+29,Female,kerela,Student,"Less than â‚¹1,000",Punjab,Friends trip,1,October,Spring,1767,Bus,Good,4,5,5,Yes,Luxury travel
+17,Female,Hyderabad ,Student,"Less than â‚¹1,000",Vrindavan ,Friends trip,1,December,autumn,1585,Train,Good,4,5,5,Yes,Adventure trip
+19,Male,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Jalandhar ,Friends trip,1,November,Spring,6000,Bike,Average,2,1,2,Yes,Budget travel
+20,Male,odisha,Student,"Less than â‚¹1,000",Manali ,Friends trip,3,October,rainy,10000,Car,Excellent,4,5,5,No,Adventure trip
+17,Male,uttar pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Delhi,Family trip,1,December,rainy,1105,Train,Good,5,5,4,Maybe,Cultural exploration
+22,Female,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Vrindhavan,Business trip,4,October,winter,7148,Bus,Good,4,5,5,Yes,Luxury travel
+20,Female,Chennai,Student,"Less than â‚¹1,000",Kanyakumari,Business trip,5,September,Autumn,36500,Flight,Good,5,5,5,Yes,Adventure trip
+24,Male,chittoor,Homemaker,"â‚¹1,000 â€“ â‚¹3,000",assam,Friends trip,9,may,Autumn,18540,Train,Good,4,3,4,Yes,Budget travel
+20,Female,punjab,Student,"Less than â‚¹1,000",Amritsar,Friends trip,3,October,autumn,2788,Train,Average,4,3,3,Yes,Luxury travel
+21,Male,Nagpur ,Student,"Above â‚¹15,000",Baijnath ,Friends trip,3,November,Winter,5000,Bus,Good,3,5,5,Maybe,Nature & sightseeing
+24,Female,jammu,Student,"â‚¹3,000 â€“ â‚¹7,000",Jammu,Friends trip,8,November,Rainy,11996,Train,Average,3,4,4,Yes,Adventure trip
+19,Female,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Agra,Friends trip,3,May,autumn,5000,Train,Average,4,4,5,Maybe,Relaxing holiday
+27,Male,andhra Pradesh,Student,"Less than â‚¹1,000",Vijayawada,Solo,6,April,Rainy,2000,Bus,Poor,5,4,5,Yes,Luxury travel
+23,Female,punjab,Student,"Less than â‚¹1,000",Katra,Friends trip,1,October,rainy,1688,Car,Good,3,5,5,Yes,Relaxing holiday
+19,Female,nepal,Student,"Less than â‚¹1,000",double decker living root bridge,Family trip,7,July,summer,8000,Car,Average,5,4,5,Yes,Cultural exploration
+20,Female,Delhi,Student,"Less than â‚¹1,000",tirupati,Solo,4,June,Winter,3400,Flight,Excellent,4,4,4,No,Relaxing holiday
+21,Female,uttar pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Ram mandir ,Friends trip,8,October,Spring,10356,Bus,Average,4,5,5,No,Cultural exploration
+21,Female,Kerala,Student,"â‚¹1,000 â€“ â‚¹3,000",Triund ,Friends trip,3,October,Autumn,7000,Bus,Good,3,5,5,Yes,Cultural exploration
+22,Female,haryana,Student,"â‚¹1,000 â€“ â‚¹3,000",Katra,Solo,1,August,autumn,1226,Bike,Good,3,5,3,Yes,Relaxing holiday
+18,Female,kerala,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar ,Family trip,2,August,summer,9000,Train,Good,3,5,5,Maybe,Nature & sightseeing
+18,Male,Himachal Pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",Baijnath ,Solo,2,October,summer,20000,Car,Excellent,5,5,5,Yes,Relaxing holiday
+18,Male,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",aruku valley,Solo,5,November,Spring,9900,Train,Good,5,5,5,Yes,Relaxing holiday
+20,Female,Khammam,Student,"â‚¹3,000 â€“ â‚¹7,000",Dharmashala,Friends trip,4,October,Winter,5480,Train,Good,4,4,3,Yes,Relaxing holiday
+19,Female,telangana,Student,"Less than â‚¹1,000",Jaipur,Friends trip,3,September,winter,1200,Flight,Excellent,3,5,4,Maybe,Nature & sightseeing
+22,Male,sikkim,Student,"â‚¹7,000 â€“ â‚¹15,000",aruku valley,Friends trip,2,October,rainy,3000,Car,Average,3,3,4,Yes,Adventure trip
+19,Female,uttarakhand,Student,"Less than â‚¹1,000",Punjab,Friends trip,2,March,rainy,2000,Bus,Good,3,3,3,Yes,Cultural exploration
+25,Male,andhra pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",manali,Solo,9,November,Winter,30000,Train,Good,4,5,4,Yes,Budget travel
+21,Female,telangana,Student,"â‚¹1,000 â€“ â‚¹3,000",Jammu Kashmir ,Friends trip,5,October,autumn,4751,Flight,Good,5,5,3,Yes,Adventure trip
+20,Male,Hyderabad ,Working Professional,"â‚¹1,000 â€“ â‚¹3,000",Kashmir ,Solo,5,May,Summer,19000,Flight,Excellent,5,4,4,Yes,Luxury travel
+25,Female,madhya pradesh,Student,"Less than â‚¹1,000",hyderabad,Friends trip,3,October,summer,4120,Train,Excellent,3,5,4,Yes,Relaxing holiday
+21,Male,Rajasthan ,Student,"â‚¹3,000 â€“ â‚¹7,000",Kashmir ,Friends trip,5,October,rainy,8900,Car,Average,3,5,4,Yes,Nature & sightseeing
+21,Female,madhya pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Bali,Friends trip,5,December,rainy,9050,Bus,Good,5,4,5,Yes,Adventure trip
+19,Female,Hyderabad,Student,"â‚¹7,000 â€“ â‚¹15,000",mini switzerland,Friends trip,4,November,Winter,4000,Car,Good,5,5,5,No,Relaxing holiday
+21,Male,jammu,Student,"â‚¹3,000 â€“ â‚¹7,000",mini switzerland,Family trip,7,February,Spring,6000,Train,Excellent,5,5,5,Yes,Budget travel
+19,Female,Maharashtra ,Student,"â‚¹1,000 â€“ â‚¹3,000",Triund,Family trip,5,May,Spring,8243,Flight,Average,2,5,4,Yes,Nature & sightseeing
+17,Male,goa,Student,"Above â‚¹15,000",sun temple,Friends trip,1,November,summer,1087,Flight,Excellent,3,3,4,Yes,Relaxing holiday
+20,Male,andhra pradesh,Student,"Less than â‚¹1,000",Varansi,Friends trip,3,September,rainy,1000,Train,Good,4,5,5,Yes,Cultural exploration
+17,Male,Tamil Nadu,Student,"â‚¹1,000 â€“ â‚¹3,000",Jaipur ,Solo,4,May,winter,4772,Bus,Excellent,5,5,4,Maybe,Budget travel
+20,Male,Punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",manali,Friends trip,7,September,autumn,9108,Train,Good,5,5,4,Yes,Relaxing holiday
+19,Female,punjab,Student,"â‚¹7,000 â€“ â‚¹15,000",Amritsar ,Friends trip,1,October,autumn,900,Bus,Good,4,5,5,Yes,Relaxing holiday
+22,Female,andhra pradesh,Working Professional,"â‚¹1,000 â€“ â‚¹3,000",punjab ,Solo,8,July,winter,28000,Flight,Good,3,4,4,Maybe,Cultural exploration
+19,Female,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Ayodhya ,Friends trip,3,October,summer,10000,Train,Average,3,4,3,No,Cultural exploration
+18,Female,haryana,Student,"â‚¹7,000 â€“ â‚¹15,000",Bengaluru ,Family trip,7,July,autumn,30000,Flight,Excellent,4,5,5,Yes,Nature & sightseeing
+21,Female,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Tirupati ,Solo,1,October,Summer,1698,Train,Average,4,4,5,Yes,Adventure trip
+19,Male,delhi,Student,"â‚¹1,000 â€“ â‚¹3,000",mini switzerland,Solo,3,October,summer,5000,Train,Average,3,2,3,No,Cultural exploration
+24,Male,odisha,Farmer ,"Less than â‚¹1,000",double decker living root bridge,Friends trip,5,October,autumn,7680,Train,Excellent,4,4,5,Yes,Cultural exploration
+19,Male,haryana,Student,"Less than â‚¹1,000",manali,Family trip,6,August,summer,10616,Bike,Good,3,5,4,Yes,Nature & sightseeing
+20,Female,haryana,Student,"â‚¹3,000 â€“ â‚¹7,000",Amritsar,Solo,2,June,rainy,3000,Train,Average,3,5,5,Maybe,Relaxing holiday
+23,Female,Khammam,Student,"â‚¹1,000 â€“ â‚¹3,000",sri Jagannath Puri Temple,Solo,4,July,Autumn,4250,Train,Excellent,4,4,4,No,Cultural exploration
+19,Female,Telengana ,Student,"Less than â‚¹1,000",Pushkar,Family trip,2,November,winter,1000,Car,Good,1,1,1,Maybe,Cultural exploration
+22,Male,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Golden temple ,Friends trip,3,August,Spring,10000,Train,Average,3,3,4,Yes,Cultural exploration
+20,Male,delhi,Student,"â‚¹3,000 â€“ â‚¹7,000",Red fort ,Friends trip,3,July,summer,5000,Bike,Excellent,5,5,5,Yes,Relaxing holiday
+19,Female,telangana,Student,"â‚¹3,000 â€“ â‚¹7,000",Tirupati,Family trip,7,June,Spring,11956,Train,Average,5,5,2,Maybe,Cultural exploration
+19,Female,uttar pradesh,Student,"Above â‚¹15,000",Bangalore ,Family trip,2,November,rainy,3008,Train,Good,4,1,4,Yes,Adventure trip
+20,Male,Andhra Pradesh,Student,"Less than â‚¹1,000",Punjab,Friends trip,4,August,winter,6867,Train,Average,3,3,4,Yes,Adventure trip
+18,Female,Punjab,Student,"Less than â‚¹1,000",Shimal ,Friends trip,6,June,Spring,1000,Flight,Good,3,3,4,Maybe,Nature & sightseeing
+23,Female,Jharkhand,Student,"â‚¹1,000 â€“ â‚¹3,000",Uttarakhand,Family trip,7,October,Summer,11280,Bus,Good,5,5,5,Yes,Adventure trip
+24,Male,Andhra Pradesh ,Student,"Less than â‚¹1,000",Manali,Family trip,7,November,Rainy,25000,Train,Average,4,5,5,Yes,Food-focused trip
+22,Female,gujarat,Student,"â‚¹3,000 â€“ â‚¹7,000",Jalandhar ,Family trip,3,November,rainy,2691,Bus,Average,3,3,3,No,Cultural exploration
+22,Male,Haryana ,Student,"Less than â‚¹1,000",Amirtsar,Family trip,5,June,Summer,8537,Car,Average,5,5,5,Yes,Cultural exploration
+21,Male,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Kedarnath ,Family trip,1,November,Autumn,1078,Bus,Good,1,5,4,Yes,Adventure trip
+18,Female,Andhra pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali ,Friends trip,4,October,Winter,5000,Bus,Excellent,4,5,5,Yes,Adventure trip
+19,Female,Maharashtra ,Student,"â‚¹3,000 â€“ â‚¹7,000",Triund,Family trip,3,October,Winter,3500,Bus,Average,2,4,5,Maybe,Nature & sightseeing
+19,Female,Haryana ,Student,"â‚¹3,000 â€“ â‚¹7,000",Amritsar ,Friends trip,3,November,Winter,4000,Bus,Average,3,5,5,Yes,Adventure trip
+19,Male,kerala,Student,"â‚¹7,000 â€“ â‚¹15,000",dwarkadhish temple,Solo,5,November,winter,5212,Train,Good,3,4,4,Maybe,Adventure trip
+18,Female,Hyderabad ,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar,Family trip,5,November,Winter,7555,Bus,Good,3,4,4,Maybe,Relaxing holiday
+24,Male,Gujarat,Student,"Above â‚¹15,000",manali,Friends trip,5,May,Summer,2000,Car,Average,4,5,4,Yes,Food-focused trip
+17,Male,Visakhapatnam ,Homemaker,"Less than â‚¹1,000",Hyderabad ,Family trip,6,April,Spring,9451,Bus,Good,5,5,5,Yes,Luxury travel
+20,Male,madhya pradesh,Student,"Above â‚¹15,000",Manali,Friends trip,7,November,rainy,11614,Bike,Good,4,4,4,Yes,Adventure trip
+21,Female,Andhra pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali ,Friends trip,4,October,Winter,6686,Bus,Excellent,5,5,5,Yes,Adventure trip
+18,Male,Maharashtra ,Student,"â‚¹1,000 â€“ â‚¹3,000",Tirupati ,Friends trip,6,May,summer,6470,Train,Average,3,5,5,Yes,Luxury travel
+20,Male,Kanpur,Student,"Above â‚¹15,000",Manali,Friends trip,3,November,Winter,5000,Bus,Good,3,5,5,Maybe,Nature & sightseeing
+18,Female,madhya pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Jhalandar ,Friends trip,3,October,winter,3645,Bike,Good,4,4,5,Yes,Cultural exploration
+27,Male,Bangalore ,Working Professional,"â‚¹7,000 â€“ â‚¹15,000",Kerala ,Friends trip,10,October,Winter,10000,Train,Good,4,5,5,Maybe,Relaxing holiday
+21,Male,kerala,Student,"â‚¹3,000 â€“ â‚¹7,000",Kashmir ,Friends trip,5,August,winter,18800,Car,Average,4,4,3,Yes,Relaxing holiday
+23,Female,madhya pradesh,Student,"Less than â‚¹1,000",Himachal ,Friends trip,3,December,rainy,5000,Bus,Good,4,5,5,Yes,Adventure trip
+19,Female,Andhra Pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",Dharmashala ,Business trip,5,October,Winter,17000,Train,Good,4,4,4,Yes,Nature & sightseeing
+22,Male,Uttar pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Kashmir,Friends trip,3,October,rainy,2836,Flight,Good,3,5,5,Yes,Cultural exploration
+20,Male,Andhra Pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Vijayawada,Friends trip,5,July,autumn,3000,Train,Excellent,4,4,4,Yes,Cultural exploration
+18,Male,andhra pradesh,Student,"Less than â‚¹1,000",manali,Solo,1,November,summer,1565,Train,Good,5,5,3,Yes,Nature & sightseeing
+22,Male,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",manali,Business trip,4,July,Rainy,2000,Car,Average,4,5,4,Yes,Luxury travel
+20,Female,telangana,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar,Family trip,3,August,winter,15540,Train,Average,2,3,3,Maybe,Adventure trip
+19,Male,telangana,Student,"Less than â‚¹1,000",Jaipur ,Solo,5,May,winter,25000,Flight,Excellent,5,5,5,Maybe,Relaxing holiday
+18,Male,Uttar Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",manali,Friends trip,1,July,winter,6900,Car,Excellent,3,5,5,Yes,Luxury travel
+21,Male,Karnataka,Student,"Less than â‚¹1,000",Tirupati ,Family trip,4,May,summer,2000,Train,Good,5,5,5,Yes,Food-focused trip
+18,Male,delhi,Student,"â‚¹1,000 â€“ â‚¹3,000",Bali,Friends trip,4,April,summer,6914,Car,Excellent,4,4,5,Yes,Adventure trip
+31,Female,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Ujjain ,Friends trip,5,January,Winter,7751,Car,Excellent,4,4,4,Yes,Adventure trip
+20,Male,Karnataka,Student,"â‚¹1,000 â€“ â‚¹3,000",Hyderabad ,Friends trip,2,November,winter,3000,Flight,Average,4,5,4,Yes,Food-focused trip
+23,Female,Andhra Aradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",kashmir ,Friends trip,1,August,Spring,1524,Car,Average,3,5,5,Yes,Adventure trip
+20,Female,telangana,Student,"Above â‚¹15,000",Dalhousie ,Friends trip,3,October,winter,15000,Bus,Average,1,5,5,Yes,Nature & sightseeing
+22,Female,Chennai,Student,"â‚¹1,000 â€“ â‚¹3,000",aruku valley,Solo,4,August,Summer,8680,Flight,Average,2,2,3,No,Cultural exploration
+21,Male,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",Haridwar,Friends trip,3,October,autumn,2500,Train,Good,5,5,5,Maybe,Adventure trip
+27,Female,Jharkhand,Student,"â‚¹3,000 â€“ â‚¹7,000",Hyderabad ,Family trip,4,May,summer,8800,Bus,Excellent,5,3,5,Yes,Nature & sightseeing
+19,Female,bihar,Student,"â‚¹1,000 â€“ â‚¹3,000",manali,Friends trip,5,October,Winter,7500,Bus,Good,4,5,5,Yes,Budget travel
+26,Male,Uttar Pradesh,Business,"Above â‚¹15,000",kashmir,Solo,5,May,Autumn,8450,Bike,Average,4,5,4,Yes,Budget travel
+20,Male,telangana,Student,"â‚¹1,000 â€“ â‚¹3,000",Tirupati ,Family trip,9,July,Summer,14041,Train,Good,5,5,5,Yes,Cultural exploration
+21,Female,Visakhapatnam ,Student,"â‚¹3,000 â€“ â‚¹7,000",Shirdi,Business trip,1,March,Summer,1812,Train,Average,5,5,4,Yes,Food-focused trip
+17,Male,Telengana ,Student,"â‚¹3,000 â€“ â‚¹7,000",Bali,Friends trip,6,August,summer,5682,Train,Excellent,5,3,5,Yes,Relaxing holiday
+20,Female,odisha,Student,"â‚¹3,000 â€“ â‚¹7,000",Delhi,Family trip,5,October,rainy,6000,Train,Excellent,2,2,2,Yes,Relaxing holiday
+17,Male,Andhra pradesh,Student,"Less than â‚¹1,000",badrinath temple,Friends trip,4,November,rainy,6953,Bus,Excellent,2,3,3,Yes,Adventure trip
+20,Male,chandigarh,Student,"Less than â‚¹1,000",Yadadri,Friends trip,8,August,summer,8414,Bus,Average,4,5,4,Yes,Cultural exploration
+22,Female,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",Katra,Friends trip,3,September,summer,5000,Train,Good,4,5,5,Yes,Cultural exploration
+17,Female,gujarat,Student,"Less than â‚¹1,000",manali,Friends trip,5,September,winter,6765,Car,Good,5,5,5,Yes,Adventure trip
+23,Male,odisha,Student,"â‚¹3,000 â€“ â‚¹7,000",tirupati,Solo,7,April,Rainy,9000,Train,Good,4,5,5,Yes,Nature & sightseeing
+17,Male,Rajasthan ,Student,"Less than â‚¹1,000",Ridhi Sidhi,Friends trip,1,October,Autumn,650,Bike,Good,5,5,5,Yes,Food-focused trip
+18,Female,Karnataka,Student,"â‚¹3,000 â€“ â‚¹7,000",Churu,Friends trip,4,August,Spring,1950,Car,Average,3,5,5,Yes,Cultural exploration
+20,Female,bihar,Student,"Above â‚¹15,000",Shimla,Friends trip,1,December,summer,1698,Train,Good,4,4,3,No,Budget travel
+21,Male,telangana,Student,"Above â‚¹15,000",Mussoorie ,Friends trip,5,November,autumn,10000,Train,Good,5,5,5,Maybe,Adventure trip
+23,Male,assam,Student,"â‚¹7,000 â€“ â‚¹15,000",Amritsar ,Friends trip,7,November,Summer,6456,Train,Average,5,2,3,Maybe,Adventure trip
+20,Female,Uttar Pradesh ,Student,"Above â‚¹15,000",Dehradun ,Family trip,3,April,Summer,5000,Train,Average,3,5,4,Yes,Adventure trip
+20,Female,odisha,Student,"Above â‚¹15,000",Tirupati,Friends trip,5,June,autumn,11000,Bus,Good,3,3,3,Yes,Relaxing holiday
+17,Male,Karnataka,Student,"Above â‚¹15,000",Triund,Family trip,7,May,Summer,6302,Train,Good,5,5,2,Yes,Budget travel
+19,Female,odisha,Student,"Above â‚¹15,000",Visakhapatnam,Friends trip,5,December,autumn,5579,Bus,Average,1,2,5,Yes,Adventure trip
+20,Male,madhya pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Friends trip,4,October,winter,10000,Bike,Good,4,5,5,Yes,Adventure trip
+21,Female,meghalaya,Student,"â‚¹1,000 â€“ â‚¹3,000",Haridwar ,Family trip,4,January,summer,7291,Bike,Average,4,1,2,Yes,Relaxing holiday
+17,Female,west bengal,Student,"Less than â‚¹1,000",Bangalore ,Friends trip,9,April,summer,14602,Train,Average,1,4,5,Yes,Nature & sightseeing
+25,Female,tamil nadu,Student,"Above â‚¹15,000",Varanasi ,Friends trip,4,November,Autumn,4555,Car,Average,5,4,3,Yes,Luxury travel
+21,Male,chandigarh,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Family trip,4,August,winter,4101,Flight,Good,5,5,5,Maybe,Nature & sightseeing
+20,Female,Bihar ,Student,"â‚¹1,000 â€“ â‚¹3,000",Vaishno Devi,Friends trip,2,November,Winter,3200,Train,Good,3,5,4,Yes,Nature & sightseeing
+20,Male,haryana,Student,"Less than â‚¹1,000",Katra,Friends trip,3,October,Spring,8000,Bike,Good,3,5,4,Yes,Nature & sightseeing
+19,Male,Karnataka,Student,"â‚¹1,000 â€“ â‚¹3,000",Jammu Kashmir ,Friends trip,5,October,Spring,5998,Bus,Good,5,5,5,Yes,Cultural exploration
+30,Male,tamil nadu,Working Professional,"â‚¹3,000 â€“ â‚¹7,000",Coorg,Family trip,5,December,autumn,21000,Flight,Average,3,3,3,Maybe,Relaxing holiday
+22,Female,punjab,Business,"â‚¹1,000 â€“ â‚¹3,000",kashmir ,Friends trip,6,April,summer,5309,Train,Excellent,4,4,4,Yes,Adventure trip
+19,Male,west bengal,Student,"â‚¹3,000 â€“ â‚¹7,000",Dehli,Solo,5,September,autumn,10000,Flight,Excellent,5,5,5,Maybe,Luxury travel
+22,Female,telangana,Student,"Less than â‚¹1,000",Jaipur,Friends trip,2,November,autumn,3542,Bus,Excellent,3,5,4,Yes,Nature & sightseeing
+21,male,india,Business,"â‚¹3,000 â€“ â‚¹7,000",shillong,Business trip,18,January,summer,6900,Bike,Very poor,2,1,2,No,Cultural exploration
+23,Female,telangana,Student,"Less than â‚¹1,000",Punjab,Friends trip,4,December,Winter,4468,Train,Average,4,3,5,Maybe,Nature & sightseeing
+19,Female,Kerala,Student,"Less than â‚¹1,000",Triund ,Friends trip,8,October,Autumn,10311,Bus,Good,3,5,4,Yes,Relaxing holiday
+19,Male,arunachal pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Punjab ,Business trip,9,October,autumn,11000,Train,Average,3,3,3,Yes,Relaxing holiday
+21,Male,Karnataka,Working Professional,"â‚¹7,000 â€“ â‚¹15,000",Manali,Friends trip,5,November,winter,7002,Bus,Excellent,4,5,4,No,Budget travel
+25,Male,madhya pradesh,Student,"Less than â‚¹1,000",Amritsar,Solo,3,August,winter,5500,Train,Good,5,5,5,Yes,Relaxing holiday
+19,Male,Karnataka,Student,"â‚¹3,000 â€“ â‚¹7,000",Shiridi ,Family trip,5,June,summer,15000,Train,Excellent,3,5,5,Yes,Food-focused trip
+21,Female,madhya pradesh,Student,"Less than â‚¹1,000",shillong,Friends trip,2,October,Winter,3133,Bike,Good,5,5,5,Yes,Food-focused trip
+19,Female,gujarat,Student,"Less than â‚¹1,000",Kewadia,Family trip,5,November,winter,6000,Train,Good,5,5,5,Yes,Adventure trip
+19,Male,manipur,Student,"Less than â‚¹1,000",Manali,Solo,6,April,Winter,9872,Bus,Excellent,4,5,2,Maybe,Nature & sightseeing
+19,Female,Hyderabad ,Student,"â‚¹7,000 â€“ â‚¹15,000",Tirupati,Family trip,3,June,Spring,10000,Train,Good,5,5,5,Yes,Cultural exploration
+27,Male,kerala,Business,"Less than â‚¹1,000",manali,Solo,6,May,Summer,2000,Bus,Good,4,5,5,Yes,Adventure trip
+19,Female,chandigarh,Student,"Above â‚¹15,000",Jalandhar1,Friends trip,1,July,Spring,2000,Bus,Good,3,4,3,Maybe,Cultural exploration
+20,Male,Jharkhand,Student,"â‚¹1,000 â€“ â‚¹3,000",kashmir,Family trip,6,April,Summer,8406,Train,Good,5,4,4,Yes,Nature & sightseeing
+20,Male,Andhra Pradesh ,Student,"Less than â‚¹1,000",Punjab ,Business trip,3,October,autumn,4776,Bike,Average,3,5,3,Yes,Relaxing holiday
+21,Male,Karnataka,Student,"Above â‚¹15,000",Kedarnath ,Friends trip,5,October,winter,17900,Car,Excellent,4,4,4,Maybe,Food-focused trip
+20,Male,Himachal Pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",Triund,Solo,3,January,Summer,500,Bike,Average,3,5,4,Yes,Luxury travel
+19,Female,meghalaya,Student,"â‚¹3,000 â€“ â‚¹7,000",tirupati,Family trip,6,January,summer,28600,Train,Average,4,1,2,Yes,Relaxing holiday
+18,Female,nepal,Business,"â‚¹1,000 â€“ â‚¹3,000",kedarnath,Family trip,3,November,summer,5580,Flight,Good,4,5,5,Yes,Budget travel
+21,Female,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Kurukshetra,Friends trip,2,February,winter,2694,Bike,Average,5,5,4,Maybe,Adventure trip
+18,Female,uttar pradesh,Student,"Above â‚¹15,000",Dharmashala ,Friends trip,2,January,Spring,3186,Car,Average,4,5,5,Yes,Adventure trip
+29,Female,Andhra Pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Dehli,Solo,7,September,autumn,10275,Flight,Excellent,4,5,5,Maybe,Luxury travel
+22,Male,gujarat,Student,"â‚¹3,000 â€“ â‚¹7,000",Delhi,Friends trip,7,January,winter,11220,Flight,Poor,3,5,2,No,Nature & sightseeing
+28,Male,chandigarh,Working Professional,"â‚¹1,000 â€“ â‚¹3,000",manali,Friends trip,4,November,summer,8000,Car,Good,5,4,3,Yes,Adventure trip
+20,Female,uttar pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Family trip,6,August,winter,15000,Car,Very poor,5,5,5,Yes,Relaxing holiday
+21,Female,delhi,Student,"â‚¹1,000 â€“ â‚¹3,000",Agra,Friends trip,4,August,rainy,4751,Train,Good,4,5,5,Maybe,Cultural exploration
+20,Male,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000","Kedarnath, badrinath ",Solo,7,November,summer,5000,Bike,Average,3,5,4,Yes,Budget travel
+20,Male,madhya pradesh,Student,"Less than â‚¹1,000",manali,Family trip,7,September,winter,9000,Train,Good,4,5,5,Yes,Relaxing holiday
+21,Female,Karnataka,Student,"â‚¹1,000 â€“ â‚¹3,000",Shimla,Friends trip,7,September,Winter,12593,Train,Good,3,3,4,Maybe,Adventure trip
+21,Female,Kerala ,Student,"â‚¹7,000 â€“ â‚¹15,000",Triund,Friends trip,3,October,Autumn,6000,Car,Good,3,5,5,Yes,Cultural exploration
+24,Female,Jharkhand ,Working Professional,"â‚¹3,000 â€“ â‚¹7,000",Amritsar,Family trip,5,January,Winter,7791,Car,Good,3,5,4,Yes,Relaxing holiday
+22,Female,agra,Student,"â‚¹3,000 â€“ â‚¹7,000",Delhi ,Friends trip,2,November,summer,3000,Car,Good,2,3,4,No,Nature & sightseeing
+21,Female,delhi,Business,"â‚¹3,000 â€“ â‚¹7,000",Kashmir,Business trip,5,January,winter,10000,Flight,Excellent,3,5,4,Yes,Relaxing holiday
+20,Female,Andhra pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",tirupati,Friends trip,2,September,rainy,3000,Bus,Good,3,4,4,Yes,Relaxing holiday
+22,Female,kerala,Student,"â‚¹7,000 â€“ â‚¹15,000",Lucknow,Family trip,5,August,winter,48500,Train,Good,3,4,4,Yes,Cultural exploration
+18,Female,Andhra Pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Friends trip,5,November,Winter,7000,Car,Good,4,5,4,Yes,Adventure trip
+21,Male,Andhra Pradesh,Student,"Less than â‚¹1,000",kedarnath ,Friends trip,5,October,autumn,6295,Bus,Excellent,3,5,2,Maybe,Adventure trip
+21,Female,andhra pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Puri,Family trip,5,July,autumn,25000,Train,Excellent,5,5,5,Yes,Relaxing holiday
+20,Female,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Kashmir ,Friends trip,5,November,winter,8000,Bus,Good,5,5,5,Yes,Budget travel
+21,Male,uttar pradesh ,Student,"Less than â‚¹1,000",Tirupati ,Family trip,4,May,rainy,2000,Train,Good,5,5,5,Yes,Food-focused trip
+20,Male,Andhra Pradesh,Student,"Less than â‚¹1,000",Amritsar ,Solo,1,November,summer,1000,Train,Average,4,4,4,Yes,Cultural exploration
+19,Male,haryana,Student,"â‚¹1,000 â€“ â‚¹3,000",Golden temple ,Friends trip,2,October,summer,2000,Car,Good,2,2,3,Yes,Budget travel
+19,Female,tamil nadu,Student,"â‚¹1,000 â€“ â‚¹3,000",Agra,Friends trip,3,May,winter,5000,Train,Average,4,4,5,Maybe,Relaxing holiday
+19,Female,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",Malakonda,Family trip,2,November,rainy,5000,Bus,Good,4,4,5,Yes,Nature & sightseeing
+19,Female,Haryana ,Student,"â‚¹3,000 â€“ â‚¹7,000",Naina Devi temple ,Friends trip,1,October,Autumn,4000,Bus,Good,3,3,5,No,Nature & sightseeing
+19,Female,andhra pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Amritsar,Friends trip,1,October,rainy,1000,Train,Good,1,1,1,Yes,Cultural exploration
+19,Male,Telengana ,Student,"â‚¹1,000 â€“ â‚¹3,000",Kurukshetra,Solo,3,October,winter,5000,Train,Average,3,3,3,No,Cultural exploration
+20,Female,Punjab,Student,"â‚¹3,000 â€“ â‚¹7,000",punjab,Friends trip,1,November,Spring,2000,Bike,Good,3,3,3,No,Food-focused trip
+21,Male,odisha,Student,"â‚¹7,000 â€“ â‚¹15,000",Manali,Friends trip,7,September,winter,10k ,Car,Excellent,5,5,5,Yes,Adventure trip
+20,Male,Andhra Pradesh,Student,"Less than â‚¹1,000",Manali,Friends trip,5,November,Autumn,5k,Car,Average,5,5,5,No,Relaxing holiday
+19,Male,goa,Student,"â‚¹3,000 â€“ â‚¹7,000",Himachal,Friends trip,1,February,summer,12000,Car,Good,3,3,5,Maybe,Adventure trip
+18,Female,uttar pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Churu,Friends trip,2,August,rainy,3500,Car,Average,3,3,5,Yes,Cultural exploration
+19,Female,punjab,Student,"Less than â‚¹1,000",Pushkar,Family trip,5,November,summer,"10,000",Car,Good,1,1,1,Maybe,Cultural exploration
+20,Female,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Vijayawada,Solo,1,July,autumn,3000,Train,Good,5,5,5,Yes,Nature & sightseeing
+20,Female,uttar pradesh,Student,"Less than â‚¹1,000",Jalandhar ,Friends trip,4,November,rainy,1000,Bus,Average,3,3,3,Yes,Nature & sightseeing
+19,Female,telangana,Student,"Less than â‚¹1,000",Jyothi chowka,Friends trip,7,November,rainy,3000,Bus,Average,3,3,3,No,Cultural exploration
+20,Male,telangana,Student,"Above â‚¹15,000",dharmashala,Family trip,5,May,winter,11000,Car,Good,3,3,4,Yes,Relaxing holiday
+20,Male,haryana,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Friends trip,5,October,autumn,10000,Bike,Good,4,4,4,Yes,Budget travel
+21,Female,Bihar ,Business,"â‚¹7,000 â€“ â‚¹15,000",Kashmir,Business trip,1,January,Autumn,10000,Flight,Excellent,3,3,4,Yes,Relaxing holiday
+19,Female,Bihar ,Student,"Above â‚¹15,000",Jalandhar1,Friends trip,1,July,Autumn,2000,Bus,Good,3,3,3,Maybe,Cultural exploration
+18,Female,Maharashtra ,Student,"â‚¹1,000 â€“ â‚¹3,000",Ludhiana,Solo,3,November,Winter,1000,Bus,Excellent,5,5,5,Yes,Food-focused trip
+20,Male,vijayawada,Student,"â‚¹7,000 â€“ â‚¹15,000",Vijayawada,Solo,1,May,summer,2604,Train,Poor,3,3,2,Yes,Relaxing holiday
+20,Female,haryana,Student,"â‚¹1,000 â€“ â‚¹3,000",Kurukshetra,Solo,3,December,autumn,2000,Train,Average,3,3,3,No,Relaxing holiday
+20,Male,punjab,Student,"â‚¹3,000 â€“ â‚¹7,000",Jammu,Friends trip,4,October,summer,6000,Train,Average,4,4,4,Maybe,Nature & sightseeing
+20,Female,Himachal Pradesh ,Student,"Less than â‚¹1,000",Manali,Friends trip,5,October,summer,10000,Car,Good,4,4,3,Yes,Nature & sightseeing
+21,Male,punjab,Student,"Less than â‚¹1,000",Kashmir ,Friends trip,4,October,rainy,8k,Car,Average,3,3,4,Yes,Nature & sightseeing
+19,Female,delhi,Student,"â‚¹1,000 â€“ â‚¹3,000",amber fort,Friends trip,3,November,rainy,2700,Bike,Good,4,4,4,Yes,Nature & sightseeing
+20,Female,Karnataka,Student,"Less than â‚¹1,000",Shirdi,Family trip,1,May,autumn,20k,Train,Good,4,4,4,Yes,Adventure trip
+19,Female,Haryana,Student,"â‚¹1,000 â€“ â‚¹3,000",Amirtsar,Friends trip,3,November,Summer,8000,Bike,Average,1,1,5,Yes,Relaxing holiday
+21,Male,Haryana ,Student,"â‚¹7,000 â€“ â‚¹15,000",dharmshala ,Friends trip,2,November,Summer,3500,Bus,Average,2,2,3,Yes,Adventure trip
+19,Female,haryana,Student,"â‚¹7,000 â€“ â‚¹15,000",Punjab,Friends trip,1,March,autumn,2000,Bus,Good,3,3,3,Yes,Cultural exploration
+19,Female,Andhra Aradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Yadadri,Friends trip,3,August,Spring,700,Bus,Average,4,4,4,Yes,Cultural exploration
+21,Male,andhra pradesh,Student,"Less than â‚¹1,000",Haridwar,Friends trip,1,October,summer,2500,Train,Good,5,5,5,Maybe,Adventure trip
+20,Female,Andhra Aradesh,Student,"Less than â‚¹1,000",Amritsar,Friends trip,6,November,summer,1500,Bike,Excellent,2,2,1,Yes,Nature & sightseeing
+21,Male,Hyderabad ,Student,"â‚¹1,000 â€“ â‚¹3,000",Haridwar,Friends trip,4,November,autumn,2000,Train,Average,5,5,5,Yes,Adventure trip
+21,Male,Karnataka,Student,"â‚¹3,000 â€“ â‚¹7,000",Haridwar ,Friends trip,1,October,Spring,3000,Train,Excellent,5,5,5,Maybe,Budget travel
+21,Male,kerala,Student,"Above â‚¹15,000",vijayawada,Friends trip,4,November,autumn,4200,Bike,Good,4,4,4,No,Relaxing holiday
+21,Male,nepal,Student,"â‚¹3,000 â€“ â‚¹7,000",sri Jagannath Puri Temple,Solo,3,July,autumn,7000,Flight,Good,5,5,5,Yes,Nature & sightseeing
+20,Male,punjab,Student,"Less than â‚¹1,000",Red fort ,Friends trip,3,July,rainy,5000,Bike,Excellent,5,5,5,Yes,Relaxing holiday
+20,Male,andhra pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali ,Friends trip,1,October,Summer,"10,000",Car,Excellent,4,4,5,No,Adventure trip
+22,Male,bihar,Student,"Less than â‚¹1,000",Amritsar,Friends trip,3,November,summer,10000,Car,Good,4,4,5,Maybe,Cultural exploration
+23,Female,west bengal,Student,"â‚¹3,000 â€“ â‚¹7,000",Himachal ,Friends trip,3,December,autumn,5000,Bus,Good,4,4,5,Yes,Adventure trip
+25,Female,kerela,Homemaker,"â‚¹7,000 â€“ â‚¹15,000",Hyderabad ,Family trip,4,October,Spring,3000,Bus,Average,2,2,2,Maybe,Relaxing holiday
+20,Male,New Delhi,Student,"â‚¹1,000 â€“ â‚¹3,000",Katara ,Friends trip,3,October,Autumn,6k,Car,Average,5,5,5,Maybe,Nature & sightseeing
+20,Male,Visakhapatnam ,Student,"â‚¹3,000 â€“ â‚¹7,000",Haridwar and rishikesh ,Friends trip,2,October,Summer,20000,Bike,Excellent,5,5,5,Yes,Adventure trip
+22,Male,Andhra Pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",sri Jagannath Puri Temple,Friends trip,5,October,Summer,3k,Car,Average,3,3,4,Yes,Adventure trip
+19,Female,Rajasthan ,Student,"â‚¹3,000 â€“ â‚¹7,000",Kewadia,Family trip,2,November,Winter,6000,Train,Good,5,5,5,Yes,Adventure trip
+20,Male,Karnataka,Student,"Above â‚¹15,000",Hyderabad ,Friends trip,5,November,summer,3000,Flight,Average,4,4,4,Yes,Food-focused trip
+30,Male,Andhra Pradesh,Working Professional,"â‚¹7,000 â€“ â‚¹15,000",Coorg,Family trip,1,December,rainy,50000,Flight,Average,3,3,3,Maybe,Relaxing holiday
+19,Female,Karnataka,Student,"â‚¹3,000 â€“ â‚¹7,000",Jalandhar ,Friends trip,3,November,summer,7000,Bus,Average,2,2,3,Maybe,Relaxing holiday
+22,Female,chandigarh,Student,"â‚¹3,000 â€“ â‚¹7,000",Katra,Friends trip,5,September,Spring,5000,Train,Good,4,4,5,Yes,Cultural exploration
+19,Male,uttarakhand,Student,"â‚¹1,000 â€“ â‚¹3,000",Jaipur ,Solo,3,May,rainy,25000,Flight,Excellent,5,5,5,Maybe,Relaxing holiday
+20,Male,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Katra,Friends trip,1,October,Spring,8000,Bike,Good,3,3,4,Yes,Nature & sightseeing
+18,Female,andhra pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Jalandhar ,Solo,1,November,Spring,1500,Car,Average,4,4,3,No,Nature & sightseeing
+31,Male,Andhra Pradesh,Farmer ,"â‚¹1,000 â€“ â‚¹3,000",Tirupati,Family trip,2,October,summer,1000,Bike,Good,5,5,5,Yes,Cultural exploration
+20,Female,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Jalandhar ,Solo,5,November,rainy,3500,Bus,Good,4,4,5,Yes,Relaxing holiday
+19,Male,madhya pradesh,Student,"Less than â‚¹1,000",Shiridi ,Family trip,7,June,rainy,20k,Train,Excellent,3,3,5,Yes,Food-focused trip
+21,Male,punjab,Student,"Less than â‚¹1,000",kashmir,Friends trip,5,July,Rainy,14000,Train,Excellent,4,4,4,Yes,Luxury travel
+21,Male,Punjab,Student,"â‚¹3,000 â€“ â‚¹7,000",Jammu Kashmir ,Friends trip,3,October,Rainy,5k,Bus,Good,5,5,5,Yes,Relaxing holiday
+19,Female,Hyderabad ,Student,"â‚¹1,000 â€“ â‚¹3,000",Jaipur,Friends trip,1,September,Winter,"12,000",Flight,Excellent,3,3,4,Maybe,Nature & sightseeing
+22,Female,madhya pradesh,Working Professional,"â‚¹3,000 â€“ â‚¹7,000",punjab ,Solo,2,July,rainy,20000,Flight,Good,3,3,4,Maybe,Cultural exploration
+21,Female,west bengal,Student,"â‚¹1,000 â€“ â‚¹3,000",Delhi,Family trip,2,October,Rainy,4k,Bus,Poor,4,4,3,No,Relaxing holiday
+20,Female,Telengana ,Student,"Less than â‚¹1,000",Amritsar,Solo,4,June,Winter,3000,Train,Average,3,3,5,Maybe,Relaxing holiday
+20,Male,andhra Pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Spiti ,Friends trip,5,November,Rainy,10000,Bike,Good,1,1,5,Yes,Adventure trip
+20,Male,uttarakhand,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali,Friends trip,4,October,rainy,5000,Bike,Good,4,4,4,Maybe,Nature & sightseeing
+22,Female,Gujarat,Student,"â‚¹7,000 â€“ â‚¹15,000",sri Jagannath Puri Temple,Friends trip,6,August,Summer,300,Bike,Average,4,4,3,Yes,Adventure trip
+21,Male,punjab,Student,"Less than â‚¹1,000",Sun Temple,Solo,4,November,Rainy,6k,Bus,Excellent,5,5,5,Yes,Relaxing holiday
+20,Male,Karnataka,Student,"Less than â‚¹1,000",Manali,Family trip,3,October,summer,6000,Bike,Excellent,3,3,5,Maybe,Nature & sightseeing
+19,Female,sikkim,Student,"â‚¹1,000 â€“ â‚¹3,000",Dharmshala ,Friends trip,2,October,Winter,5000,Train,Average,4,4,4,Yes,Budget travel
+20,Female,kerala,Student,"â‚¹1,000 â€“ â‚¹3,000",Sun Temple,Friends trip,1,September,Summer,3k,Bus,Good,3,3,4,Yes,Relaxing holiday
+21,Male,chandigarh,Student,"â‚¹3,000 â€“ â‚¹7,000",Dharamshala ,Friends trip,3,July,Spring,1500,Bike,Average,5,5,5,Yes,Nature & sightseeing
+20,Female,madhya pradesh,Student,"Less than â‚¹1,000",Dharamshala ,Friends trip,2,October,winter,3000,Train,Good,4,4,4,Yes,Relaxing holiday
+37,Male,Karnataka,Working Professional,"â‚¹7,000 â€“ â‚¹15,000",Hyderabad,Solo,4,November,autumn,10000,Bus,Good,4,4,5,Yes,Relaxing holiday
+23,Male,napal,Working Professional,"â‚¹3,000 â€“ â‚¹7,000",tirupati,Family trip,3,October,summer,7000,Train,Good,3,3,5,Yes,Adventure trip
+22,Female,Andhra Pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Dramshala,Friends trip,1,October,summer,5000,Car,Very poor,4,4,4,Maybe,Food-focused trip
+21,Male,odisha,Business,"â‚¹7,000 â€“ â‚¹15,000",Vrindhavan,Friends trip,3,October,Rainy,10k,Bike,Excellent,5,5,5,Yes,Luxury travel
+20,Female,Karnataka,Student,"Less than â‚¹1,000",Jalandhar,Friends trip,3,October,summer,1000,Bus,Average,3,3,3,Maybe,Relaxing holiday
+18,Female,punjab,Student,"Less than â‚¹1,000",Jammu ,Friends trip,3,October,autumn,6000,Car,Average,4,4,4,Maybe,Relaxing holiday
+20,Female,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Dalhousie ,Friends trip,5,October,rainy,15000,Bus,Average,1,1,5,Yes,Nature & sightseeing
+20,Female,Karnataka,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali,Friends trip,3,October,rainy,4000,Bus,Average,4,4,4,Yes,Cultural exploration
+20,Male,andhra pradesh,Business,"Above â‚¹15,000",amber fort,Solo,2,October,winter,30000,Flight,Excellent,5,5,5,Yes,Luxury travel
+23,Male,punjab,Student,"â‚¹3,000 â€“ â‚¹7,000",Rajahmundry ,Solo,3,November,autumn,2000,Bus,Average,2,2,3,Maybe,Relaxing holiday
+21,Male,Andhra Pradesh,Student,"Less than â‚¹1,000",Jalandhar ,Friends trip,4,September,summer,4000,Car,Excellent,5,5,5,Yes,Relaxing holiday
+20,Male,Bihar,Student,"â‚¹3,000 â€“ â‚¹7,000",Jalandhar,Friends trip,7,September,Winter,4000,Train,Good,1,1,3,Yes,Relaxing holiday
+22,Female,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",manali,Friends trip,5,October,Summer,3000,Bus,Good,3,3,5,Yes,Nature & sightseeing
+20,Male,gujarat,Student,"Less than â‚¹1,000","Kedarnath, badrinath ",Solo,1,November,rainy,5k,Bike,Average,3,3,4,Yes,Budget travel
+21,Male,andhra pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Jammu Kashmir ,Friends trip,1,November,winter,10k,Train,Good,5,5,5,Maybe,Adventure trip
+22,Female,jammu,Working Professional,"â‚¹3,000 â€“ â‚¹7,000",Manikomda,Friends trip,5,October,rainy,500,Car,Good,3,3,3,Yes,Food-focused trip
+20,Female,jammu,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar,Friends trip,2,October,rainy,900,Train,Good,4,4,3,No,Nature & sightseeing
+20,Female,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",Delhi,Family trip,0,October,autumn,6000,Train,Excellent,2,2,2,Yes,Relaxing holiday
+20,Female,Uttar pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Iskon temple ,Friends trip,2,November,rainy,5000,Bus,Average,4,4,3,Yes,Relaxing holiday
+20,Male,Bihar ,Student,"Above â‚¹15,000",kashmir,Friends trip,1,November,Winter,8000,Car,Good,4,4,3,Yes,Relaxing holiday
+28,Female,Andhra Pradesh,Business,"Less than â‚¹1,000",bega beach,Business trip,5,August,Spring,"16,000",Flight,Good,4,4,5,Yes,Luxury travel
+17,Female,jammu,Business,"â‚¹3,000 â€“ â‚¹7,000",Vaishno devi,Business trip,7,November,winter,6000,Train,Excellent,1,1,5,Yes,Adventure trip
+19,Female,Gujarat,Student,"â‚¹3,000 â€“ â‚¹7,000",Kashmir,Friends trip,2,November,Summer,7000,Car,Average,3,3,4,Yes,Adventure trip
+21,Male,Telengana ,Student,"â‚¹7,000 â€“ â‚¹15,000",Vishakapatnam,Friends trip,5,August,winter,20000,Car,Excellent,5,5,5,Maybe,Budget travel
+18,Male,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Baijnath ,Solo,1,October,rainy,20000,Car,Excellent,5,5,5,Yes,Relaxing holiday
+20,Female,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Family trip,2,August,winter,15000,Car,Very poor,5,5,5,Yes,Relaxing holiday
+19,Female,sikkim,Student,"â‚¹3,000 â€“ â‚¹7,000",vijayawada ,Family trip,5,July,rainy,"8,000",Car,Average,5,5,5,Yes,Cultural exploration
+20,Male,Karnataka,Student,"â‚¹3,000 â€“ â‚¹7,000",Amristar ,Friends trip,2,October,winter,2000,Bike,Good,4,4,5,Yes,Cultural exploration
+21,Female,haryana,Student,"â‚¹3,000 â€“ â‚¹7,000",Puri,Family trip,5,July,rainy,20000,Train,Excellent,5,5,5,Yes,Relaxing holiday
+27,Male,Andhra pradesh,Working Professional,"â‚¹3,000 â€“ â‚¹7,000",Hyderabad,Friends trip,3,December,rainy,2500,Bus,Good,2,2,4,No,Relaxing holiday
+19,Female,uttar pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali,Friends trip,5,October,summer,"10,000",Car,Excellent,4,4,5,Maybe,Adventure trip
+20,Female,Himachal Pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar,Family trip,4,August,summer,10000,Train,Average,2,2,3,Maybe,Adventure trip
+22,Female,chandigarh,Student,"â‚¹7,000 â€“ â‚¹15,000",Lucknow,Family trip,3,August,rainy,8500,Train,Good,3,3,4,Yes,Cultural exploration
+21,Male,jammu,Student,"â‚¹1,000 â€“ â‚¹3,000",Bangalore ,Friends trip,3,February,winter,10k,Car,Average,3,3,4,Yes,Relaxing holiday
+21,Male,agra,Student,"â‚¹1,000 â€“ â‚¹3,000",Dharamshala ,Friends trip,3,October,summer,3100,Bus,Excellent,4,4,5,Yes,Nature & sightseeing
+21,Female,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",delhi,Friends trip,3,October,autumn,4000,Train,Average,4,4,4,Maybe,Nature & sightseeing
+19,Female,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Jalandhar ,Family trip,7,October,summer,3000,Bus,Average,2,2,2,No,Relaxing holiday
+21,Female,Uttar pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",Tamilnadu ,Friends trip,3,February,Spring,5000,Bus,Average,3,3,4,Maybe,Nature & sightseeing
+20,Female,Jharkhand,Student,"â‚¹3,000 â€“ â‚¹7,000",tirupati,Solo,4,November,Summer,2000,Flight,Poor,3,3,2,No,Nature & sightseeing
+20,Male,andhra pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Jammu,Friends trip,3,November,winter,3000,Train,Average,3,3,4,Yes,Nature & sightseeing
+21,Male,sikkim,Student,"â‚¹3,000 â€“ â‚¹7,000",Vaishno devi,Friends trip,5,September,rainy,5000,Train,Good,4,4,4,Maybe,Cultural exploration
+20,Male,haryana,Student,"â‚¹3,000 â€“ â‚¹7,000",Haridwar ,Friends trip,2,September,rainy,5000,Bike,Good,3,3,4,Yes,Adventure trip
+21,Female,Andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Agra,Family trip,1,August,autumn,5000,Car,Good,4,4,5,Maybe,Cultural exploration
+21,Male,Karnataka,Student,"â‚¹3,000 â€“ â‚¹7,000",Mussoorie ,Solo,1,June,winter,2500,Bus,Average,4,4,4,Maybe,Food-focused trip
+20,Female,agra,Student,"â‚¹3,000 â€“ â‚¹7,000",Tadkeshwar dham ,Family trip,1,November,summer,4000,Car,Average,3,3,4,Yes,Nature & sightseeing
+20,Male,Andhra Aradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Punjab,Solo,2,September,rainy,1000,Train,Average,4,4,3,Maybe,Nature & sightseeing
+21,Male,uttar pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",bijnor,Solo,1,November,rainy,1500,Bus,Good,5,5,5,Yes,Relaxing holiday
+22,Female,haryana,Student,"â‚¹1,000 â€“ â‚¹3,000",Delhi ,Friends trip,1,November,summer,3000,Car,Good,2,2,4,No,Nature & sightseeing
+21,Male,madhya pradesh,Student,"Less than â‚¹1,000",Kurukshetra,Solo,5,November,Winter,5000,Flight,Average,5,5,5,Yes,Relaxing holiday
+21,Male,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",Delhi,Friends trip,4,November,Spring,2000,Car,Average,1,1,2,No,Cultural exploration
+19,Female,andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Delhi,Friends trip,5,July,Rainy,5000,Flight,Excellent,1,1,5,Maybe,Adventure trip
+21,Female,uttar pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Gao,Solo,5,June,Spring,20000,Flight,Good,4,4,4,Yes,Adventure trip
+21,Female,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Bangalore ,Friends trip,5,August,summer,25000,Flight,Good,4,4,4,Yes,Nature & sightseeing
+23,Female,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",kashmir,Friends trip,7,October,Summer,7000,Train,Good,4,4,5,No,Nature & sightseeing
+18,Female,andhra pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Bengaluru ,Family trip,4,July,winter,30000,Flight,Excellent,4,4,5,Yes,Nature & sightseeing
+19,Female,Andhra Pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Himachal pradesh ,Friends trip,7,October,autumn,15000,Car,Excellent,5,5,5,Yes,Adventure trip
+28,Male,haryana,Working Professional,"Less than â‚¹1,000",manali,Friends trip,1,November,summer,8000,Car,Good,5,5,3,Yes,Adventure trip
+21,Male,Uttar Pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",Delhi,Friends trip,5,May,Winter,8000,Train,Average,3,3,4,No,Food-focused trip
+20,Male,uttar pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Kukunate,Friends trip,4,October,Summer,1500,Bike,Average,5,5,5,Maybe,Food-focused trip
+33,Male,Andhra Pradesh,Working Professional,"â‚¹3,000 â€“ â‚¹7,000",Indian subcontinent ,Family trip,3,April,Spring,20k,Car,Good,5,5,4,Yes,Adventure trip
+20,Male,Delhi,Student,"â‚¹7,000 â€“ â‚¹15,000",Manali,Friends trip,1,October,Winter,10000,Bike,Good,4,4,5,Yes,Adventure trip
+19,Female,telangana,Student,"Less than â‚¹1,000",Ayodhya ,Friends trip,5,October,autumn,10000,Train,Average,3,3,3,No,Cultural exploration
+20,Female,Bihar ,Student,"â‚¹7,000 â€“ â‚¹15,000",Amritsar ,Friends trip,1,November,Spring,2000,Train,Average,4,4,4,Maybe,Relaxing holiday
+19,Male,Uttar pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",vijayawada,Friends trip,4,November,rainy,10000,Bike,Good,5,5,5,Yes,Nature & sightseeing
+19,Female,chandigarh,Student,"â‚¹3,000 â€“ â‚¹7,000",Amritsar ,Friends trip,3,October,summer,600,Bus,Good,4,4,5,Yes,Relaxing holiday
+20,Female,uttar pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Vrindavan ,Friends trip,2,October,summer,20k,Train,Good,4,4,5,Yes,Adventure trip
+18,Female,Andhra pradesh,Student,"Less than â‚¹1,000",Tirupati ,Family trip,5,May,autumn,7000,Train,Excellent,4,4,4,Yes,Cultural exploration
+19,Female,Maharashtra ,Student,"Less than â‚¹1,000",mini switzerland,Friends trip,3,June,Winter,2500,Train,Good,4,4,4,Yes,Nature & sightseeing
+18,Female,Punjab,Student,"â‚¹3,000 â€“ â‚¹7,000",Kedarnath ,Friends trip,4,October,Winter,8000,Car,Average,4,4,5,Yes,Budget travel
+17,Female,Maharashtra ,Student,"â‚¹7,000 â€“ â‚¹15,000",Ram mandir ,Friends trip,7,October,Winter,6000,Train,Good,4,4,4,Yes,Cultural exploration
+19,Female,gujarat,Student,"â‚¹1,000 â€“ â‚¹3,000",Bali,Family trip,8,April,rainy,10000,Car,Excellent,4,4,5,Yes,Nature & sightseeing
+20,Female,telangana,Student,"â‚¹1,000 â€“ â‚¹3,000",Kurukshetra,Friends trip,7,January,autumn,10000,Bus,Average,3,3,5,Yes,Relaxing holiday
+20,Female,madhya pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Mussoorie ,Family trip,3,September,winter,6000,Train,Good,3,3,4,Yes,Adventure trip
+19,Female,odisha,Student,"â‚¹7,000 â€“ â‚¹15,000",Chennai,Family trip,4,January,rainy,9000,Car,Good,4,4,4,Yes,Nature & sightseeing
+20,Female,Rajasthan ,Student,"Less than â‚¹1,000",Amritsar ,Friends trip,2,November,Spring,2250,Train,Average,5,5,1,Yes,Cultural exploration
+20,Female,madhya pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",amritsar,Friends trip,7,March,autumn,2900,Bus,Good,3,3,3,Yes,Relaxing holiday
+21,Female,Andhra Pradesh,Student,"Less than â‚¹1,000",Himachal ,Friends trip,5,February,Spring,10000,Bus,Average,2,2,3,Maybe,Food-focused trip
+21,Female,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Jammu and Kashmir ,Family trip,7,August,autumn,10000,Car,Good,4,4,5,Yes,Cultural exploration
+20,Female,uttar pradesh,Student,"Above â‚¹15,000",Dharamshala ,Friends trip,5,October,summer,1000,Bus,Good,4,4,5,Maybe,Adventure trip
+20,Female,Andhra Pradesh,Student,"Above â‚¹15,000",Tirupati,Friends trip,8,June,Spring,5k,Bus,Good,4,4,4,Yes,Relaxing holiday
+21,Female,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Sikkim ,Friends trip,3,June,autumn,10000,Train,Good,3,3,4,Yes,Cultural exploration
+21,Male,Hyderabad,Student,"â‚¹3,000 â€“ â‚¹7,000",khammam,Friends trip,3,January,Winter,900,Flight,Good,4,4,4,No,Food-focused trip
+22,Male,Haryana ,Student,"â‚¹1,000 â€“ â‚¹3,000",Golden temple ,Friends trip,3,August,Winter,10000,Train,Average,3,3,4,Yes,Cultural exploration
+21,Female,Amritsar ,Student,"â‚¹1,000 â€“ â‚¹3,000",Dharmashala ,Friends trip,5,January,Summer,7000,Bus,Very poor,3,3,3,Yes,Nature & sightseeing
+21,Male,chandigarh,Student,"â‚¹7,000 â€“ â‚¹15,000",Dharmasthala,Friends trip,5,January,winter,8000,Bus,Good,4,4,4,Yes,Nature & sightseeing
+20,Female,madhya pradesh,Student,"Less than â‚¹1,000",Delhi,Family trip,7,September,summer,5000,Train,Good,3,3,4,Yes,Cultural exploration
+21,Male,Khammam,Student,"Less than â‚¹1,000",Kedarnath ,Friends trip,3,October,Autumn,10k,Car,Excellent,4,4,4,Maybe,Food-focused trip
+21,Male,telangana,Student,"â‚¹3,000 â€“ â‚¹7,000",Kashmir ,Friends trip,5,August,Winter,15000,Car,Average,4,4,3,Yes,Relaxing holiday
+20,Male,Jharkhand ,Student,"â‚¹1,000 â€“ â‚¹3,000",Varansi,Friends trip,5,September,Winter,"10,000",Train,Good,4,4,5,Yes,Cultural exploration
+20,Male,Hyderabad,Student,"â‚¹3,000 â€“ â‚¹7,000",Kedarnath,Friends trip,0,September,Winter,10000,Train,Average,3,3,1,Yes,Adventure trip
+19,Male,tamil nadu,Student,"â‚¹7,000 â€“ â‚¹15,000",Manali ,Friends trip,10,October,Autumn,10000,Bus,Good,3,3,4,Yes,Nature & sightseeing
+20,Female,Andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",tirupati,Solo,3,July,summer,3500,Train,Average,3,3,3,Maybe,Nature & sightseeing
+20,Female,andhra pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Tirupati,Friends trip,2,June,rainy,3500,Bus,Good,3,3,3,Yes,Relaxing holiday
+18,Male,Andhra pradesh,Student,"Above â‚¹15,000",Punjab,Friends trip,2,November,Winter,7k,Train,Average,3,3,4,Yes,Cultural exploration
+20,Female,odisha,Student,"â‚¹3,000 â€“ â‚¹7,000",Pakistan ,Business trip,2,July,rainy,10000,Bike,Very poor,1,1,1,No,Relaxing holiday
+25,Male,Andhra Pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Amritsar,Solo,2,August,Summer,5500,Train,Good,5,5,5,Yes,Relaxing holiday
+17,Male,Haryana ,Student,"â‚¹3,000 â€“ â‚¹7,000",Amritsar ,Friends trip,4,November,Winter,10000,Train,Average,5,5,3,No,Adventure trip
+18,Female,telangana,Student,"Above â‚¹15,000",Amritsar ,Family trip,4,August,autumn,9000,Train,Good,3,3,5,Maybe,Nature & sightseeing
+20,Female,delhi,Student,"â‚¹3,000 â€“ â‚¹7,000",golden temple,Solo,5,May,rainy,63200,Flight,Average,4,4,5,Yes,Nature & sightseeing
+20,Male,Tamil Nadu,Student,"â‚¹3,000 â€“ â‚¹7,000",Delhi,Family trip,2,March,winter,5000,Train,Average,4,4,3,Yes,Relaxing holiday
+19,Male,Andhra Pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",Dehli,Solo,4,September,autumn,10000,Flight,Excellent,5,5,5,Maybe,Luxury travel
+19,Male,Kerala,Student,"â‚¹3,000 â€“ â‚¹7,000",Una,Friends trip,3,September,Summer,2000,Bike,Average,5,5,2,No,Cultural exploration
+21,Female,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Shimla,Friends trip,1,November,autumn,10000,Bus,Good,4,4,5,Yes,Adventure trip
+21,Male,kerela,Student,"â‚¹3,000 â€“ â‚¹7,000",Rajasthan,Family trip,3,October,Spring,6000,Car,Good,4,4,5,No,Nature & sightseeing
+23,Male,delhi,Student,"Less than â‚¹1,000",Jalandhar ,Friends trip,1,November,summer,1000,Bike,Average,2,2,2,Yes,Budget travel
+20,Male,Maharashtra ,Student,"â‚¹1,000 â€“ â‚¹3,000",Agra,Friends trip,5,November,rainy,25000,Train,Average,4,4,5,Maybe,Adventure trip
+20,Female,delhi,Student,"Less than â‚¹1,000",Jalandhar ,Friends trip,4,November,summer,1000,Bus,Excellent,5,5,5,Yes,Relaxing holiday
+19,Male,madhya pradesh,Student,"Less than â‚¹1,000",Badrinath ,Friends trip,5,October,rainy,8000,Train,Good,2,2,5,Yes,Adventure trip
+21,Male,punjab,Student,"Less than â‚¹1,000",Triund,Friends trip,7,October,summer,8000,Bike,Excellent,4,4,5,Maybe,Adventure trip
+20,Male,ladakh,Student,"â‚¹7,000 â€“ â‚¹15,000",Murdeshwar,Family trip,2,October,Spring,10000,Car,Good,5,5,5,Yes,Nature & sightseeing
+20,Male,uttarakhand,Student,"â‚¹3,000 â€“ â‚¹7,000",kedarnath ,Friends trip,6,October,rainy,10000,Train,Average,3,3,5,Maybe,Adventure trip
+21,Male,uttarakhand,Student,"Above â‚¹15,000",tirupati,Solo,6,December,rainy,13500,Bike,Excellent,5,5,4,Yes,Relaxing holiday
+21,Female,Karnataka,Student,"Less than â‚¹1,000",Jhalandar ,Friends trip,4,December,summer,11000,Bus,Average,1,1,4,Yes,Adventure trip
+19,Male,punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",Punjab ,Business trip,1,October,summer,10k,Train,Average,3,3,3,Yes,Relaxing holiday
+19,Male,andhra pradesh,Student,"Less than â‚¹1,000",Varanasi ,Friends trip,5,November,rainy,5000,Train,Good,5,5,5,Yes,Cultural exploration
+27,male,jammu,Business,"Less than â‚¹1,000",Una,Business trip,4,January,summer,10000,Bike,Very poor,2,2,2,No,Cultural exploration
+20,Male,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",tirupati,Friends trip,3,July,rainy,3500,Train,Excellent,4,4,4,Yes,Cultural exploration
+19,Female,gujarat,Student,"Less than â‚¹1,000",tirupati,Family trip,2,January,winter,10k,Train,Average,4,4,2,Yes,Relaxing holiday
+22,Female,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Palampur ,Family trip,3,August,Spring,20000,Car,Good,2,2,4,Yes,Adventure trip
+22,Female,gujarat,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar ,Friends trip,4,October,autumn,2000,Bus,Average,4,4,5,Yes,Relaxing holiday
+19,Male,Andhra Pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Dharmashala,Friends trip,5,November,autumn,3000,Train,Poor,2,2,4,Yes,Budget travel
+20,Female,Nagpur ,Student,"â‚¹1,000 â€“ â‚¹3,000",Ranchi ,Solo,7,July,Winter,"10,000",Car,Average,5,5,5,Yes,Relaxing holiday
+21,Male,Kanpur,Homemaker,"â‚¹1,000 â€“ â‚¹3,000",Hyderabad ,Family trip,9,April,Winter,7000,Flight,Good,5,5,4,Yes,Luxury travel
+26,Male,Uttar Pradesh ,Working Professional,"â‚¹1,000 â€“ â‚¹3,000",Hyderabad ,Friends trip,4,May,Summer,18000,Flight,Excellent,4,4,4,Yes,Budget travel
+27,Male,Visakhapatnam ,Student,"â‚¹3,000 â€“ â‚¹7,000",Agra,Solo,5,June,Summer,5000,Train,Good,5,5,5,Yes,Adventure trip
+20,Female,Uttar pradesh ,Working Professional,"â‚¹7,000 â€“ â‚¹15,000",Triund,Friends trip,9,October,Spring,3000,Bus,Good,4,4,5,Yes,Adventure trip
+20,Male,Hyderabad ,Working Professional,"Less than â‚¹1,000",Kashmir ,Solo,8,May,Summer,16000,Flight,Excellent,5,5,4,Yes,Luxury travel
+27,Male,Bangalore ,Working Professional,"â‚¹3,000 â€“ â‚¹7,000",Kerala ,Friends trip,5,October,Winter,10000,Train,Good,4,4,5,Maybe,Relaxing holiday
+18,Female,Andhra pradesh,Student,"Less than â‚¹1,000",Amritsar,Friends trip,5,December,Winter,7000,Car,Average,3,3,3,Yes,Relaxing holiday
+19,Female,Andhra Pradesh ,Student,"Less than â‚¹1,000",Vizag,Solo,5,May,Summer,3k,Train,Excellent,5,5,5,Yes,Food-focused trip
+19,Female,Haryana ,Student,"Less than â‚¹1,000",Manali,Family trip,5,May,Winter,6k,Car,Good,4,4,4,Maybe,Relaxing holiday
+22,Female,Chennai,Student,"â‚¹7,000 â€“ â‚¹15,000",Chennai,Solo,3,August,Summer,1k,Flight,Average,2,2,3,No,Cultural exploration
+20,Female,Chennai,Student,"â‚¹1,000 â€“ â‚¹3,000",Dubai,Business trip,2,September,Autumn,20k,Flight,Good,5,5,5,Yes,Adventure trip
+19,Female,Maharashtra ,Student,"Less than â‚¹1,000",Triund,Family trip,6,October,Winter,3500,Bus,Average,2,2,5,Maybe,Nature & sightseeing
+19,Female,Haryana,Student,"â‚¹3,000 â€“ â‚¹7,000",Ambala,Solo,3,August,Summer,1500,Bus,Good,4,4,5,Yes,Budget travel
+20,Female,Maharashtra ,Student,"Less than â‚¹1,000",Sun Temple,Friends trip,4,December,Winter,1000,Train,Average,4,4,5,Maybe,Luxury travel
+20,Female,Punjab ,Student,"Less than â‚¹1,000",Amritsar ,Friends trip,3,November,Winter,3k,Bus,Average,3,3,4,Maybe,Nature & sightseeing
+19,Female,hyderabad,Student,"â‚¹3,000 â€“ â‚¹7,000",warangal,Solo,3,June,Summer,10k,Flight,Excellent,5,5,5,Yes,Relaxing holiday
+19,Female,Haryana ,Student,"â‚¹3,000 â€“ â‚¹7,000",Amritsar ,Friends trip,3,November,Winter,4000,Bus,Average,3,3,5,Yes,Adventure trip
+21,Female,Kerala,Student,"â‚¹3,000 â€“ â‚¹7,000",Triund ,Friends trip,4,October,Autumn,7000,Bus,Good,3,3,5,Yes,Cultural exploration
+21,Female,Kerala ,Student,"Less than â‚¹1,000",Triund,Friends trip,8,October,Autumn,6000,Car,Good,3,3,5,Yes,Cultural exploration
+20,Female,Khammam,Student,"â‚¹1,000 â€“ â‚¹3,000",Dharmashala,Friends trip,5,October,Winter,5k,Train,Good,4,4,3,Yes,Relaxing holiday
+18,Female,Punjab,Student,"Less than â‚¹1,000",Shimal ,Friends trip,4,June,Spring,1k,Flight,Good,3,3,4,Maybe,Nature & sightseeing
+19,Female,Andhra Pradesh ,Student,"Above â‚¹15,000",Dharmashala ,Business trip,3,October,Winter,7500,Train,Good,4,4,4,Yes,Nature & sightseeing
+26,Male,manipur,Business,"Less than â‚¹1,000",kashmir,Friends trip,3,April,Summer,9000,Flight,Excellent,5,5,4,Yes,Food-focused trip
+21,Female,Kerala,Student,"Less than â‚¹1,000",Himachal ,Friends trip,3,October,Summer,5k,Bus,Good,3,3,5,Yes,Adventure trip
+20,Female,Kerala,Student,"â‚¹1,000 â€“ â‚¹3,000",Punjab,Family trip,1,August,Summer,5k,Flight,Good,3,3,5,Maybe,Nature & sightseeing
+21,Female,Kerala,Student,"â‚¹7,000 â€“ â‚¹15,000",Triund ,Friends trip,1,October,Summer,5k,Bus,Good,5,5,5,Yes,Nature & sightseeing
+20,Female,Agra,Student,"Less than â‚¹1,000",Amritsar ,Friends trip,1,September,Spring,700,Flight,Very poor,1,1,1,No,Luxury travel
+20,Female,New Delhi,Student,"Less than â‚¹1,000",Amritsar,Friends trip,4,November,Autumn,780,Car,Excellent,1,1,5,No,Luxury travel
+21,Female,Bihar ,Student,"Less than â‚¹1,000",Amritsar ,Friends trip,4,September,Autumn,1300,Car,Average,1,1,5,No,Luxury travel
+21,Female,Kanpur,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Friends trip,2,November,Winter,10000,Bus,Excellent,4,4,4,Yes,Relaxing holiday
+20,Female,Delhi,Student,"Less than â‚¹1,000",kashmir,Solo,4,June,Winter,11000,Flight,Excellent,4,4,4,No,Relaxing holiday
+20,Female,Uttar Pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",Ujjain ,Family trip,1,January,Winter,7k,Train,Good,3,3,4,Yes,Cultural exploration
+18,Female,Andhra Pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",Tirupati ,Family trip,4,July,Summer,10000,Train,Good,5,5,5,Yes,Adventure trip
+22,Female,Rajasthan ,Student,"Less than â‚¹1,000",Golden temple ,Family trip,6,November,Winter,1000,Bus,Good,3,3,4,Maybe,Relaxing holiday
+19,Female,Hyderabad,Student,"â‚¹1,000 â€“ â‚¹3,000",Himachal,Friends trip,3,November,Winter,4k,Car,Good,5,5,5,No,Relaxing holiday
+19,Female,Jharkhand,Student,"Less than â‚¹1,000",Uttarakhand,Family trip,6,May,Summer,"30,000",Train,Good,5,5,5,Yes,Nature & sightseeing
+21,Female,Andhra Pradesh,Student,"Above â‚¹15,000",Himachal Pradesh,Friends trip,4,October,Spring,4000,Train,Average,5,5,5,Yes,Relaxing holiday
+20,Female,Hyderabad ,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali,Friends trip,3,October,Winter,"20,000",Car,Average,4,4,4,Yes,Nature & sightseeing
+21,Female,Haryana ,Student,"â‚¹1,000 â€“ â‚¹3,000",Loktak Lake,Friends trip,4,July,Summer,7k,Car,Good,5,5,5,Yes,Relaxing holiday
+19,Female,Hyderabad ,Student,"Less than â‚¹1,000",Tirupati,Family trip,5,June,Spring,10000,Train,Good,5,5,5,Yes,Cultural exploration
+18,Female,Andhra pradesh ,Student,"Less than â‚¹1,000",Manali ,Friends trip,1,October,Winter,5000,Bus,Excellent,4,4,5,Yes,Adventure trip
+21,Female,Uttar pradesh,Student,"Less than â‚¹1,000",Kashmir,Family trip,7,June,Summer,8k,Flight,Good,3,3,5,Yes,Cultural exploration
+20,Female,Andhra pradesh ,Student,"Less than â‚¹1,000",Karnataka ,Family trip,1,July,Rainy,35000,Car,Good,5,5,5,Maybe,Relaxing holiday
+20,Male,Rajasthan ,Student,"â‚¹1,000 â€“ â‚¹3,000",Loktak Lake,Solo,5,June,Spring,6500,Bus,Excellent,3,3,5,Yes,Nature & sightseeing
+17,Female,Jammu,Student,"â‚¹1,000 â€“ â‚¹3,000",Sun Temple,Family trip,2,October,Autumn,1k,Bus,Excellent,4,4,4,No,Relaxing holiday
+17,Male,Rajasthan ,Student,"â‚¹1,000 â€“ â‚¹3,000",Ridhi Sidhi,Friends trip,6,October,Autumn,700,Bike,Good,5,5,5,Yes,Food-focused trip
+20,Female,Telengana ,Student,"â‚¹1,000 â€“ â‚¹3,000",Goa,Solo,3,October,Winter,2000,Flight,Excellent,5,5,5,Yes,Adventure trip
+20,Female,Bihar ,Student,"â‚¹3,000 â€“ â‚¹7,000",Vaishno Devi,Friends trip,5,November,Winter,2000,Train,Good,3,3,4,Yes,Nature & sightseeing
+28,Female,Tamil Nadu,Working Professional,"â‚¹1,000 â€“ â‚¹3,000",Kerala,Family trip,7,June,Summer,17000,Flight,Excellent,5,5,5,Yes,Relaxing holiday
+22,Male,Jammu and Kashmir,Student,"â‚¹3,000 â€“ â‚¹7,000",Kashmir,Solo,6,December,Winter,12000,Bus,Poor,4,4,4,No,Adventure trip
+26,Female,Karnataka,Working Professional,"Less than â‚¹1,000",Coorg,Friends trip,8,October,Autumn,25000,Car,Good,4,4,4,Yes,Relaxing holiday
+25,Male,Andhra Pradesh,Working Professional,"â‚¹7,000 â€“ â‚¹15,000",kashmir,Family trip,2,February,Summer,5000,Flight,Good,4,4,4,Yes,Nature & sightseeing
+19,Male,Hyderabad,Homemaker,"Less than â‚¹1,000",kedarnath,Solo,5,February,Summer,4000,Train,Good,4,4,5,Yes,Cultural exploration
+22,Male,Uttar Pradesh,Business,"â‚¹7,000 â€“ â‚¹15,000",kashmir,Friends trip,6,May,Autumn,6000,Bike,Average,4,4,4,Yes,Budget travel
+24,Male,Haryana ,Student,"â‚¹1,000 â€“ â‚¹3,000",Panipat,Family trip,8,February,Autumn,1000,Bike,Excellent,4,4,4,Yes,Luxury travel
+24,Male,Gujarat,Student,"â‚¹1,000 â€“ â‚¹3,000",manali,Friends trip,3,May,Summer,2000,Car,Average,4,4,4,Yes,Food-focused trip
+27,Male,kerala,Business,"Less than â‚¹1,000",manali,Solo,4,May,Summer,2000,Bus,Good,4,4,5,Yes,Adventure trip
+27,Male,Andhra Pradesh,Business,"â‚¹3,000 â€“ â‚¹7,000",kashmir,Business trip,6,March,Rainy,2000,Train,Excellent,5,5,5,Yes,Nature & sightseeing
+21,Male,Nagpur ,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Friends trip,5,November,Winter,5000,Bus,Good,3,3,5,Maybe,Nature & sightseeing
+26,Male,karnataka,Student,"â‚¹7,000 â€“ â‚¹15,000",manali,Friends trip,5,March,Spring,2000,Train,Good,5,5,4,Yes,Luxury travel
+27,Male,andhra Pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Vijayawada,Solo,4,April,Rainy,2000,Bus,Poor,5,5,5,Yes,Luxury travel
+29,Female,Jharkhand ,Working Professional,"â‚¹1,000 â€“ â‚¹3,000",Shimla,Family trip,7,January,Winter,10000,Train,Good,3,3,4,Yes,Relaxing holiday
+22,Male,west bengal,Student,"Above â‚¹15,000",kashmir,Friends trip,8,February,Rainy,2000,Train,Good,5,5,5,Yes,Cultural exploration
+22,Male,punjab,Student,"Less than â‚¹1,000",manali,Business trip,1,July,Rainy,2000,Car,Average,4,4,4,Yes,Luxury travel
+21,Male,jammu,Student,"â‚¹1,000 â€“ â‚¹3,000",hyderabad,Family trip,5,February,Spring,6000,Train,Excellent,5,5,5,Yes,Budget travel
+23,Male,assam,Student,"â‚¹1,000 â€“ â‚¹3,000",tirupati,Family trip,7,April,Rainy,8000,Flight,Good,4,4,4,Yes,Nature & sightseeing
+24,Male,andhra pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",tirupati,Solo,6,February,Summer,500,Bus,Good,4,4,5,Yes,Luxury travel
+19,Female,patna bihar,Student,"â‚¹1,000 â€“ â‚¹3,000",manali,Friends trip,7,October,Winter,6000,Bus,Good,4,4,5,Yes,Budget travel
+23,Male,odisha,Student,"â‚¹1,000 â€“ â‚¹3,000",tirupati,Solo,9,April,Rainy,9000,Train,Good,4,4,5,Yes,Nature & sightseeing
+22,Male,punjab,Student,"â‚¹7,000 â€“ â‚¹15,000",manali,Solo,8,March,Winter,3000,Bus,Average,4,4,4,Yes,Budget travel
+25,Male,tamil nadu,Student,"â‚¹1,000 â€“ â‚¹3,000",kashmir,Friends trip,3,November,Winter,20000,Flight,Good,4,4,4,Yes,Budget travel
+25,Male,andhra pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",manali,Solo,5,November,Winter,30000,Train,Good,4,4,4,Yes,Budget travel
+22,Male,kerela,Student,"Less than â‚¹1,000",manali,Solo,3,November,Winter,15000,Train,Average,4,4,4,Yes,Budget travel
+20,Male,Kanpur,Student,"Less than â‚¹1,000",Manali,Friends trip,4,November,Winter,5000,Bus,Good,3,3,5,Maybe,Nature & sightseeing
+18,Female,Andhra Pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",Shri Govindajee Temple,Friends trip,3,November,Winter,7000,Car,Good,4,4,4,Yes,Adventure trip
+18,Female,Telangana ,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Friends trip,2,October,Autumn,2k,Train,Good,4,4,5,Maybe,Budget travel
+20,Female,Haryana ,Student,"Less than â‚¹1,000",Shilma,Friends trip,4,January,Winter,10000,Bus,Good,4,4,5,Maybe,Adventure trip
+20,Female,Uttar Pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",Dehradun ,Family trip,3,April,Summer,5000,Train,Average,3,3,4,Yes,Adventure trip
+24,Female,Bihar,Student,"â‚¹3,000 â€“ â‚¹7,000",Amritsar ,Friends trip,6,November,Winter,2000,Car,Good,3,3,4,Yes,Nature & sightseeing
+20,Female,Amritsar ,Student,"â‚¹3,000 â€“ â‚¹7,000",Bir biling ,Family trip,3,July,Summer,8000,Car,Average,5,5,5,Yes,Nature & sightseeing
+20,Male,Himachal Pradesh ,Student,"Above â‚¹15,000",Triund,Solo,7,January,Summer,500,Bike,Average,3,3,4,Yes,Luxury travel
+26,Male,Karnataka,Student,"Less than â‚¹1,000",Triund,Family trip,4,May,Summer,7000,Train,Good,4,4,4,Yes,Budget travel
+25,Female,Punjab,Student,"Less than â‚¹1,000",Triund,Friends trip,5,June,Rainy,2000,Bus,Average,4,4,5,Yes,Luxury travel
+24,Male,Andhra Pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Family trip,8,November,Rainy,25000,Train,Average,4,4,5,Yes,Food-focused trip
+19,Male,Punjab,Student,"Less than â‚¹1,000",Manali,Solo,5,November,Winter,3500,Bus,Very poor,4,4,4,Yes,Luxury travel
+19,Female,Andhra pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Kashmir,Friends trip,2,October,Winter,7000,Bus,Good,4,4,4,Maybe,Nature & sightseeing
+28,Male,Chittoor,Homemaker,"Less than â‚¹1,000",Assam,Friends trip,11,May,Autumn,18540,Train,Average,4,4,5,Yes,Food-focused trip
+28,Male,Punjab,Working Professional,"â‚¹3,000 â€“ â‚¹7,000",Visakhapatnam ,Solo,5,May,Summer,15000,Train,Excellent,5,5,5,Yes,Nature & sightseeing
+18,Female,Kerala ,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar ,Friends trip,7,May,Summer,2000,Car,Excellent,5,5,5,Yes,Nature & sightseeing
+24,Male,Tamilnadu,Working Professional,"â‚¹3,000 â€“ â‚¹7,000",Rajasthan,Family trip,6,March,Summer,25000,Train,Excellent,5,5,4,Yes,Adventure trip
+21,Female,Jharkhand,Student,"â‚¹3,000 â€“ â‚¹7,000",Punjab,Solo,2,August,Summer,5000,Train,Average,4,4,4,No,Food-focused trip
+20,Male,Telangana ,Student,"â‚¹7,000 â€“ â‚¹15,000",Kashmir,Friends trip,9,November,Winter,10000,Car,Average,2,2,3,No,Relaxing holiday
+20,Male,Telangana ,Student,"â‚¹1,000 â€“ â‚¹3,000",Kedarnath ,Friends trip,3,September,Spring,5000,Train,Average,3,3,3,Yes,Cultural exploration
+20,Male,Andhra Pradesh ,Student,"Above â‚¹15,000",Amritsar ,Friends trip,5,August,Winter,3500,Train,Average,3,3,4,Maybe,Relaxing holiday
+19,Male,arunachal pradesh,Student,"Less than â‚¹1,000",bangladesh,Solo,3,March,Rainy,26798,Bike,Average,2,2,3,Yes,Luxury travel
+20,Male,Andhra Pradesh ,Student,"Above â‚¹15,000",Tirupati ,Family trip,4,March,Spring,3299,Train,Very poor,4,4,5,Yes,Nature & sightseeing
+18,Female,Rajasthan,Student,"â‚¹3,000 â€“ â‚¹7,000",Shirdi,Family trip,3,March,Spring,5343,Train,Good,3,3,5,Yes,Cultural exploration
+19,Female,Haryana ,Student,"â‚¹1,000 â€“ â‚¹3,000",Vrindavan,Family trip,1,January,Winter,5000,Car,Excellent,5,5,5,Yes,Cultural exploration
+21,Male,Haryana,Student,"Above â‚¹15,000",Himachal,Friends trip,4,November,Winter,10000,Car,Good,3,3,5,Yes,Nature & sightseeing
+19,Male,Nepal,Student,"â‚¹7,000 â€“ â‚¹15,000",Amritsar ,Solo,4,August,Summer,2900,Bus,Good,2,2,4,Maybe,Relaxing holiday
+21,Male,Punjab,Student,"â‚¹7,000 â€“ â‚¹15,000",Amritsar,Friends trip,3,November,Winter,2000,Train,Good,5,5,5,Yes,Adventure trip
+21,Male,Telangana ,Student,"â‚¹3,000 â€“ â‚¹7,000",Jaipur ,Friends trip,1,October,Autumn,10000,Train,Average,3,3,5,Maybe,Relaxing holiday
+20,Female,Uttar Pradesh ,Student,"Less than â‚¹1,000",Delhi,Solo,2,November,Winter,10000,Train,Good,4,4,5,Yes,Relaxing holiday
+22,Male,Bihar,Student,"â‚¹3,000 â€“ â‚¹7,000",Jammu,Friends trip,3,October,Winter,3000,Train,Good,4,4,5,Yes,Cultural exploration
+21,Female,madhya pradesh,Student,"â‚¹7,000 â€“ â‚¹15,000",Loktak Lake,Friends trip,20,December,Winter,2k,Bike,Good,4,4,4,No,Nature & sightseeing
+19,Male,Haryana ,Student,"â‚¹7,000 â€“ â‚¹15,000",Amritsar ,Friends trip,3,November,Winter,2000,Bus,Average,4,4,4,Yes,Adventure trip
+19,Male,Andhra Pradesh ,Student,"Less than â‚¹1,000",Delhi ,Friends trip,1,October,Winter,4000,Train,Good,4,4,3,Yes,Food-focused trip
+20,Male,Delhi,Student,"â‚¹1,000 â€“ â‚¹3,000",Dehradun,Friends trip,2,December,Winter,2000,Train,Good,3,3,4,Yes,Cultural exploration
+19,Male,meghalaya,Student,"â‚¹1,000 â€“ â‚¹3,000",Rajasthan ,Friends trip,4,September,Winter,15000,Train,Average,1,1,4,Maybe,Food-focused trip
+20,Male,Bihar,Student,"Less than â‚¹1,000",odisha,Solo,4,December,Winter,2500,Flight,Excellent,3,3,3,Yes,Relaxing holiday
+19,Male,hyderabad,Student,"â‚¹1,000 â€“ â‚¹3,000",Nagpur,Friends trip,4,March,Winter,7000,Train,Average,4,4,3,Yes,Food-focused trip
+20,Male,bihar ,Student,"Less than â‚¹1,000",Nepal,Friends trip,2,December,Winter,30000,Bike,Good,3,3,4,Yes,Luxury travel
+17,Female,Andhra pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",delhi ,Family trip,3,September,Winter,4000,Train,Excellent,4,4,4,Yes,Cultural exploration
+20,Male,uttar pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali,Friends trip,2,November,Winter,10000,Car,Good,4,4,4,Yes,Cultural exploration
+22,Male,Jharkhand ,Student,"â‚¹1,000 â€“ â‚¹3,000",Delhi,Solo,7,November,Winter,2000,Bus,Average,3,3,4,Yes,Food-focused trip
+21,Female,Haryana,Student,"â‚¹1,000 â€“ â‚¹3,000",Haryana,Solo,5,August,Summer,2000,Bus,Good,4,4,5,Yes,Relaxing holiday
+19,Male,Hyderabad ,Student,"Above â‚¹15,000",Amritsar ,Friends trip,3,November,Winter,7000,Train,Average,3,3,3,Maybe,Cultural exploration
+21,Male,Andhra Pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",Ladhak,Friends trip,4,October,Spring,5000,Bike,Average,3,3,3,Yes,Relaxing holiday
+20,Female,Delhi ,Student,"â‚¹1,000 â€“ â‚¹3,000",Delhi ,Family trip,5,November,Winter,5000,Train,Good,5,5,4,Yes,Adventure trip
+20,Male,Warangal,Student,"â‚¹3,000 â€“ â‚¹7,000",Double Decker Living Root Bridge,Friends trip,3,December,Winter,15000,Bike,Very poor,1,1,1,No,Relaxing holiday
+21,Male,Visakhapatnam ,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Friends trip,3,February,Winter,"10,000",Car,Average,3,3,3,Yes,Relaxing holiday
+22,Female,West Bengal,Student,"Above â‚¹15,000",Manali,Friends trip,8,May,Summer,9000,Train,Excellent,4,4,5,Yes,Nature & sightseeing
+24,Female,Uttarakhand ,Student,"â‚¹1,000 â€“ â‚¹3,000",Loktak Lake,Solo,5,August,Spring,15000,Car,Excellent,3,3,1,No,Cultural exploration
+18,Male,Kerala,Student,"â‚¹3,000 â€“ â‚¹7,000",Delhi,Friends trip,3,October,Winter,7k,Bus,Good,2,2,3,Maybe,Relaxing holiday
+22,Female,West Bengal ,Student,"â‚¹3,000 â€“ â‚¹7,000",Puri,Friends trip,3,December,Winter,10000,Train,Excellent,5,5,5,Yes,Adventure trip
+21,Female,Kolkata ,Student,"â‚¹3,000 â€“ â‚¹7,000",Amritsar ,Family trip,4,May,Summer,2k,Train,Good,4,4,5,No,Cultural exploration
+20,Female,Andhra Pradesh ,Student,"Less than â‚¹1,000",Delhi ,Solo,1,October,Autumn,15000,Flight,Average,3,3,3,Yes,Relaxing holiday
+18,Male,Kerala,Student,"Less than â‚¹1,000",Dharamshala,Family trip,7,October,Winter,4000,Bus,Good,4,4,4,Yes,Adventure trip
+21,Male,Punjab,Student,"â‚¹1,000 â€“ â‚¹3,000",Manali,Friends trip,5,June,Winter,10000,Bus,Average,3,3,3,Maybe,Luxury travel
+20,Male,Jammu,Student,"Less than â‚¹1,000",Jammu,Solo,2,October,Winter,1000,Bus,Good,2,2,4,Yes,Relaxing holiday
+19,Female,Uttarakhand ,Student,"â‚¹3,000 â€“ â‚¹7,000",Rishikesh ,Friends trip,1,April,Spring,15000,Bike,Average,3,3,3,Yes,Adventure trip
+19,Male,Punjab,Student,"Less than â‚¹1,000",Varanasi,Solo,7,December,Winter,5000,Train,Average,4,4,4,Yes,Cultural exploration
+19,Male,Kerala,Student,"â‚¹3,000 â€“ â‚¹7,000",Amritsar,Friends trip,2,August,Summer,1500,Train,Average,3,3,2,Yes,Cultural exploration
+19,Male,Uttar pradesh ,Student,"Above â‚¹15,000",Double Decker Living Root Bridge,Friends trip,6,December,Winter,100,Bike,Very poor,3,3,3,No,Food-focused trip
+18,Male,Amritsar ,Student,"Above â‚¹15,000",Patna,Business trip,1,January,Rainy,6700,Flight,Excellent,1,1,3,No,Food-focused trip
+19,Male,Bihar ,Student,"â‚¹7,000 â€“ â‚¹15,000",Double Decker Living Root Bridge,Friends trip,4,November,Winter,1000,Bus,Average,4,4,4,No,Food-focused trip
+19,Male,Rajasthan ,Student,"Above â‚¹15,000",Himachal Pradesh ,Family trip,4,October,Spring,1000,Bus,Excellent,5,5,5,Yes,Nature & sightseeing
+17,Female,Rajasthan ,Student,"Above â‚¹15,000",Patna,Business trip,5,February,Rainy,7000,Flight,Excellent,1,1,5,No,Luxury travel
+27,Male,Uttrakhand ,Student,"Above â‚¹15,000",Uttrakhand ,Friends trip,1,May,Summer,5000,Bus,Good,5,5,5,Maybe,Nature & sightseeing
+18,Male,Kerala,Student,"Above â‚¹15,000",Dharamshala ,Friends trip,2,October,Winter,5000,Train,Average,2,2,4,Maybe,Relaxing holiday
+18,Female,meghalaya,Working Professional,"â‚¹1,000 â€“ â‚¹3,000",Loktak Lake,Friends trip,1,January,Winter,15000,Bus,Excellent,5,5,5,Yes,Luxury travel
+19,Female,Kerela,Student,"â‚¹1,000 â€“ â‚¹3,000",Double Decker Living Root Bridge,Family trip,5,April,Summer,2500,Flight,Average,1,1,3,No,Food-focused trip
+18,Male,Kerala,Student,"Less than â‚¹1,000",punjab,Solo,3,November,Rainy,3000,Bus,Average,3,3,3,Yes,Relaxing holiday
+18,Female,Delhi ,Student,"Above â‚¹15,000",Jalandar ,Friends trip,5,November,Winter,500,Bus,Good,5,5,3,Yes,Food-focused trip
+19,Female,Kerala,Student,"â‚¹1,000 â€“ â‚¹3,000",baga beach,Family trip,1,July,Summer,10000,Train,Poor,2,2,3,No,Cultural exploration
+19,Male,Saharanpur ,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar ,Friends trip,4,November,Winter,2500,Train,Good,4,4,4,Yes,Relaxing holiday
+20,Male,odisha,Student,"Less than â‚¹1,000",Agra,Friends trip,6,December,Winter,5000,Car,Average,3,3,5,Maybe,Adventure trip
+18,Female,Assam,Student,"â‚¹1,000 â€“ â‚¹3,000",Lucknow ,Family trip,10,October,Autumn,"30,000",Car,Good,4,4,5,Maybe,Adventure trip
+19,Male,Haryana ,Student,"â‚¹3,000 â€“ â‚¹7,000",Ludhiana,Friends trip,5,December,Winter,20000,Train,Excellent,5,5,3,Yes,Budget travel
+18,Female,Bihar,Student,"â‚¹1,000 â€“ â‚¹3,000",baga beach,Family trip,7,November,Winter,"50,000",Flight,Excellent,4,4,4,Yes,Relaxing holiday
+19,Female,uttar pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Puri,Family trip,5,August,Summer,5200,Train,Average,4,4,3,No,Food-focused trip
+20,Female,Bihar,Student,"Less than â‚¹1,000",Delhi,Family trip,2,October,Spring,"20,000",Flight,Good,5,5,4,Maybe,Nature & sightseeing
+18,Male,Hyderabad ,Student,"â‚¹3,000 â€“ â‚¹7,000",Jaipur ,Solo,4,April,Summer,10000,Train,Very poor,3,3,2,Yes,Food-focused trip
+20,Female,Jharkhand ,Student,"Less than â‚¹1,000",Punjab ,Solo,2,August,Spring,5000,Train,Average,1,1,4,Yes,Relaxing holiday
+19,Female,Haryana,Student,"Less than â‚¹1,000",Himachal,Friends trip,2,August,Rainy,10k,Bus,Good,5,5,5,Yes,Adventure trip
+18,Male,Andhrapradesh ,Student,"â‚¹7,000 â€“ â‚¹15,000",Amritsar ,Friends trip,4,October,Rainy,3000,Train,Poor,2,2,3,Maybe,Relaxing holiday
+20,Female,chandigarh,Student,"â‚¹7,000 â€“ â‚¹15,000",Manali,Friends trip,4,October,Winter,7k,Bus,Good,3,3,5,Yes,Adventure trip
+18,Male,Andhra Pradesh ,Student,"Less than â‚¹1,000",Amritsir ,Friends trip,7,October,Rainy,3000,Bus,Average,3,3,5,No,Budget travel
+18,Male,Andhra Pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",Amritsar ,Friends trip,3,October,Rainy,3500,Bus,Average,4,4,5,No,Relaxing holiday
+27,Male,goa,Student,"Less than â‚¹1,000",Double Decker Living Root Bridge,Solo,7,April,Winter,13000,Flight,Poor,2,2,4,No,Adventure trip
+17,Male,Andhra Pradesh ,Student,"Less than â‚¹1,000",Amristar,Friends trip,3,August,Rainy,5000,Train,Average,3,3,3,No,Cultural exploration
+23,Male,Uttrakhand ,Student,"Less than â‚¹1,000",Goa,Family trip,5,February,Spring,10k,Train,Average,4,4,5,Yes,Adventure trip
+18,Male,Andhra Pradesh ,Student,"â‚¹7,000 â€“ â‚¹15,000",Golden temple ,Friends trip,8,October,Rainy,3500,Train,Good,3,3,3,Yes,Relaxing holiday
+21,Male,KERALA,Student,"Less than â‚¹1,000",Nepal,Friends trip,2,October,Autumn,5000,Train,Average,4,4,4,Yes,Cultural exploration
+19,Female,Andhra Pradesh ,Student,"Above â‚¹15,000",Punjab,Family trip,1,August,Rainy,2000,Train,Good,3,3,3,Yes,Food-focused trip
+17,Male,Andhra pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",Golden temple,Friends trip,4,November,Summer,30000,Train,Average,3,3,3,Yes,Food-focused trip
+22,Female,Jaipur,Student,"Less than â‚¹1,000",Jaipur,Solo,1,October,Winter,5000,Train,Excellent,5,5,5,Yes,Relaxing holiday
+21,Female,Jaipur,Student,"Above â‚¹15,000",Sikar,Solo,3,December,Winter,5000,Flight,Good,3,3,5,Yes,Cultural exploration
+18,Female,Hyderabad ,Student,"â‚¹1,000 â€“ â‚¹3,000",Punjab ,Friends trip,5,June,Summer,5000,Train,Average,2,2,5,Maybe,Nature & sightseeing
+20,Female,andhra pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Punjab,Family trip,3,July,Summer,5000,Train,Average,2,2,3,No,Food-focused trip
+20,Female,arunachal pradesh,Student,"â‚¹1,000 â€“ â‚¹3,000",Amritsar ,Friends trip,4,September,Summer,1000,Bus,Good,1,1,5,Yes,Luxury travel
+18,Male,Andhra Pradesh ,Student,"â‚¹1,000 â€“ â‚¹3,000",Taj Mahal ,Family trip,2,August,Spring,1000,Train,Average,4,4,4,No,Nature & sightseeing
+20,Male,Bihar,Student,"Above â‚¹15,000",Goa,Family trip,3,August,Spring,10900,Bike,Average,3,3,3,No,Adventure trip
+19,Female,Rajasthan ,Student,"â‚¹7,000 â€“ â‚¹15,000",Shimla ,Family trip,1,October,Autumn,3k,Train,Good,5,5,5,Yes,Cultural exploration
+18,Male,Andhra pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",Vijayanagaram ,Solo,3,June,Winter,3000,Train,Average,3,3,3,Yes,Relaxing holiday
+20,Female,Kerala,Student,"â‚¹1,000 â€“ â‚¹3,000",red fort,Family trip,6,July,Autumn,3000,Car,Good,5,5,5,Yes,Relaxing holiday
+20,Male,Jammu,Student,"â‚¹1,000 â€“ â‚¹3,000",Mcleodganj,Friends trip,5,October,Winter,3000,Bus,Average,3,3,5,Yes,Relaxing holiday
+22,Male,manipur,Student,"â‚¹1,000 â€“ â‚¹3,000",Jothi chowk,Friends trip,1,November,Winter,10000,Bus,Average,4,4,4,Yes,Cultural exploration
+20,Female,Haryana ,Student,"â‚¹1,000 â€“ â‚¹3,000",Mecloadganj ,Friends trip,3,October,Autumn,3000,Bus,Average,4,4,4,Yes,Nature & sightseeing
+19,Female,UTTARAKHAND ,Student,"Less than â‚¹1,000",Punjab ,Friends trip,5,August,Summer,2k,Train,Excellent,4,4,5,Yes,Relaxing holiday
+18,Male,Delhi ,Student,"â‚¹1,000 â€“ â‚¹3,000",Punjab ,Friends trip,5,December,Winter,2500,Bus,Good,3,3,3,Yes,Food-focused trip
+20,Female,Kerala,Student,"â‚¹7,000 â€“ â‚¹15,000",Jyothi Chowk,Friends trip,4,November,Winter,500,Bike,Average,3,3,5,Yes,Food-focused trip
+21,Female,rajahmundry,Student,"â‚¹3,000 â€“ â‚¹7,000",manali,Friends trip,4,October,Winter,3000,Car,Excellent,4,4,4,Yes,Cultural exploration
+22,Male,andhra pradesh,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali ,Friends trip,9,April,Winter,5000,Car,Good,3,3,4,Yes,Food-focused trip
+21,Male,Andhra Pradesh ,Student,"â‚¹3,000 â€“ â‚¹7,000",Manali,Friends trip,4,November,Winter,7000,Car,Good,4,4,4,Yes,Adventure trip
+20,Male,Jammu,Student,"â‚¹7,000 â€“ â‚¹15,000",Manali,Friends trip,5,September,Autumn,7k,Bike,Average,3,3,3,Yes,Adventure trip
+21,Male,Andhra Pradesh ,Student,"â‚¹7,000 â€“ â‚¹15,000",Manali,Friends trip,13,October,Winter,20000,Car,Good,4,4,5,Yes,Adventure trip
+20,Male,Thiruvananthapuram ,Student,"â‚¹1,000 â€“ â‚¹3,000",Taj Mahal ,Solo,4,August,Autumn,"5,000",Flight,Excellent,5,5,5,Yes,Relaxing holiday
+22,Male,Chambal,Working Professional,"Less than â‚¹1,000",baga beach,Family trip,4,December,Winter,6500,Train,Average,4,4,4,Yes,Nature & sightseeing
+20,Male,jammu,Student,"â‚¹3,000 â€“ â‚¹7,000",shimla,Friends trip,4,October,Autumn,5000,Car,Average,3,3,3,Yes,Adventure trip
