@@ -6,6 +6,8 @@ This project solves that problem by using **machine learning and data analysis**
 
 ---
 
+<img width="959" height="495" alt="image" src="https://github.com/user-attachments/assets/3bba5cec-cfcd-4670-b330-a675b4d3001d" />
+
 ## 📌 Project Overview
 
 **Travel Trip Budget Prediction** is a machine learning project that estimates the **total cost of a trip** using historical travel data.  
@@ -14,6 +16,9 @@ Instead of relying on assumptions, the system uses patterns learned from data to
 The project also includes an **interactive web application** that allows users to input their travel details and instantly receive an estimated budget.
 
 ---
+
+<img width="960" height="499" alt="image" src="https://github.com/user-attachments/assets/f6204be9-8c7d-443d-a317-a36976e5a7b3" />
+
 
 ## 🎯 Objectives
 
