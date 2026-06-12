@@ -128,6 +128,17 @@ This makes the project practical and user-friendly.
 
 ---
 
+## 🔗 Access Links
+
+| Resource | Link |
+|----------|------|
+| 💻 GitHub Repository | https://github.com/Srujanaaddanki/TravelTripBudgetPrediction |
+| 📁 Dataset | https://docs.google.com/spreadsheets/d/1j_kxCGl5NBICDFKOrWRxWOOJ3uc6MGg5/edit?gid=159424351#gid=159424351 |
+| 💼 LinkedIn Post | https://www.linkedin.com/feed/update/urn:li:activity:7409296852480606208/ |
+
+---
+
+
 ## 👩‍💻 Author
 
 **Srujana Addanki**  
