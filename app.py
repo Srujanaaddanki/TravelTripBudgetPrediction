@@ -10,13 +10,13 @@ Project: TripAI — AI-Powered Travel Intelligence Platform
 """
 
 from __future__ import annotations
+from typing import Any
 
 import sys
 import os
 import difflib
 import joblib
 import pandas as pd
-import plotly.express as px
 import streamlit as st
 from streamlit_option_menu import option_menu
 
@@ -28,6 +28,8 @@ from src.data.maps_service import MapsService
 from src.intelligence.dataset_intelligence import DatasetIntelligence
 from src.services.travel_intelligence import TravelIntelligenceEngine
 import src.ui.ui_components as ui
+import src.ui.dashboard_components as db_ui
+import src.ui.charts as charts
 
 # ==========================================
 # 1. PAGE SETUP & DATA LOADING
@@ -108,7 +110,7 @@ selected = option_menu(
             "margin": "0 4px",
         },
         "nav-link-selected": {
-            "background": "linear-gradient(135deg, #3B82F6, #8B5CF6)",
+            "background": "linear-gradient(135deg, #2563EB, #7C3AED)",
             "color": "#FFFFFF",
             "font-weight": "700",
         },
@@ -126,6 +128,7 @@ if selected == "Plan Trip":
     trip_types = [x.title() for x in encoders['Trip_Type'].classes_]
     hotel_types = [x.title() for x in encoders['Hotel_Quality'].classes_]
 
+    # Responsive Left panel search & Right panel results column
     col_left, col_right = st.columns([1, 2], gap="large")
 
     with col_left:
@@ -156,14 +159,13 @@ if selected == "Plan Trip":
                     st.markdown(f'<div class="no-match-note">⚠️ Destination "{dest_city}" is not in our training model. Showing geographical route info only.</div>', unsafe_allow_html=True)
                     try:
                         route = maps_service.get_route_info(source_city, dest_city, travel_mode)
-                        ui.render_route_info(route)
+                        db_ui.render_route_details(route, {})
                     except Exception:
                         st.info("No geographical route data available.")
                 else:
                     if not is_exact:
                         st.markdown(f'<div class="match-note">📍 "{dest_city}" fuzzy matched to "{matched_dest.title()}" in our training logs.</div>', unsafe_allow_html=True)
 
-                    # Deriving season from month (Indian climate)
                     month_season_map = {
                         "january": "winter", "february": "winter", "march": "spring",
                         "april": "summer", "may": "summer", "june": "summer",
@@ -172,7 +174,7 @@ if selected == "Plan Trip":
                     }
                     season = month_season_map.get(month.lower(), "summer")
 
-                    # Build ML prediction dataframe
+                    # Build prediction DataFrame
                     input_df = pd.DataFrame([{
                         'Place': encoders['Place'].transform([matched_dest])[0],
                         'Month': encoders['Month'].transform([month.lower()])[0],
@@ -183,52 +185,58 @@ if selected == "Plan Trip":
                     }])
 
                     pred = float(model.predict(input_df)[0])
-                    
-                    # Store query search log in SQLite
                     tracker.track(source=source_city, destination=dest_city, month=month, duration_days=days,
                                   travel_mode=travel_mode, predicted_cost=pred, season=season,
                                   trip_type=trip_type, hotel_quality=hotel)
 
-                    # Generate intelligence report
+                    # Build intelligence report
                     report = travel_engine.generate_report(source_city, matched_dest, month, days,
                                                            travel_mode, trip_type, hotel, pred)
+                    route_info = maps_service.get_route_info(source_city, matched_dest, travel_mode)
+                    smart_cost = maps_service.get_smart_budget(pred, route_info["distance_km"], travel_mode, days)
 
-                    # 1. Budget Card
-                    ui.render_budget_hero(pred, f"{days} Days in {matched_dest.title()} via {travel_mode}",
-                                          report["confidence"]["score"], report["confidence"]["level"])
-                    
-                    st.markdown('<div style="height: 12px;"></div>', unsafe_allow_html=True)
-                    ui.render_budget_tiers(report["budget_tiers"])
-                    
+                    # RENDER DASHBOARD LAYOUT (Feature 4 Columns)
+                    dash_left, dash_right = st.columns(2)
+
+                    with dash_left:
+                        # 1. Travel Intelligence Card (Feature 6 & 7)
+                        db_ui.render_travel_intelligence_card(report["dataset_insights"], matched_dest)
+                        
+                        # 2. Historical Traveller Experience (Feature 7)
+                        db_ui.render_traveller_experience_widget(report["dataset_insights"])
+                        
+                        # 3. Weather Card (Feature 10)
+                        db_ui.render_weather_widget(report["weather"], report["intelligence"]["best_time"])
+
+                        # 4. Destination Overview Summary Card (Feature 8)
+                        db_ui.render_destination_summary_card(report["dataset_insights"], matched_dest)
+
+                    with dash_right:
+                        # 1. Estimated Budget Card (Feature 5)
+                        db_ui.render_premium_budget_card(pred, matched_dest, days, travel_mode, hotel,
+                                                         report["confidence"]["score"], report["confidence"]["level"], season)
+                        
+                        # 2. Budget Breakdown (Feature 13 Donut Chart)
+                        st.markdown('<div class="weather-widget">', unsafe_allow_html=True)
+                        st.plotly_chart(charts.render_budget_donut(pred, travel_mode), use_container_width=True)
+                        st.markdown('</div>', unsafe_allow_html=True)
+
+                        # 3. Route Info Card (Feature 11)
+                        db_ui.render_route_details(route_info, smart_cost)
+
+                        # 4. Travel Mode Comparison Cards (Feature 12)
+                        db_ui.render_mode_comparison_cards(report["mode_comparison"]["modes"], travel_mode)
+
+                        # 5. Interactive SVG Map (Feature 15)
+                        db_ui.render_interactive_map_card(route_info, report["weather"])
+
+                    # Bottom Full-width cards
                     st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
-                    col1, col2 = st.columns(2)
-                    with col1:
-                        ui.render_route_info(maps_service.get_route_info(source_city, matched_dest, travel_mode))
-                    with col2:
-                        ui.render_budget_analysis(maps_service.get_smart_budget(pred, maps_service.get_route_info(source_city, matched_dest, travel_mode)["distance_km"], travel_mode, days))
-
-                    st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
-                    col3, col4 = st.columns([3, 2])
-                    with col3:
-                        ui.render_donut_chart(pred, travel_mode)
-                    with col4:
-                        ui.render_gauge_chart(accuracy_score)
-
-                    st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
-                    ui.render_mode_comparison(report["mode_comparison"]["modes"], travel_mode)
-                    
-                    st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
-                    ui.render_traveller_experience(report["dataset_insights"], matched_dest)
-                    
-                    st.markdown('<div style="height: 12px;"></div>', unsafe_allow_html=True)
-                    ui.render_recommended_experiences(report["intelligence"])
-
-                    st.markdown('<div style="height: 12px;"></div>', unsafe_allow_html=True)
-                    ui.render_similar_travellers(report["similar_traveller"], trip_type, days, hotel)
-
+                    db_ui.render_recommendation_deck(report["intelligence"])
+                    db_ui.render_similar_travellers_card(report["similar_traveller"], trip_type)
                     ui.render_related_searches(report["related_searches"])
         else:
-            st.info("👈 Fill out the trip details on the left and click Predict to view your Travel Intelligence report.")
+            ui.render_landing_hero()
 
 # ==========================================
 # 4. PAGE 2: ANALYTICS DASHBOARD
@@ -246,7 +254,7 @@ elif selected == "Travel Insights Dashboard":
 
     total_searches = db_stats.get("total_searches", 0)
 
-    # 1. KPI Metric Grid
+    # 1. KPI Metric Grid (Feature 14 Redesign)
     k1, k2, k3, k4 = st.columns(4)
     k1.metric("🔍 Live Search Volume", f"{total_searches:,} inquiries")
     k2.metric("💾 Database Size", f"{ds_stats.get('total_trips', 0):,} records")
@@ -269,18 +277,13 @@ elif selected == "Travel Insights Dashboard":
 
     st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
 
-    # 2. Plotly Charts Grid (Feature 7)
-    # Row 1
+    # 2. Plotly Charts Grid (Feature 14 Redesigned Charts)
     c1, c2 = st.columns(2)
     with c1:
         st.write("### 🏆 Most Searched Destinations (Live Queries)")
         top_dest = db_stats.get("top_destinations", [])
         if top_dest:
-            fig = px.bar(pd.DataFrame(top_dest), x="destination", y="search_count",
-                         color="avg_predicted_cost", color_continuous_scale="Viridis",
-                         labels={"search_count": "Searches", "destination": "Place"})
-            fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color="#F1F5F9", height=280)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(charts.render_dashboard_destinations(top_dest), use_container_width=True)
         else:
             st.caption("No inquiries logged yet.")
 
@@ -290,23 +293,17 @@ elif selected == "Travel Insights Dashboard":
             df_scores = df.copy()
             df_scores["Overall_Score"] = (df_scores["Satisfaction_Rating"] + df_scores["Hotel_Rating"] + df_scores["Local_Trans_Rating"] + df_scores["Sightseeing_Rating"]) / 4.0
             highest_rated = df_scores.groupby("Place")["Overall_Score"].mean().reset_index().sort_values("Overall_Score", ascending=False).head(8)
-            fig = px.bar(highest_rated, x="Place", y="Overall_Score", color="Overall_Score", color_continuous_scale="Tealgrn",
-                         labels={"Overall_Score": "Rating (1-5)"})
-            fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color="#F1F5F9", height=280)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(charts.render_dashboard_ratings(highest_rated), use_container_width=True)
         else:
             st.caption("Dataset is empty.")
 
-    # Row 2
     c3, c4 = st.columns(2)
     with c3:
         st.write("### 📅 Most Visited Seasons")
         if not df.empty:
             season_counts = df["Season"].value_counts().reset_index()
             season_counts.columns = ["Season", "Count"]
-            fig = px.pie(season_counts, names="Season", values="Count", color_discrete_sequence=px.colors.sequential.Bluered)
-            fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", font_color="#F1F5F9", height=280)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(charts.render_dashboard_seasons(season_counts), use_container_width=True)
         else:
             st.caption("Dataset is empty.")
 
@@ -315,21 +312,15 @@ elif selected == "Travel Insights Dashboard":
         if not df.empty:
             exp_counts = df["Preferred_Experience"].value_counts().reset_index().head(8)
             exp_counts.columns = ["Experience", "Count"]
-            fig = px.bar(exp_counts, x="Count", y="Experience", orientation="h", color="Count", color_continuous_scale="Purples")
-            fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color="#F1F5F9", height=280)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(charts.render_dashboard_experiences(exp_counts), use_container_width=True)
         else:
             st.caption("Dataset is empty.")
 
-    # Row 3
     c5, c6 = st.columns(2)
     with c5:
         st.write("### 💰 Budget Distribution")
         if not df.empty:
-            fig = px.histogram(df, x="Cost", nbins=30, color_discrete_sequence=["#06B6D4"],
-                               labels={"Cost": "Trip Cost (₹)"})
-            fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color="#F1F5F9", height=280)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(charts.render_dashboard_budgets(df), use_container_width=True)
         else:
             st.caption("Dataset is empty.")
 
@@ -337,10 +328,7 @@ elif selected == "Travel Insights Dashboard":
         st.write("### ⏱️ Average Stay Duration per Destination (Days)")
         if not df.empty:
             duration_df = df.groupby("Place")["Days"].mean().reset_index().sort_values("Days", ascending=False).head(8)
-            fig = px.bar(duration_df, x="Place", y="Days", color="Days", color_continuous_scale="Plasma",
-                         labels={"Days": "Average Days"})
-            fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color="#F1F5F9", height=280)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(charts.render_dashboard_durations(duration_df), use_container_width=True)
         else:
             st.caption("Dataset is empty.")
 
