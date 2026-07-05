@@ -1,149 +1,158 @@
-# ✈️ Travel Trip Budget Prediction  
-### A Smart Machine Learning–Based Travel Cost Estimation System
+# TripAI — AI-Powered Travel Intelligence & Budget Planning Platform
 
-Travel planning often involves rough guesses and fixed per-day assumptions, which may not reflect real-world expenses.  
-This project solves that problem by using **machine learning and data analysis** to predict a realistic **total travel budget** based on multiple influencing factors.
+TripAI is a modern, production-ready Travel Intelligence Platform designed to predict, verify, and plan travel budgets across India. Combining machine learning (Random Forest), live API services, SQLite tracking, and structured dataset analysis, it delivers MakeMyTrip/Airbnb-quality features tailored for placements and technical portfolios.
 
 ---
 
-<img width="959" height="495" alt="image" src="https://github.com/user-attachments/assets/3bba5cec-cfcd-4670-b330-a675b4d3001d" />
+## 🏗️ Architecture & Component Design
 
-## 📌 Project Overview
+The platform is designed around a clean, decoupled MVC (Model-View-Controller) architecture split into focused, typed, single-responsibility files:
 
-**Travel Trip Budget Prediction** is a machine learning project that estimates the **total cost of a trip** using historical travel data.  
-Instead of relying on assumptions, the system uses patterns learned from data to provide accurate and practical budget predictions.
+```mermaid
+graph TB
+    subgraph "Presentation Layer (View)"
+        APP["app.py (App Router)"]
+        UI["ui_components.py (Views)"]
+        DASH["dashboard_components.py (Cards)"]
+        CHARTS["charts.py (Plotly Viz)"]
+        CSS["styles.css (SaaS Theme)"]
+    end
 
-The project also includes an **interactive web application** that allows users to input their travel details and instantly receive an estimated budget.
+    subgraph "Service Orchestration (Controller)"
+        TIE["travel_intelligence.py (Orchestrator)"]
+        WEATHER["weather_service.py (Open-Meteo)"]
+        BUDGET["budget_engine.py (Tiers & Comparisons)"]
+        CONF["confidence_engine.py (Multi-factor)"]
+        REC["recommendation_engine.py (Checks & co-searches)"]
+        REP["report_exporter.py (HTML Exporter)"]
+    end
 
----
+    subgraph "Intelligence & Data Layer (Model)"
+        RF["Random Forest Model (final_model.pkl)"]
+        DS_INTEL["dataset_intelligence.py (CSV Aggregator)"]
+        DB["TripDatabase (database.py / SQLite)"]
+        MAPS["MapsService (maps_service.py / Cache)"]
+        KNOWLEDGE["destination_knowledge.py (Knowledge Base)"]
+    end
 
-<img width="960" height="499" alt="image" src="https://github.com/user-attachments/assets/f6204be9-8c7d-443d-a317-a36976e5a7b3" />
+    APP --> UI & DASH & CHARTS & CSS
+    APP --> TIE
+    TIE --> WEATHER & BUDGET & CONF & REC
+    REC --> KNOWLEDGE & DB
+    BUDGET --> MAPS
+    TIE --> DS_INTEL
+    DS_INTEL --> RF
+```
 
-
-## 🎯 Objectives
-
-- To predict total travel budget using machine learning techniques  
-- To analyze historical travel data and identify cost-influencing factors  
-- To compare multiple regression models and select the best-performing one  
-- To deploy the trained model as a user-friendly web application  
-- To assist users in planning trips with realistic budget estimates  
-
----
-
-## 📂 Dataset Description
-
-The dataset contains historical travel information with the following key features:
-
-- **Source & Destination**
-- **Season**
-- **Month**
-- **Trip Duration (Days)**
-- **Trip Type** (Solo, Family, Friends, etc.)
-- **Hotel Quality**
-- **Target Variable:** Total Trip Cost (₹)
-
----
-
-## 🧹 Data Cleaning & Preprocessing
-
-- Removed missing and inconsistent values  
-- Standardized categorical features  
-- Handled outliers to avoid skewed predictions  
-- Applied label encoding for categorical variables  
-- Prepared data for model training  
-
----
-
-## 📊 Exploratory Data Analysis (EDA)
-
-EDA was performed to understand cost patterns and relationships:
-- Distribution of total trip cost  
-- Season-wise impact on travel budget  
-- Hotel quality vs cost comparison  
-- Trip duration vs total cost relationship  
-- Monthly average travel cost analysis  
-
-These insights helped in feature selection and model choice.
-
----
-
-## 🤖 Machine Learning Models Used
-
-The following regression models were trained and compared:
-
-1. **Linear Regression** – Baseline model  
-2. **Decision Tree Regressor** – Captures non-linear patterns  
-3. **Random Forest Regressor** – Ensemble model with high stability  
-
-Models were evaluated using the **R² score** metric.
-
----
-
-## 🏆 Final Model Selection
-
-**Random Forest Regressor** was selected as the final model because:
-- It captures complex, non-linear relationships  
-- Reduces overfitting using ensemble learning  
-- Produces stable and reliable predictions  
-- Performed best compared to other models  
+### Decoupled Folder Structure
+```
+srujan/
+├── app.py                     # Entry point, router, and grid columns (under 280 lines)
+├── requirements.txt           # Declared dependencies
+├── traveltripdata.csv         # Traveller survey dataset (920+ records)
+├── final_model.pkl            # Random Forest Regressor model
+├── encoders.pkl               # Label Encoders
+├── model_accuracy.pkl         # Trained model accuracy
+├── test_search_tracking.py    # Integration test suite
+├── src/
+│   ├── services/
+│   │   ├── travel_intelligence.py  # Orchestrator coordinating all services
+│   │   ├── weather_service.py      # Open-Meteo current forecast integration
+│   │   ├── budget_engine.py        # Scales budget decision tiers (Min -> Luxury)
+│   │   ├── confidence_engine.py    # Analyzes prediction reliability metrics
+│   │   ├── recommendation_engine.py# Custom activity styles & co-searches
+│   │   └── report_exporter.py      # Print-ready HTML travel itinerary exporter
+│   ├── intelligence/
+│   │   ├── dataset_intelligence.py # Aggregates ratings & traveller survey stats
+│   │   ├── destination_knowledge.py# Curated data helper functions
+│   │   └── destinations.json       # Attractions, foods, hidden gems, & safety
+│   ├── data/
+│   │   ├── database.py             # SQLite TripDatabase connection layer
+│   │   ├── maps_service.py         # Google Maps distance, offline, & 3-tier cache
+│   │   └── search_tracker.py       # Facade interface for logging searches
+│   └── ui/
+│       ├── ui_components.py        # Landing page, header, and sidebar widgets
+│       ├── dashboard_components.py # Comparison cards, weather metrics, SVG map
+│       └── styles.css              # Custom dark SaaS theme stylesheet
+```
 
 ---
 
-## 🌐 Web Application
+## 🌟 Premium Features
 
-The final model is deployed using **Streamlit**, allowing users to:
-- Select destination, season, month, trip type, hotel quality  
-- Adjust trip duration using a slider  
-- Instantly view the estimated total travel budget  
+### 1. Smart Budget Verification (Feature 1)
+Integrates three distinct source estimators to verify prediction:
+- ML Model base cost prediction.
+- Google Maps distance-based transit cost projection.
+- Historical dataset averages of similar trips.
+- Calculates recommended budget adjustments and confidence percentages.
 
-This makes the project practical and user-friendly.
+### 2. Budget Breakdown Engine (Feature 2 & 3)
+Calculates structured cost breakdowns tailored for travellers:
+- Stay/Hotel (35%), Transit/Travel (20%), Food (15%), Local Transport (10%), Activities (10%), Shopping (5%), and Emergency Reserve (5%).
+- Categorises traveller profiles (Budget, Value, Comfort, Luxury) with color-matched indicator badges.
 
----
+### 3. Historical Traveller Experience (Feature 4 & 6)
+Aggregates actual survey data for selected destinations. Displays average stay scores, transit ratings, sightseeing quality, and revisit percentages based on `Based on XX previous travellers`.
 
-## 🚀 Future Scope
+### 4. Smart Packing & Pre-Travel Checklists (Feature 5 & 6)
+Generates custom packing guides dynamically based on season and weather, alongside interactive pre-travel document checklist checkboxes.
 
-- Include distance-based travel cost estimation  
-- Integrate real-time transport and hotel pricing APIs  
-- Improve location detection accuracy  
-- Expand dataset with real-world booking data  
+### 5. Curated Activity Highlight recommendations (Feature 4 & 9)
+Extracts preferred experience patterns (e.g. Adventure, Food, Nature) and generates specific local suggestions mapped to the destination knowledge base.
 
----
+### 6. Interactive SVG Path Map Preview (Feature 15)
+Draws a premium inline SVG route map showing coordinates, city nodes, travel path curves, distance metrics, and current weather alerts.
 
-## 🧠 Key Learnings
+### 7. Travel Insights Dashboard (Feature 7 & 14)
+Upgraded search analytics dashboard with interactive Plotly charts showing live destination popularity, highest rated locations, visited seasons, popular experiences, budget distributions, and average stay durations.
 
-- Practical application of data preprocessing and EDA  
-- Understanding model comparison and selection  
-- Importance of visualization in decision-making  
-- Deploying machine learning models as real-world applications  
-
----
-
-## 🛠️ Technologies Used
-
-- Python  
-- Pandas, NumPy  
-- Matplotlib, Seaborn  
-- Scikit-learn  
-- Streamlit  
+### 8. Premium Export Report (Feature 10)
+Compile all itinerary stats, weather advisories, packing checklists, and budget allocations into a beautifully styled print-ready HTML file download.
 
 ---
 
-## 🔗 Access Links
+## 🛠️ Tech Stack & Dependencies
 
-| Resource | Link |
-|----------|------|
-| 💻 GitHub Repository | https://github.com/Srujanaaddanki/TravelTripBudgetPrediction |
-| 📁 Dataset | https://docs.google.com/spreadsheets/d/1j_kxCGl5NBICDFKOrWRxWOOJ3uc6MGg5/edit?gid=159424351#gid=159424351 |
-| 💼 LinkedIn Post | https://www.linkedin.com/feed/update/urn:li:activity:7409296852480606208/ |
-
----
-
-
-## 👩‍💻 Author
-
-**Srujana Addanki**  
-B.Tech (CSE) | Machine Learning & Data Analytics Enthusiast  
+- **Frontend/Presentation**: Streamlit, HTML5, Custom CSS, Plotly Express/Graph Objects
+- **Backend/Service Layer**: Python (3.9+), Open-Meteo API
+- **Machine Learning**: Scikit-Learn (Random Forest Regressor), Joblib
+- **Data Persistence**: SQLite3 (WAL mode), Pandas, NumPy
 
 ---
 
-⭐ *If you like this project, feel free to star the repository!*
+## ⚡ Quick Start & Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Srujanaaddanki/TravelTripBudgetPrediction.git
+   cd TravelTripBudgetPrediction
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Verify the test suite**:
+   ```bash
+   python test_search_tracking.py
+   ```
+
+4. **Launch the application**:
+   ```bash
+   streamlit run app.py
+   ```
+
+---
+
+## 🎓 Interview & Placement Q&A
+
+### Q1: How does the model make predictions?
+**A:** We use a **Random Forest Regressor** model trained on a curated survey dataset. Categorical inputs (Destination, Season, Month, Trip Type, Stay Grade) are converted to numerical formats via **Label Encoders**. The model outputs the base trip cost, which we then scale and adjust using travel distances and stay multipliers.
+
+### Q2: How does the SQLite caching layer work?
+**A:** We utilize a **3-tier caching strategy** inside `MapsService`. When a route search occurs, we check the SQLite `distance_cache` table first. If a cache miss occurs, we fall back to a local offline routes lookup. If that also misses, we query the live Google Maps API (if the API key is configured) and cache the result for 30 days to optimize network overhead and eliminate latency.
+
+### Q3: Why did you separate business logic from the UI?
+**A:** Separating concerns (MVC pattern) makes the platform robust, easily testable, and maintainable. By moving Plotly visualizations to `charts.py`, card layouts to `dashboard_components.py`, and calculations to specific services, the main entry point `app.py` is under 280 lines and contains zero HTML/CSS clutter.

@@ -3,7 +3,7 @@
 Module: TripAI Main Application
 Purpose: Entry point for the TripAI platform. Handles model
          loading, page navigation, sidebar inputs, and triggers
-         the Travel Intelligence Engine and UI components.
+         the Travel Intelligence Engine, UI components, and PDF/HTML report exports.
 Author: Srujana
 Project: TripAI — AI-Powered Travel Intelligence Platform
 ========================================================
@@ -27,6 +27,7 @@ from src.data.search_tracker import SearchTracker
 from src.data.maps_service import MapsService
 from src.intelligence.dataset_intelligence import DatasetIntelligence
 from src.services.travel_intelligence import TravelIntelligenceEngine
+from src.services.report_exporter import generate_html_report
 import src.ui.ui_components as ui
 import src.ui.dashboard_components as db_ui
 import src.ui.charts as charts
@@ -128,7 +129,6 @@ if selected == "Plan Trip":
     trip_types = [x.title() for x in encoders['Trip_Type'].classes_]
     hotel_types = [x.title() for x in encoders['Hotel_Quality'].classes_]
 
-    # Responsive Left panel search & Right panel results column
     col_left, col_right = st.columns([1, 2], gap="large")
 
     with col_left:
@@ -174,7 +174,7 @@ if selected == "Plan Trip":
                     }
                     season = month_season_map.get(month.lower(), "summer")
 
-                    # Build prediction DataFrame
+                    # Predict
                     input_df = pd.DataFrame([{
                         'Place': encoders['Place'].transform([matched_dest])[0],
                         'Month': encoders['Month'].transform([month.lower()])[0],
@@ -195,46 +195,52 @@ if selected == "Plan Trip":
                     route_info = maps_service.get_route_info(source_city, matched_dest, travel_mode)
                     smart_cost = maps_service.get_smart_budget(pred, route_info["distance_km"], travel_mode, days)
 
-                    # RENDER DASHBOARD LAYOUT (Feature 4 Columns)
                     dash_left, dash_right = st.columns(2)
 
                     with dash_left:
-                        # 1. Travel Intelligence Card (Feature 6 & 7)
                         db_ui.render_travel_intelligence_card(report["dataset_insights"], matched_dest)
-                        
-                        # 2. Historical Traveller Experience (Feature 7)
                         db_ui.render_traveller_experience_widget(report["dataset_insights"])
-                        
-                        # 3. Weather Card (Feature 10)
                         db_ui.render_weather_widget(report["weather"], report["intelligence"]["best_time"])
-
-                        # 4. Destination Overview Summary Card (Feature 8)
                         db_ui.render_destination_summary_card(report["dataset_insights"], matched_dest)
 
                     with dash_right:
-                        # 1. Estimated Budget Card (Feature 5)
                         db_ui.render_premium_budget_card(pred, matched_dest, days, travel_mode, hotel,
                                                          report["confidence"]["score"], report["confidence"]["level"], season)
                         
-                        # 2. Budget Breakdown (Feature 13 Donut Chart)
+                        db_ui.render_budget_verification_card(pred, report["dataset_insights"]["average_budget"],
+                                                              smart_cost["travel_cost_estimate"], smart_cost["smart_estimate"],
+                                                              report["confidence"]["score"])
+
+                        db_ui.render_budget_breakdown_table(pred)
+                        
                         st.markdown('<div class="weather-widget">', unsafe_allow_html=True)
                         st.plotly_chart(charts.render_budget_donut(pred, travel_mode), use_container_width=True)
                         st.markdown('</div>', unsafe_allow_html=True)
 
-                        # 3. Route Info Card (Feature 11)
                         db_ui.render_route_details(route_info, smart_cost)
-
-                        # 4. Travel Mode Comparison Cards (Feature 12)
                         db_ui.render_mode_comparison_cards(report["mode_comparison"]["modes"], travel_mode)
-
-                        # 5. Interactive SVG Map (Feature 15)
                         db_ui.render_interactive_map_card(route_info, report["weather"])
 
-                    # Bottom Full-width cards
+                    st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+                    db_ui.render_checklists_widget(report["intelligence"]["packing_tips"])
+                    
+                    st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+                    db_ui.render_saving_tips_widget(report["intelligence"]["money_saving_tips"])
+                    
                     st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
                     db_ui.render_recommendation_deck(report["intelligence"])
                     db_ui.render_similar_travellers_card(report["similar_traveller"], trip_type)
                     ui.render_related_searches(report["related_searches"])
+
+                    # Feature 10: HTML export trip report download button
+                    report_html = generate_html_report(source_city, matched_dest, month, days, travel_mode, hotel, pred, report)
+                    st.download_button(
+                        label="📥 Export Premium Trip Report (Print-Ready HTML)",
+                        data=report_html,
+                        file_name=f"tripai_itinerary_{matched_dest.lower()}.html",
+                        mime="text/html",
+                        help="Download a styled, print-friendly report of your trip itinerary."
+                    )
         else:
             ui.render_landing_hero()
 
@@ -254,7 +260,7 @@ elif selected == "Travel Insights Dashboard":
 
     total_searches = db_stats.get("total_searches", 0)
 
-    # 1. KPI Metric Grid (Feature 14 Redesign)
+    # 1. KPI Metric Grid
     k1, k2, k3, k4 = st.columns(4)
     k1.metric("🔍 Live Search Volume", f"{total_searches:,} inquiries")
     k2.metric("💾 Database Size", f"{ds_stats.get('total_trips', 0):,} records")
@@ -262,8 +268,7 @@ elif selected == "Travel Insights Dashboard":
     k4.metric("💰 Average Budget", f"₹{ds_stats.get('avg_budget', 0.0):,.2f}")
 
     df = dataset_intel._df
-    most_expensive = "N/A"
-    cheapest = "N/A"
+    most_expensive, cheapest = "N/A", "N/A"
     if not df.empty:
         grouped = df.groupby("Place")["Cost"].mean()
         most_expensive = f"{grouped.idxmax()} (₹{grouped.max():,.0f})"
@@ -277,7 +282,7 @@ elif selected == "Travel Insights Dashboard":
 
     st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
 
-    # 2. Plotly Charts Grid (Feature 14 Redesigned Charts)
+    # 2. Charts Grid
     c1, c2 = st.columns(2)
     with c1:
         st.write("### 🏆 Most Searched Destinations (Live Queries)")
