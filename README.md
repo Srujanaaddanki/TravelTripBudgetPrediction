@@ -202,14 +202,6 @@ Detailed deployment steps are available inside [docs/DEPLOYMENT_GUIDE.md](file:/
 
 ---
 
-## 🎓 13. Interview Q&A Summary
-Detailed questions are available inside [docs/INTERVIEW_GUIDE.md](file:///c:/Users/hp/Desktop/srujan/docs/INTERVIEW_GUIDE.md):
-- *Q: Why choose Random Forest Regressor over Linear Regression?*
-- *Q: How does the 3-tier cache protect Google API quotas?*
-- *Q: How is the confidence score calculated?*
-
----
-
 ## 📄 14. License & Acknowledgements
 - **License**: MIT License terms (`LICENSE` file).
 - **Acknowledgements**: Survey traveller dataset contributed by Srujana.
