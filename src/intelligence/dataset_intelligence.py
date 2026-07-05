@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 ========================================================
 Module: Dataset Intelligence
@@ -52,12 +53,12 @@ class DatasetIntelligence:
         """
         if csv_path is None:
             base_dir = os.path.dirname(os.path.abspath(__file__))
-            csv_path = os.path.join(base_dir, "..", "..", "traveltripdata.csv")
+            csv_path = os.path.join(base_dir, "..", "..", "data", "traveltripdata.csv")
 
         self._df: pd.DataFrame = self._load_and_clean(csv_path)
 
     def _clean_cost(self, value: Any) -> float:
-        """Parse clean numeric cost from strings containing k, commas or ₹."""
+        """Parse clean numeric cost from strings containing k, commas or rupee."""
         if isinstance(value, str):
             val_str = value.lower().replace(",", "").replace("₹", "").replace("approx", "").strip()
             if "k" in val_str:

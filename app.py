@@ -58,13 +58,16 @@ MONTHS_ORDERED = [
 
 @st.cache_resource
 def load_ml_resources() -> tuple[Any, Any, float]:
-    """Load model, label encoders, and final accuracy score from disk."""
-    if not os.path.exists("final_model.pkl") or not os.path.exists("encoders.pkl"):
+    model_path = os.path.join("models", "final_model.pkl")
+    encoders_path = os.path.join("models", "encoders.pkl")
+    accuracy_path = os.path.join("models", "model_accuracy.pkl")
+    
+    if not os.path.exists(model_path) or not os.path.exists(encoders_path):
         return None, None, 0.0
     try:
-        model = joblib.load("final_model.pkl")
-        encoders = joblib.load("encoders.pkl")
-        acc = joblib.load("model_accuracy.pkl") if os.path.exists("model_accuracy.pkl") else 0.95
+        model = joblib.load(model_path)
+        encoders = joblib.load(encoders_path)
+        acc = joblib.load(accuracy_path) if os.path.exists(accuracy_path) else 0.95
         return model, encoders, acc
     except Exception as e:
         st.error(f"Error loading model files: {e}")

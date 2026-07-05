@@ -49,11 +49,20 @@ graph TB
 srujan/
 ├── app.py                     # Entry point, router, and grid columns (under 280 lines)
 ├── requirements.txt           # Declared dependencies
-├── traveltripdata.csv         # Traveller survey dataset (920+ records)
-├── final_model.pkl            # Random Forest Regressor model
-├── encoders.pkl               # Label Encoders
-├── model_accuracy.pkl         # Trained model accuracy
-├── test_search_tracking.py    # Integration test suite
+├── runtime.txt                # Python runtime for deployment
+├── LICENSE                    # MIT terms
+├── models/
+│   ├── final_model.pkl        # Random Forest Regressor model
+│   ├── encoders.pkl           # Label Encoders
+│   └── model_accuracy.pkl     # Trained model accuracy
+├── data/
+│   └── traveltripdata.csv     # Traveller survey dataset (920+ records)
+├── tests/
+│   └── test_search_tracking.py# Integration test suite
+├── docs/
+│   ├── INTERVIEW_GUIDE.md     # Technical and HR preparation guide
+│   └── DEPLOYMENT_GUIDE.md    # Streamlit/EC2/Docker/Render guide
+├── exports/                   # Downloaded travel reports
 ├── src/
 │   ├── services/
 │   │   ├── travel_intelligence.py  # Orchestrator coordinating all services
