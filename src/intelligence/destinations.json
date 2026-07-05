@@ -1,0 +1,2290 @@
+{
+    "goa": {
+        "full_name": "Goa",
+        "state": "Goa",
+        "type": "Beach",
+        "places_to_visit": [
+            "Basilica of Bom Jesus",
+            "Fort Aguada",
+            "Dudhsagar Falls",
+            "Anjuna Beach",
+            "Chapora Fort"
+        ],
+        "local_foods": [
+            "Fish Curry Rice",
+            "Bebinca",
+            "Pork Vindaloo",
+            "Xacuti",
+            "Feni Cocktails"
+        ],
+        "hidden_gems": [
+            "Butterfly Beach \u2014 accessible only by boat from Palolem",
+            "Divar Island \u2014 quiet Goan village life with colonial churches",
+            "Tambdi Surla Temple \u2014 12th-century Kadamba temple inside a forest"
+        ],
+        "best_months": [
+            "November",
+            "December",
+            "January",
+            "February"
+        ],
+        "hotel_areas": [
+            "Calangute",
+            "Baga",
+            "Panjim",
+            "Candolim",
+            "Palolem"
+        ],
+        "safety_tips": [
+            "Avoid swimming at unguarded beaches during monsoon",
+            "Use licensed taxi services or rent scooters from reputed shops",
+            "Keep valuables locked; petty theft can occur at crowded beaches"
+        ],
+        "transportation": "Rent a scooter or activa (\u20b9300-400/day). Pre-paid taxis available at the airport. Local buses connect major towns.",
+        "crowd_by_month": {
+            "January": "High",
+            "February": "High",
+            "March": "Moderate",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "andaman": {
+        "full_name": "Andaman & Nicobar Islands",
+        "state": "Andaman & Nicobar",
+        "type": "Beach",
+        "places_to_visit": [
+            "Radhanagar Beach",
+            "Cellular Jail",
+            "Havelock Island",
+            "Ross Island",
+            "Baratang Island"
+        ],
+        "local_foods": [
+            "Grilled Lobster",
+            "Fish Curry",
+            "Coconut Prawn Curry",
+            "Banana Chips",
+            "Macher Jhol"
+        ],
+        "hidden_gems": [
+            "Limestone Caves at Baratang \u2014 stunning natural formations",
+            "Long Island \u2014 secluded beach with zero commercialisation",
+            "Chidiya Tapu \u2014 sunset point with a biological park"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March",
+            "April",
+            "May"
+        ],
+        "hotel_areas": [
+            "Port Blair",
+            "Havelock Island",
+            "Neil Island"
+        ],
+        "safety_tips": [
+            "Carry cash; ATMs are scarce outside Port Blair",
+            "Book ferries in advance during peak season",
+            "Respect restricted tribal areas \u2014 entry is prohibited by law"
+        ],
+        "transportation": "Inter-island government ferries and private speedboats. Auto-rickshaws and rented scooters within islands.",
+        "crowd_by_month": {
+            "January": "High",
+            "February": "High",
+            "March": "Moderate",
+            "April": "Moderate",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "pondicherry": {
+        "full_name": "Pondicherry (Puducherry)",
+        "state": "Puducherry",
+        "type": "Beach",
+        "places_to_visit": [
+            "Promenade Beach",
+            "Auroville",
+            "Paradise Beach",
+            "French Quarter",
+            "Basilica of the Sacred Heart of Jesus"
+        ],
+        "local_foods": [
+            "French Crepes",
+            "Pondy Fish Curry",
+            "Kothu Parotta",
+            "Filter Coffee",
+            "Chettinad Chicken"
+        ],
+        "hidden_gems": [
+            "Serenity Beach \u2014 quieter surf-friendly alternative to Promenade",
+            "Ousteri Lake \u2014 birdwatching wetland on the city outskirts",
+            "Botanical Garden \u2014 150-year-old garden with rare plant species"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "White Town",
+            "Auroville",
+            "Promenade area"
+        ],
+        "safety_tips": [
+            "Rent cycles for the French Quarter \u2014 traffic is minimal",
+            "Check sea conditions before swimming; currents can be strong",
+            "Carry sunscreen and a hat for beach walks year-round"
+        ],
+        "transportation": "Rent bicycles or scooters. Auto-rickshaws with meters. Local buses connect Auroville to the town centre.",
+        "crowd_by_month": {
+            "January": "High",
+            "February": "Moderate",
+            "March": "Moderate",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "manali": {
+        "full_name": "Manali",
+        "state": "Himachal Pradesh",
+        "type": "Hill Station",
+        "places_to_visit": [
+            "Rohtang Pass",
+            "Solang Valley",
+            "Hadimba Temple",
+            "Old Manali",
+            "Jogini Waterfall"
+        ],
+        "local_foods": [
+            "Siddu",
+            "Trout Fish",
+            "Dham",
+            "Babru",
+            "Aktori"
+        ],
+        "hidden_gems": [
+            "Hamta Pass trek \u2014 accessible 4-day trek with stunning views",
+            "Sethan Village \u2014 offbeat camping spot above Manali",
+            "Jana Waterfall \u2014 lesser-visited cascade near Naggar"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June"
+        ],
+        "hotel_areas": [
+            "Mall Road",
+            "Old Manali",
+            "Vashisht",
+            "Solang Nala"
+        ],
+        "safety_tips": [
+            "Check road conditions before heading to Rohtang; roads may close",
+            "Carry layered clothing \u2014 temperatures can drop rapidly",
+            "Hire certified guides for high-altitude treks"
+        ],
+        "transportation": "Local buses and shared taxis. Union taxis for sightseeing. Rent bikes from Mall Road for nearby areas.",
+        "crowd_by_month": {
+            "January": "Moderate",
+            "February": "Moderate",
+            "March": "Low",
+            "April": "Moderate",
+            "May": "High",
+            "June": "High",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Low",
+            "December": "High"
+        }
+    },
+    "shimla": {
+        "full_name": "Shimla",
+        "state": "Himachal Pradesh",
+        "type": "Hill Station",
+        "places_to_visit": [
+            "The Ridge",
+            "Mall Road",
+            "Jakhoo Temple",
+            "Christ Church",
+            "Kufri"
+        ],
+        "local_foods": [
+            "Chana Madra",
+            "Siddu",
+            "Dham Thali",
+            "Babru",
+            "Himachali Rajma"
+        ],
+        "hidden_gems": [
+            "Chadwick Falls \u2014 hidden waterfall inside a pine forest",
+            "Tara Devi Temple \u2014 hilltop temple with panoramic views",
+            "Mashobra \u2014 apple orchards and quiet homestays nearby"
+        ],
+        "best_months": [
+            "March",
+            "April",
+            "May",
+            "June",
+            "October",
+            "November",
+            "December"
+        ],
+        "hotel_areas": [
+            "Mall Road",
+            "Kufri",
+            "Lakkar Bazaar",
+            "Mashobra"
+        ],
+        "safety_tips": [
+            "Book hotels in advance during summer rush (May\u2013June)",
+            "Wear sturdy shoes \u2014 most walks involve steep inclines",
+            "Avoid driving at night on mountain roads"
+        ],
+        "transportation": "Walk the Mall Road and Ridge. Hire taxis for Kufri and Mashobra. Toy train from Kalka is a heritage experience.",
+        "crowd_by_month": {
+            "January": "Low",
+            "February": "Low",
+            "March": "Moderate",
+            "April": "Moderate",
+            "May": "High",
+            "June": "High",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "darjeeling": {
+        "full_name": "Darjeeling",
+        "state": "West Bengal",
+        "type": "Hill Station",
+        "places_to_visit": [
+            "Tiger Hill Sunrise",
+            "Batasia Loop",
+            "Peace Pagoda",
+            "Himalayan Mountaineering Institute",
+            "Darjeeling Ropeway"
+        ],
+        "local_foods": [
+            "Momos",
+            "Thukpa",
+            "Darjeeling Tea",
+            "Sel Roti",
+            "Churpee"
+        ],
+        "hidden_gems": [
+            "Lamahatta \u2014 eco-park with rhododendron and pine forests",
+            "Chatakpur \u2014 tiny hamlet with Kanchenjunga views and homestays",
+            "Rock Garden \u2014 terraced garden built along a mountain stream"
+        ],
+        "best_months": [
+            "March",
+            "April",
+            "May",
+            "October",
+            "November"
+        ],
+        "hotel_areas": [
+            "Mall Road",
+            "Chowrasta",
+            "Ghoom",
+            "Kurseong"
+        ],
+        "safety_tips": [
+            "Carry rain gear even in dry months \u2014 hill weather is unpredictable",
+            "Acclimatise before strenuous hikes if coming from the plains",
+            "Book toy train tickets early \u2014 they sell out quickly"
+        ],
+        "transportation": "Shared jeeps run to most points. The Darjeeling Himalayan Railway (toy train) is a UNESCO heritage ride. Walk around Mall Road.",
+        "crowd_by_month": {
+            "January": "Low",
+            "February": "Low",
+            "March": "Moderate",
+            "April": "High",
+            "May": "High",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "High",
+            "November": "Moderate",
+            "December": "Moderate"
+        }
+    },
+    "ooty": {
+        "full_name": "Ooty (Udhagamandalam)",
+        "state": "Tamil Nadu",
+        "type": "Hill Station",
+        "places_to_visit": [
+            "Ooty Botanical Gardens",
+            "Doddabetta Peak",
+            "Ooty Lake",
+            "Nilgiri Mountain Railway",
+            "Rose Garden"
+        ],
+        "local_foods": [
+            "Ooty Varkey",
+            "Homemade Chocolates",
+            "Lemon Squeezed Tea",
+            "Mushroom Biryani",
+            "Nilgiri Tea"
+        ],
+        "hidden_gems": [
+            "Emerald Lake \u2014 serene reservoir surrounded by tea estates",
+            "Kotagiri \u2014 quaint hill town with British-era bungalows",
+            "Catherine Falls \u2014 twin waterfall near Kotagiri"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "March",
+            "April",
+            "May"
+        ],
+        "hotel_areas": [
+            "Upper Bazaar",
+            "Charring Cross",
+            "Fern Hill",
+            "Elk Hill"
+        ],
+        "safety_tips": [
+            "Roads are winding \u2014 avoid self-driving at night if unfamiliar",
+            "Carry warm clothing year-round; evenings can get chilly",
+            "Beware of leeches on forest trails during monsoon"
+        ],
+        "transportation": "Nilgiri Mountain Railway from Mettupalayam. Auto-rickshaws and taxis within town. Buses to nearby attractions.",
+        "crowd_by_month": {
+            "January": "Moderate",
+            "February": "Low",
+            "March": "Moderate",
+            "April": "High",
+            "May": "High",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "munnar": {
+        "full_name": "Munnar",
+        "state": "Kerala",
+        "type": "Hill Station",
+        "places_to_visit": [
+            "Eravikulam National Park",
+            "Top Station",
+            "Mattupetty Dam",
+            "Tea Museum",
+            "Attukal Waterfalls"
+        ],
+        "local_foods": [
+            "Puttu and Kadala Curry",
+            "Kerala Parotta",
+            "Appam with Stew",
+            "Banana Chips",
+            "Fish Moilee"
+        ],
+        "hidden_gems": [
+            "Kolukkumalai Tea Estate \u2014 world's highest organic tea plantation",
+            "Chinnakanal Waterfalls \u2014 waterfall visible from the main road",
+            "Lockhart Gap \u2014 dramatic valley viewpoint with zero crowds"
+        ],
+        "best_months": [
+            "September",
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "Munnar Town",
+            "Chinnakanal",
+            "Bison Valley",
+            "Devikulam"
+        ],
+        "safety_tips": [
+            "Avoid trekking alone in wildlife corridors \u2014 elephants are common",
+            "Carry leech socks during monsoon treks",
+            "Drive slowly on hairpin bends; use horn generously"
+        ],
+        "transportation": "Hire a jeep or car for sightseeing. Local buses available but infrequent. Auto-rickshaws for short hops in town.",
+        "crowd_by_month": {
+            "January": "High",
+            "February": "Moderate",
+            "March": "Moderate",
+            "April": "High",
+            "May": "High",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "kodaikanal": {
+        "full_name": "Kodaikanal",
+        "state": "Tamil Nadu",
+        "type": "Hill Station",
+        "places_to_visit": [
+            "Kodaikanal Lake",
+            "Coaker's Walk",
+            "Pillar Rocks",
+            "Bryant Park",
+            "Dolphin's Nose"
+        ],
+        "local_foods": [
+            "Homemade Chocolates",
+            "Mushroom Soup",
+            "Eucalyptus Oil Products",
+            "Paneer Parotta",
+            "Filter Coffee"
+        ],
+        "hidden_gems": [
+            "Berijam Lake \u2014 forest-permit-only pristine lake",
+            "Mannavanur Lake \u2014 sheep farm beside a quiet lake",
+            "Vattakanal \u2014 hippie hamlet with trails and waterfalls"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "March",
+            "April",
+            "May",
+            "June"
+        ],
+        "hotel_areas": [
+            "Near Kodai Lake",
+            "Coaker's Walk area",
+            "Seven Roads Junction"
+        ],
+        "safety_tips": [
+            "Fog can reduce visibility to near zero \u2014 drive cautiously",
+            "Carry a flashlight for evening walks; street lighting is minimal",
+            "Do not litter at viewpoints \u2014 Kodaikanal enforces eco-rules"
+        ],
+        "transportation": "Rent bicycles near the lake. Taxis and auto-rickshaws available. Walk to most attractions from the lake area.",
+        "crowd_by_month": {
+            "January": "Low",
+            "February": "Low",
+            "March": "Low",
+            "April": "High",
+            "May": "High",
+            "June": "High",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Moderate",
+            "December": "Moderate"
+        }
+    },
+    "coorg": {
+        "full_name": "Coorg (Kodagu)",
+        "state": "Karnataka",
+        "type": "Hill Station",
+        "places_to_visit": [
+            "Abbey Falls",
+            "Raja's Seat",
+            "Talakaveri",
+            "Dubare Elephant Camp",
+            "Namdroling Monastery"
+        ],
+        "local_foods": [
+            "Pandi Curry (Pork)",
+            "Akki Rotti",
+            "Bamboo Shoot Curry",
+            "Coorg Coffee",
+            "Kadambuttu"
+        ],
+        "hidden_gems": [
+            "Mandalpatti Peak \u2014 jeep ride to a cloud-covered viewpoint",
+            "Chelavara Falls \u2014 local waterfall away from tourist circuits",
+            "Iruppu Falls \u2014 sacred waterfall near Brahmagiri wildlife range"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "Madikeri",
+            "Virajpet",
+            "Siddapur",
+            "Kushalnagar"
+        ],
+        "safety_tips": [
+            "Wear waterproof shoes \u2014 trails are often muddy",
+            "Leeches are common in monsoon \u2014 carry salt or leech guards",
+            "Respect coffee plantation boundaries \u2014 ask before entering"
+        ],
+        "transportation": "Self-drive is ideal. Hire jeeps for Mandalpatti. Local buses connect Madikeri to nearby towns.",
+        "crowd_by_month": {
+            "January": "High",
+            "February": "Moderate",
+            "March": "Moderate",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "High",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "nainital": {
+        "full_name": "Nainital",
+        "state": "Uttarakhand",
+        "type": "Hill Station",
+        "places_to_visit": [
+            "Naini Lake",
+            "Snow View Point",
+            "Naina Devi Temple",
+            "Mall Road",
+            "Tiffin Top"
+        ],
+        "local_foods": [
+            "Bal Mithai",
+            "Singodi",
+            "Aloo Ke Gutke",
+            "Bhatt Ki Churkani",
+            "Kumaoni Raita"
+        ],
+        "hidden_gems": [
+            "Pangot \u2014 birdwatching village with 250+ species",
+            "Kilbury \u2014 secluded forest rest house with Himalayan views",
+            "Land's End \u2014 quiet viewpoint at the edge of Nainital forest"
+        ],
+        "best_months": [
+            "March",
+            "April",
+            "May",
+            "June",
+            "October",
+            "November"
+        ],
+        "hotel_areas": [
+            "Mall Road",
+            "Tallital",
+            "Mallital",
+            "Bhowali"
+        ],
+        "safety_tips": [
+            "Traffic congestion on Mall Road is severe in summer \u2014 walk",
+            "Book hotels with lake views well in advance for peak months",
+            "Avoid boating during strong winds on Naini Lake"
+        ],
+        "transportation": "Walk the Mall Road. Hire cycle-rickshaws or taxis. Ropeway to Snow View Point.",
+        "crowd_by_month": {
+            "January": "Low",
+            "February": "Low",
+            "March": "Moderate",
+            "April": "Moderate",
+            "May": "High",
+            "June": "High",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "High",
+            "November": "Moderate",
+            "December": "Moderate"
+        }
+    },
+    "mussoorie": {
+        "full_name": "Mussoorie",
+        "state": "Uttarakhand",
+        "type": "Hill Station",
+        "places_to_visit": [
+            "Kempty Falls",
+            "Gun Hill",
+            "Camel's Back Road",
+            "Lal Tibba",
+            "Company Garden"
+        ],
+        "local_foods": [
+            "Maggi at Landour",
+            "Char Dukan Snacks",
+            "Bal Mithai",
+            "Garhwali Dal",
+            "Phaanu"
+        ],
+        "hidden_gems": [
+            "Landour \u2014 serene cantonment area above Mussoorie",
+            "George Everest's House \u2014 ruins with panoramic Himalayan views",
+            "Benog Wildlife Sanctuary \u2014 forest trail for birdwatching"
+        ],
+        "best_months": [
+            "March",
+            "April",
+            "May",
+            "June",
+            "September",
+            "October",
+            "November"
+        ],
+        "hotel_areas": [
+            "Mall Road",
+            "Landour",
+            "Library area",
+            "Kulri"
+        ],
+        "safety_tips": [
+            "Mall Road gets extremely crowded on weekends \u2014 visit on weekdays",
+            "Carry warm jackets even in summer for evening walks",
+            "Use official taxi stands; negotiate rates before boarding"
+        ],
+        "transportation": "Walk most of the town. Shared and private taxis to Kempty Falls and Dhanaulti. Ropeway to Gun Hill.",
+        "crowd_by_month": {
+            "January": "Low",
+            "February": "Low",
+            "March": "Low",
+            "April": "Moderate",
+            "May": "High",
+            "June": "High",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Moderate",
+            "December": "Moderate"
+        }
+    },
+    "mount_abu": {
+        "full_name": "Mount Abu",
+        "state": "Rajasthan",
+        "type": "Hill Station",
+        "places_to_visit": [
+            "Dilwara Temples",
+            "Nakki Lake",
+            "Sunset Point",
+            "Guru Shikhar",
+            "Toad Rock"
+        ],
+        "local_foods": [
+            "Dal Baati Churma",
+            "Ker Sangri",
+            "Ghevar",
+            "Mawa Kachori",
+            "Rajasthani Thali"
+        ],
+        "hidden_gems": [
+            "Trevor's Tank \u2014 crocodile breeding spot in the forest",
+            "Achalgarh Fort \u2014 14th-century fort with Jain temples",
+            "Honeymoon Point \u2014 quiet viewpoint with valley panorama"
+        ],
+        "best_months": [
+            "November",
+            "December",
+            "January",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "Near Nakki Lake",
+            "Main Market area",
+            "Sunset Road"
+        ],
+        "safety_tips": [
+            "Book well ahead during the Summer Festival (May\u2013June)",
+            "Carry water on hikes \u2014 amenities are limited on trails",
+            "Monkeys near Nakki Lake can snatch food and bags \u2014 be cautious"
+        ],
+        "transportation": "Auto-rickshaws and taxis within the hill station. Walking is pleasant around the lake area.",
+        "crowd_by_month": {
+            "January": "Moderate",
+            "February": "Moderate",
+            "March": "Moderate",
+            "April": "Low",
+            "May": "High",
+            "June": "High",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "lonavala": {
+        "full_name": "Lonavala",
+        "state": "Maharashtra",
+        "type": "Hill Station",
+        "places_to_visit": [
+            "Tiger's Leap",
+            "Bhushi Dam",
+            "Karla Caves",
+            "Rajmachi Fort",
+            "Lonavala Lake"
+        ],
+        "local_foods": [
+            "Chikki",
+            "Vada Pav",
+            "Misal Pav",
+            "Fudge",
+            "Corn on the cob (Bhutta)"
+        ],
+        "hidden_gems": [
+            "Tikona Fort \u2014 triangular fort with rewarding summit views",
+            "Aamby Valley \u2014 private township with an airstrip and lake",
+            "Visapur Fort \u2014 twin fort of Lohagad with lesser crowds"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "December",
+            "January",
+            "February"
+        ],
+        "hotel_areas": [
+            "Lonavala Market",
+            "Old Mumbai-Pune Highway",
+            "Tungarli"
+        ],
+        "safety_tips": [
+            "Monsoon waterfalls are stunning but extremely slippery \u2014 wear grip shoes",
+            "Bhushi Dam during heavy rains is dangerous \u2014 follow local advisories",
+            "Weekend traffic from Mumbai/Pune is heavy \u2014 start early"
+        ],
+        "transportation": "Trains from Mumbai/Pune stop at Lonavala station. Hire taxis or auto-rickshaws locally.",
+        "crowd_by_month": {
+            "January": "Moderate",
+            "February": "Low",
+            "March": "Low",
+            "April": "Low",
+            "May": "Low",
+            "June": "Moderate",
+            "July": "High",
+            "August": "High",
+            "September": "Moderate",
+            "October": "Moderate",
+            "November": "Low",
+            "December": "High"
+        }
+    },
+    "mahabaleshwar": {
+        "full_name": "Mahabaleshwar",
+        "state": "Maharashtra",
+        "type": "Hill Station",
+        "places_to_visit": [
+            "Arthur's Seat",
+            "Elephant's Head Point",
+            "Venna Lake",
+            "Mapro Garden",
+            "Pratapgad Fort"
+        ],
+        "local_foods": [
+            "Strawberries with Cream",
+            "Mapro Fruit Products",
+            "Corn Patties",
+            "Vada Pav",
+            "Pithla Bhakri"
+        ],
+        "hidden_gems": [
+            "Connaught Peak \u2014 highest point with 360\u00b0 views",
+            "Lingamala Falls \u2014 accessible waterfall near the main town",
+            "Tapola \u2014 mini-Kashmir with boating and camping"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "Main Bazaar Road",
+            "Near Venna Lake",
+            "Panchgani Road"
+        ],
+        "safety_tips": [
+            "Buy strawberries from certified vendors to ensure quality",
+            "Viewpoints have steep drops \u2014 supervise children closely",
+            "Fog can make driving risky \u2014 use fog lights and drive slow"
+        ],
+        "transportation": "Private taxis and horse rides to viewpoints. State transport buses from Pune and Mumbai.",
+        "crowd_by_month": {
+            "January": "Moderate",
+            "February": "Low",
+            "March": "Moderate",
+            "April": "High",
+            "May": "High",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "jaipur": {
+        "full_name": "Jaipur",
+        "state": "Rajasthan",
+        "type": "Heritage",
+        "places_to_visit": [
+            "Amber Fort",
+            "Hawa Mahal",
+            "City Palace",
+            "Jantar Mantar",
+            "Nahargarh Fort"
+        ],
+        "local_foods": [
+            "Dal Baati Churma",
+            "Pyaaz Kachori",
+            "Ghevar",
+            "Laal Maas",
+            "Mawa Kachori"
+        ],
+        "hidden_gems": [
+            "Panna Meena Ka Kund \u2014 geometric stepwell with no crowds",
+            "Anokhi Museum of Hand Printing \u2014 block-printing heritage site",
+            "Galta Ji \u2014 monkey temple set in a valley with natural springs"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "MI Road",
+            "C-Scheme",
+            "Amer Road",
+            "Civil Lines"
+        ],
+        "safety_tips": [
+            "Negotiate auto-rickshaw fares before boarding \u2014 no meters",
+            "Stay hydrated in summer; temperatures exceed 45\u00b0C in May\u2013June",
+            "Beware of touts near Hawa Mahal offering 'official' tours"
+        ],
+        "transportation": "Auto-rickshaws, Ola/Uber available. Hire a full-day taxi for fort circuit. Metro covers parts of the city.",
+        "crowd_by_month": {
+            "January": "High",
+            "February": "High",
+            "March": "Moderate",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "High",
+            "December": "High"
+        }
+    },
+    "udaipur": {
+        "full_name": "Udaipur",
+        "state": "Rajasthan",
+        "type": "Heritage",
+        "places_to_visit": [
+            "City Palace",
+            "Lake Pichola",
+            "Jag Mandir",
+            "Saheliyon Ki Bari",
+            "Monsoon Palace"
+        ],
+        "local_foods": [
+            "Dal Baati Churma",
+            "Gatte Ki Sabzi",
+            "Mawa Kachori",
+            "Dil Khushal",
+            "Kesar Kulfi"
+        ],
+        "hidden_gems": [
+            "Badi Lake \u2014 quiet lake with mountain backdrop and no crowds",
+            "Haldighati \u2014 historic battlefield of Maharana Pratap",
+            "Ambrai Ghat \u2014 stunning sunset view of City Palace from across the lake"
+        ],
+        "best_months": [
+            "September",
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "Lal Ghat",
+            "Fateh Sagar area",
+            "Hanuman Ghat",
+            "Ambrai"
+        ],
+        "safety_tips": [
+            "Boat rides on Lake Pichola are safest with licensed operators",
+            "Summers are extremely hot (40\u00b0C+) \u2014 carry water and sunscreen",
+            "Walking in the old city is best; lanes are too narrow for cars"
+        ],
+        "transportation": "Auto-rickshaws and e-rickshaws. Walking in old city. Hire bikes for day trips to Chittorgarh or Kumbhalgarh.",
+        "crowd_by_month": {
+            "January": "High",
+            "February": "High",
+            "March": "Moderate",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "agra": {
+        "full_name": "Agra",
+        "state": "Uttar Pradesh",
+        "type": "Heritage",
+        "places_to_visit": [
+            "Taj Mahal",
+            "Agra Fort",
+            "Fatehpur Sikri",
+            "Mehtab Bagh",
+            "Itimad-ud-Daulah"
+        ],
+        "local_foods": [
+            "Petha",
+            "Bedai with Jalebi",
+            "Mughlai Paratha",
+            "Dal Moth",
+            "Tandoori Chicken"
+        ],
+        "hidden_gems": [
+            "Mehtab Bagh sunset \u2014 the best angle of the Taj across the river",
+            "Akbar's Tomb at Sikandra \u2014 Mughal marvel with fewer tourists",
+            "Kinari Bazaar \u2014 centuries-old market for marble crafts"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "Taj Ganj",
+            "Fatehabad Road",
+            "Sadar Bazaar"
+        ],
+        "safety_tips": [
+            "Buy Taj Mahal tickets online to skip long queues",
+            "Avoid touts offering 'skip-the-line' passes near the entrance",
+            "Summers are brutal (45\u00b0C+) \u2014 visit early morning or skip May\u2013June"
+        ],
+        "transportation": "Pre-paid auto-rickshaws from station. E-rickshaws for short trips. Hire a taxi for Fatehpur Sikri day trip.",
+        "crowd_by_month": {
+            "January": "High",
+            "February": "High",
+            "March": "High",
+            "April": "Moderate",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "High",
+            "December": "High"
+        }
+    },
+    "mysore": {
+        "full_name": "Mysore (Mysuru)",
+        "state": "Karnataka",
+        "type": "Heritage",
+        "places_to_visit": [
+            "Mysore Palace",
+            "Chamundi Hills",
+            "Brindavan Gardens",
+            "St. Philomena's Church",
+            "Mysore Zoo"
+        ],
+        "local_foods": [
+            "Mysore Pak",
+            "Mysore Masala Dosa",
+            "Bisi Bele Bath",
+            "Chiroti",
+            "Filter Coffee"
+        ],
+        "hidden_gems": [
+            "Devaraja Market \u2014 130-year-old flower and spice market",
+            "Karanji Lake Nature Park \u2014 walk-through aviary near the zoo",
+            "Jaganmohan Palace Art Gallery \u2014 royal collection of Indian art"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "December",
+            "January",
+            "February"
+        ],
+        "hotel_areas": [
+            "Sayyaji Rao Road",
+            "Nazarbad",
+            "Jayalakshmipuram"
+        ],
+        "safety_tips": [
+            "During Dussehra (October), book months in advance",
+            "Use city buses or auto-rickshaws \u2014 traffic is manageable",
+            "Carry ID for entry to government-run palaces and gardens"
+        ],
+        "transportation": "City buses, auto-rickshaws, and Ola/Uber. Tonga (horse carriage) rides around the palace.",
+        "crowd_by_month": {
+            "January": "Moderate",
+            "February": "Moderate",
+            "March": "Moderate",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "High",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "hampi": {
+        "full_name": "Hampi",
+        "state": "Karnataka",
+        "type": "Heritage",
+        "places_to_visit": [
+            "Virupaksha Temple",
+            "Vittala Temple & Stone Chariot",
+            "Lotus Mahal",
+            "Elephant Stables",
+            "Matanga Hill Sunrise"
+        ],
+        "local_foods": [
+            "Jolada Rotti",
+            "Ragi Mudde",
+            "Bisi Bele Bath",
+            "Mango Rice",
+            "Fresh Sugarcane Juice"
+        ],
+        "hidden_gems": [
+            "Anegundi \u2014 ancient village across the river with rock art",
+            "Sanapur Lake \u2014 hidden lake perfect for coracle rides",
+            "Hippie Island \u2014 backpacker-friendly zone across Tungabhadra river"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "December",
+            "January",
+            "February"
+        ],
+        "hotel_areas": [
+            "Hampi Bazaar",
+            "Hippie Island (Virupapur Gaddi)",
+            "Kamalapur"
+        ],
+        "safety_tips": [
+            "Carry water and sun protection \u2014 Hampi has minimal shade",
+            "Rent a bicycle or moped to cover the vast ruins spread",
+            "Respect UNESCO heritage rules \u2014 climbing on monuments is prohibited"
+        ],
+        "transportation": "Rent bicycles or mopeds. Auto-rickshaws from Hospet. Coracle boats across Tungabhadra river.",
+        "crowd_by_month": {
+            "January": "High",
+            "February": "Moderate",
+            "March": "Low",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "khajuraho": {
+        "full_name": "Khajuraho",
+        "state": "Madhya Pradesh",
+        "type": "Heritage",
+        "places_to_visit": [
+            "Western Group of Temples",
+            "Kandariya Mahadeva Temple",
+            "Eastern Group of Temples",
+            "Archaeological Museum",
+            "Raneh Falls"
+        ],
+        "local_foods": [
+            "Dal Bafla",
+            "Poha Jalebi",
+            "Bhutte Ka Kees",
+            "Malpua",
+            "Khajuraho Thali"
+        ],
+        "hidden_gems": [
+            "Panna National Park \u2014 tiger reserve just 25 km away",
+            "Raneh Falls \u2014 volcanic rock gorge on Ken River",
+            "Beni Sagar Dam \u2014 picnic spot with birdwatching potential"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "Temple Road",
+            "Main Bazaar",
+            "Airport Road"
+        ],
+        "safety_tips": [
+            "Hire an ASI-certified guide for temple context; avoid freelancers",
+            "Light and sound show in the evening is worth attending",
+            "Summers (April\u2013June) are extremely hot \u2014 carry adequate water"
+        ],
+        "transportation": "Cycle-rickshaws and auto-rickshaws. Walking is feasible for the temple groups. Taxis for Panna and Raneh Falls.",
+        "crowd_by_month": {
+            "January": "Moderate",
+            "February": "High",
+            "March": "High",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "High",
+            "December": "Moderate"
+        }
+    },
+    "orchha": {
+        "full_name": "Orchha",
+        "state": "Madhya Pradesh",
+        "type": "Heritage",
+        "places_to_visit": [
+            "Orchha Fort Complex",
+            "Jahangir Mahal",
+            "Ram Raja Temple",
+            "Chaturbhuj Temple",
+            "Orchha Wildlife Sanctuary"
+        ],
+        "local_foods": [
+            "Dal Bafla",
+            "Poha",
+            "Malpua",
+            "Bundelkhandi Thali",
+            "Kachori Sabzi"
+        ],
+        "hidden_gems": [
+            "Cenotaphs on Betwa River \u2014 stunning at sunset",
+            "Dinman Hardaul Palace \u2014 ruins with legends of Bundela bravery",
+            "Orchha Nature Reserve \u2014 rafting and kayaking on the Betwa"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "Near Ram Raja Temple",
+            "Betwa River Road",
+            "Jhansi Road"
+        ],
+        "safety_tips": [
+            "Orchha is small \u2014 most sights are walkable from any hotel",
+            "Carry a torch for exploring dimly-lit palace interiors",
+            "Check rafting conditions on Betwa before booking in monsoon"
+        ],
+        "transportation": "Walking is the best way to explore. Auto-rickshaws from Jhansi (16 km). Hire bicycles from guesthouses.",
+        "crowd_by_month": {
+            "January": "Low",
+            "February": "High",
+            "March": "Moderate",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "High",
+            "December": "Moderate"
+        }
+    },
+    "varanasi": {
+        "full_name": "Varanasi (Kashi)",
+        "state": "Uttar Pradesh",
+        "type": "Spiritual",
+        "places_to_visit": [
+            "Dashashwamedh Ghat Aarti",
+            "Kashi Vishwanath Temple",
+            "Sarnath",
+            "Assi Ghat",
+            "Manikarnika Ghat"
+        ],
+        "local_foods": [
+            "Banarasi Paan",
+            "Kachori Sabzi",
+            "Malaiyo",
+            "Thandai",
+            "Tamatar Chaat"
+        ],
+        "hidden_gems": [
+            "Ramnagar Fort \u2014 across the Ganga with a vintage car museum",
+            "Tulsi Manas Temple \u2014 marble-walled temple with Ramcharitmanas verses",
+            "Morning boat ride at sunrise \u2014 most peaceful way to see the ghats"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "Assi Ghat",
+            "Dashashwamedh area",
+            "Lanka",
+            "Godowlia"
+        ],
+        "safety_tips": [
+            "Ghat steps are steep and slippery near the water \u2014 use caution",
+            "Ask permission before photographing cremation ceremonies",
+            "Use registered boatmen for Ganga rides; negotiate fare beforehand"
+        ],
+        "transportation": "Auto-rickshaws and cycle-rickshaws. Walk the ghats. E-rickshaws for longer distances. Boats for ghat-hopping.",
+        "crowd_by_month": {
+            "January": "Moderate",
+            "February": "Moderate",
+            "March": "High",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "High",
+            "November": "High",
+            "December": "Moderate"
+        }
+    },
+    "rishikesh": {
+        "full_name": "Rishikesh",
+        "state": "Uttarakhand",
+        "type": "Spiritual",
+        "places_to_visit": [
+            "Laxman Jhula",
+            "Triveni Ghat Aarti",
+            "The Beatles Ashram",
+            "Ram Jhula",
+            "Neelkanth Mahadev Temple"
+        ],
+        "local_foods": [
+            "Aloo Puri at Chotiwala",
+            "Fresh Juice",
+            "Israeli Cuisine (cafes)",
+            "Garhwali Dal",
+            "Wood-fired Pizza (backpacker cafes)"
+        ],
+        "hidden_gems": [
+            "Neer Garh Waterfall \u2014 short hike from Laxman Jhula",
+            "Vashishta Guha \u2014 meditation cave of Sage Vashishta on the Ganga bank",
+            "Kunjapuri Temple \u2014 sunrise viewpoint with Himalayan panorama"
+        ],
+        "best_months": [
+            "September",
+            "October",
+            "November",
+            "March",
+            "April",
+            "May"
+        ],
+        "hotel_areas": [
+            "Tapovan",
+            "Laxman Jhula",
+            "Swarg Ashram",
+            "Ram Jhula"
+        ],
+        "safety_tips": [
+            "Wear life jackets during rafting \u2014 rapids can be grade 3-4",
+            "Alcohol and non-vegetarian food are banned in Rishikesh city",
+            "Book adventure activities through certified operators only"
+        ],
+        "transportation": "Walk along the river. Shared autos to nearby areas. Hire taxis for Neelkanth and Kunjapuri.",
+        "crowd_by_month": {
+            "January": "Low",
+            "February": "Moderate",
+            "March": "High",
+            "April": "High",
+            "May": "High",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Moderate",
+            "October": "High",
+            "November": "Moderate",
+            "December": "Low"
+        }
+    },
+    "amritsar": {
+        "full_name": "Amritsar",
+        "state": "Punjab",
+        "type": "Spiritual",
+        "places_to_visit": [
+            "Golden Temple (Harmandir Sahib)",
+            "Jallianwala Bagh",
+            "Wagah Border Ceremony",
+            "Partition Museum",
+            "Gobindgarh Fort"
+        ],
+        "local_foods": [
+            "Amritsari Kulcha",
+            "Lassi",
+            "Amritsari Fish Fry",
+            "Chole Bhature",
+            "Pinni"
+        ],
+        "hidden_gems": [
+            "Ram Bagh Garden \u2014 heritage garden with a Sikh museum",
+            "Pul Kanjari \u2014 Ranjit Singh-era rest stop with a hidden gurudwara",
+            "Durgiana Temple \u2014 Hindu temple architecturally similar to Golden Temple"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "Near Golden Temple",
+            "Lawrence Road",
+            "Queen's Road"
+        ],
+        "safety_tips": [
+            "Cover your head and remove shoes at the Golden Temple",
+            "Reach Wagah Border by 3 PM to get good seats for the ceremony",
+            "Summers (May\u2013June) are extremely hot \u2014 plan indoor activities"
+        ],
+        "transportation": "Auto-rickshaws and cycle-rickshaws. E-rickshaws near Golden Temple. Hire a taxi for Wagah Border.",
+        "crowd_by_month": {
+            "January": "Moderate",
+            "February": "Moderate",
+            "March": "Moderate",
+            "April": "High",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "High",
+            "November": "High",
+            "December": "Moderate"
+        }
+    },
+    "pushkar": {
+        "full_name": "Pushkar",
+        "state": "Rajasthan",
+        "type": "Spiritual",
+        "places_to_visit": [
+            "Brahma Temple",
+            "Pushkar Lake",
+            "Savitri Temple",
+            "Pushkar Camel Fair Grounds",
+            "Varaha Temple"
+        ],
+        "local_foods": [
+            "Dal Baati Churma",
+            "Malpua",
+            "Falafels (backpacker cafes)",
+            "Lassi",
+            "Rajasthani Thali"
+        ],
+        "hidden_gems": [
+            "Savitri Temple sunrise hike \u2014 45-minute climb with lake views",
+            "Man Mahal \u2014 lakeside Rajput guesthouse now a heritage hotel",
+            "Rose Garden \u2014 Pushkar produces India's finest roses and rose oil"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "Main Bazaar",
+            "Lake View Road",
+            "Ajmer Road"
+        ],
+        "safety_tips": [
+            "Pushkar is vegetarian and alcohol-free by local tradition",
+            "During the Camel Fair (November), book 3+ months ahead",
+            "Be cautious of self-appointed priests seeking donations at the lake"
+        ],
+        "transportation": "Walk \u2014 the town is tiny. Auto-rickshaws to Ajmer (14 km). Rent bicycles or camels for desert excursions.",
+        "crowd_by_month": {
+            "January": "Moderate",
+            "February": "Moderate",
+            "March": "Moderate",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "High",
+            "December": "Moderate"
+        }
+    },
+    "leh": {
+        "full_name": "Leh-Ladakh",
+        "state": "Ladakh",
+        "type": "Adventure",
+        "places_to_visit": [
+            "Pangong Tso Lake",
+            "Nubra Valley",
+            "Magnetic Hill",
+            "Thiksey Monastery",
+            "Khardung La Pass"
+        ],
+        "local_foods": [
+            "Thukpa",
+            "Skyu",
+            "Momos",
+            "Butter Tea",
+            "Apricot Jam"
+        ],
+        "hidden_gems": [
+            "Tso Moriri \u2014 pristine high-altitude lake with zero commercialisation",
+            "Hemis Monastery \u2014 largest monastery in Ladakh with summer festival",
+            "Zanskar Valley \u2014 remote paradise for river rafting and trekking"
+        ],
+        "best_months": [
+            "June",
+            "July",
+            "August",
+            "September"
+        ],
+        "hotel_areas": [
+            "Leh Main Market",
+            "Changspa Road",
+            "Fort Road",
+            "Skara"
+        ],
+        "safety_tips": [
+            "Acclimatise for 1-2 days in Leh before heading to high passes",
+            "Carry Diamox or consult a doctor for altitude sickness prevention",
+            "Fuel stations are rare \u2014 fill up in Leh before road trips"
+        ],
+        "transportation": "Rent Royal Enfield bikes or hire SUVs. Shared taxis to Pangong and Nubra. Local buses are infrequent.",
+        "crowd_by_month": {
+            "January": "Low",
+            "February": "Low",
+            "March": "Low",
+            "April": "Low",
+            "May": "Low",
+            "June": "Moderate",
+            "July": "High",
+            "August": "High",
+            "September": "Moderate",
+            "October": "Low",
+            "November": "Low",
+            "December": "Low"
+        }
+    },
+    "kasol": {
+        "full_name": "Kasol",
+        "state": "Himachal Pradesh",
+        "type": "Adventure",
+        "places_to_visit": [
+            "Kheerganga Trek",
+            "Manikaran Gurudwara & Hot Springs",
+            "Tosh Village",
+            "Malana Village",
+            "Parvati Valley viewpoints"
+        ],
+        "local_foods": [
+            "Israeli Shakshuka (cafes)",
+            "Sidu",
+            "Trout Fish",
+            "Maggi and Pancakes (trail food)",
+            "Dham"
+        ],
+        "hidden_gems": [
+            "Grahan Village \u2014 3-hour trek to a magical tiny hamlet",
+            "Rasol \u2014 offbeat trek with panoramic Parvati Valley views",
+            "Pin Parvati Pass \u2014 challenging trek for experienced hikers"
+        ],
+        "best_months": [
+            "March",
+            "April",
+            "May",
+            "June",
+            "September",
+            "October"
+        ],
+        "hotel_areas": [
+            "Kasol Main Market",
+            "Challal",
+            "Tosh",
+            "Barshaini"
+        ],
+        "safety_tips": [
+            "Avoid solo trekking \u2014 trails are remote with no mobile network",
+            "River currents in the Parvati are strong \u2014 don't swim in it",
+            "Carry cash; ATMs and card machines are unreliable"
+        ],
+        "transportation": "Buses from Bhuntar (30 km). Walk to Challal and nearby villages. Hire taxis for Tosh and Malana trailhead.",
+        "crowd_by_month": {
+            "January": "Low",
+            "February": "Low",
+            "March": "Moderate",
+            "April": "Moderate",
+            "May": "High",
+            "June": "High",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Low",
+            "December": "Low"
+        }
+    },
+    "auli": {
+        "full_name": "Auli",
+        "state": "Uttarakhand",
+        "type": "Adventure",
+        "places_to_visit": [
+            "Auli Ski Slopes",
+            "Gorson Bugyal",
+            "Joshimath",
+            "Auli Ropeway",
+            "Nanda Devi View"
+        ],
+        "local_foods": [
+            "Kafuli",
+            "Phaanu",
+            "Chainsoo",
+            "Bal Mithai",
+            "Jhangora Ki Kheer"
+        ],
+        "hidden_gems": [
+            "Kuari Pass Trek \u2014 Lord Curzon's trail with Nanda Devi views",
+            "Tapovan \u2014 hot springs and meditation caves near Joshimath",
+            "Chenab Lake \u2014 artificial lake surrounded by oak forests"
+        ],
+        "best_months": [
+            "November",
+            "December",
+            "January",
+            "February",
+            "March",
+            "April",
+            "May"
+        ],
+        "hotel_areas": [
+            "Auli Hill Top",
+            "Joshimath"
+        ],
+        "safety_tips": [
+            "Skiing beginners should hire certified instructors at GMVN slopes",
+            "Carry thermal wear \u2014 winter temperatures drop to -10\u00b0C",
+            "Check road conditions to Joshimath during monsoon and heavy snow"
+        ],
+        "transportation": "Ropeway from Joshimath to Auli (4 km). Chair lifts within Auli. Taxis from Rishikesh or Haridwar.",
+        "crowd_by_month": {
+            "January": "High",
+            "February": "High",
+            "March": "Moderate",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Low",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "bir_billing": {
+        "full_name": "Bir Billing",
+        "state": "Himachal Pradesh",
+        "type": "Adventure",
+        "places_to_visit": [
+            "Billing Paragliding Take-off",
+            "Bir Landing Site",
+            "Chokling Monastery",
+            "Deer Park Institute",
+            "Barot Valley"
+        ],
+        "local_foods": [
+            "Sidu",
+            "Dham",
+            "Tibetan Momos",
+            "Thukpa",
+            "Himachali Rajma Chawal"
+        ],
+        "hidden_gems": [
+            "Rajgundha Valley \u2014 remote camping meadow accessible by trek",
+            "Gunehar Waterfall \u2014 hidden cascade a short walk from Bir",
+            "Billing to Raj Gundha trek \u2014 scenic 5-hour valley walk"
+        ],
+        "best_months": [
+            "March",
+            "April",
+            "May",
+            "September",
+            "October",
+            "November"
+        ],
+        "hotel_areas": [
+            "Bir village",
+            "Chowgan",
+            "Near Landing Site"
+        ],
+        "safety_tips": [
+            "Fly only with HPPGA-certified paragliding pilots",
+            "Wind conditions change rapidly \u2014 follow instructor guidance",
+            "Carry warm clothing; Bir is at 1,500 m altitude"
+        ],
+        "transportation": "Buses from Mandi or Palampur. Taxi or auto-rickshaw within Bir. Walk to the landing site.",
+        "crowd_by_month": {
+            "January": "Low",
+            "February": "Low",
+            "March": "Moderate",
+            "April": "Moderate",
+            "May": "Moderate",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Moderate",
+            "October": "High",
+            "November": "High",
+            "December": "Low"
+        }
+    },
+    "spiti": {
+        "full_name": "Spiti Valley",
+        "state": "Himachal Pradesh",
+        "type": "Adventure",
+        "places_to_visit": [
+            "Key Monastery",
+            "Chandratal Lake",
+            "Kunzum Pass",
+            "Dhankar Monastery",
+            "Pin Valley National Park"
+        ],
+        "local_foods": [
+            "Momos",
+            "Thukpa",
+            "Butter Tea",
+            "Siddu",
+            "Sea Buckthorn Juice"
+        ],
+        "hidden_gems": [
+            "Langza Village \u2014 fossil village with a giant Buddha statue",
+            "Hikkim Post Office \u2014 world's highest post office",
+            "Chicham Bridge \u2014 Asia's highest bridge connecting two cliff faces"
+        ],
+        "best_months": [
+            "June",
+            "July",
+            "August",
+            "September"
+        ],
+        "hotel_areas": [
+            "Kaza",
+            "Tabo",
+            "Key Village"
+        ],
+        "safety_tips": [
+            "Roads are open only June\u2013October via Kunzum Pass; plan accordingly",
+            "Carry extra fuel and food supplies \u2014 services are extremely sparse",
+            "Altitude sickness is common above 4,000 m \u2014 acclimatise in Kaza"
+        ],
+        "transportation": "Self-drive SUV or hired taxi from Manali/Shimla. HRTC buses run in summer. No petrol pump between Kaza and Manali.",
+        "crowd_by_month": {
+            "January": "Low",
+            "February": "Low",
+            "March": "Low",
+            "April": "Low",
+            "May": "Low",
+            "June": "Moderate",
+            "July": "High",
+            "August": "High",
+            "September": "Moderate",
+            "October": "Low",
+            "November": "Low",
+            "December": "Low"
+        }
+    },
+    "kerala": {
+        "full_name": "Kerala (Kochi & Backwaters)",
+        "state": "Kerala",
+        "type": "Backwater",
+        "places_to_visit": [
+            "Alleppey Houseboats",
+            "Fort Kochi",
+            "Periyar Wildlife Sanctuary",
+            "Kovalam Beach",
+            "Varkala Cliff"
+        ],
+        "local_foods": [
+            "Appam with Stew",
+            "Kerala Fish Curry",
+            "Puttu and Kadala",
+            "Banana Chips",
+            "Malabar Biryani"
+        ],
+        "hidden_gems": [
+            "Marari Beach \u2014 quiet fishing village beach near Alleppey",
+            "Athirapally Falls \u2014 Kerala's Niagara Falls inside a rainforest",
+            "Kumbalangi \u2014 model fishing village with crab and shrimp farms"
+        ],
+        "best_months": [
+            "September",
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "Fort Kochi",
+            "Alleppey waterfront",
+            "Kovalam",
+            "Thekkady"
+        ],
+        "safety_tips": [
+            "Monsoon (June\u2013August) brings heavy rain but offers Ayurveda season discounts",
+            "Hire houseboats with KTDC or Kerala Tourism certification",
+            "Carry rain gear during monsoon \u2014 downpours can be intense"
+        ],
+        "transportation": "Houseboats in Alleppey. Auto-rickshaws in Kochi. KSRTC buses across the state. Trains along the coast.",
+        "crowd_by_month": {
+            "January": "High",
+            "February": "Moderate",
+            "March": "Moderate",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "alleppey": {
+        "full_name": "Alleppey (Alappuzha)",
+        "state": "Kerala",
+        "type": "Backwater",
+        "places_to_visit": [
+            "Alleppey Backwaters (Houseboat Cruise)",
+            "Alleppey Beach",
+            "Kumarakom Bird Sanctuary",
+            "Pathiramanal Island",
+            "Krishnapuram Palace"
+        ],
+        "local_foods": [
+            "Karimeen Pollichathu (Pearl Spot Fish)",
+            "Appam with Ishtu",
+            "Puttu and Kadala Curry",
+            "Prawn Ularthiyathu",
+            "Payasam"
+        ],
+        "hidden_gems": [
+            "Marari Beach \u2014 quiet village beach with fishing community homestays",
+            "Mannarasala Nagaraja Temple \u2014 unique snake temple in a dense grove",
+            "Champakulam Church \u2014 oldest church in Kerala (AD 427 origin)"
+        ],
+        "best_months": [
+            "September",
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "VCSB Road",
+            "Near Alleppey Beach",
+            "Kumarakom"
+        ],
+        "safety_tips": [
+            "Book KTDC-certified houseboats to ensure safety standards",
+            "August brings the Nehru Trophy Boat Race \u2014 plan or avoid accordingly",
+            "Apply mosquito repellent in the evenings on the backwaters"
+        ],
+        "transportation": "Houseboats for backwater cruises. Auto-rickshaws in town. KSRTC buses and trains to Kochi (60 km).",
+        "crowd_by_month": {
+            "January": "High",
+            "February": "Moderate",
+            "March": "Moderate",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "High",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "wayanad": {
+        "full_name": "Wayanad",
+        "state": "Kerala",
+        "type": "Hill Station",
+        "places_to_visit": [
+            "Edakkal Caves",
+            "Banasura Sagar Dam",
+            "Chembra Peak",
+            "Wayanad Wildlife Sanctuary",
+            "Soochipara Falls"
+        ],
+        "local_foods": [
+            "Puttu and Kadala Curry",
+            "Wayanad Honey",
+            "Bamboo Biryani",
+            "Pazham Pori (Banana Fritters)",
+            "Kerala Porotta and Beef Fry"
+        ],
+        "hidden_gems": [
+            "Phantom Rock \u2014 rock formation resembling a skull in the forest",
+            "Thirunelli Temple \u2014 ancient Vishnu temple in a secluded valley",
+            "Kuruva Island \u2014 uninhabited river delta island with bamboo rafting"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "Kalpetta",
+            "Vythiri",
+            "Sultan Bathery"
+        ],
+        "safety_tips": [
+            "Elephant sightings on roads are common \u2014 maintain distance",
+            "Leech-proof socks are essential for monsoon treks",
+            "Many areas have no mobile coverage \u2014 download offline maps"
+        ],
+        "transportation": "Self-drive or hired jeeps. KSRTC buses from Kozhikode (80 km). Auto-rickshaws in Kalpetta.",
+        "crowd_by_month": {
+            "January": "High",
+            "February": "Moderate",
+            "March": "Moderate",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "Moderate",
+            "December": "High"
+        }
+    },
+    "meghalaya": {
+        "full_name": "Meghalaya (Shillong & Cherrapunji)",
+        "state": "Meghalaya",
+        "type": "Adventure",
+        "places_to_visit": [
+            "Living Root Bridges (Nongriat)",
+            "Dawki River",
+            "Nohkalikai Falls",
+            "Elephant Falls",
+            "Mawlynnong Village"
+        ],
+        "local_foods": [
+            "Jadoh (Khasi Pork Rice)",
+            "Doh Khlieh (Pork Salad)",
+            "Tungrymbai (Fermented Soybean Curry)",
+            "Pukhlein (Rice Fritters)",
+            "Black Sesame Chutney"
+        ],
+        "hidden_gems": [
+            "Krang Suri Falls \u2014 turquoise waterfall in Jaintia Hills",
+            "Mawryngkhang Bamboo Trek \u2014 thrilling bamboo trail on a cliff",
+            "Shnongpdeng \u2014 crystal-clear river camping with cliff jumping"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "March",
+            "April",
+            "May"
+        ],
+        "hotel_areas": [
+            "Shillong Police Bazaar",
+            "Cherrapunji",
+            "Dawki"
+        ],
+        "safety_tips": [
+            "The root bridge trek involves 3,500+ steps \u2014 maintain fitness",
+            "Cherrapunji is the wettest place on earth \u2014 waterproof everything",
+            "Inner Line Permits are NOT needed but carry ID at all times"
+        ],
+        "transportation": "Shared Sumos from Guwahati. Hire local taxis for day trips. Walking for treks. Limited public buses.",
+        "crowd_by_month": {
+            "January": "Low",
+            "February": "Low",
+            "March": "Moderate",
+            "April": "Moderate",
+            "May": "Moderate",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "High",
+            "November": "High",
+            "December": "Moderate"
+        }
+    },
+    "gangtok": {
+        "full_name": "Gangtok",
+        "state": "Sikkim",
+        "type": "Hill Station",
+        "places_to_visit": [
+            "Tsomgo Lake",
+            "MG Marg",
+            "Rumtek Monastery",
+            "Nathula Pass",
+            "Hanuman Tok"
+        ],
+        "local_foods": [
+            "Momos",
+            "Thukpa",
+            "Phagshapa (Pork with Radish)",
+            "Gundruk Soup",
+            "Sel Roti"
+        ],
+        "hidden_gems": [
+            "Tashi Viewpoint \u2014 Kanchenjunga sunrise with fewer tourists",
+            "Dzongu \u2014 restricted area with Lepcha homestays (permit needed)",
+            "Seven Sisters Waterfalls \u2014 cascading falls on the Gangtok-Lachung road"
+        ],
+        "best_months": [
+            "March",
+            "April",
+            "May",
+            "October",
+            "November"
+        ],
+        "hotel_areas": [
+            "MG Marg",
+            "Deorali",
+            "Tadong",
+            "Tibet Road"
+        ],
+        "safety_tips": [
+            "Inner Line Permit required for Nathula Pass \u2014 arrange through tour operator",
+            "Roads to North Sikkim are rough \u2014 hire experienced local drivers",
+            "Carry warm layers even in April; temperature drops after sunset"
+        ],
+        "transportation": "Shared jeeps are the main transport. Hire private taxis for North Sikkim and Nathula. Walk MG Marg.",
+        "crowd_by_month": {
+            "January": "Low",
+            "February": "Low",
+            "March": "Moderate",
+            "April": "High",
+            "May": "High",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "High",
+            "November": "Moderate",
+            "December": "Moderate"
+        }
+    },
+    "jodhpur": {
+        "full_name": "Jodhpur",
+        "state": "Rajasthan",
+        "type": "Heritage",
+        "places_to_visit": [
+            "Mehrangarh Fort",
+            "Jaswant Thada",
+            "Umaid Bhawan Palace",
+            "Clock Tower Market",
+            "Mandore Gardens"
+        ],
+        "local_foods": [
+            "Mirchi Vada",
+            "Makhania Lassi",
+            "Pyaaz Kachori",
+            "Dal Baati Churma",
+            "Gulab Jamun"
+        ],
+        "hidden_gems": [
+            "Toorji Ka Jhalra \u2014 restored 18th-century stepwell in the old city",
+            "Blue City walking tour \u2014 wander the blue-painted Brahmin houses",
+            "Rao Jodha Desert Rock Park \u2014 eco-restored rocky wasteland next to Mehrangarh"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March"
+        ],
+        "hotel_areas": [
+            "Near Clock Tower",
+            "Old City havelis",
+            "Ratanada",
+            "Airport Road"
+        ],
+        "safety_tips": [
+            "Summers are scorching (48\u00b0C) \u2014 avoid outdoor sightseeing noon\u20133 PM",
+            "Wear comfortable shoes for Mehrangarh \u2014 the fort involves lots of walking",
+            "Negotiate auto-rickshaw fares or use Ola/Uber for fair pricing"
+        ],
+        "transportation": "Auto-rickshaws, Ola/Uber. Hire a taxi for day trips to Osian or Bishnoi villages.",
+        "crowd_by_month": {
+            "January": "High",
+            "February": "High",
+            "March": "Moderate",
+            "April": "Low",
+            "May": "Low",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "High",
+            "December": "High"
+        }
+    },
+    "ranthambore": {
+        "full_name": "Ranthambore National Park",
+        "state": "Rajasthan",
+        "type": "Wildlife",
+        "places_to_visit": [
+            "Ranthambore Tiger Safari",
+            "Ranthambore Fort",
+            "Padam Talao",
+            "Jogi Mahal",
+            "Surwal Lake"
+        ],
+        "local_foods": [
+            "Dal Baati Churma",
+            "Laal Maas",
+            "Ker Sangri",
+            "Bajra Roti with Garlic Chutney",
+            "Ghevar"
+        ],
+        "hidden_gems": [
+            "Zone 6-10 \u2014 buffer zones with wildlife and far fewer tourists",
+            "Kachida Valley \u2014 scenic drive through dry deciduous forest",
+            "Ganesh Temple inside the fort \u2014 temple where monkeys roam freely"
+        ],
+        "best_months": [
+            "October",
+            "November",
+            "March",
+            "April",
+            "May",
+            "June"
+        ],
+        "hotel_areas": [
+            "Ranthambore Road",
+            "Sawai Madhopur town"
+        ],
+        "safety_tips": [
+            "Book safari permits online at least 3 months in advance",
+            "Wear muted colours on safari \u2014 avoid bright clothing",
+            "Maintain silence on safari; noise scares away wildlife"
+        ],
+        "transportation": "Canter and gypsy safaris inside the park. Auto-rickshaws in Sawai Madhopur. Trains from Jaipur and Delhi.",
+        "crowd_by_month": {
+            "January": "Low",
+            "February": "Moderate",
+            "March": "High",
+            "April": "High",
+            "May": "Moderate",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Moderate",
+            "November": "High",
+            "December": "Low"
+        }
+    },
+    "jim_corbett": {
+        "full_name": "Jim Corbett National Park",
+        "state": "Uttarakhand",
+        "type": "Wildlife",
+        "places_to_visit": [
+            "Bijrani Safari Zone",
+            "Dhikala Zone",
+            "Corbett Waterfall",
+            "Garjia Devi Temple",
+            "Sitabani Buffer Zone"
+        ],
+        "local_foods": [
+            "Bhatt Ki Churkani",
+            "Kumaoni Raita",
+            "Aloo Ke Gutke",
+            "Bal Mithai",
+            "Jhangora Ki Kheer"
+        ],
+        "hidden_gems": [
+            "Dhikala forest rest house \u2014 overnight stay inside the core zone",
+            "Sitabani Zone \u2014 permit-free buffer zone for birdwatching",
+            "Kosi River \u2014 riverside picnic with Mahseer fish spotting"
+        ],
+        "best_months": [
+            "November",
+            "December",
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June"
+        ],
+        "hotel_areas": [
+            "Dhikuli",
+            "Ramnagar",
+            "Bijrani Gate area"
+        ],
+        "safety_tips": [
+            "Book Dhikala zone permits months in advance \u2014 limited slots",
+            "Carry binoculars and a telephoto lens for wildlife spotting",
+            "Do not alight from the safari vehicle \u2014 tigers are wild animals"
+        ],
+        "transportation": "Safari jeeps and canters inside the park. Taxis and autos in Ramnagar. Trains from Delhi to Ramnagar.",
+        "crowd_by_month": {
+            "January": "Moderate",
+            "February": "Moderate",
+            "March": "High",
+            "April": "High",
+            "May": "Moderate",
+            "June": "Low",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "Low",
+            "November": "High",
+            "December": "High"
+        }
+    },
+    "mcleodganj": {
+        "full_name": "McLeodGanj (Little Lhasa)",
+        "state": "Himachal Pradesh",
+        "type": "Hill Station",
+        "places_to_visit": [
+            "Tsuglagkhang Complex (Dalai Lama Temple)",
+            "Bhagsu Waterfall",
+            "Triund Trek",
+            "Namgyal Monastery",
+            "Dal Lake"
+        ],
+        "local_foods": [
+            "Tibetan Momos",
+            "Thukpa",
+            "Tingmo with Ema Datshi",
+            "Lemon Ginger Honey Tea",
+            "Tsampa"
+        ],
+        "hidden_gems": [
+            "Dharamkot \u2014 quiet village above McLeodGanj for yoga retreats",
+            "Naddi Viewpoint \u2014 panoramic Dhauladhar range sunrise spot",
+            "Kareri Lake Trek \u2014 2-day offbeat trek through pine forests"
+        ],
+        "best_months": [
+            "March",
+            "April",
+            "May",
+            "September",
+            "October",
+            "November"
+        ],
+        "hotel_areas": [
+            "Temple Road",
+            "Jogiwara Road",
+            "Dharamkot",
+            "Bhagsu"
+        ],
+        "safety_tips": [
+            "Triund trek is safe but gets cold at night \u2014 carry sleeping bag",
+            "Monkeys are aggressive; keep food inside bags",
+            "Weekends are extremely crowded \u2014 visit on weekdays if possible"
+        ],
+        "transportation": "Walk within McLeodGanj. Shared autos to Dharamshala. Taxis for Bir and Palampur day trips.",
+        "crowd_by_month": {
+            "January": "Low",
+            "February": "Low",
+            "March": "Moderate",
+            "April": "Moderate",
+            "May": "High",
+            "June": "High",
+            "July": "Low",
+            "August": "Low",
+            "September": "Low",
+            "October": "High",
+            "November": "Moderate",
+            "December": "Low"
+        }
+    }
+}

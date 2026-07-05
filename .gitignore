@@ -1,0 +1,52 @@
+# ============================================
+# TripAI - Git Ignore Rules
+# ============================================
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Environment & secrets
+.env
+.env.*
+*.env
+
+# SQLite runtime databases
+*.db
+*.db-shm
+*.db-wal
+
+# Logs
+logs/
+*.log
+
+# Windows system files
+desktop.ini
+Thumbs.db
+ehthumbs.db
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing / Linting caches
+.pytest_cache/
+.mypy_cache/
+htmlcov/
+
+# Node (if applicable)
+node_modules/
+
+# Unnecessary media
+WhatsApp Image*
+
+# Virtual environments
+venv/
+.venv/
+env/

@@ -1,0 +1,763 @@
+/*
+ * ============================================================
+ *  TripAI — Dark SaaS Design System
+ *  Author : Srujana
+ *  Project: TripAI (AI-powered travel budget estimator)
+ *  Usage  : Loaded into Streamlit via st.markdown('<style>…</style>')
+ * ============================================================
+ */
+
+/* ── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap');
+
+/* ── CSS Custom Properties ────────────────────────────────── */
+:root {
+    --bg-primary:        #0F172A;
+    --bg-card:           #1E293B;
+    --accent-blue:       #3B82F6;
+    --accent-purple:     #8B5CF6;
+    --accent-cyan:       #06B6D4;
+    --color-success:     #10B981;
+    --color-warning:     #F59E0B;
+    --color-error:       #EF4444;
+    --text-primary:      #F1F5F9;
+    --text-secondary:    #94A3B8;
+    --text-label:        #CBD5E1;
+    --input-bg:          #0F172A;
+    --input-border:      #334155;
+    --gradient-accent:   linear-gradient(135deg, #3B82F6, #8B5CF6);
+    --card-border:       rgba(255, 255, 255, 0.05);
+    --card-border-light: rgba(255, 255, 255, 0.06);
+    --card-shadow:       0 4px 24px rgba(59, 130, 246, 0.08),
+                         0 2px 8px rgba(139, 92, 246, 0.06);
+    --font-body:         'Inter', sans-serif;
+    --font-heading:      'Outfit', sans-serif;
+    --radius-sm:         8px;
+    --radius-md:         14px;
+    --radius-lg:         16px;
+    --radius-xl:         20px;
+    --transition-fast:   0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+/* ── Keyframe Animations ──────────────────────────────────── */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── 1. Streamlit App Background ──────────────────────────── */
+.stApp {
+    background-color: var(--bg-primary) !important;
+    font-family: var(--font-body);
+    color: var(--text-primary);
+}
+
+/* ── 2. Header Bar ────────────────────────────────────────── */
+.tripai-header {
+    text-align: center;
+    padding: 20px 0 8px 0;
+}
+
+/* ── 3. Main Title ────────────────────────────────────────── */
+.tripai-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    letter-spacing: -0.5px;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* ── 4. Subtitle ──────────────────────────────────────────── */
+.tripai-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    margin-top: 4px;
+    line-height: 1.5;
+}
+
+/* ── 5. Input Panel (left sidebar card) ───────────────────── */
+.input-panel {
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    padding: 28px 32px;
+    border: 1px solid var(--card-border-light);
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* ── 6. Section Header ────────────────────────────────────── */
+.section-header {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 48px;
+    height: 3px;
+    background: var(--gradient-accent);
+    border-radius: 2px;
+}
+
+/* ── 7. Field Label ───────────────────────────────────────── */
+.field-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+    display: block;
+}
+
+/* ── 8. Budget Hero Card ──────────────────────────────────── */
+.budget-hero {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border-left: 5px solid;
+    border-image: var(--gradient-accent) 1;
+    padding: 28px 32px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    animation: slideUp 0.4s ease forwards;
+}
+
+/* ── 9. Budget Amount (gradient text) ─────────────────────── */
+.budget-amount {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 800;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* ── 10. Budget Label ─────────────────────────────────────── */
+.budget-label {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 4px;
+}
+
+/* ── 11. Budget Meta ──────────────────────────────────────── */
+.budget-meta {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-label);
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+/* ── 12. Tier Card (base) ─────────────────────────────────── */
+.tier-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    text-align: center;
+    border: 1px solid var(--card-border-light);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.tier-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow);
+}
+
+.tier-label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.tier-amount {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 4px 0;
+}
+
+.tier-desc {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-top: 6px;
+}
+
+/* ── 13-16. Tier Card Variants ────────────────────────────── */
+.tier-card.minimum {
+    border-top: 3px solid var(--color-success);
+}
+
+.tier-card.recommended {
+    border-top: 3px solid var(--accent-blue);
+    background: #1F2D43;
+}
+
+.tier-card.comfort {
+    border-top: 3px solid var(--accent-purple);
+}
+
+.tier-card.luxury {
+    border-top: 3px solid var(--color-warning);
+}
+
+/* ── 17. Metric Card ──────────────────────────────────────── */
+.metric-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border: 1px solid var(--card-border-light);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform var(--transition-fast);
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+}
+
+.metric-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.metric-value {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.2;
+}
+
+.metric-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.3;
+}
+
+/* ── 18. Intelligence Card ────────────────────────────────── */
+.intelligence-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    border: 1px solid var(--card-border-light);
+    box-shadow: var(--card-shadow);
+}
+
+/* ── 19. Intelligence Item ────────────────────────────────── */
+.intelligence-item {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.intelligence-item:last-child {
+    border-bottom: none;
+}
+
+.intel-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.intel-label {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    flex: 1;
+}
+
+.intel-value {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    text-align: right;
+}
+
+/* ── 20. Mode Card ────────────────────────────────────────── */
+.mode-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    text-align: center;
+    border: 1px solid var(--card-border-light);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    cursor: default;
+}
+
+.mode-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.12);
+}
+
+/* ── 21. Recommended Mode Card ────────────────────────────── */
+.mode-card.recommended-mode {
+    border: 2px solid var(--accent-blue);
+    box-shadow: 0 0 16px rgba(59, 130, 246, 0.15);
+}
+
+/* ── 22-26. Badges ────────────────────────────────────────── */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+.badge-cheapest {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--color-success);
+}
+
+.badge-fastest {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--accent-blue);
+}
+
+.badge-best-value {
+    background: rgba(139, 92, 246, 0.15);
+    color: var(--accent-purple);
+}
+
+.badge-recommended {
+    background: rgba(6, 182, 212, 0.15);
+    color: var(--accent-cyan);
+}
+
+/* ── 27. Confidence Bar Container ─────────────────────────── */
+.confidence-bar {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    border: 1px solid var(--card-border-light);
+}
+
+/* ── 28. Confidence Factor Row ────────────────────────────── */
+.confidence-factor {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    gap: 10px;
+}
+
+.factor-check {
+    font-size: 1rem;
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+}
+
+.factor-name {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    flex: 1;
+}
+
+.factor-detail {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    text-align: right;
+}
+
+/* ── 29. Confidence Score ─────────────────────────────────── */
+.confidence-score {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    line-height: 1.2;
+}
+
+/* ── 30. Dataset Insight Card ─────────────────────────────── */
+.dataset-insight {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    border-left: 4px solid var(--accent-cyan);
+    box-shadow: 0 2px 12px rgba(6, 182, 212, 0.08);
+}
+
+/* ── 31. Insight Stat Row ─────────────────────────────────── */
+.insight-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--text-label);
+}
+
+.insight-stat span:last-child {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ── 32. Fuzzy Match Note ─────────────────────────────────── */
+.match-note {
+    background: rgba(245, 158, 11, 0.1);
+    border-left: 4px solid var(--color-warning);
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    color: var(--color-warning);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* ── 33. No Match Note ────────────────────────────────────── */
+.no-match-note {
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 4px solid var(--color-error);
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    color: var(--color-error);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* ── 34. Related Search Chip ──────────────────────────────── */
+.related-search-chip {
+    display: inline-block;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-blue);
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin: 4px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.related-search-chip:hover {
+    background: rgba(59, 130, 246, 0.2);
+    transform: translateY(-1px);
+}
+
+/* ── 35. Placeholder Card (future feature) ────────────────── */
+.placeholder-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    text-align: center;
+    opacity: 0.6;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.placeholder-icon {
+    font-size: 2rem;
+    margin-bottom: 6px;
+    line-height: 1;
+}
+
+.placeholder-label {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* ── 36. Divider ──────────────────────────────────────────── */
+.divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin: 20px 0;
+}
+
+/* ── 37. Result Section ───────────────────────────────────── */
+.result-section {
+    margin-bottom: 24px;
+    animation: slideUp 0.35s ease forwards;
+}
+
+/* ── 38. Weather Card ─────────────────────────────────────── */
+.weather-card {
+    background: linear-gradient(135deg, #1E293B, #0F172A);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    border: 1px solid var(--card-border-light);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ── 39. Weather Temperature ──────────────────────────────── */
+.weather-temp {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin: 0;
+}
+
+/* ── 40. Weather Description ──────────────────────────────── */
+.weather-desc {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-label);
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════════════════════
+ *  STREAMLIT WIDGET OVERRIDES
+ * ═══════════════════════════════════════════════════════════ */
+
+/* ── Text Inputs ──────────────────────────────────────────── */
+.stTextInput > div > div > input {
+    background-color: var(--input-bg) !important;
+    border: 1px solid var(--input-border) !important;
+    color: var(--text-primary) !important;
+    border-radius: 12px !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.9rem !important;
+    padding: 10px 14px !important;
+    transition: border-color var(--transition-fast),
+                box-shadow var(--transition-fast) !important;
+}
+
+.stTextInput > div > div > input:focus {
+    border-color: var(--accent-blue) !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+    outline: none !important;
+}
+
+/* ── Select Boxes ─────────────────────────────────────────── */
+.stSelectbox > div > div {
+    border-radius: 12px !important;
+    background-color: var(--input-bg) !important;
+    border-color: var(--input-border) !important;
+}
+
+.stSelectbox [data-baseweb="select"] {
+    background-color: var(--input-bg) !important;
+}
+
+.stSelectbox [data-baseweb="select"] > div {
+    background-color: var(--input-bg) !important;
+    border-color: var(--input-border) !important;
+    border-radius: 12px !important;
+    color: var(--text-primary) !important;
+}
+
+/* ── Slider Accent ────────────────────────────────────────── */
+.stSlider [data-baseweb="slider"] div[role="slider"] {
+    background-color: var(--accent-blue) !important;
+}
+
+.stSlider [data-baseweb="slider"] div[data-testid="stTickBar"] {
+    background: var(--gradient-accent) !important;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.stButton > button,
+.stFormSubmitButton > button {
+    background: var(--gradient-accent) !important;
+    color: #FFFFFF !important;
+    font-family: var(--font-heading) !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    border: none !important;
+    border-radius: 14px !important;
+    padding: 10px 28px !important;
+    cursor: pointer !important;
+    transition: transform var(--transition-fast),
+                box-shadow var(--transition-fast) !important;
+    letter-spacing: 0.3px !important;
+}
+
+.stButton > button:hover,
+.stFormSubmitButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.35),
+                0 2px 8px rgba(139, 92, 246, 0.25) !important;
+}
+
+.stButton > button:active,
+.stFormSubmitButton > button:active {
+    transform: translateY(0) !important;
+}
+
+/* ── Metrics ──────────────────────────────────────────────── */
+.stMetric label {
+    color: var(--text-secondary) !important;
+    font-family: var(--font-body) !important;
+}
+
+.stMetric [data-testid="stMetricValue"] {
+    color: var(--text-primary) !important;
+    font-family: var(--font-heading) !important;
+}
+
+/* ── Headings ─────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading) !important;
+    color: #FFFFFF !important;
+}
+
+/* ── Hide Streamlit Chrome ────────────────────────────────── */
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+
+header[data-testid="stHeader"] {
+    background-color: transparent !important;
+}
+
+/* ── Tabs ─────────────────────────────────────────────────── */
+.stTabs [data-baseweb="tab-list"] {
+    background-color: var(--bg-card) !important;
+    border-radius: 12px !important;
+    padding: 4px !important;
+    gap: 4px !important;
+    border-bottom: none !important;
+}
+
+.stTabs [data-baseweb="tab"] {
+    color: var(--text-secondary) !important;
+    font-family: var(--font-body) !important;
+    font-weight: 500 !important;
+    border-radius: 10px !important;
+    padding: 8px 16px !important;
+}
+
+.stTabs [aria-selected="true"] {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* ── Expander ─────────────────────────────────────────────── */
+.stExpander {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--card-border-light) !important;
+    border-radius: var(--radius-md) !important;
+}
+
+.stExpander summary {
+    color: var(--text-primary) !important;
+    font-family: var(--font-body) !important;
+    font-weight: 500 !important;
+}
+
+/* ── DataFrame / Table ────────────────────────────────────── */
+.stDataFrame {
+    border-radius: var(--radius-md) !important;
+    overflow: hidden;
+}
+
+.stDataFrame [data-testid="stDataFrameResizable"] {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--card-border-light) !important;
+    border-radius: var(--radius-md) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+ *  RESPONSIVE — Tablets and Smaller Screens
+ * ═══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .tripai-title {
+        font-size: 1.6rem;
+    }
+
+    .tripai-subtitle {
+        font-size: 0.85rem;
+    }
+
+    .input-panel {
+        padding: 20px;
+        border-radius: var(--radius-lg);
+    }
+
+    .budget-hero {
+        padding: 20px;
+    }
+
+    .budget-amount {
+        font-size: 2.2rem;
+    }
+
+    .tier-card {
+        margin-bottom: 12px;
+    }
+
+    .metric-card {
+        padding: 14px 16px;
+    }
+
+    .intelligence-card {
+        padding: 18px 20px;
+    }
+
+    .weather-temp {
+        font-size: 2rem;
+    }
+
+    .confidence-score {
+        font-size: 1.8rem;
+    }
+}
