@@ -39,40 +39,64 @@ We utilize a survey dataset (`traveltripdata.csv`) consisting of **920+ records*
 
 ## 🏗️ 5. Architecture Diagram
 
+To ensure maximum visibility and clean rendering across all GitHub mobile apps and markdown viewers, both a vertical flowchart and an ASCII text layout are provided:
+
+### Interactive Vertical Flowchart
 ```mermaid
-graph TB
-    subgraph "Presentation Layer (View)"
-        APP["app.py (App Router)"]
-        UI["ui_components.py (Views)"]
-        DASH["dashboard_components.py (Cards)"]
-        CHARTS["charts.py (Plotly Viz)"]
-        CSS["styles.css (SaaS Theme)"]
+graph TD
+    User([User inputs]) --> APP[app.py Router]
+    
+    subgraph UI ["Presentation Layer (View)"]
+        APP --> UI_C[ui_components.py]
+        APP --> DB_C[dashboard_components.py]
+        APP --> CH[charts.py]
+        APP --> CS[styles.css]
     end
-
-    subgraph "Service Orchestration (Controller)"
-        TIE["travel_intelligence.py (Orchestrator)"]
-        WEATHER["weather_service.py (Open-Meteo)"]
-        BUDGET["budget_engine.py (Tiers & Comparisons)"]
-        CONF["confidence_engine.py (Multi-factor)"]
-        REC["recommendation_engine.py (Checks & co-searches)"]
-        REP["report_exporter.py (HTML Exporter)"]
+    
+    subgraph Controller ["Service Layer (Controller)"]
+        APP --> TIE[travel_intelligence.py Orchestrator]
+        TIE --> WE[weather_service.py]
+        TIE --> BU[budget_engine.py]
+        TIE --> CO[confidence_engine.py]
+        TIE --> RE[recommendation_engine.py]
+        TIE --> EX[report_exporter.py]
     end
-
-    subgraph "Intelligence & Data Layer (Model)"
-        RF["Random Forest Model (final_model.pkl)"]
-        DS_INTEL["dataset_intelligence.py (CSV Aggregator)"]
-        DB["TripDatabase (database.py / SQLite)"]
-        MAPS["MapsService (maps_service.py / Cache)"]
-        KNOWLEDGE["destination_knowledge.py (Knowledge Base)"]
+    
+    subgraph Model ["Data & Intelligence Layer (Model)"]
+        BU --> MAPS[maps_service.py Cache]
+        RE --> DB[(database.py SQLite)]
+        TIE --> DS[dataset_intelligence.py]
+        DS --> RF[Random Forest Model]
     end
+```
 
-    APP --> UI & DASH & CHARTS & CSS
-    APP --> TIE
-    TIE --> WEATHER & BUDGET & CONF & REC
-    REC --> KNOWLEDGE & DB
-    BUDGET --> MAPS
-    TIE --> DS_INTEL
-    DS_INTEL --> RF
+### High-Visibility ASCII Layout
+```
+      +-------------------------------------------+
+      |         User Browser (Streamlit UI)       |
+      +---------------------+---------------------+
+                            | (Form Inputs)
+                            v
+      +---------------------+---------------------+
+      |   app.py (Router) & ui_components.py      |
+      +---------------------+---------------------+
+                            | (Invoke Orchestrator)
+                            v
+      +---------------------+---------------------+
+      |  travel_intelligence.py (Orchestrator)    |
+      +---------------------+---------------------+
+           |                 |                 |
+           v                 v                 v
+  +--------+--------+ +------+------+ +--------+--------+
+  | weather_service | | budget_engine| | recommendation  |
+  |  (Open-Meteo)   | |  (Tiers/Map) | |    _engine      |
+  +-----------------+ +------+------+ +--------+--------+
+                             |                 |
+                             v                 v
+                      +------+------+ +--------+--------+
+                      | MapsService | | TripDatabase    |
+                      |   (Cache)   | | (SQLite Logs)   |
+                      +-------------+ +-----------------+
 ```
 
 ---
