@@ -32,6 +32,17 @@ REGIONAL_GROUPS = [
     ["Leh", "Spiti", "Kasol", "Auli", "Bir Billing"],
 ]
 
+# Map preferred experiences to categories of activities (Feature 4)
+EXPERIENCE_ACTIVITIES: Dict[str, List[str]] = {
+    "Adventure": ["River Rafting", "Camping", "Trekking", "Paragliding", "Rock Climbing"],
+    "Luxury": ["Luxury Hotels", "Spa & Wellness", "Fine Dining", "Private Guided Tours", "Helicopter rides"],
+    "Nature": ["Waterfalls", "Tea Gardens", "Sunrise Point", "Forest Walks", "Wildlife Safari"],
+    "Food": ["Local Cuisine tasting", "Street Food tours", "Traditional Restaurants", "Local food markets"],
+    "Budget": ["Budget Stays", "Shared Transport / Local bus", "Local Markets shopping", "Free walking tours"],
+    "Relaxation": ["Lakeside walking", "Luxury Resorts stay", "Scenic Parks", "Ayurvedic Spa treatments"],
+    "Cultural": ["Historical Monuments", "Art Galleries", "Museum Visits", "Local festivals", "Temple Tours"]
+}
+
 
 class RecommendationEngine:
     """Computes destination recommendations, packing lists, and trending items."""
@@ -53,6 +64,7 @@ class RecommendationEngine:
         trip_type: str,
         duration_days: int,
         weather: Dict[str, Any],
+        preferred_experience: str = "Nature & Sightseeing",
     ) -> Dict[str, Any]:
         """Compile seasonal tips, packing advice, attractions, and local food.
 
@@ -68,6 +80,8 @@ class RecommendationEngine:
             Stay duration.
         weather : dict
             Current weather parameters.
+        preferred_experience : str
+            Traveller style filter from the dataset.
 
         Returns
         -------
@@ -83,6 +97,9 @@ class RecommendationEngine:
         temp = weather.get("temperature_c", 25.0)
         packing = get_packing_tips(dest_type, month, temp)
 
+        # Match experience activities
+        activities = self._get_activities_for_experience(preferred_experience)
+
         # Basic report structure
         rec = {
             "best_time": best_time,
@@ -95,23 +112,39 @@ class RecommendationEngine:
             "hotel_area_recommendation": ", ".join(dest_info.get("hotel_areas", ["City Centre"])) if dest_info else "City Centre",
             "transportation_advice": dest_info.get("transportation", "Use local cabs") if dest_info else "Use local cabs",
             "money_saving_tips": self._generate_saving_tips(trip_type, duration_days),
+            "experience_activities": activities,
+            "preferred_experience": preferred_experience,
         }
 
         return rec
 
+    def _get_activities_for_experience(self, exp_style: str) -> List[str]:
+        """Match preferred experience style to hardcoded activities list."""
+        style_clean = exp_style.lower().strip()
+        for key, activities in EXPERIENCE_ACTIVITIES.items():
+            if key.lower() in style_clean:
+                return activities
+
+        # Default fallback activities if match is not direct
+        if "nature" in style_clean:
+            return EXPERIENCE_ACTIVITIES["Nature"]
+        if "food" in style_clean:
+            return EXPERIENCE_ACTIVITIES["Food"]
+        if "budget" in style_clean:
+            return EXPERIENCE_ACTIVITIES["Budget"]
+        if "relax" in style_clean:
+            return EXPERIENCE_ACTIVITIES["Relaxation"]
+        if "adventure" in style_clean:
+            return EXPERIENCE_ACTIVITIES["Adventure"]
+        if "luxury" in style_clean:
+            return EXPERIENCE_ACTIVITIES["Luxury"]
+        if "cultural" in style_clean or "history" in style_clean:
+            return EXPERIENCE_ACTIVITIES["Cultural"]
+
+        return ["Sightseeing", "Photography", "Souvenir shopping", "Exploring cafes"]
+
     def get_related_searches(self, destination: str) -> List[str]:
-        """Find related searches based on shared session search history in SQLite.
-
-        Parameters
-        ----------
-        destination : str
-            Search key.
-
-        Returns
-        -------
-        list[str]
-            Titles of similar locations.
-        """
+        """Find related searches based on shared session search history in SQLite."""
         try:
             searches = self._db.get_searches(limit=300)
             if not searches:
@@ -127,7 +160,6 @@ class RecommendationEngine:
             if not matching_sessions:
                 return self._fallback_related(destination)
 
-            # Accumulate other places searched during those sessions
             counts: Dict[str, int] = {}
             for s in searches:
                 sid = s.get("session_id")

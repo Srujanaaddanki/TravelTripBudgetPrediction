@@ -22,8 +22,6 @@ def load_css() -> None:
     """Load and inject styles.css styling rules into Streamlit page."""
     base_dir = os.path.dirname(os.path.abspath(__file__))
     css_path = os.path.join(base_dir, "styles.css")
-
-    # If not found inside src/ui/, check the root directory as fallback
     if not os.path.exists(css_path):
         css_path = os.path.join(base_dir, "..", "..", "styles.css")
 
@@ -35,12 +33,23 @@ def load_css() -> None:
         st.warning(f"Styling theme could not be loaded: {e}")
 
 
+def format_stars(score: float) -> str:
+    """Format a numeric rating score to a star character representation."""
+    rounded = min(5, max(0, int(round(score))))
+    return "★" * rounded + "☆" * (5 - rounded)
+
+
+def format_rupees(amount: float) -> str:
+    """Format a float amount into standard Indian Rupee format."""
+    return f"₹{amount:,.0f}"
+
+
 def render_header() -> None:
     """Render top branding title and subtitle for TripAI."""
     st.markdown(
         """
         <div class="tripai-header">
-            <h1 class="tripai-title">✈️ TripAI</h1>
+            <h1 class="tripai-title">✈ Honor/TripAI</h1>
             <p class="tripai-subtitle">AI-Powered Travel Intelligence & Budget Planning Platform</p>
         </div>
         """,
@@ -126,7 +135,6 @@ def render_donut_chart(cost: float, mode: str) -> None:
     """Render Plotly Donut Chart showing typical travel cost breakdown."""
     st.markdown('<p class="section-header">📊 Estimated Budget Split</p>', unsafe_allow_html=True)
 
-    # Approximate cost weights based on historical splits
     is_premium = "Flight" in mode or "Luxury" in mode
     travel_weight = 0.35 if is_premium else 0.20
     hotel_weight = 0.40 if is_premium else 0.35
@@ -175,7 +183,6 @@ def render_gauge_chart(score: float) -> None:
                 {"range": [60, 85], "color": "#334155"},
                 {"range": [85, 100], "color": "#0F172A"},
             ],
-            "threshold": {"line": {"color": "#8B5CF6", "width": 4}, "thickness": 0.75, "value": score * 100 if score <= 1.0 else score},
         },
     ))
 
@@ -229,46 +236,137 @@ def render_mode_comparison(modes: Dict[str, Any], selected_mode: str) -> None:
         )
 
 
-def render_traveller_experience(insights: Dict[str, Any]) -> None:
-    """Render historical satisfaction ratings and stats from similar dataset trips."""
+def render_traveller_experience(insights: Dict[str, Any], destination: str) -> None:
+    """Render Feature 1 & 2: data-driven traveller rating cards, score bar, and Smart summary."""
     st.markdown('<p class="section-header">📈 Historical Traveller Experience</p>', unsafe_allow_html=True)
     if not insights.get("has_data", False):
-        st.info("No matching historical records found for this custom query.")
+        st.info("No matching historical records found for this query.")
         return
+
+    score = insights.get("destination_score", 4.0)
+    stars = format_stars(score)
+    count = insights.get("similar_count", 0)
+
+    # 1. Smart summary Overview card (Feature 6)
+    summary_text = (
+        f"Most visitors travel to {destination.title()} during "
+        f"{insights.get('most_popular_month')} ({insights.get('most_popular_season')}). "
+        f"'{insights.get('preferred_experience')}' is the preferred style. "
+        f"{insights.get('revisit_percentage')}% would revisit. "
+        f"Average hotel rating is {insights.get('avg_hotel_rating')}/5.0. "
+        f"Average budget is {format_rupees(insights.get('average_budget'))}."
+    )
 
     st.markdown(
         f"""
-        <div class="dataset-insight">
-            <h4 style="margin: 0 0 16px 0; color: #06b6d4;">📊 Dataset Analytics — based on {insights['similar_count']} historical trips</h4>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-                <div>
-                    <div class="field-label">Overall Satisfaction</div>
-                    <div style="font-size: 1.8rem; font-weight: 800; color: #10B981;">{insights['avg_satisfaction']} / 5.0 ⭐</div>
-                </div>
-                <div>
-                    <div class="field-label">Local Transport Score</div>
-                    <div style="font-size: 1.8rem; font-weight: 800; color: #3B82F6;">{insights['avg_transport_rating']} / 5.0 🚌</div>
-                </div>
-                <div>
-                    <div class="field-label">Sightseeing Quality</div>
-                    <div style="font-size: 1.8rem; font-weight: 800; color: #8B5CF6;">{insights['avg_sightseeing_rating']} / 5.0 ⛰️</div>
-                </div>
-                <div>
-                    <div class="field-label">Revisit Intention</div>
-                    <div style="font-size: 1.8rem; font-weight: 800; color: #F59E0B;">{insights['revisit_percentage']}% Yes 🔄</div>
-                </div>
+        <div class="dataset-insight" style="margin-bottom: 20px;">
+            <h4 style="margin: 0 0 10px 0; color: #3B82F6;">📜 Destination Overview — {destination.title()}</h4>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <span style="font-size: 1.6rem; font-weight: 800; color: #F59E0B;">{stars} {score}/5.0</span>
+                <span style="color: #94A3B8; font-size: 0.85rem;">(Based on {count} previous travellers)</span>
             </div>
-            <div class="divider"></div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; font-size: 0.85rem; color: #CBD5E1;">
-                <div>💼 Preferred Style: <strong>{insights['preferred_experience']}</strong></div>
-                <div>🏨 Preferred Hotel: <strong>{insights['most_preferred_hotel']}</strong></div>
-                <div>🚗 Top Transit Mode: <strong>{insights['most_used_travel_mode']}</strong></div>
-                <div>📅 Peak Month: <strong>{insights['most_popular_month']} ({insights['most_popular_season']})</strong></div>
+            <p style="font-size: 0.9rem; color: #CBD5E1; line-height: 1.5; margin: 0;">{summary_text}</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # 2. Key Traveller Insights metrics (Feature 1, 2 & 3)
+    cols = st.columns(4)
+    cols[0].metric("⭐ Overall Rating", f"{score}/5.0")
+    cols[1].metric("🏨 Hotel Stay Rating", f"{insights['avg_hotel_rating']}/5.0")
+    cols[2].metric("🚖 Local Transit Score", f"{insights['avg_transport_rating']}/5.0")
+    cols[3].metric("📍 Sightseeing Rating", f"{insights['avg_sightseeing_rating']}/5.0")
+
+    # Score Progress bar (Feature 2)
+    progress_pct = int(score / 5.0 * 100)
+    st.markdown(
+        f"""
+        <div style="margin: 16px 0 24px 0;">
+            <div class="field-label" style="display: flex; justify-content: space-between;">
+                <span>Destination Performance Score</span>
+                <span>{progress_pct}%</span>
+            </div>
+            <div style="background-color: #334155; border-radius: 8px; height: 10px; width: 100%; overflow: hidden; margin-top: 4px;">
+                <div style="background: linear-gradient(90deg, #3B82F6, #8B5CF6); height: 100%; width: {progress_pct}%;"></div>
             </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
+
+
+def render_similar_travellers(similar_data: Dict[str, Any], trip_type: str, duration: int, hotel: str) -> None:
+    """Render Feature 5: 'Travellers like you' spent statistics."""
+    st.markdown('<p class="section-header">👥 Similar Traveller Analysis</p>', unsafe_allow_html=True)
+    if not similar_data.get("has_data", False):
+        st.caption("Not enough similar profile matching points.")
+        return
+
+    st.markdown(
+        f"""
+        <div class="dataset-insight" style="border-left-color: #8B5CF6;">
+            <h4 style="margin: 0 0 16px 0; color: #8B5CF6;">👥 Travellers like you (Based on similar {trip_type.title()} profiles)</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                <div>
+                    <div class="field-label">Average Spending</div>
+                    <div style="font-size: 1.6rem; font-weight: 800; color: #F1F5F9;">{format_rupees(similar_data['avg_spending'])}</div>
+                </div>
+                <div>
+                    <div class="field-label">Favorite Transport Mode</div>
+                    <div style="font-size: 1.6rem; font-weight: 800; color: #06B6D4;">{similar_data['fav_transport']}</div>
+                </div>
+                <div>
+                    <div class="field-label">Preferred Style</div>
+                    <div style="font-size: 1.6rem; font-weight: 800; color: #10B981;">{similar_data['fav_experience']}</div>
+                </div>
+                <div>
+                    <div class="field-label">Preferred Stay Grade</div>
+                    <div style="font-size: 1.6rem; font-weight: 800; color: #F59E0B;">{similar_data['fav_hotel_quality']}</div>
+                </div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_recommended_experiences(intelligence: Dict[str, Any]) -> None:
+    """Render Feature 4: Custom Recommended Experiences and activities."""
+    st.markdown('<p class="section-header">🎯 Recommended Experiences & Highlights</p>', unsafe_allow_html=True)
+
+    pref_style = intelligence.get("preferred_experience", "Nature & Sightseeing")
+    activities = intelligence.get("experience_activities", [])
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown(
+            f"""
+            <div class="dataset-insight" style="border-left-color: #10B981; height: 100%;">
+                <h5 style="margin: 0 0 10px 0; color: #10B981;">✨ Recommended Activities for '{pref_style}' style</h5>
+                <ul style="margin: 0; padding-left: 20px; color: #CBD5E1; font-size: 0.9rem;">
+                    {"".join([f'<li style="margin-bottom: 6px;">{act}</li>' for act in activities])}
+                </ul>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    with col2:
+        st.markdown(
+            f"""
+            <div class="dataset-insight" style="border-left-color: #F59E0B; height: 100%;">
+                <h5 style="margin: 0 0 10px 0; color: #F59E0B;">💎 Curated Highlights</h5>
+                <div style="font-size: 0.85rem; color: #CBD5E1;">
+                    <div style="margin-bottom: 8px;">🏞️ <strong>Top Attractions:</strong> {", ".join(intelligence.get("places_to_visit", [])[:3])}</div>
+                    <div style="margin-bottom: 8px;">🍜 <strong>Local Delicacies:</strong> {", ".join(intelligence.get("local_foods", [])[:3])}</div>
+                    <div style="margin-bottom: 8px;">🌟 <strong>Hidden Gems:</strong> {", ".join(intelligence.get("hidden_gems", [])[:2])}</div>
+                    <div>🛡️ <strong>Safety Advisory:</strong> {intelligence.get("safety_tips", ["Travel safe"])[0]}</div>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
 
 def render_related_searches(related: List[str]) -> None:
@@ -282,7 +380,7 @@ def render_related_searches(related: List[str]) -> None:
 
 def render_future_features() -> None:
     """Render placeholder grid showing future features roadmap."""
-    st.markdown('<p class="section-header" style="margin-top: 24px;">🚀 TripAI 2026 Future Roadmap</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header" style="margin-top: 24px;">🚀 TripAI Future Roadmap</p>', unsafe_allow_html=True)
     cols = st.columns(3)
 
     features = [

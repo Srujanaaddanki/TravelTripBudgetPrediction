@@ -79,13 +79,15 @@ class TravelIntelligenceEngine:
             days=duration_days,
         )
 
-        # Step 3: Recommendations assembly
+        # Step 3: Extract historical experience and build recommendations (Feature 4)
+        pref_exp = dataset_insights.get("preferred_experience", "Nature & Sightseeing")
         rec_info = self._recommendations.build_recommendations(
             destination=destination,
             month=month,
             trip_type=trip_type,
             duration_days=duration_days,
             weather=weather_info,
+            preferred_experience=pref_exp,
         )
 
         # Step 4: Budget Engine calculations (tiers and routes)
@@ -106,7 +108,15 @@ class TravelIntelligenceEngine:
             ml_prediction=ml_prediction,
         )
 
-        # Step 6: Related searches & trending destinations
+        # Step 6: Similar traveller analysis (Feature 5)
+        similar_traveller = self._dataset.get_similar_traveller_stats(
+            trip_type=trip_type,
+            duration_days=duration_days,
+            hotel_quality=hotel_quality,
+            predicted_cost=ml_prediction,
+        )
+
+        # Step 7: Related searches & trending destinations
         related_searches = self._recommendations.get_related_searches(destination)
         trending = self._dataset.get_trending_destinations(top_n=5)
 
@@ -118,6 +128,7 @@ class TravelIntelligenceEngine:
             "intelligence": rec_info,
             "mode_comparison": mode_comparison,
             "dataset_insights": dataset_insights,
+            "similar_traveller": similar_traveller,
             "related_searches": related_searches,
             "trending": trending,
         }

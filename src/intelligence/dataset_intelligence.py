@@ -71,17 +71,36 @@ class DatasetIntelligence:
             return float("nan")
         return float(value) if value is not None else float("nan")
 
+    def _hotel_experience_to_score(self, value: Any) -> float:
+        """Convert stay descriptor to 1-5 numeric rating scale."""
+        val_str = str(value).strip().lower()
+        if "excellent" in val_str:
+            return 5.0
+        if "good" in val_str:
+            return 4.0
+        if "average" in val_str:
+            return 3.0
+        if "very poor" in val_str:
+            return 1.0
+        if "poor" in val_str:
+            return 2.0
+        return 3.5
+
     def _load_and_clean(self, csv_path: str) -> pd.DataFrame:
-        """Load and clean dataset columns to ensure correct types."""
+        """Load CSV and apply the same cleaning pipeline as *train_model.py*."""
         raw_df = pd.read_csv(csv_path)
         raw_df.columns = raw_df.columns.str.strip()
         df = raw_df.rename(columns=COLUMN_RENAME_MAP)
 
-        # Standard cleanings
+        # Clean cost and days
         if "Cost" in df.columns:
             df["Cost"] = df["Cost"].apply(self._clean_cost)
         if "Days" in df.columns:
             df["Days"] = pd.to_numeric(df["Days"], errors="coerce")
+
+        # Convert stay description to numeric scores
+        if "Hotel_Quality" in df.columns:
+            df["Hotel_Rating"] = df["Hotel_Quality"].apply(self._hotel_experience_to_score)
 
         # Convert rating columns to numeric
         rating_cols = ["Local_Trans_Rating", "Sightseeing_Rating", "Satisfaction_Rating"]
@@ -114,11 +133,7 @@ class DatasetIntelligence:
         hotel_quality: Optional[str] = None,
         days: Optional[int] = None,
     ) -> Dict[str, Any]:
-        """Find matching historical trips and compute summary statistics.
-
-        Matches by destination first, then applies month, type, and quality filters.
-        Falls back to destination-only if subset is smaller than _MIN_SAMPLE_SIZE.
-        """
+        """Find matching historical trips and compute summary statistics."""
         dest_key = destination.strip().title()
         base = self._df[self._df["Place"] == dest_key]
 
@@ -133,7 +148,6 @@ class DatasetIntelligence:
         if hotel_quality:
             filtered = filtered[filtered["Hotel_Quality"] == hotel_quality.strip().title()]
 
-        # Fallback to destination-only baseline if sample size is too small
         if len(filtered) < _MIN_SAMPLE_SIZE:
             filtered = base
 
@@ -145,6 +159,10 @@ class DatasetIntelligence:
         avg_satisfaction = float(df["Satisfaction_Rating"].mean()) if "Satisfaction_Rating" in df.columns else 4.0
         avg_trans = float(df["Local_Trans_Rating"].mean()) if "Local_Trans_Rating" in df.columns else 4.0
         avg_sightseeing = float(df["Sightseeing_Rating"].mean()) if "Sightseeing_Rating" in df.columns else 4.0
+        avg_hotel = float(df["Hotel_Rating"].mean()) if "Hotel_Rating" in df.columns else 4.0
+
+        # Overall destination score average out of 5
+        overall_score = (avg_satisfaction + avg_hotel + avg_trans + avg_sightseeing) / 4.0
 
         # Percentages
         revisit_yes = 0.0
@@ -165,6 +183,8 @@ class DatasetIntelligence:
             "avg_satisfaction": round(avg_satisfaction, 1),
             "avg_transport_rating": round(avg_trans, 1),
             "avg_sightseeing_rating": round(avg_sightseeing, 1),
+            "avg_hotel_rating": round(avg_hotel, 1),
+            "destination_score": round(overall_score, 1),
             "revisit_percentage": round(revisit_yes, 1),
             "preferred_experience": self._safe_mode(df["Preferred_Experience"]),
             "has_data": True,
@@ -186,9 +206,52 @@ class DatasetIntelligence:
             "avg_satisfaction": 0.0,
             "avg_transport_rating": 0.0,
             "avg_sightseeing_rating": 0.0,
+            "avg_hotel_rating": 0.0,
+            "destination_score": 0.0,
             "revisit_percentage": 0.0,
             "preferred_experience": "N/A",
             "has_data": False,
+        }
+
+    def get_similar_traveller_stats(
+        self,
+        trip_type: str,
+        duration_days: int,
+        hotel_quality: str,
+        predicted_cost: float,
+    ) -> Dict[str, Any]:
+        """Fetch statistics of matching historical travellers (Feature 5)."""
+        if self._df.empty:
+            return {"has_data": False}
+
+        # Filter: trip type match
+        subset = self._df[self._df["Trip_Type"].str.lower() == trip_type.lower().strip()]
+        if subset.empty:
+            subset = self._df
+
+        # Filter: duration +/- 2 days
+        dur_subset = subset[abs(subset["Days"] - duration_days) <= 2]
+        if not dur_subset.empty:
+            subset = dur_subset
+
+        # Filter: budget within 40% range of predicted cost
+        cost_subset = subset[abs(subset["Cost"] - predicted_cost) <= (predicted_cost * 0.40)]
+        if not cost_subset.empty:
+            subset = cost_subset
+
+        # Aggregate stats
+        avg_spending = float(subset["Cost"].mean())
+        fav_transport = self._safe_mode(subset["Travel_Mode"])
+        fav_experience = self._safe_mode(subset["Preferred_Experience"])
+        fav_hotel = self._safe_mode(subset["Hotel_Quality"])
+
+        return {
+            "count": len(subset),
+            "avg_spending": round(avg_spending, 2),
+            "fav_transport": fav_transport,
+            "fav_experience": fav_experience,
+            "fav_hotel_quality": fav_hotel,
+            "has_data": True
         }
 
     def get_trending_destinations(self, top_n: int = 10) -> List[Dict[str, Any]]:
