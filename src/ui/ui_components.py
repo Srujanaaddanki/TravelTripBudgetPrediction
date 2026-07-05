@@ -94,3 +94,21 @@ def render_future_features() -> None:
             """,
             unsafe_allow_html=True,
         )
+
+
+def render_related_searches(related: List[str]) -> None:
+    """Render a list of related destinations as styled chips.
+
+    Parameters
+    ----------
+    related : List[str]
+        List of matching destinations to display.
+    """
+    if not related:
+        return
+    st.markdown('<p class="section-header">🔍 Similar Destinations Searched</p>', unsafe_allow_html=True)
+    chips_html = "".join([
+        f'<span class="related-search-chip">🌎 {place.title()}</span>'
+        for place in related
+    ])
+    st.markdown(f'<div style="margin-top: 10px;">{chips_html}</div>', unsafe_allow_html=True)
