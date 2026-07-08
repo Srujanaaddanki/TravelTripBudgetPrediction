@@ -115,10 +115,7 @@ srujan/
 ├── data/                      # Raw traveller dataset
 │   └── traveltripdata.csv     
 ├── tests/                     # Integration tests
-│   └── test_search_tracking.py
-├── docs/                      # Recruiter guides
-│   ├── INTERVIEW_GUIDE.md     
-│   └── DEPLOYMENT_GUIDE.md    
+│   └── test_search_tracking.py 
 ├── src/                       # Service orchestrator & UI views
 │   ├── services/
 │   │   ├── travel_intelligence.py
