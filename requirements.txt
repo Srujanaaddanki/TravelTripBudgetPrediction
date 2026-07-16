@@ -1,6 +1,7 @@
 # ============================================
-# TripAI - Python Dependencies
+# TripAI — Python Dependencies
 # ============================================
+
 # Web Framework
 streamlit>=1.28.0
 
@@ -17,5 +18,20 @@ plotly>=5.15.0
 matplotlib>=3.7.0
 seaborn>=0.12.0
 
-# Streamlit Plugins
-streamlit-option-menu>=0.3.6
+# Maps
+streamlit-folium>=0.18.0
+folium>=0.15.0
+
+# PDF Generation
+fpdf2>=2.7.0
+
+# API & Environment
+requests>=2.31.0
+python-dotenv>=1.0.0
+rapidfuzz>=3.0.0
+
+# Google Gemini AI
+google-generativeai>=0.5.0
+
+# Image export (optional, for plotly)
+kaleido>=0.2.1

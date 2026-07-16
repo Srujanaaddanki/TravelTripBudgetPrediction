@@ -34,24 +34,20 @@ class WeatherService:
         self._maps = maps_service
 
     def get_weather(self, destination: str) -> Dict[str, Any]:
-        """Fetch current weather for a destination.
-
-        Parameters
-        ----------
-        destination : str
-            Name of destination.
-
-        Returns
-        -------
-        dict
-            Keys: temperature_c, description, humidity, feels_like, wind_speed.
-        """
+        """Fetch current weather for a destination."""
         try:
             # Step 1: Look up coordinates for the destination
             coords = self._maps.get_coordinates(destination)
             if coords:
-                lat, lng = coords
-                return self._call_open_meteo_api(lat, lng)
+                lat, lng = None, None
+                if isinstance(coords, dict):
+                    lat = coords.get("lat")
+                    lng = coords.get("lng")
+                elif isinstance(coords, (tuple, list)) and len(coords) >= 2:
+                    lat, lng = coords[0], coords[1]
+                
+                if lat is not None and lng is not None:
+                    return self._call_open_meteo_api(lat, lng)
         except Exception as err:
             log.warning("Weather fetch failed for %s: %s", destination, err)
 

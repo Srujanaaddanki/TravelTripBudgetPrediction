@@ -1,8 +1,8 @@
 /*
  * ============================================================
- *  TripAI — Dark SaaS Design System (Premium Redesign)
- *  Author : Srujana
- *  Project: TripAI (AI-powered travel budget estimator)
+ *  TripAI — Premium SaaS Design System (Final Polish v3)
+ *  Author : Srujana Addanki
+ *  Project: TripAI — AI-Powered Travel Intelligence Platform
  *  Usage  : Loaded into Streamlit via st.markdown('<style>...</style>')
  * ============================================================
  */
@@ -14,9 +14,11 @@
 :root {
     --bg-primary:        #0F172A;
     --bg-card:           #1E293B;
+    --bg-card-hover:     #243147;
     --accent-blue:       #2563EB;
     --accent-purple:     #7C3AED;
     --accent-cyan:       #06B6D4;
+    --accent-teal:       #0D9488;
     --color-success:     #10B981;
     --color-warning:     #F59E0B;
     --color-error:       #EF4444;
@@ -26,16 +28,62 @@
     --input-bg:          #0F172A;
     --input-border:      #334155;
     --gradient-accent:   linear-gradient(135deg, #2563EB, #7C3AED);
+    --gradient-hero:     linear-gradient(135deg, #1e3a5f 0%, #1a1040 50%, #1e1b4b 100%);
+    --gradient-budget:   linear-gradient(135deg, #1a237e 0%, #0d47a1 40%, #4a148c 100%);
     --card-border:       rgba(255, 255, 255, 0.05);
-    --card-border-light: rgba(255, 255, 255, 0.06);
-    --card-shadow:       0 10px 30px -10px rgba(0, 0, 0, 0.3),
-                         0 1px 3px rgba(255, 255, 255, 0.05);
+    --card-border-light: rgba(255, 255, 255, 0.08);
+    --card-shadow:       0 10px 30px -10px rgba(0, 0, 0, 0.4),
+                         0 1px 3px rgba(255, 255, 255, 0.04);
+    --card-shadow-lg:    0 20px 60px -15px rgba(0, 0, 0, 0.5),
+                         0 4px 12px rgba(37, 99, 235, 0.1);
     --font-body:         'Inter', sans-serif;
     --font-heading:      'Outfit', sans-serif;
     --radius-sm:         8px;
     --radius-md:         12px;
     --radius-lg:         16px;
     --radius-xl:         20px;
+    --radius-2xl:        24px;
+}
+
+/* ── Animations ───────────────────────────────────────────── */
+@keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideInLeft {
+    from { opacity: 0; transform: translateX(-16px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.3); }
+    50%       { box-shadow: 0 0 40px rgba(37, 99, 235, 0.6), 0 0 60px rgba(124, 58, 237, 0.2); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes countUp {
+    from { opacity: 0; transform: scale(0.8); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes checkmark {
+    0%   { opacity: 0; transform: scale(0); }
+    60%  { transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes progressFill {
+    from { width: 0%; }
+    to   { width: var(--fill-width); }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
 
 /* ── 1. Streamlit App Background ──────────────────────────── */
@@ -45,10 +93,142 @@
     color: var(--text-primary);
 }
 
-/* ── 2. Header Bar ────────────────────────────────────────── */
+/* ── 2. Top Navbar ───────────────────────────────────────── */
+.tripai-topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 28px;
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    animation: fadeSlideIn 0.5s ease forwards;
+    margin-bottom: 8px;
+}
+
+.tripai-nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tripai-nav-logo {
+    font-size: 1.35rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    background: linear-gradient(135deg, #60A5FA, #818CF8, #A78BFA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+    line-height: 1;
+}
+
+.tripai-nav-tagline {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.3px;
+    margin-top: 2px;
+    font-weight: 500;
+}
+
+.tripai-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tripai-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    color: var(--text-secondary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    text-decoration: none;
+}
+
+.tripai-nav-btn:hover {
+    background: rgba(255,255,255,0.06);
+    color: var(--text-primary);
+}
+
+.tripai-nav-btn.active {
+    background: linear-gradient(135deg, #2563EB, #7C3AED);
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+}
+
+.tripai-nav-socials {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tripai-social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 700;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.tripai-social-btn:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.25);
+    color: #FFFFFF;
+    transform: translateY(-1px);
+}
+
+.tripai-social-btn.linkedin:hover {
+    background: rgba(10, 102, 194, 0.2);
+    border-color: rgba(10, 102, 194, 0.5);
+    color: #0A66C2;
+}
+
+.tripai-social-btn.github:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255,255,255,0.35);
+    color: #FFFFFF;
+}
+
+/* ── 2b. Header Bar (legacy centered header) ──────────────── */
 .tripai-header {
     text-align: center;
-    padding: 24px 0 8px 0;
+    padding: 28px 0 10px 0;
+    animation: fadeSlideIn 0.6s ease forwards;
+}
+
+.tripai-brand {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #60A5FA, #818CF8, #A78BFA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+    margin: 0;
+    line-height: 1.1;
 }
 
 .tripai-title {
@@ -61,29 +241,106 @@
     line-height: 1.2;
 }
 
-.tripai-subtitle {
+.tripai-platform-label {
     font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-    margin-top: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+    margin-top: 4px;
 }
 
-/* ── 3. Input Panel (left sidebar card) ───────────────────── */
+.tripai-tagline {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 4px 0 0 0;
+}
+
+.tripai-tagline .dot-sep {
+    color: var(--accent-blue);
+    margin: 0 6px;
+}
+
+.tripai-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    margin-top: 4px;
+}
+
+/* ── 3. Portfolio Statistics Banner ──────────────────────── */
+.stats-banner {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%);
+    border: 1px solid var(--card-border-light);
+    border-radius: var(--radius-lg);
+    padding: 0;
+    margin: 12px 0 20px 0;
+    overflow: hidden;
+    animation: fadeSlideIn 0.7s ease 0.1s both;
+}
+
+.stats-banner-item {
+    flex: 1;
+    text-align: center;
+    padding: 18px 16px;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background 0.2s ease;
+}
+
+.stats-banner-item:last-child {
+    border-right: none;
+}
+
+.stats-banner-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.stats-value {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #60A5FA, #A78BFA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    animation: countUp 0.5s ease forwards;
+}
+
+.stats-label {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-top: 4px;
+}
+
+/* ── 4. Input Panel (left sidebar card) ───────────────────── */
 .input-panel {
     background: var(--bg-card);
     border-radius: var(--radius-xl);
-    padding: 28px 32px;
+    padding: 28px 28px;
     border: 1px solid var(--card-border-light);
     box-shadow: var(--card-shadow);
 }
 
 .section-header {
     font-family: var(--font-heading);
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin: 0 0 16px 0;
+    margin: 0 0 14px 0;
     padding-bottom: 8px;
     border-bottom: 2px solid var(--accent-blue);
     width: fit-content;
@@ -99,52 +356,605 @@
     margin-bottom: 6px;
 }
 
-/* ── 4. Premium Budget Hero Card ──────────────────────────── */
-.budget-hero {
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
-    backdrop-filter: blur(12px);
-    border-left: 6px solid #2563EB;
-    padding: 32px;
+/* ── 5. Trip Overview Card ─────────────────────────────────── */
+.trip-overview-card {
+    background: linear-gradient(135deg, rgba(37,99,235,0.12) 0%, rgba(124,58,237,0.12) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.3);
     border-radius: var(--radius-lg);
-    border-top: 1px solid var(--card-border-light);
-    border-right: 1px solid var(--card-border-light);
-    border-bottom: 1px solid var(--card-border-light);
-    text-align: center;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    animation: fadeSlideIn 0.5s ease forwards;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
+}
+
+.trip-overview-route {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.trip-overview-city {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #FFFFFF;
+}
+
+.trip-overview-arrow {
+    font-size: 1.1rem;
+    color: var(--accent-cyan);
+}
+
+.trip-overview-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.trip-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-label);
+}
+
+.trip-overview-budget {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #60A5FA, #A78BFA, #34D399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── 6. AI Advisor Card ────────────────────────────────────── */
+.ai-advisor-card {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-left: 4px solid var(--accent-cyan);
+    border-radius: var(--radius-lg);
+    padding: 22px 24px;
+    margin-bottom: 16px;
     box-shadow: var(--card-shadow);
-    margin-bottom: 20px;
+    animation: fadeSlideIn 0.5s ease 0.1s both;
+}
+
+.ai-advisor-label {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ai-advisor-text {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: var(--text-label);
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* ── 7. Premium Budget Hero Card ──────────────────────────── */
+.budget-hero {
+    background: var(--gradient-budget);
+    border-radius: var(--radius-xl);
+    padding: 32px 28px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(37, 99, 235, 0.25), 0 4px 12px rgba(0,0,0,0.3);
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeSlideIn 0.5s ease 0.15s both;
+}
+
+.budget-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.budget-hero-category {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 8px;
 }
 
 .budget-amount {
     font-family: var(--font-heading);
-    font-size: 3.4rem;
+    font-size: 3.8rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #3B82F6, #8B5CF6, #06B6D4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 8px 0;
+    color: #FFFFFF;
+    margin: 4px 0 8px 0;
     line-height: 1;
+    text-shadow: 0 2px 20px rgba(255,255,255,0.2);
 }
 
 .budget-label {
     font-family: var(--font-body);
-    font-size: 0.8rem;
-    color: var(--text-secondary);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.55);
     text-transform: uppercase;
     letter-spacing: 1.5px;
+    margin-bottom: 20px;
 }
 
-.budget-meta {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
+.budget-info-pills {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.budget-info-pill {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+}
+
+.budget-badges {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* ── 8. Budget Explainability Card ("Why This Budget?") ────── */
+.explainability-card {
+    background: var(--bg-card);
+    border: 1px solid var(--card-border-light);
+    border-left: 4px solid var(--color-success);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: var(--card-shadow);
+    animation: fadeSlideIn 0.5s ease 0.2s both;
+}
+
+.explainability-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-success);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.explainability-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+    font-size: 0.85rem;
     color: var(--text-label);
-    font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
 }
 
-/* ── 5. Budget Tier Cards ────────────────────────────────── */
+.explainability-row:last-child {
+    border-bottom: none;
+}
+
+.explainability-check {
+    color: var(--color-success);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    min-width: 16px;
+}
+
+.explainability-key {
+    color: var(--text-secondary);
+    min-width: 140px;
+    font-size: 0.82rem;
+}
+
+.explainability-value {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ── 9. Experience Metric Cards ────────────────────────────── */
+.experience-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.experience-metric-card {
+    background: var(--bg-card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    padding: 14px 14px 12px 14px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.experience-metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+.experience-icon {
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.experience-value {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+.experience-label-sm {
+    font-size: 0.68rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.mini-progress-track {
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+    height: 4px;
+    overflow: hidden;
+}
+
+.mini-progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #2563EB, #06B6D4);
+    transition: width 0.8s ease;
+}
+
+/* ── 10. Weather Card ─────────────────────────────────────── */
+.weather-widget {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
+    border-radius: var(--radius-lg);
+    padding: 20px 22px;
+    border: 1px solid var(--card-border-light);
+    box-shadow: var(--card-shadow);
+    margin-bottom: 16px;
+}
+
+.weather-live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--color-success);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 10px;
+}
+
+.weather-estimate-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--color-warning);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 10px;
+}
+
+.weather-temp-large {
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    line-height: 1;
+}
+
+.weather-desc {
+    font-size: 0.9rem;
+    color: var(--accent-cyan);
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.weather-stats-row {
+    display: flex;
+    gap: 18px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.weather-stat-item strong {
+    color: var(--text-primary);
+}
+
+.weather-advice {
+    font-size: 0.8rem;
+    color: var(--text-label);
+    font-style: italic;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* ── 11. Travel Mode Cards v2 ─────────────────────────────── */
+.mode-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 14px 12px;
+    text-align: center;
+    border: 1px solid var(--card-border);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mode-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(37, 99, 235, 0.4);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+}
+
+.mode-card.recommended-mode {
+    border: 2px solid var(--accent-blue);
+    background: rgba(37, 99, 235, 0.07);
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.15);
+}
+
+.mode-card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.mode-card-name {
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.mode-card-cost {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--accent-cyan);
+    margin: 4px 0;
+}
+
+.mode-card-duration {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+.mode-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.mode-meta-row {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+}
+
+.mode-meta-row strong {
+    color: var(--text-label);
+}
+
+/* ── 12. Route Flow ───────────────────────────────────────── */
+.route-flow-card {
+    background: var(--bg-card);
+    border: 1px solid var(--card-border-light);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: var(--card-shadow);
+}
+
+.route-flow-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+}
+
+.route-node {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.route-node-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.route-node-dot.origin { background: var(--accent-blue); box-shadow: 0 0 8px rgba(37,99,235,0.5); }
+.route-node-dot.dest   { background: var(--accent-purple); box-shadow: 0 0 8px rgba(124,58,237,0.5); }
+
+.route-node-label {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.route-connector {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 0;
+}
+
+.route-connector-line {
+    width: 2px;
+    height: 32px;
+    background: linear-gradient(180deg, var(--accent-blue), var(--accent-purple));
+    margin-left: 6px;
+    border-radius: 2px;
+}
+
+.route-connector-stats {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.route-connector-stats strong {
+    color: var(--accent-cyan);
+}
+
+.route-cost-row {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.85rem;
+}
+
+/* ── 13. Success Steps Banner ─────────────────────────────── */
+.success-banner {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 20px;
+    background: rgba(16, 185, 129, 0.07);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: var(--radius-lg);
+    margin-bottom: 20px;
+    animation: fadeSlideIn 0.4s ease forwards;
+}
+
+.success-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-success);
+}
+
+.success-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background: var(--color-success);
+    border-radius: 50%;
+    font-size: 0.6rem;
+    color: white;
+    flex-shrink: 0;
+    animation: checkmark 0.4s ease forwards;
+}
+
+/* ── 14. Dataset Insight ──────────────────────────────────── */
+.dataset-insight {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 20px 22px;
+    border: 1px solid var(--card-border-light);
+    border-left: 5px solid var(--accent-cyan);
+    box-shadow: var(--card-shadow);
+    margin-bottom: 16px;
+}
+
+/* ── 15. Budget Breakdown ─────────────────────────────────── */
+.budget-breakdown-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+    border: 1px solid var(--card-border-light);
+    box-shadow: var(--card-shadow);
+    margin-bottom: 16px;
+}
+
+.breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.breakdown-row:last-child { border-bottom: none; }
+
+.breakdown-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 0 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin-top: 4px;
+}
+
+/* ── 16. Tier Cards ───────────────────────────────────────── */
 .tier-card {
     background: var(--bg-card);
     border-radius: var(--radius-md);
-    padding: 20px;
+    padding: 18px;
     text-align: center;
     border: 1px solid var(--card-border);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -155,81 +965,126 @@
     box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
 }
 
-.tier-card.minimum { border-top: 4px solid var(--color-success); }
-.tier-card.recommended { 
-    border-top: 4px solid var(--accent-blue); 
-    background: rgba(37, 99, 235, 0.05);
-}
-.tier-card.comfort { border-top: 4px solid var(--accent-purple); }
-.tier-card.luxury { border-top: 4px solid var(--color-warning); }
+.tier-card.minimum   { border-top: 4px solid var(--color-success); }
+.tier-card.recommended { border-top: 4px solid var(--accent-blue); background: rgba(37, 99, 235, 0.05); }
+.tier-card.comfort   { border-top: 4px solid var(--accent-purple); }
+.tier-card.luxury    { border-top: 4px solid var(--color-warning); }
 
-/* ── 6. Metric Cards ──────────────────────────────────────── */
-.metric-card {
-    background: var(--bg-card);
-    border-radius: var(--radius-md);
-    padding: 16px 20px;
-    border: 1px solid var(--card-border);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-/* ── 7. Destination & Weather Widgets ─────────────────────── */
-.dataset-insight {
-    background: var(--bg-card);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    border: 1px solid var(--card-border-light);
-    border-left: 5px solid var(--accent-cyan);
-    box-shadow: var(--card-shadow);
-}
-
-.weather-widget {
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    border: 1px solid var(--card-border-light);
-    box-shadow: var(--card-shadow);
-    margin-bottom: 20px;
-}
-
-/* ── 8. Travel Mode Cards ─────────────────────────────────── */
-.mode-card {
-    background: var(--bg-card);
-    border-radius: var(--radius-md);
-    padding: 16px;
-    text-align: center;
-    border: 1px solid var(--card-border);
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.mode-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent-blue);
-    box-shadow: 0 8px 16px -4px rgba(37, 99, 235, 0.2);
-}
-
-.mode-card.recommended-mode {
-    border: 2px solid var(--accent-blue);
-    background: rgba(37, 99, 235, 0.05);
-}
-
-/* ── 9. Badges ────────────────────────────────────────────── */
+/* ── 17. Badges ───────────────────────────────────────────── */
 .badge {
     display: inline-block;
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.68rem;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.badge-cheapest { background: rgba(16, 185, 129, 0.15); color: var(--color-success); }
-.badge-fastest { background: rgba(239, 68, 68, 0.15); color: var(--color-error); }
-.badge-best-value { background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }
-.badge-recommended { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); }
+.badge-cheapest     { background: rgba(16, 185, 129, 0.15); color: var(--color-success); border: 1px solid rgba(16,185,129,0.25); }
+.badge-fastest      { background: rgba(239, 68, 68, 0.15);  color: var(--color-error);   border: 1px solid rgba(239,68,68,0.25); }
+.badge-best-value   { background: rgba(139, 92, 246, 0.15); color: #A78BFA;              border: 1px solid rgba(139,92,246,0.25); }
+.badge-recommended  { background: rgba(6, 182, 212, 0.15);  color: var(--accent-cyan);   border: 1px solid rgba(6,182,212,0.25); }
+.badge-coming-soon  { background: rgba(245, 158, 11, 0.12); color: var(--color-warning); border: 1px solid rgba(245,158,11,0.25); }
 
-/* ── 10. Related Search Chips ─────────────────────────────── */
+/* ── 18. Checklist Cards ──────────────────────────────────── */
+.checklist-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 20px 22px;
+    border: 1px solid var(--card-border-light);
+    box-shadow: var(--card-shadow);
+}
+
+.checklist-category-header {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin: 12px 0 6px 0;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.checklist-category-header:first-child { margin-top: 0; }
+
+/* ── 19. Roadmap Cards ────────────────────────────────────── */
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.roadmap-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 18px 16px;
+    border: 1px solid var(--card-border);
+    text-align: center;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.roadmap-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(124, 58, 237, 0.3);
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.1);
+}
+
+.roadmap-icon-container {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, rgba(37,99,235,0.2), rgba(124,58,237,0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin: 0 auto 10px auto;
+    border: 1px solid rgba(124,58,237,0.2);
+}
+
+.roadmap-title {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.roadmap-desc {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+/* ── 20. Recommendation Cards ─────────────────────────────── */
+.rec-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+    border: 1px solid var(--card-border-light);
+    box-shadow: var(--card-shadow);
+    margin-bottom: 16px;
+}
+
+/* ── 21. Similar Travellers Card ──────────────────────────── */
+.similar-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 20px 22px;
+    border: 1px solid var(--card-border-light);
+    border-left: 5px solid var(--accent-purple);
+    box-shadow: var(--card-shadow);
+    margin-bottom: 16px;
+}
+
+/* ── 22. Related Search Chips ─────────────────────────────── */
 .related-search-chip {
     display: inline-block;
     background: rgba(37, 99, 235, 0.1);
@@ -243,41 +1098,241 @@
     transition: background 0.2s ease;
 }
 
-.related-search-chip:hover {
-    background: rgba(37, 99, 235, 0.2);
+.related-search-chip:hover { background: rgba(37, 99, 235, 0.2); }
+
+/* ── 23. Interactive Map Card ─────────────────────────────── */
+.map-card {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border-radius: var(--radius-lg);
+    padding: 20px 22px;
+    border: 1px solid var(--card-border-light);
+    box-shadow: var(--card-shadow);
+    margin-bottom: 16px;
 }
 
-/* ── 11. Placeholders ─────────────────────────────────────── */
-.placeholder-card {
-    background: var(--bg-card);
-    border-radius: var(--radius-md);
-    padding: 16px;
+/* ── 24. Premium Footer ───────────────────────────────────── */
+.footer-premium {
+    margin-top: 40px;
+    padding: 28px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(15, 23, 42, 0.6);
     text-align: center;
-    border: 1px dashed rgba(255, 255, 255, 0.1);
-    opacity: 0.7;
-    transition: opacity 0.2s ease;
 }
 
-.placeholder-card:hover {
-    opacity: 1.0;
+.footer-main-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding: 0 8px;
 }
 
+.footer-brand-col {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-brand-logo {
+    font-size: 1.15rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    background: linear-gradient(135deg, #60A5FA, #818CF8, #A78BFA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-brand-sub {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    margin-top: 1px;
+}
+
+.footer-center-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.footer-love-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.footer-love-badge span.heart {
+    color: #EF4444;
+    animation: heartbeat 1.4s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14%       { transform: scale(1.18); }
+    28%       { transform: scale(1); }
+    42%       { transform: scale(1.12); }
+    56%       { transform: scale(1); }
+}
+
+.footer-made-by {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
+.footer-made-by strong {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.footer-social-col {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 700;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.footer-social-link:hover {
+    transform: translateY(-2px);
+    color: #FFFFFF;
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(255,255,255,0.2);
+}
+
+.footer-social-link.linkedin:hover {
+    background: rgba(10, 102, 194, 0.2);
+    border-color: rgba(10, 102, 194, 0.5);
+    color: #0A66C2;
+}
+
+.footer-social-link.github:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255,255,255,0.3);
+    color: #FFFFFF;
+}
+
+.footer-copyright {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.25);
+    text-align: right;
+}
+
+.footer-tech-stack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.footer-tech-label {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-right: 4px;
+}
+
+.footer-tech-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-label);
+    transition: background 0.2s ease;
+}
+
+.footer-tech-pill:hover { background: rgba(255,255,255,0.09); }
+
+.footer-divider {
+    width: 40px;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin: 12px auto;
+}
+
+.footer-credit {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.footer-credit strong {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.footer-version {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.25);
+    margin-top: 6px;
+}
+
+/* ── 25. Divider ──────────────────────────────────────────── */
 .divider {
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     margin: 20px 0;
 }
 
-/* ── 12. Modern Landing Hero ──────────────────────────────── */
+/* ── 26. Match/No-match Notes ─────────────────────────────── */
+.match-note {
+    background: rgba(6, 182, 212, 0.08);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    color: var(--accent-cyan);
+    margin-bottom: 12px;
+}
+
+.no-match-note {
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    color: var(--color-warning);
+    margin-bottom: 12px;
+}
+
+/* ── 27. Landing Hero ─────────────────────────────────────── */
 .landing-hero {
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(124, 58, 237, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.06) 0%, rgba(124, 58, 237, 0.06) 100%);
     border-radius: var(--radius-xl);
-    padding: 60px 40px;
+    padding: 64px 40px;
     border: 1px solid var(--card-border-light);
     text-align: center;
     margin-bottom: 30px;
+    animation: fadeSlideIn 0.6s ease forwards;
 }
 
-/* ── Streamlit UI Styling Overrides ────────────────────────── */
+/* ── 28. Streamlit UI Overrides ───────────────────────────── */
 .stTextInput > div > div > input {
     background-color: var(--input-bg) !important;
     color: var(--text-primary) !important;
@@ -297,7 +1352,8 @@
     border-radius: var(--radius-md) !important;
 }
 
-.stButton > button, .stFormSubmitButton > button {
+.stButton > button,
+.stFormSubmitButton > button {
     background: var(--gradient-accent) !important;
     color: #FFFFFF !important;
     font-family: var(--font-heading) !important;
@@ -311,9 +1367,26 @@
     letter-spacing: 0.5px !important;
 }
 
-.stButton > button:hover, .stFormSubmitButton > button:hover {
-    transform: translateY(-2px);
+.stButton > button:hover,
+.stFormSubmitButton > button:hover {
+    transform: translateY(-2px) !important;
     box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4) !important;
+}
+
+.stDownloadButton > button {
+    background: linear-gradient(135deg, #1E293B, #243147) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    border-radius: var(--radius-md) !important;
+    font-family: var(--font-body) !important;
+    font-weight: 600 !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+}
+
+.stDownloadButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+    border-color: rgba(255,255,255,0.2) !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -323,4 +1396,37 @@ h1, h2, h3, h4, h5, h6 {
 
 #MainMenu, footer {
     visibility: hidden;
+}
+
+/* ── 29. Responsive Breakpoints ───────────────────────────── */
+@media (max-width: 1024px) {
+    .stats-banner {
+        flex-wrap: wrap;
+    }
+    .stats-banner-item {
+        flex: 0 0 33.3%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .experience-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .tripai-brand { font-size: 2rem; }
+    .tripai-tagline { font-size: 1rem; }
+    .budget-amount { font-size: 2.6rem; }
+    .stats-banner-item { flex: 0 0 50%; }
+    .experience-metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
+    .budget-info-pills { gap: 6px; }
+    .trip-overview-pills { gap: 6px; }
+    .footer-tech-stack { gap: 8px; }
+}
+
+@media (max-width: 480px) {
+    .stats-banner-item { flex: 0 0 100%; }
+    .experience-metrics-grid { grid-template-columns: 1fr 1fr; }
+    .budget-amount { font-size: 2.2rem; }
 }

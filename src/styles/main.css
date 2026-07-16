@@ -1,0 +1,1051 @@
+/* ================================================================
+   TripAI — Main Design System
+   Dark Premium Travel Dashboard
+   Background: #050816 | Cards: #091224 | Accent: Purple+Blue
+================================================================ */
+
+/* ── Google Fonts ─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+/* ── Design Tokens ────────────────────────────────────────────── */
+:root {
+  --bg-primary:        #050816;
+  --bg-card:           #091224;
+  --bg-card-alt:       #0a1628;
+  --bg-card-hover:     #0d1a33;
+  --bg-sidebar:        #060e1f;
+  --bg-input:          #0d1a2e;
+  --accent-start:      #4F46E5;
+  --accent-end:        #9333EA;
+  --accent-gradient:   linear-gradient(135deg, #4F46E5, #9333EA);
+  --accent-glow:       rgba(79, 70, 229, 0.35);
+  --purple-glow:       rgba(147, 51, 234, 0.3);
+  --border-color:      rgba(255, 255, 255, 0.08);
+  --border-hover:      rgba(255, 255, 255, 0.18);
+  --radius:            20px;
+  --radius-sm:         12px;
+  --radius-xs:         8px;
+  --blur:              backdrop-filter: blur(20px);
+  --text-primary:      #F1F5F9;
+  --text-secondary:    #94A3B8;
+  --text-muted:        #475569;
+  --text-accent:       #A78BFA;
+  --success:           #10B981;
+  --warning:           #F59E0B;
+  --danger:            #EF4444;
+  --info:              #06B6D4;
+  --shadow-card:       0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow:       0 0 40px rgba(79, 70, 229, 0.2);
+  --transition:        all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Base Reset ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Streamlit Core Overrides ─────────────────────────────────── */
+.stApp {
+  background-color: var(--bg-primary) !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Hide default streamlit chrome */
+#MainMenu { visibility: hidden; }
+footer { visibility: hidden; }
+header { visibility: hidden; }
+.stDeployButton { display: none; }
+
+/* Kill default padding */
+.block-container {
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+
+section[data-testid="stSidebar"] {
+  background: var(--bg-sidebar) !important;
+  border-right: 1px solid var(--border-color) !important;
+}
+
+section[data-testid="stSidebar"] > div:first-child {
+  padding: 0 !important;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-start); }
+
+/* ── Animations ───────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(79,70,229,0.4), 0 0 40px rgba(79,70,229,0.2); }
+  50%       { box-shadow: 0 0 30px rgba(147,51,234,0.6), 0 0 60px rgba(147,51,234,0.3); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes countUp {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ── Navbar ───────────────────────────────────────────────────── */
+.tripai-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 36px;
+  background: rgba(5, 8, 22, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  animation: fadeIn 0.4s ease;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.navbar-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.navbar-logo-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.navbar-logo-sub {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.navbar-logo-sub span { color: #E879F9; }
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 5px;
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  color: var(--text-secondary);
+  background: transparent;
+  text-decoration: none;
+}
+
+.nav-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.06);
+}
+
+.nav-btn.active {
+  background: var(--accent-gradient);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(79,70,229,0.4);
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.icon-btn:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+/* ── Page Wrapper ─────────────────────────────────────────────── */
+.page-wrapper {
+  display: flex;
+  min-height: calc(100vh - 64px);
+  background: var(--bg-primary);
+}
+
+/* ── Left Sidebar (Plan Trip) ─────────────────────────────────── */
+.plan-sidebar {
+  width: 240px;
+  min-width: 240px;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: slideInLeft 0.5s ease;
+}
+
+.sidebar-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 4px;
+}
+
+.sidebar-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ── Form Elements ────────────────────────────────────────────── */
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+
+.form-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* Override Streamlit inputs */
+.stTextInput > div > div > input,
+.stSelectbox > div > div > div,
+.stNumberInput > div > div > input {
+  background: var(--bg-input) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-primary) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  padding: 10px 12px !important;
+  transition: var(--transition) !important;
+}
+
+.stTextInput > div > div > input:focus,
+.stSelectbox > div > div > div:focus-within {
+  border-color: var(--accent-start) !important;
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.2) !important;
+}
+
+.stSelectbox > div > div > div {
+  background: var(--bg-input) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Selectbox dropdown */
+[data-testid="stSelectbox"] svg { color: var(--text-muted) !important; }
+
+/* ── Predict Button ───────────────────────────────────────────── */
+.predict-btn-wrapper .stButton > button {
+  width: 100% !important;
+  padding: 14px 24px !important;
+  background: var(--accent-gradient) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 14px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: var(--transition) !important;
+  animation: glowPulse 2.5s ease-in-out infinite !important;
+  letter-spacing: 0.02em !important;
+}
+
+.predict-btn-wrapper .stButton > button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 32px rgba(79,70,229,0.5) !important;
+}
+
+/* ── General Button overrides ─────────────────────────────────── */
+.stButton > button {
+  background: var(--bg-card-alt) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: 'Inter', sans-serif !important;
+  transition: var(--transition) !important;
+}
+
+.stButton > button:hover {
+  border-color: var(--border-hover) !important;
+  background: var(--bg-card-hover) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── Cards Base ───────────────────────────────────────────────── */
+.tripai-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 20px;
+  transition: var(--transition);
+  animation: fadeInUp 0.5s ease both;
+}
+
+.tripai-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.card-icon {
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(79,70,229,0.15);
+  border-radius: 8px;
+}
+
+/* ── Hero Budget Card ─────────────────────────────────────────── */
+.hero-budget-card {
+  background: linear-gradient(135deg, #1a1060 0%, #2d0f6e 30%, #1e0a4e 60%, #0a0a2e 100%);
+  border: 1px solid rgba(79,70,229,0.3);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease both;
+  min-height: 140px;
+}
+
+.hero-budget-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(147,51,234,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-budget-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 180px;
+  height: 180px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 170 100 L 30 40 L 100 180 Z' fill='rgba(167,139,250,0.1)'/%3E%3C/svg%3E") no-repeat center;
+  pointer-events: none;
+}
+
+.hero-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-accent);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.hero-amount {
+  font-family: 'Outfit', sans-serif;
+  font-size: 38px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  animation: countUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  margin-bottom: 8px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(79,70,229,0.3);
+  border: 1px solid rgba(79,70,229,0.5);
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #A78BFA;
+  margin-bottom: 12px;
+}
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.hero-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  min-width: 90px;
+}
+
+.hero-chip-icon { font-size: 16px; }
+.hero-chip-value { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.hero-chip-label { font-size: 10px; color: var(--text-muted); }
+
+/* ── Budget Breakdown Card ────────────────────────────────────── */
+.breakdown-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 20px;
+  animation: fadeInUp 0.7s ease both;
+}
+
+.breakdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.breakdown-item:last-child { border-bottom: none; }
+
+.breakdown-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.breakdown-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  flex: 1;
+  margin-left: 8px;
+}
+
+.breakdown-amount {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.breakdown-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0 0;
+  margin-top: 8px;
+  border-top: 1px solid var(--border-color);
+}
+
+.breakdown-total-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.breakdown-total-amount {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Mode Comparison Cards ────────────────────────────────────── */
+.mode-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  animation: fadeInUp 0.8s ease both;
+}
+
+.mode-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 16px 12px;
+  text-align: center;
+  transition: var(--transition);
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.mode-card:hover {
+  border-color: rgba(79,70,229,0.4);
+  background: var(--bg-card-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(79,70,229,0.2);
+}
+
+.mode-card.selected-mode {
+  border-color: rgba(79,70,229,0.6);
+  background: rgba(79,70,229,0.08);
+  box-shadow: 0 0 20px rgba(79,70,229,0.2);
+}
+
+.mode-icon { font-size: 28px; margin-bottom: 4px; }
+.mode-name { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+.mode-price {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 4px 0;
+}
+.mode-time { font-size: 10px; color: var(--text-muted); }
+
+.mode-badge {
+  margin-top: 6px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.badge-recommended { background: rgba(16,185,129,0.2); color: #34D399; border: 1px solid rgba(16,185,129,0.3); }
+.badge-fastest      { background: rgba(6,182,212,0.2);  color: #22D3EE; border: 1px solid rgba(6,182,212,0.3); }
+.badge-budget       { background: rgba(245,158,11,0.2); color: #FBD88B; border: 1px solid rgba(245,158,11,0.3); }
+.badge-flexible     { background: rgba(239,68,68,0.2);  color: #FCA5A5; border: 1px solid rgba(239,68,68,0.3); }
+.badge-adventure    { background: rgba(147,51,234,0.2); color: #D8B4FE; border: 1px solid rgba(147,51,234,0.3); }
+
+/* ── Checklist Cards ──────────────────────────────────────────── */
+.checklist-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 18px 16px;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.checklist-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.checklist-item:last-child { border-bottom: none; }
+
+.check-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: rgba(16,185,129,0.2);
+  border: 1px solid rgba(16,185,129,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+  color: #34D399;
+}
+
+.checklist-text { font-size: 12px; color: var(--text-secondary); }
+
+/* ── Map Placeholder ──────────────────────────────────────────── */
+.map-placeholder {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 40px 20px;
+  text-align: center;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  animation: fadeIn 0.5s ease;
+}
+
+.map-placeholder-icon {
+  font-size: 48px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.map-placeholder-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.map-placeholder-text { font-size: 12px; color: var(--text-muted); max-width: 220px; }
+
+.map-placeholder-quote {
+  margin-top: 8px;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--text-accent);
+  padding: 8px 16px;
+  background: rgba(79,70,229,0.08);
+  border-radius: 8px;
+  border-left: 2px solid var(--accent-start);
+}
+
+/* ── Travel Quote Card ────────────────────────────────────────── */
+.quote-card {
+  background: linear-gradient(135deg, rgba(79,70,229,0.1), rgba(147,51,234,0.05));
+  border: 1px solid rgba(79,70,229,0.2);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  margin-top: auto;
+}
+
+.quote-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.quote-logo-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.quote-text {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.quote-text strong { color: var(--text-primary); }
+
+/* ── Route Map Card ───────────────────────────────────────────── */
+.map-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  overflow: hidden;
+  animation: fadeInUp 0.7s ease both;
+}
+
+.map-card-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.map-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ── Status / Loading override ────────────────────────────────── */
+[data-testid="stStatusWidget"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ── Download Button ──────────────────────────────────────────── */
+[data-testid="stDownloadButton"] > button {
+  background: rgba(16,185,129,0.15) !important;
+  border: 1px solid rgba(16,185,129,0.3) !important;
+  color: #34D399 !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  transition: var(--transition) !important;
+}
+
+[data-testid="stDownloadButton"] > button:hover {
+  background: rgba(16,185,129,0.25) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── Section Divider ──────────────────────────────────────────── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+  margin: 24px 0;
+}
+
+/* ── Section Title ────────────────────────────────────────────── */
+.section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+/* ── Match Note ───────────────────────────────────────────────── */
+.match-note {
+  background: rgba(245,158,11,0.1);
+  border: 1px solid rgba(245,158,11,0.3);
+  border-radius: var(--radius-xs);
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #FBD88B;
+  margin-bottom: 12px;
+  animation: fadeIn 0.3s ease;
+}
+
+.no-match-note {
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.3);
+  border-radius: var(--radius-xs);
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #FCA5A5;
+  margin-bottom: 12px;
+}
+
+/* ── Swap Button ──────────────────────────────────────────────── */
+.swap-btn-wrapper .stButton > button {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  font-size: 16px !important;
+  background: rgba(79,70,229,0.15) !important;
+  border: 1px solid rgba(79,70,229,0.3) !important;
+  color: var(--text-accent) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Metric / KPI Cards ───────────────────────────────────────── */
+[data-testid="stMetric"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 8px 12px !important;
+}
+
+[data-testid="stMetricValue"] {
+  font-family: 'Outfit', sans-serif !important;
+  color: var(--text-primary) !important;
+  font-weight: 800 !important;
+  font-size: 18px !important;
+}
+
+[data-testid="stMetricLabel"] {
+  color: var(--text-secondary) !important;
+  font-size: 11px !important;
+}
+
+/* ── Plotly Chart Container ───────────────────────────────────── */
+.js-plotly-plot { border-radius: var(--radius-sm); overflow: hidden; }
+
+/* ── Warning / Error / Info ───────────────────────────────────── */
+[data-testid="stAlert"] {
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid var(--border-color) !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* ── Folium Map Container ─────────────────────────────────────── */
+iframe {
+  border-radius: var(--radius-sm) !important;
+  border: none !important;
+}
+
+/* ── Enhanced Form Input Visibility ──────────────────────────── */
+/* Text inputs — dark background with bright text, increased size and height */
+.stTextInput > div > div > input {
+  background-color: #0F172A !important;
+  color: #F8FAFC !important;
+  border: 1.5px solid rgba(79,70,229,0.5) !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  height: 48px !important;
+  padding: 12px 16px !important;
+  caret-color: #7C3AED !important;
+}
+
+/* Placeholder text contrast */
+.stTextInput > div > div > input::placeholder {
+  color: #94A3B8 !important;
+  opacity: 1 !important;
+}
+
+/* Purple glow on focus */
+.stTextInput > div > div > input:focus {
+  border-color: #7C3AED !important;
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.3) !important;
+  outline: none !important;
+}
+
+/* Selectbox container - increased height and font size */
+[data-baseweb="select"] > div {
+  background-color: #0F172A !important;
+  border: 1.5px solid rgba(79,70,229,0.5) !important;
+  border-radius: 10px !important;
+  color: #F8FAFC !important;
+  height: 48px !important;
+  font-size: 14px !important;
+}
+
+/* Selectbox selected value text alignment */
+[data-baseweb="select"] [data-testid="stMarkdownContainer"],
+[data-baseweb="select"] span {
+  color: #F8FAFC !important;
+  font-size: 14px !important;
+  line-height: 28px !important;
+}
+
+/* Dropdown options panel */
+[data-baseweb="popover"] [role="option"] {
+  background-color: #0F172A !important;
+  color: #F8FAFC !important;
+  font-size: 14px !important;
+  padding: 10px 14px !important;
+}
+
+[data-baseweb="popover"] [role="option"]:hover,
+[data-baseweb="popover"] [aria-selected="true"] {
+  background-color: rgba(79,70,229,0.2) !important;
+}
+
+/* Form label styling */
+.form-label {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  color: #F8FAFC !important; /* Increased contrast to white/off-white */
+  text-transform: uppercase !important;
+  margin-bottom: 6px !important;
+}
+
+/* st.form submit button — keep gradient */
+[data-testid="stForm"] button[kind="primaryFormSubmit"],
+[data-testid="stForm"] .stButton > button {
+  background: linear-gradient(135deg, #4F46E5, #9333EA) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  padding: 14px 28px !important;
+  letter-spacing: 0.02em !important;
+  box-shadow: 0 4px 20px rgba(79,70,229,0.4) !important;
+  transition: all 0.3s ease !important;
+}
+
+[data-testid="stForm"] button[kind="primaryFormSubmit"]:hover,
+[data-testid="stForm"] .stButton > button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 32px rgba(79,70,229,0.55) !important;
+}
+
+/* Metric cards - more compact padding */
+[data-testid="metric-container"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 10px 12px !important;
+}
+
+[data-testid="stMetricValue"] {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: #F1F5F9 !important;
+}
+
+[data-testid="stMetricDelta"] > div {
+  font-size: 11px !important;
+}
+
+/* Download button styling */
+[data-testid="stDownloadButton"] > button {
+  background: linear-gradient(135deg, rgba(79,70,229,0.15), rgba(147,51,234,0.1)) !important;
+  color: #A78BFA !important;
+  border: 1px solid rgba(79,70,229,0.4) !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  padding: 10px 20px !important;
+}
+
+[data-testid="stDownloadButton"] > button:hover {
+  background: linear-gradient(135deg, rgba(79,70,229,0.25), rgba(147,51,234,0.2)) !important;
+  border-color: rgba(79,70,229,0.7) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* st.tabs styling */
+[data-testid="stTabs"] [role="tab"] {
+  color: #94A3B8 !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+}
+
+[data-testid="stTabs"] [role="tab"][aria-selected="true"] {
+  color: #A78BFA !important;
+  border-bottom: 2px solid #7C3AED !important;
+}
+
+/* Match note / warning note for destination matching */
+.match-note {
+  background: rgba(6,182,212,0.08);
+  border: 1px solid rgba(6,182,212,0.25);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 12px;
+  color: #67E8F9;
+  margin-bottom: 12px;
+}
+
+.no-match-note {
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.25);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 12px;
+  color: #FCA5A5;
+  margin-bottom: 12px;
+}
+
+/* Compact layout overrides to reduce overall page height */
+.block-container {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.element-container, .stVerticalBlock {
+  gap: 8px !important;
+}
+
+.tripai-card {
+  padding: 12px 16px !important;
+}
+
+.map-card {
+  padding: 8px !important;
+}
+
+.hero-budget-card {
+  padding: 16px 20px !important;
+}
+
+.checklist-card {
+  padding: 14px 16px !important;
+  margin-bottom: 8px !important;
+}
+

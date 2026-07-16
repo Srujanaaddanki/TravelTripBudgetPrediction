@@ -1,0 +1,472 @@
+/* ================================================================
+   TripAI — Analytics Dashboard Styles
+================================================================ */
+
+/* ── Analytics Page Layout ────────────────────────────────────── */
+.analytics-layout {
+  display: flex;
+  min-height: calc(100vh - 64px);
+}
+
+/* ── Analytics Left Sidebar ───────────────────────────────────── */
+.analytics-sidebar {
+  width: 220px;
+  min-width: 220px;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  padding: 28px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: slideInLeft 0.5s ease;
+}
+
+.analytics-sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-logo-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.sidebar-logo-sub {
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+  text-decoration: none;
+  margin-bottom: 2px;
+}
+
+.sidebar-nav-item:hover {
+  background: rgba(255,255,255,0.05);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.sidebar-nav-item.active {
+  background: rgba(79,70,229,0.15);
+  color: #A78BFA;
+  border-color: rgba(79,70,229,0.3);
+  font-weight: 600;
+}
+
+.sidebar-nav-icon { font-size: 16px; width: 20px; text-align: center; }
+
+.sidebar-quote {
+  margin-top: auto;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(79,70,229,0.1), rgba(147,51,234,0.05));
+  border: 1px solid rgba(79,70,229,0.2);
+  border-radius: var(--radius-sm);
+}
+
+.sidebar-quote-logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
+}
+.sidebar-quote-logo span { color: #E879F9; }
+
+.sidebar-quote-text {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.sidebar-quote-text strong { color: var(--text-primary); }
+
+/* ── Analytics Main Content ───────────────────────────────────── */
+.analytics-main {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+/* ── Analytics Top Header Banner ─────────────────────────────── */
+.analytics-header-banner {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  text-align: center;
+  animation: fadeInUp 0.5s ease;
+}
+
+.analytics-header-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
+}
+
+.analytics-header-sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+/* ── Feature Overview Cards Grid ─────────────────────────────── */
+.feature-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.feature-card {
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  transition: var(--transition);
+  animation: fadeInUp 0.5s ease both;
+}
+
+.feature-card:hover {
+  border-color: rgba(79,70,229,0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(79,70,229,0.15);
+}
+
+.feature-card-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-accent);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.feature-card-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.feature-card-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.feature-card-bullets li {
+  font-size: 10px;
+  color: var(--text-muted);
+  padding-left: 10px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.feature-card-bullets li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--text-accent);
+}
+
+/* ── Purpose Card ─────────────────────────────────────────────── */
+.purpose-card {
+  background: rgba(245,158,11,0.06);
+  border: 1px solid rgba(245,158,11,0.2);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin-top: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.purpose-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+
+.purpose-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #FBD88B;
+  margin-bottom: 4px;
+}
+
+.purpose-text { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
+
+/* ── Analytics Report Sub-Header ─────────────────────────────── */
+.analytics-report-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.5s ease both;
+}
+
+.analytics-report-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.analytics-report-title h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.analytics-report-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.analytics-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── Date Range Selector ──────────────────────────────────────── */
+.date-range-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.date-range-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+/* ── Export Button ────────────────────────────────────────────── */
+.export-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(16,185,129,0.15);
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #34D399;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.export-btn:hover {
+  background: rgba(16,185,129,0.25);
+  transform: translateY(-1px);
+}
+
+/* ── KPI Metrics Row ──────────────────────────────────────────── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.kpi-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: var(--transition);
+}
+
+.kpi-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+.kpi-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.kpi-content { flex: 1; min-width: 0; }
+
+.kpi-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.kpi-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kpi-delta {
+  font-size: 10px;
+  color: #34D399;
+  margin-top: 3px;
+  font-weight: 600;
+}
+
+.kpi-delta.negative { color: #FCA5A5; }
+
+/* ── Charts Grid ──────────────────────────────────────────────── */
+.charts-row {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 16px;
+  animation: fadeInUp 0.7s ease both;
+}
+
+.charts-row-3 { grid-template-columns: 2fr 1fr 1fr; }
+.charts-row-2 { grid-template-columns: 1fr 1fr; }
+.charts-row-2-1 { grid-template-columns: 1fr 2fr; }
+
+.chart-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 18px;
+  transition: var(--transition);
+}
+
+.chart-card:hover {
+  border-color: var(--border-hover);
+}
+
+.chart-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Model Performance Card ───────────────────────────────────── */
+.model-perf-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.model-perf-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.model-metric {
+  margin-bottom: 14px;
+}
+
+.model-metric-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+
+.model-metric-sub { font-size: 10px; color: var(--text-muted); }
+
+.model-metric-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.model-metric-value.green { color: #34D399; }
+.model-metric-value.yellow { color: #FBD88B; }
+
+/* ── Export Modal / Options ───────────────────────────────────── */
+.export-options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.export-option-btn {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card-alt);
+  color: var(--text-secondary);
+}
+
+.export-option-btn:hover {
+  background: rgba(79,70,229,0.1);
+  border-color: rgba(79,70,229,0.3);
+  color: var(--text-accent);
+}
