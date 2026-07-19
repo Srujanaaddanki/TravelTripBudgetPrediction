@@ -136,7 +136,7 @@ model, encoders, accuracy_score = load_ml_resources()
 
 # ── 5. Backend Service Initialisation ────────────────────────────────────────
 @st.cache_resource
-def init_services():
+def init_services_v3():
     """Initialise all backend services (cached across reruns)."""
     tracker       = SearchTracker()
     maps_service  = MapsService()
@@ -147,7 +147,7 @@ def init_services():
     return tracker, maps_service, dataset_intel, travel_engine
 
 
-tracker, maps_service, dataset_intel, travel_engine = init_services()
+tracker, maps_service, dataset_intel, travel_engine = init_services_v3()
 
 
 # ── 6. Navigation Bar & Theme Toggle ─────────────────────────────────────────
