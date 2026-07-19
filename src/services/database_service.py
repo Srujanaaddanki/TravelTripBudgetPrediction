@@ -123,12 +123,40 @@ class DestinationCache:
                         longitude             REAL,
                         weather_profile       TEXT,
                         tourism_category      TEXT,
+                        population_profile    TEXT,
                         estimated_budget_type TEXT,
                         timestamp             TEXT NOT NULL
                     )
                 """)
+                conn.execute("""
+                    CREATE TABLE IF NOT EXISTS unknown_destination_history (
+                        id                  INTEGER PRIMARY KEY AUTOINCREMENT,
+                        searched_destination TEXT NOT NULL,
+                        proxy_destination   TEXT NOT NULL,
+                        country             TEXT NOT NULL,
+                        coordinates         TEXT NOT NULL,
+                        confidence          REAL NOT NULL,
+                        prediction_source   TEXT NOT NULL,
+                        resolution_source   TEXT NOT NULL,
+                        proxy_score         REAL,
+                        is_budget_exact     BOOLEAN,
+                        timestamp           TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+                    )
+                """)
+                # Migrating existing table to add proxy_score and is_budget_exact if they don't exist
+                try:
+                    cursor = conn.execute("PRAGMA table_info(unknown_destination_history)")
+                    columns = [row[1] for row in cursor.fetchall()]
+                    if "proxy_score" not in columns:
+                        conn.execute("ALTER TABLE unknown_destination_history ADD COLUMN proxy_score REAL")
+                        log.info("Migrated unknown_destination_history: added proxy_score column")
+                    if "is_budget_exact" not in columns:
+                        conn.execute("ALTER TABLE unknown_destination_history ADD COLUMN is_budget_exact BOOLEAN")
+                        log.info("Migrated unknown_destination_history: added is_budget_exact column")
+                except Exception as migrate_exc:
+                    log.warning("Migration of unknown_destination_history columns failed: %s", migrate_exc)
                 conn.commit()
-                log.info("destination_cache and destination_intelligence_cache tables ready at %s", self._db_path)
+                log.info("destination_cache, destination_intelligence_cache and unknown_destination_history tables ready at %s", self._db_path)
         except Exception as exc:
             log.error("Could not initialise database tables: %s", exc)
 
@@ -164,8 +192,8 @@ class DestinationCache:
                 conn.execute(
                     """
                     INSERT OR REPLACE INTO destination_intelligence_cache 
-                    (destination, country, state, latitude, longitude, weather_profile, tourism_category, estimated_budget_type, timestamp)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    (destination, country, state, latitude, longitude, weather_profile, tourism_category, population_profile, estimated_budget_type, timestamp)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """,
                     (
                         destination.strip().title(),
@@ -175,6 +203,7 @@ class DestinationCache:
                         float(data.get("longitude", 0.0)) if data.get("longitude") is not None else 0.0,
                         data.get("weather_profile", "temperate"),
                         data.get("tourism_category", "general"),
+                        data.get("population_profile", "medium"),
                         data.get("estimated_budget_type", "api_estimated"),
                         datetime.now().isoformat(),
                     ),

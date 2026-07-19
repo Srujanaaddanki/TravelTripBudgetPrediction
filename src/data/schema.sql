@@ -156,9 +156,30 @@ CREATE TABLE IF NOT EXISTS destination_intelligence_cache (
     longitude             REAL,
     weather_profile       TEXT,
     tourism_category      TEXT,
+    population_profile    TEXT,
     estimated_budget_type TEXT,
     timestamp             TEXT NOT NULL
 );
 
 CREATE INDEX IF NOT EXISTS idx_dest_intel_ts ON destination_intelligence_cache(timestamp);
 
+-- -------------------------------------------------------
+-- 7. UNKNOWN DESTINATION HISTORY
+--    Stores unknown destination predictions and their resolved
+--    proxies for future retraining.
+-- -------------------------------------------------------
+CREATE TABLE IF NOT EXISTS unknown_destination_history (
+    id                  INTEGER PRIMARY KEY AUTOINCREMENT,
+    searched_destination TEXT NOT NULL,
+    proxy_destination   TEXT NOT NULL,
+    country             TEXT NOT NULL,
+    coordinates         TEXT NOT NULL,
+    confidence          REAL NOT NULL,
+    prediction_source   TEXT NOT NULL,
+    resolution_source   TEXT NOT NULL,
+    proxy_score         REAL,
+    is_budget_exact     BOOLEAN,
+    timestamp           TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_unk_dest_date ON unknown_destination_history(timestamp DESC);

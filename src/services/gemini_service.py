@@ -115,6 +115,7 @@ class GeminiService:
             "altitude": 0.0,
             "tourism_category": "general",
             "weather_profile": "temperate",
+            "population_profile": "medium",
         }
         if not self._available:
             return fallback
@@ -129,7 +130,8 @@ Return ONLY a valid JSON object (no markdown, no extra text, no ```json wrapper)
   "state": "State name",
   "altitude": 1200.0,
   "tourism_category": "One of: Beach, Temple, Hill Station, Metropolitan City, Rural",
-  "weather_profile": "One of: Tropical, Himalayan, Temperate, Arid, Monsoon"
+  "weather_profile": "One of: Tropical, Himalayan, Temperate, Arid, Monsoon",
+  "population_profile": "One of: high, medium, low (classification of population density/city type)"
 }}
 """
         try:
@@ -144,6 +146,7 @@ Return ONLY a valid JSON object (no markdown, no extra text, no ```json wrapper)
                 "altitude": float(data.get("altitude", 0.0)),
                 "tourism_category": data.get("tourism_category", "general"),
                 "weather_profile": data.get("weather_profile", "temperate"),
+                "population_profile": data.get("population_profile", "medium"),
             }
             return res
         except Exception as exc:
@@ -194,6 +197,7 @@ Return ONLY a valid JSON object — no markdown, no extra text, no ```json wrapp
   "altitude": 1200.0,
   "tourism_category": "One of: Beach, Temple, Hill Station, Metropolitan City, Rural",
   "weather_profile": "One of: Tropical, Himalayan, Temperate, Arid, Monsoon",
+  "population_profile": "One of: high, medium, low",
   "alternative_names": ["name1", "name2"]
 }}
 
@@ -214,6 +218,7 @@ set latitude/longitude to 0.
             result.setdefault("altitude",          0.0)
             result.setdefault("tourism_category",  "general")
             result.setdefault("weather_profile",   "temperate")
+            result.setdefault("population_profile", "medium")
             result.setdefault("alternative_names", [])
             return result
         except Exception as exc:

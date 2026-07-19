@@ -44,18 +44,23 @@ class ConfidenceEngine:
                 "detail": f"Dataset verified: {similar_count} similar trips found",
             })
         elif resolution_type == "api_only":
-            score = 75
+            score = 65
             distance_km = mode_comparison.get("distance_km", 0.0)
             if distance_km > 0.0:
                 score = 80
-            level = "API Estimated"
+            level = "API Estimation"
             factors.append({
                 "name": "API Resolution",
                 "available": True,
                 "detail": f"Geocoded via Geo APIs: {distance_km:,.1f} km",
             })
         elif resolution_type == "gemini_approx":
-            score = 65
+            score = 50
+            distance_km = mode_comparison.get("distance_km", 0.0)
+            if distance_km > 0.0:
+                score = 70
+            else:
+                score = 60
             level = "AI Approximation"
             factors.append({
                 "name": "AI Resolution",
@@ -63,8 +68,11 @@ class ConfidenceEngine:
                 "detail": "Geocoded and estimated using Gemini AI",
             })
         else:
-            score = 50
-            level = "Low Reliability (Failed Resolution)"
+            score = 40
+            distance_km = mode_comparison.get("distance_km", 0.0)
+            if distance_km > 0.0:
+                score = 48
+            level = "Low Confidence"
             factors.append({
                 "name": "Failed Resolution",
                 "available": False,

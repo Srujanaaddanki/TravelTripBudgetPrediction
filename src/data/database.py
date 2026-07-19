@@ -350,6 +350,40 @@ class TripDatabase:
         log.debug("Search #%d logged: %s -> %s (mode=%s)", search_id, source_location, destination, travel_mode)
         return search_id
 
+    def log_unknown_destination(
+        self,
+        searched_destination: str,
+        proxy_destination: str,
+        country: str,
+        coordinates: str,
+        confidence: float,
+        prediction_source: str,
+        resolution_source: str,
+        proxy_score: float,
+        is_budget_exact: bool,
+    ) -> int:
+        """Log an unknown destination prediction for continuous retraining, return database id."""
+        sql = """
+            INSERT INTO unknown_destination_history
+                (searched_destination, proxy_destination, country, coordinates, confidence, prediction_source, resolution_source, proxy_score, is_budget_exact)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """
+        cur = self._execute(sql, (
+            searched_destination,
+            proxy_destination,
+            country,
+            coordinates,
+            confidence,
+            prediction_source,
+            resolution_source,
+            proxy_score,
+            1 if is_budget_exact else 0,
+        ))
+        row_id = cur.lastrowid
+        log.info("Logged unknown destination #%d: %s (proxy=%s, country=%s, coordinates=%s, confidence=%.1f%%, prediction_source=%s, resolution_source=%s, proxy_score=%.1f, is_budget_exact=%d)", 
+                 row_id, searched_destination, proxy_destination, country, coordinates, confidence, prediction_source, resolution_source, proxy_score, 1 if is_budget_exact else 0)
+        return row_id
+
     def get_searches(
         self,
         *,

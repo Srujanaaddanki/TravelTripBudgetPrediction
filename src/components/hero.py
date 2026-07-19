@@ -11,6 +11,7 @@ Project: TripAI — AI-Powered Travel Intelligence Platform
 from __future__ import annotations
 
 import streamlit as st
+from typing import Optional
 
 
 def render_budget_hero_card(
@@ -20,30 +21,29 @@ def render_budget_hero_card(
     mode: str,
     hotel: str,
     popularity_label: str = "✦ Smart Travel Intelligence",
+    amount_str: Optional[str] = None,
 ) -> None:
-    """Render the premium hero budget card with total and per-day rate.
-
-    Parameters
-    ----------
-    amount : float
-        Smart-calculated trip budget in INR.
-    days : int
-        Trip duration in days.
-    season : str
-        Travel season (e.g. "summer", "winter").
-    mode : str
-        Primary travel mode (e.g. "Train", "Flight").
-    hotel : str
-        Hotel quality (e.g. "Standard", "Luxury").
-    popularity_label : str
-        Popularity badge label (e.g. "💎 Hidden Gem", "🔥 Popular Choice").
-    """
-    # Format amount with Indian-style comma separation
-    formatted = f"₹{int(amount):,}"
-    
-    # Calculate per-day rate
-    per_day_val = amount / max(days, 1)
-    per_day_formatted = f"₹{int(per_day_val):,}/day"
+    """Render the premium hero budget card with total and per-day rate."""
+    if amount_str:
+        formatted = amount_str.replace("Rs.", "₹")
+        if " - " in amount_str:
+            try:
+                clean_str = amount_str.replace("Rs.", "").replace(",", "")
+                parts = clean_str.split(" - ")
+                low_val = float(parts[0]) / max(days, 1)
+                high_val = float(parts[1]) / max(days, 1)
+                per_day_formatted = f"₹{int(low_val):,} - ₹{int(high_val):,}/day"
+            except Exception:
+                per_day_formatted = f"₹{int(amount / max(days, 1)):,}/day"
+        elif any(c.isalpha() for c in amount_str):
+            # It's a warning string like "Very Low Confidence Estimation"
+            per_day_formatted = "Estimation Unreliable"
+        else:
+            per_day_formatted = f"₹{int(amount / max(days, 1)):,}/day"
+    else:
+        formatted = f"₹{int(amount):,}"
+        per_day_val = amount / max(days, 1)
+        per_day_formatted = f"₹{int(per_day_val):,}/day"
 
     # Season emoji map
     season_icons = {
