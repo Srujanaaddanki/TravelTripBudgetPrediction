@@ -1,5 +1,12 @@
 # TripAI — AI-Powered Travel Intelligence & Budget Planning Platform
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge.svg)](https://traveltripbudgetprediction.streamlit.app/)
+
+> [!NOTE]
+> **🚀 Deployed App**: You can deploy this app to [Streamlit Community Cloud](https://share.streamlit.io/) directly from your GitHub repo. Check out the [Deployment Guide](file:///c:/Users/hp/Desktop/srujan/docs/DEPLOYMENT_GUIDE.md) to set it up in less than a minute.
+>
+> **💼 Placement Resume Bullets**: Recruiter-ready bullet points for software engineering, full-stack, or data science roles are available in [RESUME_POINTS.md](file:///c:/Users/hp/Desktop/srujan/RESUME_POINTS.md).
+
 TripAI is a modern, production-grade Travel Intelligence Platform designed to predict, verify, and plan travel budgets across India. It integrates machine learning (Random Forest), live API services, SQLite tracking, and structured dataset analysis to deliver a premium MakeMyTrip/Airbnb-style travel planner.
 
 ---

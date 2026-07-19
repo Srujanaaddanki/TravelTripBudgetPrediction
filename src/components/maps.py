@@ -276,6 +276,42 @@ def render_route_map(route_info: Dict[str, Any], travel_mode: str = "Car") -> No
     source      = route_info.get("source", "")
     destination = route_info.get("destination", "")
 
+    # Render Indirect Route Transport Bars if direct route is unavailable
+    try:
+        from src.intelligence.destination_rules import get_indirect_route_bars
+        indirect_bars = get_indirect_route_bars(source, destination)
+    except Exception:
+        indirect_bars = None
+
+    if indirect_bars:
+        bars_html = f"""
+        <div style="padding: 12px 16px; background: var(--bg-card-alt); border-bottom: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 11px; font-weight: 700; color: #A78BFA; text-transform: uppercase; letter-spacing: 0.05em;">
+              🗺️ Route Accessibility (Indirect Route)
+            </div>
+            <span class="badge-recommended" style="font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: 700; background: rgba(147, 51, 234, 0.15); color: #C084FC; border: 1px solid rgba(147, 51, 234, 0.3);">
+              Indirect Route
+            </span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin-top: 4px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 10px; background: rgba(255,255,255,0.02); border: 1.5px solid var(--border-color); border-radius: 6px;">
+              <span style="font-size: 11px; font-weight: 700; color: var(--text-primary);">🚂 Train</span>
+              <span style="font-size: 11px; font-weight: 600; color: #34D399;">{indirect_bars.get('Train', '')}</span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 10px; background: rgba(255,255,255,0.02); border: 1.5px solid var(--border-color); border-radius: 6px;">
+              <span style="font-size: 11px; font-weight: 700; color: var(--text-primary);">🚌 Bus</span>
+              <span style="font-size: 11px; font-weight: 600; color: #34D399;">{indirect_bars.get('Bus', '')}</span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 10px; background: rgba(255,255,255,0.02); border: 1.5px solid var(--border-color); border-radius: 6px;">
+              <span style="font-size: 11px; font-weight: 700; color: var(--text-primary);">✈️ Flight</span>
+              <span style="font-size: 11px; font-weight: 600; color: #34D399;">{indirect_bars.get('Flight', '')}</span>
+            </div>
+          </div>
+        </div>
+        """
+        st.markdown(bars_html, unsafe_allow_html=True)
+
     # Resolve coordinates — always (lat, lon) order
     src_coords  = route_info.get("source_coords") or _resolve_coords(source)
     dest_coords = route_info.get("dest_coords")   or _resolve_coords(destination)
@@ -297,13 +333,39 @@ def render_route_map(route_info: Dict[str, Any], travel_mode: str = "Car") -> No
     # Route polyline
     raw_poly    = route_info.get("polyline")
     route_pts   = _decode_polyline(raw_poly)
+
+    alt_route = None
+    try:
+        from src.intelligence.route_alternatives import get_alternate_route
+        alt_route = get_alternate_route(source, destination)
+    except Exception:
+        pass
+
+    if alt_route:
+        # Build route points from multi-stop segments
+        alt_pts = []
+        for seg in alt_route["segments"]:
+            c1 = _resolve_coords(seg["from"])
+            c2 = _resolve_coords(seg["to"])
+            if c1:
+                alt_pts.append(c1)
+            if c2:
+                alt_pts.append(c2)
+        # remove adjacent duplicates
+        temp_pts = []
+        for pt in alt_pts:
+            if not temp_pts or temp_pts[-1] != pt:
+                temp_pts.append(pt)
+        if temp_pts:
+            route_pts = temp_pts
+
     if not route_pts:
         route_pts = [src_coords, dest_coords]
 
     if _FOLIUM_AVAILABLE:
-        _render_folium_map(source, destination, src_coords, dest_coords, route_pts, travel_mode)
+        _render_folium_map(source, destination, src_coords, dest_coords, route_pts, travel_mode, alt_route)
     else:
-        _render_plotly_fallback(source, destination, src_coords, dest_coords)
+        _render_plotly_fallback(source, destination, src_coords, dest_coords, route_pts)
 
 
 def _render_folium_map(
@@ -313,6 +375,7 @@ def _render_folium_map(
     dest_coords: Tuple[float, float],
     route_points: list,
     travel_mode: str = "Car",
+    alt_route: Optional[Dict[str, Any]] = None,
 ) -> None:
     """Render Folium satellite map with mode-specific icons."""
     # Centre between the two points — using validated (lat, lon) coords
@@ -349,6 +412,19 @@ def _render_folium_map(
         icon=folium.Icon(color="red", icon="map-marker", prefix="fa"),
     ).add_to(m)
 
+    # Add markers for intermediate waypoints if on an alternate route
+    if alt_route:
+        for seg in alt_route["segments"][:-1]:
+            waypoint = seg["to"]
+            w_coords = _resolve_coords(waypoint)
+            if w_coords and w_coords != src_coords and w_coords != dest_coords:
+                folium.Marker(
+                    location=list(w_coords),
+                    popup=folium.Popup(waypoint.title(), max_width=150),
+                    tooltip=f"Transfer: {waypoint.title()}",
+                    icon=folium.Icon(color="orange", icon="exchange", prefix="fa"),
+                ).add_to(m)
+
     # Route line
     folium.PolyLine(
         locations=route_points,       # list of [lat, lon]
@@ -365,14 +441,17 @@ def _render_plotly_fallback(
     destination: str,
     src_coords: Tuple[float, float],
     dest_coords: Tuple[float, float],
+    route_points: list,
 ) -> None:
     """Plotly fallback when folium is not installed."""
     import plotly.graph_objects as go
 
-    lats   = [src_coords[0], dest_coords[0]]
-    lons   = [src_coords[1], dest_coords[1]]
+    lats   = [pt[0] for pt in route_points]
+    lons   = [pt[1] for pt in route_points]
     names  = [source.title(), destination.title()]
     colors = ["#10B981", "#EF4444"]
+    marker_lats = [src_coords[0], dest_coords[0]]
+    marker_lons = [src_coords[1], dest_coords[1]]
 
     fig = go.Figure()
     fig.add_trace(go.Scattermapbox(
@@ -381,15 +460,15 @@ def _render_plotly_fallback(
         name="Route",
     ))
     fig.add_trace(go.Scattermapbox(
-        lat=lats, lon=lons, mode="markers+text",
+        lat=marker_lats, lon=marker_lons, mode="markers+text",
         marker=dict(size=14, color=colors),
         text=names, textposition="top center",
         textfont=dict(color="#F1F5F9", size=12),
         name="Cities",
     ))
 
-    mid_lat = (lats[0] + lats[1]) / 2
-    mid_lon = (lons[0] + lons[1]) / 2
+    mid_lat = (src_coords[0] + dest_coords[0]) / 2
+    mid_lon = (src_coords[1] + dest_coords[1]) / 2
 
     fig.update_layout(
         mapbox=dict(

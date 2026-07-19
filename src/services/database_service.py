@@ -61,7 +61,7 @@ class DestinationCache:
     _REQUIRED_COLUMNS = {
         "user_input", "actual_destination", "latitude", "longitude",
         "distance_km", "duration_hr", "month", "days", "travel_mode",
-        "hotel_quality", "weather", "packing", "tips", "budget", "timestamp",
+        "hotel_quality", "weather", "packing", "tips", "pretravel", "budget", "timestamp",
     }
 
     def __init__(self, db_path: str = DB_PATH) -> None:
@@ -109,6 +109,7 @@ class DestinationCache:
                         weather            TEXT    DEFAULT '{}',
                         packing            TEXT    DEFAULT '[]',
                         tips               TEXT    DEFAULT '[]',
+                        pretravel          TEXT    DEFAULT '[]',
                         budget             REAL    DEFAULT 0.0,
                         timestamp          TEXT    NOT NULL
                     )
@@ -148,8 +149,8 @@ class DestinationCache:
             # Column index mapping (matches CREATE TABLE order)
             # 0:id, 1:user_input, 2:actual_destination, 3:latitude, 4:longitude,
             # 5:distance_km, 6:duration_hr, 7:month, 8:days, 9:travel_mode,
-            # 10:hotel_quality, 11:weather, 12:packing, 13:tips, 14:budget, 15:timestamp
-            last_updated = datetime.fromisoformat(row[15])
+            # 10:hotel_quality, 11:weather, 12:packing, 13:tips, 14:pretravel, 15:budget, 16:timestamp
+            last_updated = datetime.fromisoformat(row[16])
             if datetime.now() - last_updated > timedelta(days=CACHE_TTL_DAYS):
                 log.info("Cache expired for '%s', will refresh.", destination)
                 return None
@@ -169,8 +170,9 @@ class DestinationCache:
                 "weather":            json.loads(row[11]) if row[11] else {},
                 "packing":            json.loads(row[12]) if row[12] else [],
                 "travel_tips":        json.loads(row[13]) if row[13] else [],
+                "pretravel":          json.loads(row[14]) if row[14] else [],
                 "budget":             0.0,  # Never load final budget from cache
-                "timestamp":          row[15],
+                "timestamp":          row[16],
             }
         except Exception as exc:
             log.warning("Cache read error for '%s': %s", destination, exc)
@@ -186,7 +188,7 @@ class DestinationCache:
         data : dict
             Must contain: actual_destination, latitude, longitude,
             distance_km, duration_hr, month, days, travel_mode,
-            hotel_quality, weather, packing, travel_tips, budget.
+            hotel_quality, weather, packing, travel_tips, pretravel, budget.
         """
         try:
             with self._connect() as conn:
@@ -194,8 +196,8 @@ class DestinationCache:
                     INSERT OR REPLACE INTO destination_cache
                     (user_input, actual_destination, latitude, longitude,
                      distance_km, duration_hr, month, days, travel_mode,
-                     hotel_quality, weather, packing, tips, budget, timestamp)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                     hotel_quality, weather, packing, tips, pretravel, budget, timestamp)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
                     destination.strip().lower(),
                     data.get("actual_destination", destination).strip().lower(),
@@ -210,6 +212,7 @@ class DestinationCache:
                     json.dumps(data.get("weather", {})),
                     json.dumps(data.get("packing", [])),
                     json.dumps(data.get("travel_tips", [])),
+                    json.dumps(data.get("pretravel", [])),
                     0.0,  # Never cache final budget, always recalculate
                     datetime.now().isoformat(),
                 ))

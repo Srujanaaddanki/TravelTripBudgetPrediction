@@ -37,6 +37,11 @@ from src.services.gemini_service import GeminiService
 from src.services.route_service import RouteService
 from src.services.database_service import DestinationCache
 from src.services.geo_service import GeoService
+from src.intelligence.destination_rules import (
+    get_destination_country,
+    get_destination_altitude,
+    get_destination_permits_required,
+)
 
 log = logging.getLogger("tripai.travel_intelligence")
 
@@ -109,7 +114,12 @@ class TravelIntelligenceEngine:
 
         if cached_data:
             log.info("Cache hit for destination: %s", destination)
-            weather_info = {}
+            weather_info = cached_data.get("weather", {})
+            if not weather_info:
+                try:
+                    weather_info = self._weather.get_weather(destination)
+                except Exception:
+                    weather_info = {}
 
             lat = cached_data.get("latitude", 0.0)
             lng = cached_data.get("longitude", 0.0)
@@ -148,7 +158,7 @@ class TravelIntelligenceEngine:
 
             gemini_intel = {
                 "packing_checklist":    cached_data.get("packing", []),
-                "pre_travel_checklist": cached_data.get("packing", []),   # reuse if missing
+                "pre_travel_checklist": cached_data.get("pretravel", []),
                 "seasonal_tips":        cached_data.get("travel_tips", []),
                 "health_suggestions":   [],
                 "safety_tips":          [],
@@ -175,8 +185,11 @@ class TravelIntelligenceEngine:
             log.info(
                 "Cache miss for '%s'. Fetching via APIs.", destination
             )
-            # ── Step 2: Weather (Disabled) ────────────────────────────
-            weather_info = {}
+            # ── Step 2: Weather ────────────────────────────
+            try:
+                weather_info = self._weather.get_weather(destination)
+            except Exception:
+                weather_info = {}
 
             # ── Step 3: Route ─────────────────────────────────────────
             route_data = self._get_route_data(
@@ -212,6 +225,10 @@ class TravelIntelligenceEngine:
             smart_budget = budget_details["smart_budget"]
 
             # ── Step 6: Gemini AI Intelligence ───────────────────────
+            country = get_destination_country(destination)
+            altitude = get_destination_altitude(destination)
+            permits_required = get_destination_permits_required(destination)
+
             gemini_intel = self._gemini.get_destination_intelligence(
                 destination=destination,
                 month=month,
@@ -219,6 +236,10 @@ class TravelIntelligenceEngine:
                 duration_days=duration_days,
                 season=season,
                 trip_type=trip_type,
+                weather=weather_info,
+                country=country,
+                altitude=altitude,
+                permits_required=permits_required,
             )
 
             pref_exp = dataset_insights.get(
@@ -251,9 +272,10 @@ class TravelIntelligenceEngine:
                     "days":               duration_days,
                     "travel_mode":        travel_mode,
                     "hotel_quality":      hotel_quality,
-                    "weather":            {},
+                    "weather":            weather_info,
                     "travel_tips":        gemini_intel.get("seasonal_tips", []),
                     "packing":            gemini_intel.get("packing_checklist", []),
+                    "pretravel":          gemini_intel.get("pre_travel_checklist", []),
                     "budget":             smart_budget,
                 })
             except Exception as cache_err:

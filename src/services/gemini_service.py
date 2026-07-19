@@ -64,6 +64,10 @@ class GeminiService:
         duration_days: int = 5,
         season: str = "Summer",
         trip_type: str = "General",
+        weather: Optional[Dict[str, Any]] = None,
+        country: Optional[str] = None,
+        altitude: Optional[float] = None,
+        permits_required: Optional[bool] = None,
     ) -> Dict[str, Any]:
         """Generate full destination intelligence from Gemini.
 
@@ -75,13 +79,31 @@ class GeminiService:
         """
         if self._available:
             result = self._call_gemini(
-                destination, month, travel_mode, duration_days, season, trip_type
+                destination=destination,
+                month=month,
+                travel_mode=travel_mode,
+                duration_days=duration_days,
+                season=season,
+                trip_type=trip_type,
+                weather=weather,
+                country=country,
+                altitude=altitude,
+                permits_required=permits_required,
             )
             if result:
                 return result
 
         # Fallback to existing knowledge base
-        return self._fallback_intelligence(destination, month)
+        return self._fallback_intelligence(
+            destination=destination,
+            month=month,
+            weather=weather,
+            travel_mode=travel_mode,
+            trip_type=trip_type,
+            country=country,
+            altitude=altitude,
+            permits_required=permits_required,
+        )
 
     def suggest_alternative_destination(self, destination: str) -> Dict[str, Any]:
         """Identify an alternative / corrected destination using Gemini.
@@ -146,9 +168,6 @@ set latitude/longitude to 0.
             return self._unknown_suggestion()
 
     # ------------------------------------------------------------------
-    # Private helpers
-    # ------------------------------------------------------------------
-
     def _call_gemini(
         self,
         destination: str,
@@ -157,6 +176,10 @@ set latitude/longitude to 0.
         duration_days: int,
         season: str,
         trip_type: str,
+        weather: Optional[Dict[str, Any]] = None,
+        country: Optional[str] = None,
+        altitude: Optional[float] = None,
+        permits_required: Optional[bool] = None,
     ) -> Dict[str, Any] | None:
         """Call Gemini API and parse the JSON response."""
         # Get destination-specific hints from the rules engine
@@ -168,12 +191,19 @@ set latitude/longitude to 0.
 
         hint_block = f"\nCRITICAL DESTINATION HINTS: {dest_hints}" if dest_hints else ""
 
+        weather_desc = weather.get("description", "Not available") if weather else "Not available"
+        weather_temp = weather.get("temperature_c", "N/A") if weather else "N/A"
+
         prompt = f"""You are an expert Indian and international travel advisor.
 Generate HIGHLY SPECIFIC travel intelligence for the following trip.
 Do NOT give generic packing items — tailor EVERYTHING to the destination.
 
 Destination: {destination}
+Country: {country or "India"}
+Altitude: {f"{altitude} meters" if altitude else "Low altitude"}
+Permits Required: {"Yes" if permits_required else "No"}
 Travel Month: {month} (Season: {season})
+Weather: {weather_desc} ({weather_temp}°C)
 Duration: {duration_days} Days
 Travel Mode: {travel_mode}
 Trip Type: {trip_type}{hint_block}
@@ -230,7 +260,15 @@ for Kedarnath and Goa. Each destination has unique requirements."""
             return None
 
     def _fallback_intelligence(
-        self, destination: str, month: str
+        self,
+        destination: str,
+        month: str,
+        weather: Optional[Dict[str, Any]] = None,
+        travel_mode: str = "Car",
+        trip_type: str = "General",
+        country: Optional[str] = None,
+        altitude: Optional[float] = None,
+        permits_required: Optional[bool] = None,
     ) -> Dict[str, Any]:
         """Fallback using destination_rules.py (destination-specific) then
         destination_knowledge.py. Always returns specific, not generic, content."""
@@ -240,7 +278,12 @@ for Kedarnath and Goa. Each destination has unique requirements."""
             rules = get_destination_checklist(
                 destination=destination,
                 month=month,
-                travel_mode="Car",  # generic fallback mode
+                weather=weather,
+                travel_mode=travel_mode,
+                trip_type=trip_type,
+                country=country,
+                altitude=altitude,
+                permits_required=permits_required,
             )
             packing   = rules["packing"]
             pretravel = rules["pretravel"]

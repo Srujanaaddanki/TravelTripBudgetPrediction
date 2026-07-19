@@ -1,364 +1,281 @@
 """
 ========================================================
-Module: Destination Rules Engine
+Module: Destination Rules Engine (Upgraded)
 Purpose: Returns destination-specific packing and pre-travel
          checklists based on destination keywords, month,
-         travel_mode, altitude, permits, and trip context.
-         Called as fallback when Gemini is unavailable and
-         as hint-injector when Gemini is building its prompt.
+         weather, travel_mode, altitude, permits, and country.
+         Also handles indirect route transport bars.
 Author: Srujana Addanki
 Project: TripAI — AI-Powered Travel Intelligence Platform
 ========================================================
 """
 from __future__ import annotations
+from typing import Any, Dict, List, Optional
 
-from typing import Any, Dict, List, Optional, Tuple
+# ── City metadata mappings for dynamic resolution ───────────────────────────
 
-
-# ── Destination profiles ───────────────────────────────────────────────────────
-# Each entry:  keyword_patterns → (packing_items, pretravel_items, altitude_m, permits)
-
-_DESTINATION_PROFILES: List[Dict[str, Any]] = [
-
-    # ── Kedarnath / Badrinath / Char Dham ──────────────────────────────────
+_DESTINATION_PROFILES = [
     {
         "keywords": ["kedarnath", "badrinath", "gangotri", "yamunotri", "char dham"],
+        "country": "India",
         "altitude_m": 3500,
         "permits": True,
+        "nearest_railway": "Haridwar",
+        "nearest_airport": "Dehradun",
+        "nearest_road": "Sonprayag",
         "packing": [
-            "Thermal inner wear (top & bottom)",
-            "Heavy woolen jacket / down jacket",
-            "Waterproof trekking shoes (ankle support)",
-            "Rain jacket / poncho",
-            "Power bank (extra capacity)",
-            "Altitude sickness medicine (Diamox)",
-            "Torch / headlamp with extra batteries",
-            "Waterproof bag / dry bag",
-            "Woolen socks (3+ pairs)",
-            "Trekking pole / walking stick",
-            "Glucose sachets & energy bars",
-            "Sunscreen SPF 50+ & UV sunglasses",
-            "Warm gloves and woolen cap",
+            "Thermal wear",
+            "Trekking shoes",
+            "Rain jacket",
+            "Power bank",
+            "Altitude medicine",
+            "Torch",
+            "Woolen socks",
+            "Waterproof bag",
         ],
         "pretravel": [
-            "Char Dham Yatra Registration (online mandatory)",
-            "Medical Fitness Certificate (for high altitude)",
-            "Valid Government ID (Aadhaar / Passport)",
-            "Emergency Contact List (offline copy)",
-            "Download offline maps (Google Maps / Maps.me)",
-            "Book helicopter ticket in advance (Phata/Sirsi)",
-            "Book accommodation in Gaurikund well in advance",
-            "Check weather & road conditions on IMD website",
-            "Notify family of complete itinerary",
-            "Travel Insurance with altitude coverage",
-        ],
+            "Char Dham Registration",
+            "Medical Fitness Certificate",
+            "Government ID",
+            "Emergency Contacts",
+            "Offline Maps",
+        ]
     },
-
-    # ── Tirupati / Venkateswara ────────────────────────────────────────────
-    {
-        "keywords": ["tirupati", "tirumala", "venkateswara", "balaji"],
-        "altitude_m": 800,
-        "permits": True,
-        "packing": [
-            "Traditional / modest clothing (no shorts, sleeveless)",
-            "Comfortable footwear (removed at temple entrance)",
-            "Small bag / cloth bag (no plastic bags allowed)",
-            "Cash for offerings and prasadam",
-            "ID proof (mandatory for darshan tickets)",
-            "Light cotton dupatta / stole (women)",
-            "Water bottle and snacks for queue wait",
-            "Rain jacket during monsoon months",
-            "Sanitizer and mask",
-        ],
-        "pretravel": [
-            "Book Darshan ticket online (tirupatibalaji.ap.gov.in)",
-            "Special Entry Darshan (SED) ticket booking — book weeks ahead",
-            "Follow temple dress code: traditional attire mandatory",
-            "ID proof mandatory for all darshan ticket types",
-            "Book accommodation at TTD Guest Houses in advance",
-            "Luggage can only be kept in cloak rooms (no bags inside temple)",
-            "Carry cash for offerings, prasadam, Laddu booking",
-            "Check prasadam booking availability online",
-            "Shave head (tonsure) reservation if planned",
-        ],
-    },
-
-    # ── Amarnath ──────────────────────────────────────────────────────────
     {
         "keywords": ["amarnath", "amarnath yatra"],
+        "country": "India",
         "altitude_m": 3888,
         "permits": True,
+        "nearest_railway": "Jammu",
+        "nearest_airport": "Srinagar",
+        "nearest_road": "Baltal",
         "packing": [
-            "Heavy thermal wear (top & bottom)",
-            "Down jacket / heavy woolen jacket",
-            "Waterproof trekking shoes",
-            "Rain jacket / windproof jacket",
-            "Oxygen can (portable)",
-            "Altitude sickness medicine (Diamox)",
-            "Trekking pole",
-            "Torch / headlamp",
-            "High-energy food: glucose, nuts, chocolates",
+            "Thermal wear",
+            "Trekking shoes",
+            "Rain jacket",
+            "Power bank",
+            "Altitude medicine",
+            "Oxygen can",
+            "Torch",
+            "Woolen socks",
             "Waterproof bag",
-            "Woolen gloves and cap",
         ],
         "pretravel": [
-            "Amarnath Yatra Registration (compulsory — Shri Amarnathji Shrine Board)",
-            "Medical Certificate from registered doctor",
-            "Yatra Permit (obtained at Jammu / Srinagar)",
-            "Valid Government ID",
-            "Travel Insurance with altitude coverage",
-            "Do NOT go without permit — strictly enforced",
-            "Book accommodation at Pahalgam / Baltal in advance",
-            "Check Army / CRPF security clearance dates",
-        ],
+            "Amarnath Yatra Registration",
+            "Medical Certificate",
+            "Government ID",
+            "Emergency Contacts",
+            "Yatra Permit",
+        ]
     },
-
-    # ── Ladakh / Leh ──────────────────────────────────────────────────────
+    {
+        "keywords": ["tirupati", "tirumala", "venkateswara", "balaji"],
+        "country": "India",
+        "altitude_m": 800,
+        "permits": True,
+        "nearest_railway": "Tirupati",
+        "nearest_airport": "Tirupati",
+        "nearest_road": "Tirupati",
+        "packing": [
+            "Temple dress code",
+            "ID proof",
+            "Cash for offerings",
+        ],
+        "pretravel": [
+            "Darshan ticket booking",
+            "Temple dress code",
+            "ID proof",
+            "Special entry ticket",
+            "Cash for offerings",
+        ]
+    },
     {
         "keywords": ["ladakh", "leh", "nubra", "pangong", "spiti", "zanskar"],
+        "country": "India",
         "altitude_m": 3500,
         "permits": True,
+        "nearest_railway": "Jammu",
+        "nearest_airport": "Leh",
+        "nearest_road": "Manali",
         "packing": [
-            "Heavy down jacket",
-            "Thermal inner wear (multiple layers)",
-            "Waterproof / windproof outer layer",
-            "Altitude sickness medicine (Diamox)",
-            "Portable oxygen can",
-            "Sunscreen SPF 50+ (UV radiation high at altitude)",
-            "UV protection sunglasses / snow goggles",
-            "Woolen gloves, cap, and socks",
-            "Waterproof trekking shoes / boots",
-            "Power bank (charging difficult at remote camps)",
-            "Offline maps (network unavailable in many areas)",
+            "Winter jacket",
+            "Oxygen can",
+            "Altitude precautions",
+            "Diamox",
         ],
         "pretravel": [
-            "Inner Line Permit (ILP) — mandatory for Nubra, Pangong, Dah-Hanu",
-            "Obtain ILP at DC Office Leh or Chandigarh / Delhi",
-            "Protected Area Permit (PAP) for foreigners",
-            "Acclimatize at Leh for 2 full days before going higher",
-            "Do NOT book Pangong/Nubra same day as arrival",
-            "Book accommodation well in advance (June–September is peak)",
-            "Check Manali–Leh highway status (BRO road update)",
-            "Check Srinagar–Leh NH-1 status",
-            "Carry sufficient cash (ATMs unreliable in remote areas)",
-        ],
+            "Inner Line Permit",
+            "Altitude precautions",
+            "Diamox",
+        ]
     },
-
-    # ── Goa (Beach Destination) ───────────────────────────────────────────
-    {
-        "keywords": ["goa", "calangute", "baga", "anjuna", "panjim", "margao"],
-        "altitude_m": 10,
-        "permits": False,
-        "packing": [
-            "Swimwear / beachwear (2-3 sets)",
-            "Sunscreen SPF 50+ (beach UV is intense)",
-            "UV protection sunglasses",
-            "Wide-brim hat / cap",
-            "Flip-flops and sandals",
-            "Quick-dry towels",
-            "Light cotton clothing / shorts",
-            "Waterproof phone pouch",
-            "Insect repellent (evening mosquitoes)",
-            "After-sun lotion / aloe vera gel",
-        ],
-        "pretravel": [
-            "Book beach-side hotels / hostels in advance (peak: November–February)",
-            "Check water sports package availability",
-            "Check casino booking if planned",
-            "Car / scooter rental available on arrival (carry driving license)",
-            "Avoid Goa in heavy monsoon (June–August — sea rough, beaches closed)",
-            "Carry valid ID for all night club / beach party entry",
-            "Check ferry schedules for Panjim river crossing",
-        ],
-    },
-
-    # ── Manali / Shimla / Hill Stations (Winter) ──────────────────────────
-    {
-        "keywords": ["manali", "shimla", "kufri", "kasauli", "mussoorie", "nainital", "dehradun"],
-        "altitude_m": 1800,
-        "permits": False,
-        "packing": [
-            "Heavy woolen jacket / down jacket",
-            "Thermal inner wear",
-            "Woolen gloves, cap, and socks",
-            "Snow boots / waterproof shoes",
-            "Moisturizer and lip balm (dry mountain air)",
-            "Sunscreen SPF 30+",
-            "Raincoat (sudden showers common)",
-            "Thermos flask for hot drinks",
-            "Extra charger / power bank (cold drains battery fast)",
-        ],
-        "pretravel": [
-            "Check Rohtang Pass permit if planning to visit (HP Tourism)",
-            "Book Rohtang snow activity permits online (limited slots)",
-            "Book hotels well in advance in peak winter / summer season",
-            "Check road conditions on HRTC / BRO bulletins",
-            "Carry chains / snow socks if driving own car",
-        ],
-    },
-
-    # ── Rajasthan (Desert / Heritage) ────────────────────────────────────
-    {
-        "keywords": ["jaipur", "jodhpur", "jaisalmer", "udaipur", "pushkar", "bikaner", "rajasthan"],
-        "altitude_m": 300,
-        "permits": False,
-        "packing": [
-            "Light cotton / linen clothing (full-sleeved for sun)",
-            "Sunscreen SPF 50+",
-            "Wide-brim hat or scarf",
-            "Sunglasses (UV protective)",
-            "Comfortable sandals + closed shoes for fort treks",
-            "Electrolyte sachets (heat & dehydration)",
-            "Light rain jacket (monsoon season)",
-            "Modest attire for temple visits",
-        ],
-        "pretravel": [
-            "Book palace / heritage hotel well in advance",
-            "Book desert camp in Jaisalmer in advance",
-            "Camel safari booking (Jaisalmer / Sam Sand Dunes)",
-            "Check Pushkar Camel Fair dates if visiting in November",
-            "Haggling is expected at bazaars — carry small change",
-        ],
-    },
-
-    # ── Kerala / Munnar / Alleppey ────────────────────────────────────────
-    {
-        "keywords": ["kerala", "munnar", "alleppey", "allappuzha", "kochi", "cochin", "wayanad", "varkala", "kovalam", "thekkady"],
-        "altitude_m": 50,
-        "permits": False,
-        "packing": [
-            "Light cotton clothing (humid weather)",
-            "Rain jacket / umbrella (year-round showers)",
-            "Insect repellent (mosquitoes — risk of malaria)",
-            "Comfortable walking sandals",
-            "Modest clothing for temple visits",
-            "Swimwear for backwater resorts",
-            "Mosquito net for houseboat stays",
-            "Camera with waterproof cover",
-        ],
-        "pretravel": [
-            "Book houseboat stay in Alleppey well in advance",
-            "Book Periyar / Wayanad wildlife safari in advance",
-            "Check Athirappilly waterfall access (closed in heavy monsoon)",
-            "Carry anti-malaria precautions (consult doctor)",
-            "Check weather — peak rains July–August, light showers all year",
-        ],
-    },
-
-    # ── Wildlife / Safari Destinations ───────────────────────────────────
     {
         "keywords": ["jim corbett", "ranthambore", "bandipur", "kaziranga", "sundarbans",
                      "periyar", "nagarhole", "pench", "kanha", "tadoba", "wildlife", "safari"],
+        "country": "India",
         "altitude_m": 200,
         "permits": True,
+        "nearest_railway": "Ramnagar",
+        "nearest_airport": "Delhi",
+        "nearest_road": "Ramnagar",
         "packing": [
-            "Dull / earthy coloured clothing (olive, khaki, brown — no bright colours)",
-            "Long-sleeved shirts (protection from insects)",
-            "Comfortable closed shoes / boots",
-            "Insect repellent (DEET-based)",
+            "Dull/earthy clothing (khaki/olive)",
+            "Insect repellent",
             "Binoculars",
-            "Camera with telephoto lens",
-            "Sunscreen & hat",
-            "Light rain jacket",
-            "No perfume or strong-scented products",
+            "Safari permits",
+            "Forest entry passes",
         ],
         "pretravel": [
-            "Safari permit booking online (forest department website)",
-            "Forest entry pass and zone allocation mandatory",
-            "Book guide / naturalist in advance",
-            "Check park open/closed season dates",
-            "No plastic allowed inside protected areas",
-            "Carry valid ID proof for permit verification",
-            "Book accommodation near park entrance well in advance",
-        ],
+            "Safari permits",
+            "Forest entry passes",
+            "Government ID",
+        ]
     },
-
-    # ── International: Paris / Europe ────────────────────────────────────
     {
-        "keywords": ["paris", "france", "europe", "london", "rome", "barcelona", "amsterdam",
-                     "berlin", "zurich", "vienna", "prague", "switzerland"],
-        "altitude_m": 30,
-        "permits": True,
-        "packing": [
-            "Passport (valid 6 months beyond travel date)",
-            "Light to medium jacket (weather varies by season)",
-            "Comfortable walking shoes (lots of walking on cobblestone)",
-            "Universal power adapter (EU Type-C)",
-            "Travel-size toiletries (100ml rule for flights)",
-            "Currency: Euros (some places card-only)",
-            "Scarf (churches require covered shoulders)",
-            "Weather-appropriate clothing per season",
-            "Portable WiFi / international SIM card",
-        ],
-        "pretravel": [
-            "Schengen Visa application — apply 4-6 weeks in advance",
-            "Valid passport (6 months validity from travel date)",
-            "Travel Insurance (mandatory for Schengen visa)",
-            "Confirmed hotel bookings for visa application",
-            "Return flight tickets for visa application",
-            "International driving permit if renting a car",
-            "Notify bank of international travel to avoid card block",
-            "Buy travel insurance covering medical + trip cancellation",
-            "Check Euro exchange rate and carry sufficient cash",
-            "Download Google Translate (French / local language)",
-        ],
-    },
-
-    # ── International: Dubai / UAE ────────────────────────────────────────
-    {
-        "keywords": ["dubai", "abu dhabi", "uae", "sharjah"],
+        "keywords": ["goa", "calangute", "baga", "anjuna", "panjim", "margao"],
+        "country": "India",
         "altitude_m": 10,
         "permits": False,
         "packing": [
-            "Lightweight cotton clothing (extreme heat in summer)",
-            "Modest clothing for malls and public areas",
+            "Swimwear",
             "Sunscreen SPF 50+",
-            "Sunglasses and hat",
-            "Comfortable walking shoes",
-            "Swimwear for beach / pool",
-            "Light jacket for AC interiors (very cold indoors)",
+            "Flip-flops",
+            "Hat",
         ],
         "pretravel": [
-            "Check visa on arrival / e-visa eligibility for Indian passport",
-            "Apply UAE e-visa if required (processing: 3-5 days)",
-            "Travel insurance recommended",
-            "Carry sufficient Dirhams (AED) for local transport",
-            "Notify bank of international travel",
-            "Alcohol only allowed in licensed venues — research in advance",
-        ],
+            "Hotel bookings",
+            "Scooter rental license",
+        ]
     },
-
-    # ── Darjeeling / Sikkim / North East India ────────────────────────────
     {
-        "keywords": ["darjeeling", "gangtok", "sikkim", "shillong", "meghalaya",
-                     "arunachal", "nagaland", "manipur", "assam", "northeast"],
-        "altitude_m": 1500,
+        "keywords": ["manali", "shimla", "kufri", "kasauli", "mussoorie", "nainital", "dehradun"],
+        "country": "India",
+        "altitude_m": 1800,
+        "permits": False,
+        "nearest_railway": "Chandigarh",
+        "nearest_airport": "Bhuntar",
+        "nearest_road": "Manali",
+        "packing": [
+            "Winter jacket",
+            "Thermals",
+            "Woolen cap & gloves",
+        ],
+        "pretravel": [
+            "Hotel bookings",
+            "Rohtang Pass permit if driving",
+        ]
+    },
+    {
+        "keywords": ["paris", "france", "europe", "rome", "barcelona", "amsterdam",
+                     "berlin", "zurich", "vienna", "prague", "switzerland"],
+        "country": "France",
+        "altitude_m": 30,
         "permits": True,
         "packing": [
-            "Medium to heavy jacket (cool weather year-round)",
-            "Thermal inner wear (for higher altitudes)",
-            "Comfortable trekking shoes",
-            "Rain jacket / waterproof bag (heavy rainfall region)",
-            "Insect repellent",
-            "Binoculars (wildlife and mountain views)",
-            "Offline maps (network patchy in remote areas)",
+            "Passport (valid 6 months)",
+            "Universal power adapter",
+            "Credit card & Euros",
         ],
         "pretravel": [
-            "Inner Line Permit (ILP) — required for Arunachal Pradesh, Nagaland, Manipur, Mizoram",
-            "Protected Area Permit (PAP) for foreigners visiting restricted zones",
-            "Sikkim: Register at Rangpo check post",
-            "Nathu La Pass: Permit required (Indian citizens only, not foreigners)",
-            "Carry sufficient cash (ATMs scarce in remote areas)",
-            "Check road conditions during monsoon (landslides common)",
-        ],
+            "Schengen Visa / Entry Visa",
+            "Travel Insurance",
+            "Return flight tickets",
+            "Hotel reservations",
+        ]
     },
+    {
+        "keywords": ["london", "uk", "england", "united kingdom"],
+        "country": "International",
+        "altitude_m": 25,
+        "permits": True,
+        "packing": [
+            "Passport (valid 6 months)",
+            "Universal power adapter",
+            "Credit card & Pounds",
+        ],
+        "pretravel": [
+            "UK Visa",
+            "Travel Insurance",
+            "Return flight tickets",
+        ]
+    },
+    {
+        "keywords": ["dubai", "abu dhabi", "uae", "sharjah"],
+        "country": "UAE",
+        "altitude_m": 10,
+        "permits": False,
+        "packing": [
+            "Light cotton clothes",
+            "Sunscreen SPF 50+",
+            "Sunglasses",
+        ],
+        "pretravel": [
+            "UAE Visa / Entry permit",
+            "Travel insurance",
+        ]
+    }
 ]
 
+# ── Country / Altitude / Permits resolution helpers ───────────────────────────
 
-# ── Keyword → profile lookup ──────────────────────────────────────────────────
+def get_destination_country(destination: str) -> str:
+    """Determine country of destination."""
+    dest_lower = destination.strip().lower()
+    for profile in _DESTINATION_PROFILES:
+        for kw in profile["keywords"]:
+            if kw in dest_lower or dest_lower in kw:
+                return profile.get("country", "India")
+    
+    # Simple regex fallback
+    int_keywords = ["paris", "london", "europe", "france", "dubai", "uae", "singapore", "bangkok", "thailand", "usa", "tokyo", "japan", "sydney"]
+    if any(k in dest_lower for k in int_keywords):
+        if "london" in dest_lower or "uk" in dest_lower:
+            return "International"
+        if "dubai" in dest_lower or "uae" in dest_lower:
+            return "UAE"
+        if "paris" in dest_lower or "france" in dest_lower:
+            return "France"
+        return "International"
+    return "India"
+
+def get_destination_altitude(destination: str) -> int:
+    """Estimate destination altitude in meters."""
+    dest_lower = destination.strip().lower()
+    for profile in _DESTINATION_PROFILES:
+        for kw in profile["keywords"]:
+            if kw in dest_lower or dest_lower in kw:
+                return profile.get("altitude_m", 0)
+    return 0
+
+def get_destination_permits_required(destination: str) -> bool:
+    """Determine if special entry permits or registrations are required."""
+    dest_lower = destination.strip().lower()
+    for profile in _DESTINATION_PROFILES:
+        for kw in profile["keywords"]:
+            if kw in dest_lower or dest_lower in kw:
+                return profile.get("permits", False)
+    return False
+
+def get_indirect_route_bars(source: str, destination: str) -> Optional[Dict[str, str]]:
+    """Get indirect route transport bar values if direct route is unavailable."""
+    dest_lower = destination.strip().lower()
+    for profile in _DESTINATION_PROFILES:
+        for kw in profile["keywords"]:
+            if kw in dest_lower or dest_lower in kw:
+                # Only show indirect route bars if there is no direct road/rail/flight all-in-one
+                if profile.get("nearest_railway") and profile.get("nearest_railway") != destination:
+                    rail = profile["nearest_railway"]
+                    road = profile["nearest_road"]
+                    air = profile["nearest_airport"]
+                    return {
+                        "Train": f"✓ {source.title()} → {rail.title()}",
+                        "Bus": f"✓ {rail.title()} → {road.title()}",
+                        "Flight": f"✓ {source.title()} → {air.title()}"
+                    }
+    return None
 
 def _match_profile(destination: str) -> Optional[Dict[str, Any]]:
-    """Find the best matching profile for a destination string."""
+    """Match a destination to a profile (for compatibility)."""
     dest_lower = destination.strip().lower()
     for profile in _DESTINATION_PROFILES:
         for kw in profile["keywords"]:
@@ -366,149 +283,189 @@ def _match_profile(destination: str) -> Optional[Dict[str, Any]]:
                 return profile
     return None
 
-
-# ── Travel-mode specific additions ───────────────────────────────────────────
+# ── Mode-specific items ──────────────────────────────────────────────────────
 
 _MODE_PACKING: Dict[str, List[str]] = {
     "Bike": [
         "Helmet (mandatory)",
         "Riding gloves and jacket",
         "Puncture repair kit and basic tools",
-        "Fuel planning checklist (petrol stations on route)",
+        "Fuel planning checklist",
         "Rain cover for luggage",
-        "Bungee cords for luggage",
-        "Reflective vest for night riding",
     ],
     "Train": [
-        "Printed / digital train tickets",
+        "Train tickets",
         "Snacks and water for journey",
-        "Travel blanket / light shawl",
-        "Earphones and entertainment (books, offline downloads)",
-        "Phone charger + power bank",
-        "Valid ID proof (mandatory for ticket verification)",
-        "Lock and chain for luggage (overnight trains)",
+        "Phone charger & power bank",
+        "Valid ID proof",
     ],
     "Flight": [
-        "Passport / Valid Government ID",
-        "Boarding pass (digital or printed)",
-        "Baggage weight compliance (check airline limit)",
-        "Toiletries in 100ml / zip-lock bag (cabin baggage)",
-        "Neck pillow and eye mask (long flights)",
-        "Reach airport 2 hours before domestic / 3 hours before international",
+        "Passport / Valid ID",
+        "Boarding pass",
+        "Baggage weight compliance",
+        "Toiletries in 100ml bag",
     ],
     "Car": [
         "Valid driving license",
-        "Car RC book and insurance documents",
-        "Roadside emergency kit (reflectors, first aid)",
-        "Physical road map / offline maps",
-        "Car charger for devices",
+        "Car documents",
+        "Emergency road kit",
     ],
     "Bus": [
-        "Bus ticket (printed or digital)",
-        "Snacks and water bottle",
-        "Neck pillow for overnight journeys",
-        "Light blanket / shawl",
-        "Phone charger / power bank",
-        "Motion sickness tablets if prone",
+        "Bus ticket",
+        "Neck pillow",
+        "Phone charger",
     ],
 }
-
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
 def get_destination_checklist(
     destination: str,
     month: str = "January",
+    weather: Optional[Dict[str, Any]] = None,
     travel_mode: str = "Car",
     trip_type: str = "General",
+    country: Optional[str] = None,
+    altitude: Optional[float] = None,
+    permits_required: Optional[bool] = None,
 ) -> Dict[str, Any]:
-    """Return destination-specific packing & pre-travel checklists.
-
-    Parameters
-    ----------
-    destination : str
-        Destination city / place name.
-    month : str
-        Travel month.
-    travel_mode : str
-        One of: Flight, Train, Bus, Car, Bike.
-    trip_type : str
-        e.g. General, Adventure, Religious, Leisure.
+    """Return fully customized, dynamic checklists based on the 8 required inputs.
 
     Returns
     -------
     dict
         Keys:
-          packing       : List[str]  — packing items
-          pretravel     : List[str]  — pre-travel checklist
-          altitude_m    : int        — destination altitude
-          permits       : bool       — whether special permits needed
-          matched       : bool       — True if a specific rule matched
+            packing   : List[str]
+            pretravel : List[str]
+            altitude_m: int
+            permits   : bool
+            matched   : bool
     """
-    profile = _match_profile(destination)
+    # 1. Resolve missing properties
+    country = country or get_destination_country(destination)
+    altitude = altitude if altitude is not None else get_destination_altitude(destination)
+    permits_required = permits_required if permits_required is not None else get_destination_permits_required(destination)
 
+    # 2. Look up base checklist from matched profile
+    profile = _match_profile(destination)
     if profile:
-        packing   = list(profile["packing"])
+        packing = list(profile["packing"])
         pretravel = list(profile["pretravel"])
-        altitude  = profile.get("altitude_m", 0)
-        permits   = profile.get("permits", False)
-        matched   = True
+        matched = True
     else:
-        # Generic reasonable defaults
-        packing   = [
+        # Generic defaults
+        packing = [
             "Comfortable walking shoes",
-            "Sunscreen & sunglasses",
-            "Water bottle & snacks",
+            "Sunscreen & Sunglasses",
             "Basic first-aid kit",
-            "Power bank & phone charger",
-            "Travel documents (ID proof)",
-            "Cash & cards",
+            "Power bank",
+            "Water bottle",
         ]
         pretravel = [
-            "Valid ID Proof (Aadhaar / Passport)",
-            "Travel tickets (Train / Flight / Bus)",
+            "Government ID",
+            "Travel tickets",
             "Hotel booking confirmation",
-            "Emergency contact list",
-            "Sufficient cash & cards",
-            "Medicines & prescriptions",
-            "Travel insurance",
+            "Emergency Contacts",
         ]
-        altitude = 0
-        permits  = False
-        matched  = False
+        matched = False
 
-    # Add month-specific items
-    month_lower = month.lower()
-    if month_lower in ("june", "july", "august", "september"):
-        if "Rain jacket / poncho" not in packing:
-            packing.insert(1, "Rain jacket / poncho")
-        if "Waterproof bag cover" not in packing:
-            packing.append("Waterproof bag cover")
-    if month_lower in ("november", "december", "january", "february"):
-        if altitude < 500 and "Light jacket" not in packing:
-            packing.insert(0, "Light to medium jacket (winter evenings are cold)")
+    # 3. Dynamic Altitude Rules
+    if altitude >= 2500:
+        if "Altitude medicine" not in packing:
+            packing.append("Altitude medicine")
+        if "Oxygen can" not in packing:
+            packing.append("Oxygen can")
+        if "Altitude precautions" not in pretravel:
+            pretravel.append("Altitude precautions")
+        if "Medical Fitness Certificate" not in pretravel:
+            pretravel.append("Medical Fitness Certificate")
+        # Specific high-altitude items if not present
+        if "Thermal wear" not in packing:
+            packing.append("Thermal wear")
+        if "Trekking shoes" not in packing:
+            packing.append("Trekking shoes")
+        if "Woolen socks" not in packing:
+            packing.append("Woolen socks")
 
-    # Add travel-mode specific items
-    mode_items = _MODE_PACKING.get(travel_mode, [])
-    for item in mode_items:
+    # 4. Dynamic Permit Rules
+    if permits_required:
+        if "kedarnath" in destination.lower() and "Char Dham Registration" not in pretravel:
+            pretravel.append("Char Dham Registration")
+        elif ("ladakh" in destination.lower() or "leh" in destination.lower()) and "Inner Line Permit" not in pretravel:
+            pretravel.append("Inner Line Permit")
+        elif "safari" in destination.lower() or "wildlife" in destination.lower() or any(k in destination.lower() for k in ["corbett", "ranthambore", "bandipur"]):
+            if "Safari permits" not in pretravel:
+                pretravel.append("Safari permits")
+            if "Forest entry passes" not in pretravel:
+                pretravel.append("Forest entry passes")
+        else:
+            if "Local entry permit/pass" not in pretravel:
+                pretravel.append("Local entry permit/pass")
+
+    # 5. Dynamic Country Rules (International vs Domestic)
+    if country.lower() != "india":
+        if "Passport (valid 6 months)" not in packing:
+            packing.insert(0, "Passport (valid 6 months)")
+        if "Universal power adapter" not in packing:
+            packing.append("Universal power adapter")
+        if "Visa / e-Visa" not in pretravel:
+            pretravel.insert(0, "Visa / e-Visa")
+        if "Travel Insurance" not in pretravel:
+            pretravel.append("Travel Insurance")
+        if "Foreign currency" not in pretravel:
+            pretravel.append("Foreign currency")
+
+    # 6. Dynamic Travel Mode Rules
+    mode_packing = _MODE_PACKING.get(travel_mode, [])
+    for item in mode_packing:
         if item not in packing:
             packing.append(item)
 
+    # 7. Dynamic Trip Type Rules
+    if trip_type.lower() == "adventure" or trip_type.lower() == "trekking":
+        for item in ["Trekking shoes", "Torch", "Waterproof bag", "Offline Maps"]:
+            if item in ["Trekking shoes", "Torch", "Waterproof bag"] and item not in packing:
+                packing.append(item)
+            elif item == "Offline Maps" and item not in pretravel:
+                pretravel.append(item)
+
+    # 8. Dynamic Trip Type - Religious
+    if trip_type.lower() == "religious" or trip_type.lower() == "spiritual":
+        for item in ["Temple dress code", "Cash for offerings", "ID proof"]:
+            if item in ["Temple dress code", "ID proof"] and item not in packing:
+                packing.append(item)
+            elif item in ["Temple dress code", "Cash for offerings", "ID proof", "Darshan ticket booking"] and item not in pretravel:
+                pretravel.append(item)
+
+    # 9. Dynamic Month/Season Rules
+    month_lower = month.lower()
+    if month_lower in ("june", "july", "august", "september"):
+        if "Rain jacket" not in packing:
+            packing.append("Rain jacket")
+        if "Waterproof bag" not in packing:
+            packing.append("Waterproof bag")
+    if month_lower in ("november", "december", "january", "february"):
+        if altitude >= 1000:
+            if "Thermal wear" not in packing:
+                packing.append("Thermal wear")
+            if "Winter jacket" not in packing:
+                packing.append("Winter jacket")
+
+    # De-duplicate lists while preserving order
+    def clean_list(lst: List[str]) -> List[str]:
+        seen = set()
+        return [x for x in lst if not (x in seen or seen.add(x))]
+
     return {
-        "packing":   packing,
-        "pretravel": pretravel,
-        "altitude_m": altitude,
-        "permits":   permits,
-        "matched":   matched,
+        "packing": clean_list(packing),
+        "pretravel": clean_list(pretravel),
+        "altitude_m": int(altitude),
+        "permits": bool(permits_required),
+        "matched": matched,
     }
 
-
 def get_prompt_hints(destination: str) -> str:
-    """Return a short hint string to inject into the Gemini prompt.
-
-    This helps Gemini generate more accurate destination-specific content
-    by hinting about altitude, permits, and special requirements.
-    """
+    """Return a short hint string to inject into the Gemini prompt."""
     profile = _match_profile(destination)
     if not profile:
         return ""
