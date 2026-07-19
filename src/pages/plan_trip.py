@@ -91,6 +91,63 @@ def _rapidfuzz_suggestions(
 
 # ── Destination resolution helpers ───────────────────────────────────────────
 
+def get_ml_proxy_destination(
+    destination: str,
+    country: str = "India",
+    state: str = "",
+    altitude: float = 0.0,
+    tourism_category: str = "general",
+) -> str:
+    """Select the best matching known destination in the dataset as a proxy for ML predictions."""
+    country_lower = country.lower().strip() if country else "india"
+    category_lower = tourism_category.lower().strip() if tourism_category else "general"
+    state_lower = state.lower().strip() if state else ""
+    dest_lower = destination.lower().strip()
+    
+    # Specific known places or typo matches
+    if "annavaram" in dest_lower:
+        return "tirupati"
+    if "kukanet" in dest_lower or "kukunate" in dest_lower:
+        return "kukunate"
+    if "paris" in dest_lower or "london" in dest_lower or country_lower != "india":
+        return "dubai"
+        
+    # Categorical matching
+    if "temple" in category_lower or "religious" in category_lower or "spiritual" in category_lower:
+        if "andhra" in state_lower or "telangana" in state_lower or "tamil" in state_lower or "karnataka" in state_lower:
+            return "tirupati"
+        if altitude > 2000:
+            return "kedarnath"
+        return "varanasi"
+        
+    if "beach" in category_lower or "coastal" in category_lower:
+        return "goa"
+        
+    if "hill" in category_lower or "mountain" in category_lower or "trek" in category_lower:
+        if altitude > 2500:
+            return "spiti"
+        if "himachal" in state_lower or "uttarakhand" in state_lower:
+            return "manali"
+        return "ooty"
+        
+    if "rural" in category_lower or "village" in category_lower or "forest" in category_lower or "camp" in category_lower:
+        return "kukunate"
+        
+    # Regional fallback
+    if "andhra" in state_lower or "telangana" in state_lower:
+        return "vijayawada"
+    if "karnataka" in state_lower:
+        return "bangalore"
+    if "tamil" in state_lower:
+        return "chennai"
+    if "maharashtra" in state_lower:
+        return "mumbai"
+    if "punjab" in state_lower or "haryana" in state_lower:
+        return "jalandhar"
+        
+    return "delhi"
+
+
 def _resolve_destination(
     user_input: str,
     encoder_classes: List[str],
@@ -103,22 +160,46 @@ def _resolve_destination(
         matched_dest  : str   — best encoder-matched destination for ML
         display_dest  : str   — human-readable destination
         match_tier    : str   — one of: cache, alias, exact, fuzzy,
-                                  geo_validated, nominatim, gemini, not_found
+                                  geo_validated, nominatim, gemini, failed_resolution
         geo_result    : dict  — Geoapify/Nominatim result if available
         suggestions   : list  — RapidFuzz suggestions if match_tier='show_suggestions'
         dst_coords    : tuple — (lat, lng) if geocoded
         is_known      : bool  — True when destination is in encoder dataset
+        metadata      : dict  — resolved state, country, altitude, tourism category, weather profile
     """
     key    = user_input.strip().lower()
     known  = [c.lower() for c in encoder_classes]
 
     # ── Step 1: SQLite Cache check ────────────────────────────────────
+    # Check our new intelligence cache for both known and unknown places
+    intel_cached = _dest_cache.get_intelligence_cache(user_input)
+    if intel_cached:
+        lat = intel_cached.get("latitude", 0.0)
+        lng = intel_cached.get("longitude", 0.0)
+        proxy = get_ml_proxy_destination(
+            destination=intel_cached.get("destination", user_input),
+            country=intel_cached.get("country", "India"),
+            state=intel_cached.get("state", ""),
+            altitude=intel_cached.get("altitude", 0.0),
+            tourism_category=intel_cached.get("tourism_category", "general"),
+        )
+        return {
+            "matched_dest": proxy,
+            "display_dest": intel_cached.get("destination", user_input).title(),
+            "match_tier":   "cache",
+            "geo_result":   None,
+            "suggestions":  [],
+            "dst_coords":   (lat, lng) if lat != 0.0 and lng != 0.0 else None,
+            "is_known":     False,
+            "metadata":     intel_cached,
+        }
+
+    # Check standard cache
     cached = _dest_cache.get_cached(key)
     if cached:
         actual  = cached.get("actual_destination", key)
         lat     = cached.get("latitude", 0.0)
         lng     = cached.get("longitude", 0.0)
-        # Check if the cached actual_destination is in the encoder
         enc_match = actual if actual in known else (
             _rapidfuzz_suggestions(actual, known, limit=1, threshold=70)
         )
@@ -134,6 +215,14 @@ def _resolve_destination(
             "suggestions":  [],
             "dst_coords":   (lat, lng) if lat != 0.0 and lng != 0.0 else None,
             "is_known":     True,
+            "metadata":     {
+                "country": "India",
+                "state": "",
+                "altitude": 0.0,
+                "tourism_category": "general",
+                "weather_profile": "temperate",
+                "estimated_budget_type": "known",
+            }
         }
 
     # ── Step 2: Alias check ───────────────────────────────────────────
@@ -149,8 +238,15 @@ def _resolve_destination(
                 "suggestions":  [],
                 "dst_coords":   None,
                 "is_known":     True,
+                "metadata":     {
+                    "country": "India",
+                    "state": "",
+                    "altitude": 0.0,
+                    "tourism_category": "general",
+                    "weather_profile": "temperate",
+                    "estimated_budget_type": "known",
+                }
             }
-        # Alias found but not in encoder — continue resolution with alias name
         key = alias_key
 
     # ── Step 3: Exact encoder match ───────────────────────────────────
@@ -163,44 +259,51 @@ def _resolve_destination(
             "suggestions":  [],
             "dst_coords":   None,
             "is_known":     True,
+            "metadata":     {
+                "country": "India",
+                "state": "",
+                "altitude": 0.0,
+                "tourism_category": "general",
+                "weather_profile": "temperate",
+                "estimated_budget_type": "known",
+            }
         }
 
-    # ── Step 4: RapidFuzz fuzzy match ────────────────────────────────
-    fuzzy_hits = _rapidfuzz_suggestions(key, known, limit=4, threshold=62)
-
-    if len(fuzzy_hits) == 1 and fuzzy_hits[0][1] >= 85:
-        # High-confidence single match → auto-select
-        return {
-            "matched_dest": fuzzy_hits[0][0],
-            "display_dest": fuzzy_hits[0][0].title(),
-            "match_tier":   "fuzzy",
-            "geo_result":   None,
-            "suggestions":  [],
-            "dst_coords":   None,
-            "is_known":     True,
-        }
-
-    if fuzzy_hits:
-        # Multiple / low-confidence matches → show suggestions to user
-        return {
-            "matched_dest": fuzzy_hits[0][0],
-            "display_dest": fuzzy_hits[0][0].title(),
-            "match_tier":   "show_suggestions",
-            "geo_result":   None,
-            "suggestions":  fuzzy_hits,
-            "dst_coords":   None,
-            "is_known":     True,
-        }
-
-    # ── Step 5: Geoapify + Step 6: Nominatim fallback ─────────────────
+    # ── Step 4 & 5 & 6: Geo APIs (Geoapify & Nominatim) ───────────────
+    # Check geocoding before showing suggestions
     geo_result = _geo_service.validate_destination(user_input)
 
     if geo_result["valid"]:
-        # Real place — find nearest encoder proxy
-        proxy_hits = _rapidfuzz_suggestions(key, known, limit=1, threshold=20)
-        proxy      = proxy_hits[0][0] if proxy_hits else known[0]
         coords     = (geo_result["lat"], geo_result["lng"])
-        geo_src    = geo_result.get("source", "Geoapify")
+        country    = geo_result.get("country", "India")
+        state      = geo_result.get("state", "")
+        
+        # Get category metadata from Gemini
+        from src.services.gemini_service import GeminiService
+        gemini_svc = GeminiService()
+        meta = gemini_svc.resolve_unknown_destination_metadata(user_input, state=state, country=country)
+        
+        proxy = get_ml_proxy_destination(
+            destination=user_input,
+            country=country,
+            state=state,
+            altitude=meta.get("altitude", 0.0),
+            tourism_category=meta.get("tourism_category", "general"),
+        )
+        
+        # Cache this resolved place
+        cache_data = {
+            "destination":           user_input,
+            "country":               country,
+            "state":                 state,
+            "latitude":              geo_result["lat"],
+            "longitude":             geo_result["lng"],
+            "weather_profile":       meta.get("weather_profile", "temperate"),
+            "tourism_category":      meta.get("tourism_category", "general"),
+            "estimated_budget_type": "api_estimated",
+        }
+        _dest_cache.set_intelligence_cache(user_input, cache_data)
+        
         return {
             "matched_dest": proxy,
             "display_dest": geo_result.get("display_name", user_input).title(),
@@ -209,17 +312,91 @@ def _resolve_destination(
             "suggestions":  [],
             "dst_coords":   coords,
             "is_known":     False,
+            "metadata":     cache_data,
         }
 
-    # ── Step 7: Gemini AI resolution ──────────────────────────────────
+    # ── Step 7: Gemini AI Resolution Fallback ─────────────────────────
+    from src.services.gemini_service import GeminiService
+    gemini_svc = GeminiService()
+    gemini_result = gemini_svc.suggest_alternative_destination(user_input)
+
+    if gemini_result and gemini_result.get("valid"):
+        lat = gemini_result.get("latitude", 0.0)
+        lng = gemini_result.get("longitude", 0.0)
+        country = gemini_result.get("country", "India")
+        state = gemini_result.get("state", "")
+        alt = gemini_result.get("altitude", 0.0)
+        cat = gemini_result.get("tourism_category", "general")
+        wea = gemini_result.get("weather_profile", "temperate")
+        s_dest = gemini_result.get("suggested_destination", user_input)
+        
+        proxy = get_ml_proxy_destination(
+            destination=s_dest,
+            country=country,
+            state=state,
+            altitude=alt,
+            tourism_category=cat,
+        )
+        
+        cache_data = {
+            "destination":           s_dest,
+            "country":               country,
+            "state":                 state,
+            "latitude":              lat,
+            "longitude":             lng,
+            "weather_profile":       wea,
+            "tourism_category":      cat,
+            "estimated_budget_type": "gemini_approx",
+        }
+        _dest_cache.set_intelligence_cache(user_input, cache_data)
+
+        return {
+            "matched_dest": proxy,
+            "display_dest": s_dest.title(),
+            "match_tier":   "gemini_validated",
+            "geo_result":   gemini_result,
+            "suggestions":  [],
+            "dst_coords":   (lat, lng) if lat != 0.0 and lng != 0.0 else None,
+            "is_known":     False,
+            "metadata":     cache_data,
+        }
+
+    # ── Step 8: Fuzzy Match Fallback (Only if all APIs fail) ─────────
+    # Score threshold increased to 80%
+    fuzzy_hits = _rapidfuzz_suggestions(key, known, limit=4, threshold=80)
+
+    if fuzzy_hits:
+        return {
+            "matched_dest": fuzzy_hits[0][0],
+            "display_dest": fuzzy_hits[0][0].title(),
+            "match_tier":   "show_suggestions",
+            "geo_result":   None,
+            "suggestions":  fuzzy_hits,
+            "dst_coords":   None,
+            "is_known":     True,
+            "metadata":     None,
+        }
+
+    # ── Step 9: Graceful Degradation (Fallback to Delhi) ──────────────
+    fallback_data = {
+        "destination":           f"{user_input.title()} (Unresolved)",
+        "country":               "India",
+        "state":                 "Delhi",
+        "latitude":              28.6139,
+        "longitude":             77.2090,
+        "weather_profile":       "temperate",
+        "tourism_category":      "general",
+        "estimated_budget_type": "failed",
+    }
     return {
-        "matched_dest": known[0],
-        "display_dest": user_input.title(),
-        "match_tier":   "needs_gemini",
+        "matched_dest": "delhi",
+        "display_dest": f"{user_input.title()} (Fallback to Delhi)",
+        "match_tier":   "failed_resolution",
         "geo_result":   None,
         "suggestions":  [],
-        "dst_coords":   None,
+        "dst_coords":   (28.6139, 77.2090),
         "is_known":     False,
+        "metadata":     fallback_data,
     }
 
 
@@ -334,8 +511,17 @@ def _render_smart_budget_metrics(
     is_known: bool,
 ) -> None:
     """Render the 5-metric Smart Budget Verification Engine row."""
+    badge_html = ""
+    conf_level = confidence.get("level", "")
+    if is_known:
+        badge_html = '<span style="background-color:#065F46; color:#34D399; font-size:11px; padding:3px 8px; border-radius:12px; font-weight:600; margin-left:10px;">🟢 Dataset Verified</span>'
+    elif "API" in conf_level:
+        badge_html = '<span style="background-color:#78350F; color:#FBBF24; font-size:11px; padding:3px 8px; border-radius:12px; font-weight:600; margin-left:10px;">🟡 API Estimated</span>'
+    else:
+        badge_html = '<span style="background-color:#7F1D1D; color:#FCA5A5; font-size:11px; padding:3px 8px; border-radius:12px; font-weight:600; margin-left:10px;">🔴 AI Approximation</span>'
+
     st.markdown(
-        '<div class="section-title">&#x1F9E0; Smart Budget Verification Engine</div>',
+        f'<div class="section-title" style="display:flex; align-items:center; gap:8px;">🧠 Smart Budget Verification Engine {badge_html}</div>',
         unsafe_allow_html=True,
     )
 
@@ -561,6 +747,47 @@ def render_plan_trip_page(
             display_dest   = st.session_state.get("last_display_dest", form_data["destination"])
             is_known       = st.session_state.get("last_is_known", True)
 
+            # Show Unknown Destination Detected card if not is_known
+            if not is_known:
+                lat = report.get("weather", {}).get("latitude", 0.0)
+                lng = report.get("weather", {}).get("longitude", 0.0)
+                if lat == 0.0 or lng == 0.0:
+                    cached_geo = _dest_cache.get_intelligence_cache(display_dest)
+                    if cached_geo:
+                        lat = cached_geo.get("latitude", 0.0)
+                        lng = cached_geo.get("longitude", 0.0)
+                if lat == 0.0 or lng == 0.0:
+                    lat, lng = 28.6139, 77.2090 # Default fallback
+                
+                res_type = report.get("confidence", {}).get("level", "API Estimated")
+                conf_score = report.get("confidence", {}).get("score", 72)
+                
+                st.markdown(f"""
+                <div style="background-color: rgba(234, 179, 8, 0.1); border: 1.5px solid rgba(234, 179, 8, 0.4); border-radius: 12px; padding: 20px; margin-bottom: 20px; font-family: 'Outfit', sans-serif;">
+                  <div style="font-weight: 700; color: #F59E0B; font-size: 16px; display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                    🌍 Unknown Destination Detected
+                  </div>
+                  <div style="color: #F8FAFC; font-size: 14px; margin-bottom: 8px;">
+                    <strong>Destination:</strong> {display_dest}
+                  </div>
+                  <div style="color: #CBD5E1; font-size: 13px; margin-bottom: 12px;">
+                    <strong>Coordinates:</strong> {lat:.4f}, {lng:.4f}
+                  </div>
+                  <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #F8FAFC; margin-bottom: 12px;">
+                    <div>✅ Geo APIs</div>
+                    <div>✅ Distance APIs</div>
+                    <div>✅ Weather APIs</div>
+                    <div style="color: #F59E0B;">⚠ Historical data unavailable</div>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 13px; color: #CBD5E1;">
+                    <span>Confidence:</span> <strong style="color: #F59E0B; font-size: 15px;">{conf_score}% ({res_type})</strong>
+                  </div>
+                  <div style="font-weight: 600; color: #10B981; font-size: 14px; margin-top: 12px;">
+                    Approximate Budget Generated.
+                  </div>
+                </div>
+                """, unsafe_allow_html=True)
+
             # 1. Smart Budget Verification Engine Metrics
             _render_smart_budget_metrics(
                 ml_pred=ml_pred,
@@ -694,6 +921,17 @@ def render_plan_trip_page(
             if not dst_coords:
                 dst_coords = maps_service.get_coordinates(display_dest)
 
+            res_type = "known"
+            if not is_known:
+                meta = resolution.get("metadata") or {}
+                ebt = meta.get("estimated_budget_type", "api_estimated")
+                if ebt == "api_estimated":
+                    res_type = "api_only"
+                elif ebt == "gemini_approx":
+                    res_type = "gemini_approx"
+                else:
+                    res_type = "failed"
+
             report = travel_engine.generate_report(
                 source=src,
                 destination=matched_dest,
@@ -706,13 +944,8 @@ def render_plan_trip_page(
                 src_coords=src_coords,
                 dst_coords=dst_coords,
                 is_known_destination=is_known,
+                resolution_type=res_type,
             )
-
-            if not is_known:
-                conf = report.get("confidence", {})
-                conf["score"] = max(0, conf.get("score", 0) - 20)
-                conf["level"] = "Low Reliability (Unknown Destination)"
-                report["confidence"] = conf
 
             st.session_state["gemini_intel"]   = report.get("gemini", {})
             st.session_state["packing_tips"]   = (

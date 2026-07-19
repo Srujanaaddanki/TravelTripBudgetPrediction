@@ -142,3 +142,23 @@ CREATE TABLE IF NOT EXISTS popular_destinations (
 
 CREATE INDEX IF NOT EXISTS idx_pop_destination ON popular_destinations(destination);
 CREATE INDEX IF NOT EXISTS idx_pop_trending    ON popular_destinations(trending_score DESC);
+
+-- -------------------------------------------------------
+-- 6. DESTINATION INTELLIGENCE CACHE
+--    Caches detailed geocoding, country, state, weather profile,
+--    and tourism category for destinations.
+-- -------------------------------------------------------
+CREATE TABLE IF NOT EXISTS destination_intelligence_cache (
+    destination           TEXT PRIMARY KEY,
+    country               TEXT,
+    state                 TEXT,
+    latitude              REAL,
+    longitude             REAL,
+    weather_profile       TEXT,
+    tourism_category      TEXT,
+    estimated_budget_type TEXT,
+    timestamp             TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_dest_intel_ts ON destination_intelligence_cache(timestamp);
+

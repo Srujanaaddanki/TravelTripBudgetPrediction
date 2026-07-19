@@ -22,42 +22,53 @@ class ConfidenceEngine:
         dataset_insights: Dict[str, Any],
         mode_comparison: Dict[str, Any],
         ml_prediction: float,
+        is_known: bool = True,
+        resolution_type: str = "known",
     ) -> Dict[str, Any]:
-        """Determine final percentage score, rating level, and individual indicators.
-
-        Parameters
-        ----------
-        dataset_insights : dict
-            Historical trip data statistics from DatasetIntelligence.
-        mode_comparison : dict
-            Travel mode and distance comparison metrics.
-        ml_prediction : float
-            Budget predicted by ML model.
-
-        Returns
-        -------
-        dict
-            Keys: score (0-100), level (High/Medium/Low), and list of factor dicts.
-        """
+        """Determine final percentage score, rating level, and individual indicators."""
         factors: List[Dict[str, Any]] = []
-        score = 0
-
-        # Factor 1: Historical Data availability
+        
         has_data = dataset_insights.get("has_data", False)
         similar_count = dataset_insights.get("similar_count", 0)
-
-        if has_data and similar_count > 0:
+        
+        if resolution_type == "known" or (is_known and has_data):
+            score = 95
+            if similar_count >= 5:
+                score = 100
+            elif similar_count >= 2:
+                score = 98
+            level = "Dataset Verified"
             factors.append({
                 "name": "Historical Data",
                 "available": True,
-                "detail": f"{similar_count} similar trips found in database",
+                "detail": f"Dataset verified: {similar_count} similar trips found",
             })
-            score += 25
-        else:
+        elif resolution_type == "api_only":
+            score = 75
+            distance_km = mode_comparison.get("distance_km", 0.0)
+            if distance_km > 0.0:
+                score = 80
+            level = "API Estimated"
             factors.append({
-                "name": "Historical Data",
+                "name": "API Resolution",
+                "available": True,
+                "detail": f"Geocoded via Geo APIs: {distance_km:,.1f} km",
+            })
+        elif resolution_type == "gemini_approx":
+            score = 65
+            level = "AI Approximation"
+            factors.append({
+                "name": "AI Resolution",
+                "available": True,
+                "detail": "Geocoded and estimated using Gemini AI",
+            })
+        else:
+            score = 50
+            level = "Low Reliability (Failed Resolution)"
+            factors.append({
+                "name": "Failed Resolution",
                 "available": False,
-                "detail": "No matching trips in local training data",
+                "detail": "Failed to resolve destination, using fallback details",
             })
 
         # Factor 2: Route mapping verification
@@ -68,7 +79,6 @@ class ConfidenceEngine:
                 "available": True,
                 "detail": f"Route calculated successfully ({distance_km:,.1f} km)",
             })
-            score += 25
         else:
             factors.append({
                 "name": "Route Availability",
@@ -82,45 +92,14 @@ class ConfidenceEngine:
             factors.append({
                 "name": "Model Confidence",
                 "available": True,
-                "detail": "Prediction is within typical historical range",
+                "detail": "Prediction is within typical range",
             })
-            score += 25
         else:
             factors.append({
                 "name": "Model Confidence",
                 "available": False,
                 "detail": "Prediction falls outside regular parameters",
             })
-
-        # Factor 4: Dataset matching depth
-        if similar_count >= 5:
-            factors.append({
-                "name": "Dataset Similarity",
-                "available": True,
-                "detail": f"Strong statistical base ({similar_count} similar entries)",
-            })
-            score += 25
-        elif similar_count >= 2:
-            factors.append({
-                "name": "Dataset Similarity",
-                "available": True,
-                "detail": f"Moderate base ({similar_count} similar entries)",
-            })
-            score += 15
-        else:
-            factors.append({
-                "name": "Dataset Similarity",
-                "available": False,
-                "detail": "Limited sample entries for similar parameters",
-            })
-
-        # Score level thresholds
-        if score >= 75:
-            level = "High Reliability"
-        elif score >= 50:
-            level = "Moderate Reliability"
-        else:
-            level = "Low Reliability"
 
         return {
             "score": score,

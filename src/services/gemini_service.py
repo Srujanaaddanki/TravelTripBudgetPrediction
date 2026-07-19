@@ -105,6 +105,51 @@ class GeminiService:
             permits_required=permits_required,
         )
 
+    def resolve_unknown_destination_metadata(
+        self, destination: str, state: str = "", country: str = ""
+    ) -> Dict[str, Any]:
+        """Ask Gemini for state, country, altitude, tourism category, and weather profile of a destination."""
+        fallback = {
+            "country": country or "India",
+            "state": state or "",
+            "altitude": 0.0,
+            "tourism_category": "general",
+            "weather_profile": "temperate",
+        }
+        if not self._available:
+            return fallback
+        
+        prompt = f"""
+You are a geography and travel classification assistant.
+For the destination "{destination}" (State: {state or "unknown"}, Country: {country or "unknown"}), determine the following details.
+
+Return ONLY a valid JSON object (no markdown, no extra text, no ```json wrapper):
+{{
+  "country": "Country name",
+  "state": "State name",
+  "altitude": 1200.0,
+  "tourism_category": "One of: Beach, Temple, Hill Station, Metropolitan City, Rural",
+  "weather_profile": "One of: Tropical, Himalayan, Temperate, Arid, Monsoon"
+}}
+"""
+        try:
+            response = self._model.generate_content(prompt)
+            raw_text = self._strip_markdown(response.text.strip())
+            data = json.loads(raw_text)
+            
+            # Normalize keys and values
+            res = {
+                "country": data.get("country", country or "India"),
+                "state": data.get("state", state or ""),
+                "altitude": float(data.get("altitude", 0.0)),
+                "tourism_category": data.get("tourism_category", "general"),
+                "weather_profile": data.get("weather_profile", "temperate"),
+            }
+            return res
+        except Exception as exc:
+            log.warning("Failed to classify destination %s: %s", destination, exc)
+            return fallback
+
     def suggest_alternative_destination(self, destination: str) -> Dict[str, Any]:
         """Identify an alternative / corrected destination using Gemini.
 
@@ -145,6 +190,10 @@ Return ONLY a valid JSON object — no markdown, no extra text, no ```json wrapp
   "village": "Village name if applicable",
   "district": "District name",
   "state": "State name",
+  "country": "Country name",
+  "altitude": 1200.0,
+  "tourism_category": "One of: Beach, Temple, Hill Station, Metropolitan City, Rural",
+  "weather_profile": "One of: Tropical, Himalayan, Temperate, Arid, Monsoon",
   "alternative_names": ["name1", "name2"]
 }}
 
@@ -161,6 +210,10 @@ set latitude/longitude to 0.
             result.setdefault("village",           "")
             result.setdefault("district",          "")
             result.setdefault("state",             "")
+            result.setdefault("country",           "India")
+            result.setdefault("altitude",          0.0)
+            result.setdefault("tourism_category",  "general")
+            result.setdefault("weather_profile",   "temperate")
             result.setdefault("alternative_names", [])
             return result
         except Exception as exc:

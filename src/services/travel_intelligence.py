@@ -99,6 +99,7 @@ class TravelIntelligenceEngine:
         src_coords: Optional[tuple] = None,
         dst_coords: Optional[tuple] = None,
         is_known_destination: bool = True,
+        resolution_type: str = "known",
     ) -> Dict[str, Any]:
         """Build the complete travel intelligence report.
 
@@ -295,6 +296,8 @@ class TravelIntelligenceEngine:
             dataset_insights=dataset_insights,
             mode_comparison=mode_comparison,
             ml_prediction=ml_prediction,
+            is_known=is_known_destination,
+            resolution_type=resolution_type,
         )
 
         similar_traveller = self._dataset.get_similar_traveller_stats(
@@ -435,9 +438,9 @@ class TravelIntelligenceEngine:
         else:
             # Unknown destination — no historical reference
             smart = (
-                ml_pred       * 0.50
-                + transport_cost * 0.30
-                + duration_cost  * 0.20
+                transport_cost * 0.50
+                + duration_cost  * 0.30
+                + ml_pred        * 0.20
             )
             formula_type = "unknown"
 
@@ -462,10 +465,10 @@ class TravelIntelligenceEngine:
             "base_budget":       base_budget,
             "is_floored":        is_floored,
             "floor_value":       floor,
-            "ml_part":           ml_pred * (0.35 if formula_type == "known" else 0.50),
+            "ml_part":           ml_pred * (0.35 if formula_type == "known" else 0.20),
             "hist_part":         (historical_avg * 0.25) if formula_type == "known" else 0.0,
-            "trans_part":        transport_cost * (0.20 if formula_type == "known" else 0.30),
-            "dur_part":          duration_cost * 0.20,
+            "trans_part":        transport_cost * (0.20 if formula_type == "known" else 0.50),
+            "dur_part":          duration_cost * (0.20 if formula_type == "known" else 0.30),
         }
 
     @staticmethod

@@ -114,10 +114,75 @@ class DestinationCache:
                         timestamp          TEXT    NOT NULL
                     )
                 """)
+                conn.execute("""
+                    CREATE TABLE IF NOT EXISTS destination_intelligence_cache (
+                        destination           TEXT PRIMARY KEY,
+                        country               TEXT,
+                        state                 TEXT,
+                        latitude              REAL,
+                        longitude             REAL,
+                        weather_profile       TEXT,
+                        tourism_category      TEXT,
+                        estimated_budget_type TEXT,
+                        timestamp             TEXT NOT NULL
+                    )
+                """)
                 conn.commit()
-                log.info("destination_cache table ready at %s", self._db_path)
+                log.info("destination_cache and destination_intelligence_cache tables ready at %s", self._db_path)
         except Exception as exc:
-            log.error("Could not initialise destination_cache table: %s", exc)
+            log.error("Could not initialise database tables: %s", exc)
+
+    def get_intelligence_cache(self, destination: str) -> Optional[Dict[str, Any]]:
+        """Fetch cached destination intelligence if not expired (30 days TTL)."""
+        try:
+            with self._connect() as conn:
+                conn.row_factory = sqlite3.Row
+                cursor = conn.execute(
+                    "SELECT * FROM destination_intelligence_cache WHERE LOWER(destination) = ?",
+                    (destination.lower().strip(),),
+                )
+                row = cursor.fetchone()
+                if row:
+                    ts_str = row["timestamp"]
+                    try:
+                        ts = datetime.fromisoformat(ts_str)
+                    except ValueError:
+                        ts = datetime.strptime(ts_str.split(".")[0], "%Y-%m-%d %H:%M:%S")
+                    
+                    if datetime.now() - ts < timedelta(days=30):
+                        return dict(row)
+                    else:
+                        log.info("Destination intelligence cache expired for %s", destination)
+        except Exception as exc:
+            log.warning("Failed to read from destination_intelligence_cache: %s", exc)
+        return None
+
+    def set_intelligence_cache(self, destination: str, data: Dict[str, Any]) -> None:
+        """Store destination intelligence in the cache."""
+        try:
+            with self._connect() as conn:
+                conn.execute(
+                    """
+                    INSERT OR REPLACE INTO destination_intelligence_cache 
+                    (destination, country, state, latitude, longitude, weather_profile, tourism_category, estimated_budget_type, timestamp)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        destination.strip().title(),
+                        data.get("country"),
+                        data.get("state"),
+                        float(data.get("latitude", 0.0)) if data.get("latitude") is not None else 0.0,
+                        float(data.get("longitude", 0.0)) if data.get("longitude") is not None else 0.0,
+                        data.get("weather_profile", "temperate"),
+                        data.get("tourism_category", "general"),
+                        data.get("estimated_budget_type", "api_estimated"),
+                        datetime.now().isoformat(),
+                    ),
+                )
+                conn.commit()
+            log.info("Stored destination intelligence cache for '%s'.", destination)
+        except Exception as exc:
+            log.warning("Failed to write to destination_intelligence_cache: %s", exc)
 
     # ------------------------------------------------------------------
     # Public API
