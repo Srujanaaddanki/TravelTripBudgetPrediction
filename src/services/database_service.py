@@ -291,7 +291,7 @@ class DestinationCache:
                     (user_input, actual_destination, latitude, longitude,
                      distance_km, duration_hr, month, days, travel_mode,
                      hotel_quality, weather, packing, tips, pretravel, budget, timestamp)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
                     destination.strip().lower(),
                     data.get("actual_destination", destination).strip().lower(),
