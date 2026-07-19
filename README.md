@@ -2,210 +2,168 @@
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge.svg)](https://traveltripbudgetprediction.streamlit.app/)
 
-> [!NOTE]
-> **🚀 Deployed App**: You can deploy this app to [Streamlit Community Cloud](https://share.streamlit.io/) directly from your GitHub repo. Check out the [Deployment Guide](file:///c:/Users/hp/Desktop/srujan/docs/DEPLOYMENT_GUIDE.md) to set it up in less than a minute.
->
-> **💼 Placement Resume Bullets**: Recruiter-ready bullet points for software engineering, full-stack, or data science roles are available in [RESUME_POINTS.md](file:///c:/Users/hp/Desktop/srujan/RESUME_POINTS.md).
-
 TripAI is a modern, production-grade Travel Intelligence Platform designed to predict, verify, and plan travel budgets across India. It integrates machine learning (Random Forest), live API services, SQLite tracking, and structured dataset analysis to deliver a premium MakeMyTrip/Airbnb-style travel planner.
 
 ---
 
-## 📖 1. Problem Statement
-Planning a travel itinerary across India often involves dealing with fragmented information:
-- Budget estimates from ML models are often decoupled from live transit routes and fuel/ticket price changes.
-- Traditional systems rely on generic AI recommendations rather than historical dataset feedback from real travellers.
-- APIs can fail, leading to app crashes when offline or when querying remote locations.
+## 🔗 Live Demo & Repository
+
+* **Live Demo**: [https://traveltripbudgetprediction.streamlit.app/](https://traveltripbudgetprediction.streamlit.app/)
+* **GitHub Repository**: [https://github.com/Srujanaaddanki/TravelTripBudgetPrediction](https://github.com/Srujanaaddanki/TravelTripBudgetPrediction)
 
 ---
 
-## 🎯 2. Objectives
-- **Verify predictions**: Align ML predicted budgets with distance cost projections and dataset averages.
-- **Provide clean architecture**: Decouple views (Streamlit) from controllers (orchestrator services) and models (SQLite, Random Forest, CSV datasets).
-- **Ensure high explainability**: Build a placement-ready portfolio code that can be explained in less than 5 minutes during recruiter interviews.
+## 📖 Project Overview
+
+Planning travel across India often involves dealing with fragmented data:
+* Budget estimates from machine learning models are usually decoupled from live transit routes and fuel/ticket price changes.
+* Traditional systems rely on generic recommendations rather than historical dataset feedback from real travelers.
+* Network failures or API quota limits can cause travel planning apps to crash when querying remote locations.
+
+**TripAI** solves this by establishing a decoupled Model-View-Controller (MVC) architecture. It aligns base machine learning budget predictions (trained on historical traveler feedback) with dynamic geographic distance calculations, live transit multipliers, current weather forecasts, and a 3-tier local SQLite cache.
 
 ---
 
-## 📊 3. Dataset Overview
-We utilize a survey dataset (`traveltripdata.csv`) consisting of **920+ records** of traveller experiences across India. The features analyzed include:
-- `Place`: Visited destination.
-- `Cost`: Total budget spent (cleaned using regex extraction).
-- `Days`: Trip stay duration.
-- `Hotel_Quality`: Category of stay (Budget, standard, luxury).
-- `Local_Trans_Rating`, `Sightseeing_Rating`, `Satisfaction_Rating`: Historical satisfaction feedback scaled from 1 to 5.
-- `Revisit_Intention`, `Preferred_Experience`, `Trip_Type`.
+## ⚡ Features
+
+* **AI Budget Predictions**: Employs a Random Forest Regressor trained on real Indian traveler records to estimate budgets based on destination, season, hotel quality tier, stay duration, and trip type.
+* **3-Tier Caching System**: Optimizes external API latency and usage costs by resolving coordinates and routing maps through local SQLite caching first, falling back to a pre-seeded offline city catalog, and lastly querying live APIs only on cache misses.
+* **Live Weather Integration**: Connects to the keyless Open-Meteo API to recursively pull real-time weather forecasts (temperature, wind, precipitation) for any destination coordinates.
+* **Geospatial Mapping**: Renders interactive satellite/road travel route maps dynamically using Folium and Streamlit-Folium, with custom icons and alternative waypoint routes.
+* **SaaS Analytics Dashboard**: Captures local search history in an SQLite database (using Write-Ahead Logging for concurrency) to display trending destinations, average travel budgets, and transit mode shares.
+* **Exportable Reports**: Dynamically compiles predicted budgets, packing checklists, destination safety alerts, and seasonal tips into a downloadable PDF report.
 
 ---
 
-## 🤖 4. Machine Learning Pipeline
-- **Algorithm**: `Random Forest Regressor` (200 Decision Trees).
-- **Validation Accuracy**: $R^2$ validation score of **~95%** (`model_accuracy.pkl`).
-- **Encoders**: `LabelEncoder` (`encoders.pkl`) converts categorical variables (`Place`, `Month`, `Season`, `Trip_Type`, `Hotel_Quality`) into numerical vectors.
+## 🏗️ Architecture
 
----
+TripAI enforces a clean Model-View-Controller design to decouple components and ensure interview-readiness:
 
-## 🏗️ 5. Architecture Diagram
+### Workflow Diagram
 
-To ensure maximum visibility and clean rendering across all GitHub mobile apps and markdown viewers, both a vertical flowchart and an ASCII text layout are provided:
-
-### Interactive Vertical Flowchart
 ```mermaid
 graph TD
     User([User inputs]) --> APP[app.py Router]
     
     subgraph UI ["Presentation Layer (View)"]
-        APP --> UI_C[ui_components.py]
-        APP --> DB_C[dashboard_components.py]
-        APP --> CH[charts.py]
-        APP --> CS[styles.css]
+        APP --> UI_C[src/components/]
+        APP --> DB_C[src/pages/]
+        APP --> CS[src/styles/]
     end
     
     subgraph Controller ["Service Layer (Controller)"]
-        APP --> TIE[travel_intelligence.py Orchestrator]
-        TIE --> WE[weather_service.py]
-        TIE --> BU[budget_engine.py]
-        TIE --> CO[confidence_engine.py]
-        TIE --> RE[recommendation_engine.py]
-        TIE --> EX[report_exporter.py]
+        APP --> TIE[src/services/travel_intelligence.py]
+        TIE --> WE[src/services/weather_service.py]
+        TIE --> BU[src/services/budget_engine.py]
+        TIE --> CO[src/services/confidence_engine.py]
+        TIE --> RE[src/services/recommendation_engine.py]
+        TIE --> EX[src/services/report_exporter.py]
     end
     
     subgraph Model ["Data & Intelligence Layer (Model)"]
-        BU --> MAPS[maps_service.py Cache]
-        RE --> DB[(database.py SQLite)]
-        TIE --> DS[dataset_intelligence.py]
-        DS --> RF[Random Forest Model]
+        BU --> MAPS[src/data/maps_service.py]
+        RE --> DB[(src/data/database.py)]
+        TIE --> DS[src/intelligence/dataset_intelligence.py]
+        DS --> RF[models/final_model.pkl]
     end
 ```
 
-### High-Visibility ASCII Layout
-```
-      +-------------------------------------------+
-      |         User Browser (Streamlit UI)       |
-      +---------------------+---------------------+
-                            | (Form Inputs)
-                            v
-      +---------------------+---------------------+
-      |   app.py (Router) & ui_components.py      |
-      +---------------------+---------------------+
-                            | (Invoke Orchestrator)
-                            v
-      +---------------------+---------------------+
-      |  travel_intelligence.py (Orchestrator)    |
-      +---------------------+---------------------+
-           |                 |                 |
-           v                 v                 v
-  +--------+--------+ +------+------+ +--------+--------+
-  | weather_service | | budget_engine| | recommendation  |
-  |  (Open-Meteo)   | |  (Tiers/Map) | |    _engine      |
-  +-----------------+ +------+------+ +--------+--------+
-                             |                 |
-                             v                 v
-                      +------+------+ +--------+--------+
-                      | MapsService | | TripDatabase    |
-                      |   (Cache)   | | (SQLite Logs)   |
-                      +-------------+ +-----------------+
-```
+### Decoupled Folder Structure
 
----
-
-## 📁 6. Decoupled Folder Structure
 ```
-srujan/
-├── app.py                     # Entry point (under 280 lines)
-├── requirements.txt           # Dependency management
-├── runtime.txt                # Python deployment runtime
-├── LICENSE                    # MIT terms
-├── models/                    # Pickled ML models
-│   ├── final_model.pkl        
-│   ├── encoders.pkl           
-│   └── model_accuracy.pkl     
-├── data/                      # Raw traveller dataset
-│   └── traveltripdata.csv     
-├── tests/                     # Integration tests
+TravelTripBudgetPrediction/
+├── app.py                      # Application Entry Point
+├── train_model.py              # ML Model Training Pipeline
+├── requirements.txt            # Package Dependencies
+├── runtime.txt                 # Deployment Runtime Version
+├── LICENSE                     # Project License
+├── .gitignore                  # Git Ignore Rules
+├── config/                     # Global Config
+│   ├── settings.py             # System Path Settings
+│   └── constants.py            # Platform Constants
+├── data/                       # Dataset Storage
+│   └── traveltripdata.csv      # Raw Traveler Survey Dataset
+├── models/                     # Pickled Models & Encoders
+│   ├── final_model.pkl         
+│   ├── encoders.pkl            
+│   └── model_accuracy.pkl      
+├── docs/                       # Documentation Guides
+│   ├── GOOGLE_MAPS_SETUP.md    # API Configuration Instructions
+│   └── RESUME_POINTS.md        # Recruiter Placement Bullets
+├── tests/                      # Verification Tests
+│   ├── test_geo.py             
+│   ├── test_route.py           
+│   ├── test_checklists_and_routes.py
 │   └── test_search_tracking.py 
-├── src/                       # Service orchestrator & UI views
-│   ├── services/
-│   │   ├── travel_intelligence.py
-│   │   ├── weather_service.py
-│   │   ├── budget_engine.py
-│   │   ├── confidence_engine.py
-│   │   ├── recommendation_engine.py
-│   │   └── report_exporter.py
-│   ├── intelligence/
-│   │   ├── dataset_intelligence.py
-│   │   ├── destination_knowledge.py
-│   │   └── destinations.json
-│   ├── data/
-│   │   ├── database.py
-│   │   ├── maps_service.py
-│   │   └── search_tracker.py
-│   └── ui/
-│       ├── ui_components.py
-│       ├── dashboard_components.py
-│       └── styles.css
+├── src/                        # Core Source Code
+│   ├── components/             # Reusable UI Widgets (Navbar, Footer, Hero, Maps)
+│   ├── pages/                  # Streamlit Page Views (Plan Trip, Analytics)
+│   ├── services/               # Engine Controllers (Weather, Budget, Gemini)
+│   ├── intelligence/           # Dataset Intelligence & Knowledge Bases
+│   └── styles/                 # Tailwind/SaaS Custom CSS Variables
 ```
 
 ---
 
-## 🛠️ 7. Technology Stack
-- **Frontend**: Streamlit, HTML5, Custom CSS
-- **Visualization**: Plotly Express, Plotly Graph Objects
-- **Backend/Service Layer**: Python (3.9+), Open-Meteo API
-- **Machine Learning**: Scikit-Learn, Joblib
-- **Data Persistence**: SQLite3 (WAL mode), Pandas, NumPy
+## 🛠️ Technologies
+
+* **Frontend & Presentation**: Streamlit, HTML5, Custom CSS
+* **Geospatial & Visualization**: Folium, Streamlit-Folium, Plotly Express
+* **Machine Learning & Preprocessing**: Scikit-Learn (Random Forest Regressor), Joblib, Pandas, NumPy
+* **Database & Caching**: SQLite3 (WAL mode), SQLite Memory databases
+* **APIs & Networks**: Open-Meteo API, Google Maps Distance Matrix API
 
 ---
 
-## 🔌 8. External APIs Used
-1. **Open-Meteo API**: Fetches current weather forecasts (temperature, wind, humidity) recursively. Fully free and keyless.
-2. **Google Maps Distance Matrix API**: Computes road distance between cities. Implements a 3-tier caching structure fallback to protect API quotas.
+## ⚡ Installation
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/Srujanaaddanki/TravelTripBudgetPrediction.git
+cd TravelTripBudgetPrediction
+```
+
+### 2. Install dependencies
+Ensure you are using Python 3.9+ and run:
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Verify the installation
+Run the integration test suite to verify the database and caching system:
+```bash
+python tests/test_search_tracking.py
+```
+
+### 4. Launch the application locally
+```bash
+streamlit run app.py
+```
 
 ---
 
-## ⚡ 9. Installation & Local Setup
+## ☁️ Deployment
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Srujanaaddanki/TravelTripBudgetPrediction.git
-   cd TravelTripBudgetPrediction
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Verify the test suite**:
-   ```bash
-   python tests/test_search_tracking.py
-   ```
-
-4. **Launch the application locally**:
-   ```bash
-   streamlit run app.py
-   ```
+### Streamlit Community Cloud (Fastest & Free)
+1. Commit all your latest code changes to GitHub.
+2. Sign in to [Streamlit Share](https://share.streamlit.io/) with your GitHub account.
+3. Click **New app**, choose `TravelTripBudgetPrediction` from your repository list, set Branch to `main`, and set Main file path to `app.py`.
+4. Go to **Settings** ➡️ **Secrets** to configure optional keys such as `GOOGLE_MAPS_API_KEY`.
+5. Click **Deploy!**
 
 ---
 
-## ☁️ 10. Deployment Guide
-Detailed deployment steps are available inside [docs/DEPLOYMENT_GUIDE.md](file:///c:/Users/hp/Desktop/srujan/docs/DEPLOYMENT_GUIDE.md):
-- **Streamlit Community Cloud**: Connect your GitHub repo and select `app.py`.
-- **Docker/Render**: Build commands are specified in the deployment document.
+## 🖼️ Screenshots
+
+*(Add screenshots of your planning forms, interactive map routes, confidence metrics, and SaaS analytics dashboard here during portfolio hosting)*
 
 ---
 
-## 🖼️ 11. Screenshots Section
-*(Add visual mockups or app screenshots here during portfolio creation)*
+## 💼 Resume Highlights
 
----
+For showcase in placement interviews, these points summarize the technical accomplishments of the project:
 
-## 🚀 12. Future Enhancements
-- **Voice Assistant Integration**: Voice-based budgeting query processing.
-- **Custom Itineraries**: Day-wise route suggestions using travel matrices.
-- **Unified Redis Cache**: Multi-node concurrent caching.
-
----
-
-## 📄 14. License & Acknowledgements
-- **License**: MIT License terms (`LICENSE` file).
-- **Acknowledgements**: Survey traveller dataset contributed by Srujana.
+* **Machine Learning Performance**: Engineered a Random Forest Regressor (200 decision trees) achieving a **~95% $R^2$ accuracy score** in predicting travel budgets across India.
+* **Advanced Caching Architecture**: Created a **3-tier cache structure** in SQLite (WAL mode) for coordinate lookup and route matrices, protecting API quotas and reducing external latency.
+* **Robust Fallback Engine**: Designed a graceful fallback system mapping traveler feedback datasets and pre-seeded rules to ensure continuous operation during API offline states.
+* **Modular Clean Code**: Built a decoupled MVC codebase, maintaining individual file sizes under 300 lines with type hints and automated unit tests.
