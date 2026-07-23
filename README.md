@@ -142,26 +142,13 @@ streamlit run app.py
 
 ---
 
-## ☁️ Deployment
-
-### Streamlit Community Cloud (Fastest & Free)
-1. Commit all your latest code changes to GitHub.
-2. Sign in to [Streamlit Share](https://share.streamlit.io/) with your GitHub account.
-3. Click **New app**, choose `TravelTripBudgetPrediction` from your repository list, set Branch to `main`, and set Main file path to `app.py`.
-4. Go to **Settings** ➡️ **Secrets** to configure optional keys such as `GOOGLE_MAPS_API_KEY`.
-5. Click **Deploy!**
-
----
-
 ## 🖼️ Screenshots
 
-*(Add screenshots of your planning forms, interactive map routes, confidence metrics, and SaaS analytics dashboard here during portfolio hosting)*
+*(Screenshots of planning forms, interactive map routes, confidence metrics, and SaaS analytics dashboard here during portfolio hosting)*
 
 ---
 
-## 💼 Resume Highlights
-
-For showcase in placement interviews, these points summarize the technical accomplishments of the project:
+## 💼 Highlights
 
 * **Machine Learning Performance**: Engineered a Random Forest Regressor (200 decision trees) achieving a **~95% $R^2$ accuracy score** in predicting travel budgets across India.
 * **Advanced Caching Architecture**: Created a **3-tier cache structure** in SQLite (WAL mode) for coordinate lookup and route matrices, protecting API quotas and reducing external latency.
