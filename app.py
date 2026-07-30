@@ -148,7 +148,11 @@ if "splash_shown" not in st.session_state and _splash_img:
       z-index: 2147483647;
       margin: 0;
       padding: 0;
-      background: url("{_splash_img}") center center / cover no-repeat;
+      background-color: #090e1a;
+      background-image: url("{_splash_img}");
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
       animation: twSplashFade 4s ease forwards;
     }}
 
