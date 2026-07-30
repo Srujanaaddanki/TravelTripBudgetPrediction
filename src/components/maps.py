@@ -269,7 +269,7 @@ def render_route_map(route_info: Dict[str, Any], travel_mode: str = "Car") -> No
         Used to select the transport icon on the origin marker.
     """
     st.markdown(
-        '<div class="map-card-header"><div class="map-card-title">&#x1F5FA; Interactive Route Map</div></div>',
+        '<div style="font-family:\'Outfit\',sans-serif;font-size:15px;font-weight:700;color:var(--text-primary);display:flex;align-items:center;gap:8px;margin-bottom:8px;">🗺️ Interactive Route Map</div>',
         unsafe_allow_html=True,
     )
 
@@ -385,8 +385,7 @@ def _render_folium_map(
     m = folium.Map(
         location=[mid_lat, mid_lon],   # [lat, lon] — CORRECT ORDER
         zoom_start=5,
-        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-        attr="Esri Satellite",
+        tiles="OpenStreetMap",
     )
 
     # Mode-specific icon for origin

@@ -1269,7 +1269,7 @@ def render_plan_trip_page(
 
         st.markdown("<div style='height:12px;'></div>", unsafe_allow_html=True)
 
-        # 3. PDF Download Button (Compact uniform styling)
+        # 3. PDF Download Button — highlighted with heading
         try:
             pdf_bytes = generate_pdf_report(
                 source=form_data["source"],
@@ -1280,6 +1280,42 @@ def render_plan_trip_page(
                 hotel=form_data["hotel"],
                 report_data=report,
             )
+
+            # Section heading for the download button
+            st.markdown("""
+            <style>
+            div.st-key-btn_download_pdf button {
+              background: linear-gradient(135deg, #7C3AED, #4F46E5) !important;
+              color: #FFFFFF !important;
+              border: none !important;
+              border-radius: 12px !important;
+              font-size: 15px !important;
+              font-weight: 700 !important;
+              padding: 12px 24px !important;
+              width: 100% !important;
+              box-shadow: 0 4px 20px rgba(124, 58, 237, 0.5) !important;
+              transition: all 0.3s ease !important;
+              letter-spacing: 0.3px !important;
+            }
+            div.st-key-btn_download_pdf button:hover {
+              transform: translateY(-2px) scale(1.02) !important;
+              box-shadow: 0 8px 30px rgba(124, 58, 237, 0.7) !important;
+              background: linear-gradient(135deg, #9333EA, #6366F1) !important;
+            }
+            </style>
+            <div style="margin-top: 18px; margin-bottom: 8px;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                <div style="height: 2px; flex: 1; background: linear-gradient(90deg, transparent, rgba(124,58,237,0.5));"></div>
+                <span style="font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700;
+                             color: #A78BFA; text-transform: uppercase; letter-spacing: 0.08em;
+                             white-space: nowrap;">
+                  📄 Download Your Trip Report
+                </span>
+                <div style="height: 2px; flex: 1; background: linear-gradient(90deg, rgba(124,58,237,0.5), transparent);"></div>
+              </div>
+            </div>
+            """, unsafe_allow_html=True)
+
             c_pdf_1, c_pdf_2, c_pdf_3 = st.columns([1, 2, 1])
             with c_pdf_2:
                 st.download_button(
