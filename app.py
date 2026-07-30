@@ -149,11 +149,19 @@ if "splash_shown" not in st.session_state and _splash_img:
       margin: 0;
       padding: 0;
       background-color: #090e1a;
-      background-image: url("{_splash_img}");
-      background-position: center center;
-      background-size: cover;
-      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       animation: twSplashFade 4s ease forwards;
+    }}
+
+    #tw-splash-img {{
+      width: 100vw;
+      height: 100vh;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
     }}
 
     @keyframes twSplashFade {{
@@ -163,7 +171,9 @@ if "splash_shown" not in st.session_state and _splash_img:
       100% {{ opacity: 0; visibility: hidden;  pointer-events: none; }}
     }}
     </style>
-    <div id="tw-splash"></div>
+    <div id="tw-splash">
+      <img src="{_splash_img}" alt="TraWell Splash" id="tw-splash-img" />
+    </div>
     <script>
     (function() {{
       var body = document.body;
