@@ -112,11 +112,11 @@ def _inject_css() -> None:
 
 _inject_css()
 
-# ── Splash Screen — uses the real uploaded image ──────────────────────────────
-from src.components.branding import splash_uri, logo_uri
+# ── Favicon & Branding ────────────────────────────────────────────────────────
+from src.components.branding import logo_uri, splash_uri
 
-_splash_img = splash_uri()
 _logo_img   = logo_uri()
+_splash_img = splash_uri()
 
 # Inject real favicon via link tag
 if _logo_img:
@@ -125,49 +125,57 @@ if _logo_img:
         unsafe_allow_html=True,
     )
 
+# ── Splash Screen (Pure Image — splash.png) ───────────────────────────────────
 if "splash_shown" not in st.session_state and _splash_img:
     st.session_state["splash_shown"] = True
     st.markdown(f"""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
+    /* Block scroll while splash is visible */
+    body.tw-splashing {{
+      overflow: hidden !important;
+    }}
+    /* Hide Streamlit header/toolbar during splash */
+    body.tw-splashing [data-testid="stHeader"],
+    body.tw-splashing [data-testid="stToolbar"],
+    body.tw-splashing [data-testid="stAppViewContainer"] > section:not(:first-child) {{
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }}
+
     #tw-splash {{
-      position: fixed; inset: 0; z-index: 99999;
-      background: url('{_splash_img}') center center / cover no-repeat;
-      display: flex; align-items: center; justify-content: flex-end;
-      font-family: 'Outfit','Inter',sans-serif;
-      animation: twFade 3.5s ease forwards;
-      overflow: hidden;
+      position: fixed;
+      inset: 0;
+      z-index: 2147483647;
+      margin: 0;
+      padding: 0;
+      background: url("{_splash_img}") center center / cover no-repeat;
+      animation: twSplashFade 4s ease forwards;
     }}
-    @keyframes twFade {{
-      0%,70% {{ opacity:1; }}
-      100%   {{ opacity:0; pointer-events:none; visibility:hidden; }}
-    }}
-    .tw-sp-text {{
-      position: relative; z-index: 2;
-      width: 52%; padding: 0 60px 0 0;
-    }}
-    .tw-sp-h {{
-      font-size: clamp(28px,4vw,58px); font-weight:900; color:#fff;
-      line-height:1.1; margin-bottom:18px;
-      text-shadow: 0 3px 28px rgba(0,0,0,0.22);
-    }}
-    .tw-sp-s {{
-      font-size: clamp(14px,1.5vw,22px);
-      color: rgba(255,255,255,0.85);
-      line-height:1.65; font-weight:400;
+
+    @keyframes twSplashFade {{
+      0%   {{ opacity: 1; visibility: visible; pointer-events: all; }}
+      75%  {{ opacity: 1; visibility: visible; pointer-events: all; }}
+      99%  {{ opacity: 0; visibility: visible; pointer-events: none; }}
+      100% {{ opacity: 0; visibility: hidden;  pointer-events: none; }}
     }}
     </style>
-    <div id="tw-splash">
-      <div class="tw-sp-text">
-        <div class="tw-sp-h">
-          Discover places.<br>Predict budgets.<br>Travel smarter.
-        </div>
-        <div class="tw-sp-s">
-          AI-powered travel intelligence<br>for modern explorers.
-        </div>
-      </div>
-    </div>
+    <div id="tw-splash"></div>
+    <script>
+    (function() {{
+      var body = document.body;
+      body.classList.add('tw-splashing');
+      var splash = document.getElementById('tw-splash');
+      if (splash) {{
+        splash.addEventListener('animationend', function() {{
+          body.classList.remove('tw-splashing');
+          splash.style.display = 'none';
+        }});
+      }}
+    }})();
+    </script>
     """, unsafe_allow_html=True)
+
+
 
 
 # ── 4. ML Resource Loading ────────────────────────────────────────────────────
