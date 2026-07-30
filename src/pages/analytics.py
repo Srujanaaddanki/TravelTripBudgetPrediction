@@ -447,7 +447,7 @@ def render_analytics_page(
         background:linear-gradient(135deg,#4F46E5,#9333EA);
         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
         background-clip:text; margin-bottom:6px;">
-        🧳 TraWell — AI Travel Intelligence Platform
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130" width="18" height="22" fill="url(#ag)" style="vertical-align:middle;margin-right:6px;"><defs><linearGradient id="ag" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#9333EA"/></linearGradient></defs><ellipse cx="50" cy="126" rx="40" ry="6" fill="#9333EA" opacity="0.3"/><rect x="38" y="2" width="8" height="30" rx="4"/><rect x="54" y="2" width="8" height="30" rx="4"/><rect x="36" y="2" width="28" height="9" rx="4.5"/><rect x="8" y="30" width="84" height="88" rx="12"/><circle cx="22" cy="119" r="9"/><circle cx="78" cy="119" r="9"/></svg> TraWell &#8212; AI Travel Intelligence Platform
       </div>
       <div style="font-size:13px;color:#94A3B8;margin-bottom:16px;">
         Built with ❤️ by <strong style="color:#F1F5F9;">Srujana Addanki</strong>

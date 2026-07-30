@@ -1,8 +1,7 @@
 """
 ========================================================
 Component: Navbar
-Purpose: Sticky top nav — Logo, LinkedIn, GitHub only.
-         No theme button. No portfolio icon.
+Purpose: Sticky top nav — Logo (SVG suitcase), LinkedIn, GitHub only.
 Author: Srujana Addanki
 Project: TraWell — AI-Powered Travel Intelligence Platform
 ========================================================
@@ -10,84 +9,74 @@ Project: TraWell — AI-Powered Travel Intelligence Platform
 from __future__ import annotations
 import streamlit as st
 
+# Inline SVG matching image 2 — black silhouette suitcase with extended handle
+_SUITCASE_SVG = """
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130" width="{w}" height="{h}" fill="currentColor">
+  <ellipse cx="50" cy="126" rx="40" ry="6" fill="currentColor" opacity="0.25"/>
+  <rect x="38" y="2" width="8" height="30" rx="4"/>
+  <rect x="54" y="2" width="8" height="30" rx="4"/>
+  <rect x="36" y="2" width="28" height="9" rx="4.5"/>
+  <rect x="8" y="30" width="84" height="88" rx="12"/>
+  <rect x="8" y="55" width="84" height="9" rx="0" fill="white" opacity="0.12"/>
+  <rect x="8" y="30" width="84" height="88" rx="12" fill="none" stroke="white" stroke-width="2.5" opacity="0.1"/>
+  <rect x="8" y="64" width="84" height="5" rx="2" fill="black" opacity="0.18"/>
+  <circle cx="22" cy="119" r="9" fill="currentColor"/>
+  <circle cx="78" cy="119" r="9" fill="currentColor"/>
+  <circle cx="22" cy="119" r="5" fill="black" opacity="0.35"/>
+  <circle cx="78" cy="119" r="5" fill="black" opacity="0.35"/>
+</svg>
+"""
+
+
+def _svg(w: int = 28, h: int = 36) -> str:
+    return _SUITCASE_SVG.format(w=w, h=h)
+
 
 def render_navbar(theme: str = "dark") -> None:
     """Render the top sticky navigation bar: Logo + LinkedIn + GitHub only."""
-    navbar_html = """
+    svg_icon = _svg(28, 36)
+    navbar_html = f"""
     <style>
-    .trawell-navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .trawell-navbar {{
+      position: sticky; top: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 10px 24px;
       background: rgba(10, 10, 30, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(255,255,255,0.07);
       font-family: 'Outfit', 'Inter', sans-serif;
-    }
-    .trawell-navbar-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    }}
+    .trawell-navbar-logo {{
+      display: flex; align-items: center; gap: 10px;
       text-decoration: none !important;
-    }
-    .trawell-navbar-logo-text { display: flex; flex-direction: column; }
-    .trawell-navbar-logo-title {
-      font-size: 20px;
-      font-weight: 800;
+    }}
+    .trawell-navbar-logo-text {{ display: flex; flex-direction: column; }}
+    .trawell-navbar-logo-title {{
+      font-size: 20px; font-weight: 800;
       background: linear-gradient(135deg, #A855F7, #6366F1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -0.3px;
-    }
-    .trawell-navbar-logo-sub {
-      font-size: 10px;
-      color: #94A3B8;
-      font-weight: 500;
-      font-style: italic;
-      letter-spacing: 0.2px;
-    }
-    .trawell-navbar-actions { display: flex; align-items: center; gap: 8px; }
-    .trawell-nav-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; letter-spacing: -0.3px;
+    }}
+    .trawell-navbar-logo-sub {{
+      font-size: 10px; color: #94A3B8; font-weight: 500;
+      font-style: italic; letter-spacing: 0.2px;
+    }}
+    .trawell-navbar-actions {{ display: flex; align-items: center; gap: 8px; }}
+    .trawell-nav-btn {{
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 10px;
       border: 1.5px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.05);
-      color: #94A3B8;
-      text-decoration: none !important;
-      transition: all 0.25s ease;
-      cursor: pointer;
-    }
-    .trawell-nav-btn:hover { transform: scale(1.12) translateY(-2px); }
-    .trawell-nav-btn.li:hover {
-      color: #0A66C2 !important;
-      border-color: rgba(10,102,194,0.5) !important;
-      box-shadow: 0 0 14px rgba(10,102,194,0.4) !important;
-      background: rgba(10,102,194,0.12) !important;
-    }
-    .trawell-nav-btn.gh:hover {
-      color: #F0F6FC !important;
-      border-color: rgba(240,246,252,0.4) !important;
-      box-shadow: 0 0 14px rgba(255,255,255,0.3) !important;
-      background: rgba(255,255,255,0.12) !important;
-    }
-    div.st-key-btn_theme_toggle {
-      position: fixed !important; left: -9999px !important;
-      visibility: hidden !important; pointer-events: none !important;
-    }
+      background: rgba(255,255,255,0.05); color: #94A3B8;
+      text-decoration: none !important; transition: all 0.25s ease; cursor: pointer;
+    }}
+    .trawell-nav-btn:hover {{ transform: scale(1.12) translateY(-2px); }}
+    .trawell-nav-btn.li:hover {{ color:#0A66C2!important; border-color:rgba(10,102,194,0.5)!important; box-shadow:0 0 14px rgba(10,102,194,0.4)!important; background:rgba(10,102,194,0.12)!important; }}
+    .trawell-nav-btn.gh:hover {{ color:#F0F6FC!important; border-color:rgba(240,246,252,0.4)!important; box-shadow:0 0 14px rgba(255,255,255,0.3)!important; background:rgba(255,255,255,0.12)!important; }}
+    div.st-key-btn_theme_toggle {{ position:fixed!important; left:-9999px!important; visibility:hidden!important; pointer-events:none!important; }}
     </style>
     <nav class="trawell-navbar">
       <a class="trawell-navbar-logo" href="#">
-        <span style="font-size:28px;line-height:1;">🧳</span>
+        <span style="color:#A855F7;display:flex;align-items:center;">{svg_icon}</span>
         <div class="trawell-navbar-logo-text">
           <span class="trawell-navbar-logo-title">TraWell</span>
           <span class="trawell-navbar-logo-sub">Travel far enough, you meet yourself.</span>

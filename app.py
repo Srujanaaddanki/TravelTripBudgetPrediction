@@ -112,73 +112,118 @@ def _inject_css() -> None:
 
 _inject_css()
 
-# ── Splash Screen (auto-dismisses after 2.5s) ─────────────────────────────────
+# ── Splash Screen — exact recreation of reference image ───────────────────────
 if "splash_shown" not in st.session_state:
     st.session_state["splash_shown"] = True
     st.markdown("""
     <style>
-    #trawell-splash {
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
+    #tw-splash {
       position: fixed; inset: 0; z-index: 99999;
-      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 40%, #ff6b35 100%);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      animation: splashFade 2.8s ease forwards;
+      background: linear-gradient(135deg, #f9a05a 0%, #f7762e 35%, #ee4e2a 100%);
+      display: flex; align-items: center; justify-content: center;
       font-family: 'Outfit', 'Inter', sans-serif;
+      animation: twFade 3.2s ease forwards;
+      overflow: hidden;
     }
-    @keyframes splashFade {
-      0%   { opacity: 1; }
-      70%  { opacity: 1; }
-      100% { opacity: 0; pointer-events: none; visibility: hidden; }
+    @keyframes twFade {
+      0%,72% { opacity:1; }
+      100%    { opacity:0; pointer-events:none; visibility:hidden; }
     }
-    .splash-grid {
-      position: absolute; inset: 0;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px);
-      background-size: 32px 32px;
+    /* dot grid — right-side only */
+    .tw-dots {
+      position: absolute; right: 0; top: 0; width: 55%; height: 100%;
+      background-image: radial-gradient(circle, rgba(220,80,50,0.6) 1.5px, transparent 1.5px);
+      background-size: 30px 30px;
     }
-    .splash-content {
+    .tw-inner {
       position: relative; z-index: 2;
-      display: flex; align-items: center; gap: 60px;
-      max-width: 900px; padding: 0 32px;
+      display: flex; align-items: center;
+      width: 92%; max-width: 1050px; gap: 0;
     }
-    .splash-luggage { font-size: 140px; line-height: 1; animation: luggageBob 1.2s ease-in-out infinite alternate; }
-    @keyframes luggageBob { from { transform: rotate(-8deg) translateY(0); } to { transform: rotate(-4deg) translateY(-14px); } }
-    .splash-text { flex: 1; }
-    .splash-headline {
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 900;
-      color: #ffffff;
-      line-height: 1.15;
-      margin-bottom: 16px;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    /* ── LEFT: illustrated suitcase ── */
+    .tw-bag-wrap {
+      flex: 0 0 42%;
+      display: flex; align-items: flex-end; justify-content: center;
+      animation: bagRock 2s ease-in-out infinite alternate;
     }
-    .splash-headline span { color: #1a1a2e; }
-    .splash-sub {
-      font-size: 18px; color: rgba(255,255,255,0.88);
-      line-height: 1.6; font-weight: 400;
+    @keyframes bagRock {
+      from { transform: rotate(-14deg) translateY(0px);   }
+      to   { transform: rotate(-9deg)  translateY(-18px); }
     }
-    .splash-badge {
-      display: inline-block; margin-top: 20px;
-      padding: 6px 16px;
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.4);
-      border-radius: 20px;
-      font-size: 13px; font-weight: 600; color: #fff;
-      backdrop-filter: blur(4px);
+    /* ── RIGHT: text ── */
+    .tw-text { flex: 1; padding-left: 32px; }
+    .tw-headline {
+      font-size: clamp(30px, 4.5vw, 58px);
+      font-weight: 900; color: #fff;
+      line-height: 1.12; margin-bottom: 18px;
+      text-shadow: 0 3px 24px rgba(0,0,0,0.18);
+    }
+    .tw-sub {
+      font-size: clamp(14px, 1.6vw, 20px);
+      color: rgba(255,255,255,0.82);
+      line-height: 1.65; font-weight: 400;
     }
     </style>
-    <div id="trawell-splash">
-      <div class="splash-grid"></div>
-      <div class="splash-content">
-        <div class="splash-luggage">🧳</div>
-        <div class="splash-text">
-          <div class="splash-headline">
+    <div id="tw-splash">
+      <div class="tw-dots"></div>
+      <div class="tw-inner">
+
+        <!-- Illustrated suitcase (SVG — matches image 1) -->
+        <div class="tw-bag-wrap">
+          <svg viewBox="0 0 320 400" width="320" height="400" xmlns="http://www.w3.org/2000/svg">
+            <!-- dark navy shadow base -->
+            <ellipse cx="155" cy="395" rx="130" ry="18" fill="#0f1a35" opacity="0.45"/>
+            <!-- main body -->
+            <rect x="20" y="90" width="270" height="285" rx="22" fill="#f5c98a"/>
+            <!-- body border / frame -->
+            <rect x="20" y="90" width="270" height="285" rx="22" fill="none" stroke="#1b2d5b" stroke-width="9"/>
+            <!-- horizontal strap seam top -->
+            <rect x="20" y="205" width="270" height="18" rx="0" fill="#1b2d5b"/>
+            <!-- horizontal strap seam bottom -->
+            <rect x="20" y="230" width="270" height="8" rx="0" fill="#f5c98a"/>
+            <!-- body vertical lines (luggage texture) -->
+            <line x1="80"  y1="100" x2="80"  y2="205" stroke="#d4a86a" stroke-width="5" stroke-linecap="round"/>
+            <line x1="130" y1="100" x2="130" y2="205" stroke="#d4a86a" stroke-width="5" stroke-linecap="round"/>
+            <line x1="180" y1="100" x2="180" y2="205" stroke="#d4a86a" stroke-width="5" stroke-linecap="round"/>
+            <line x1="230" y1="100" x2="230" y2="205" stroke="#d4a86a" stroke-width="5" stroke-linecap="round"/>
+            <line x1="80"  y1="238" x2="80"  y2="365" stroke="#d4a86a" stroke-width="5" stroke-linecap="round"/>
+            <line x1="130" y1="238" x2="130" y2="365" stroke="#d4a86a" stroke-width="5" stroke-linecap="round"/>
+            <line x1="180" y1="238" x2="180" y2="365" stroke="#d4a86a" stroke-width="5" stroke-linecap="round"/>
+            <line x1="230" y1="238" x2="230" y2="365" stroke="#d4a86a" stroke-width="5" stroke-linecap="round"/>
+            <!-- small tag/label -->
+            <rect x="35" y="112" width="36" height="22" rx="4" fill="#1b2d5b"/>
+            <line x1="35" y1="120" x2="71" y2="120" stroke="#f5c98a" stroke-width="2"/>
+            <!-- left wheel -->
+            <circle cx="62"  cy="373" r="18" fill="#1b2d5b"/>
+            <circle cx="62"  cy="373" r="10" fill="#0a1020"/>
+            <circle cx="58"  cy="369" r="3"  fill="#2d4080"/>
+            <!-- right wheel -->
+            <circle cx="248" cy="373" r="18" fill="#1b2d5b"/>
+            <circle cx="248" cy="373" r="10" fill="#0a1020"/>
+            <circle cx="244" cy="369" r="3"  fill="#2d4080"/>
+            <!-- telescopic handle rails -->
+            <rect x="102" y="5"  width="14" height="92" rx="7" fill="#1b2d5b"/>
+            <rect x="194" y="5"  width="14" height="92" rx="7" fill="#1b2d5b"/>
+            <!-- handle grip bar -->
+            <rect x="96"  y="5"  width="118" height="18" rx="9" fill="#1b2d5b"/>
+            <!-- handle grip detail -->
+            <rect x="105" y="8"  width="100" height="10" rx="5" fill="#2d4080"/>
+          </svg>
+        </div>
+
+        <!-- Text block -->
+        <div class="tw-text">
+          <div class="tw-headline">
             Discover places.<br>
-            <span>Predict budgets.</span><br>
+            Predict budgets.<br>
             Travel smarter.
           </div>
-          <div class="splash-sub">AI-powered travel intelligence<br>for modern explorers.</div>
-          <div class="splash-badge">✨ TraWell — Plan Smarter. Travel Better.</div>
+          <div class="tw-sub">
+            AI-powered travel intelligence<br>for modern explorers.
+          </div>
         </div>
+
       </div>
     </div>
     """, unsafe_allow_html=True)

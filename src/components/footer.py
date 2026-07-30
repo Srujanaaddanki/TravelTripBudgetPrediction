@@ -55,7 +55,7 @@ def render_footer() -> None:
     </style>
     <div class="trawell-footer">
       <div class="trawell-footer-logo">
-        <span style="font-size:22px;">🧳</span>
+        <span style="font-size:22px;color:#A78BFA;display:flex;align-items:center;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130" width="24" height="30" fill="currentColor"><ellipse cx="50" cy="126" rx="40" ry="6" fill="currentColor" opacity="0.25"/><rect x="38" y="2" width="8" height="30" rx="4"/><rect x="54" y="2" width="8" height="30" rx="4"/><rect x="36" y="2" width="28" height="9" rx="4.5"/><rect x="8" y="30" width="84" height="88" rx="12"/><rect x="8" y="64" width="84" height="5" rx="2" fill="black" opacity="0.18"/><circle cx="22" cy="119" r="9" fill="currentColor"/><circle cx="78" cy="119" r="9" fill="currentColor"/><circle cx="22" cy="119" r="5" fill="black" opacity="0.35"/><circle cx="78" cy="119" r="5" fill="black" opacity="0.35"/></svg></span>
         <div>
           <div class="trawell-footer-brand">TraWell</div>
           <div class="trawell-footer-tagline">AI-Powered Travel Intelligence &amp; Budget Planning Platform</div>
