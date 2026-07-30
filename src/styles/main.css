@@ -211,17 +211,17 @@ section[data-testid="stSidebar"] > div:first-child {
 }
 
 .icon-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(255,255,255,0.06);
-  border: 1px solid var(--border-color);
+  border: 1.5px solid var(--border-color);
   color: var(--text-secondary);
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   font-size: 16px;
   font-weight: 600;
@@ -231,7 +231,86 @@ section[data-testid="stSidebar"] > div:first-child {
   background: rgba(255,255,255,0.12);
   border-color: var(--border-hover);
   color: var(--text-primary);
-  transform: translateY(-2px);
+  transform: scale(1.12) translateY(-2px);
+  box-shadow: 0 0 16px rgba(124, 58, 237, 0.4);
+}
+
+/* ── Social Icon Buttons ──────────────────────────────────────── */
+.social-icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid var(--border-color);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.social-icon-btn:hover {
+  transform: scale(1.12) translateY(-2px);
+  color: var(--text-primary);
+  border-color: var(--accent-start);
+  box-shadow: 0 0 16px rgba(124, 58, 237, 0.45);
+  background: rgba(124, 58, 237, 0.15);
+}
+
+.linkedin-btn:hover {
+  color: #0A66C2 !important;
+  border-color: rgba(10, 102, 194, 0.5) !important;
+  box-shadow: 0 0 16px rgba(10, 102, 194, 0.4) !important;
+  background: rgba(10, 102, 194, 0.12) !important;
+}
+
+.github-btn:hover {
+  color: #F0F6FC !important;
+  border-color: rgba(240, 246, 252, 0.4) !important;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.3) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.portfolio-btn:hover {
+  color: #10B981 !important;
+  border-color: rgba(16, 185, 129, 0.5) !important;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.4) !important;
+  background: rgba(16, 185, 129, 0.12) !important;
+}
+
+/* ── Specific Theme Toggle Button ─────────────────────────────── */
+div.st-key-btn_theme_toggle {
+  position: absolute;
+  top: 14px;
+  right: 24px;
+  z-index: 1001;
+}
+
+div.st-key-btn_theme_toggle button {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1.5px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  font-size: 18px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+}
+
+div.st-key-btn_theme_toggle button:hover {
+  transform: scale(1.12) translateY(-2px) !important;
+  box-shadow: 0 0 16px rgba(124, 58, 237, 0.45) !important;
+  border-color: var(--accent-start) !important;
+  background: rgba(124, 58, 237, 0.15) !important;
 }
 
 /* ── Page Wrapper ─────────────────────────────────────────────── */

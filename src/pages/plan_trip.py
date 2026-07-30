@@ -915,10 +915,11 @@ def render_plan_trip_page(
         elif not has_prediction or form_data is None:
             # Hero Placeholder Card
             st.markdown("""
-            <div class="hero-budget-card" style="background: linear-gradient(135deg, #1e1b4b 0%, #31108c 100%); border: 1.5px dashed rgba(255,255,255,0.15); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 200px;">
-              <div style="font-size: 32px; margin-bottom: 10px;">✈️</div>
-              <div style="font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: var(--text-primary);">Hero Budget Card Ready</div>
-              <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">Enter details and click Predict to estimate your budget</div>
+            <div class="hero-budget-card" style="background: linear-gradient(135deg, #1e1b4b 0%, #31108c 100%); border: 1px solid rgba(124, 58, 237, 0.3); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 36px 24px; min-height: 220px; border-radius: 16px;">
+              <div style="font-size: 36px; margin-bottom: 12px;">✈️</div>
+              <div style="font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: var(--text-primary); margin-bottom: 6px;">Plan your next journey with AI.</div>
+              <div style="font-size: 14px; font-weight: 600; color: var(--text-secondary); margin-bottom: 10px;">Enter your travel details to estimate your budget.</div>
+              <div style="font-size: 12px; color: var(--text-muted); max-width: 480px; line-height: 1.5;">TripAI combines Machine Learning, Travel APIs and Destination Intelligence to help you plan smarter.</div>
             </div>
             """, unsafe_allow_html=True)
         else:
@@ -1220,7 +1221,7 @@ def render_plan_trip_page(
         route_info["destination"] = display_dest
         theme = st.session_state.get("theme", "dark")
 
-        st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='height:12px;'></div>", unsafe_allow_html=True)
 
         # 1. Interactive map — pass travel_mode so correct icon is shown
         render_route_map(route_info, travel_mode=form_data["travel_mode"])
@@ -1237,7 +1238,13 @@ def render_plan_trip_page(
         except Exception:
             pass
 
-        st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
+        st.markdown("""
+        <div style="margin-top: 14px; margin-bottom: 6px;">
+          <div style="font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+            📊 Travel Mode Cost Comparison
+          </div>
+        </div>
+        """, unsafe_allow_html=True)
 
         # 2. Mode comparison with availability flags
         all_mode_costs = route_info.get(
@@ -1260,9 +1267,9 @@ def render_plan_trip_page(
             config={"displayModeBar": False},
         )
 
-        st.markdown("<div style='height:8px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='height:12px;'></div>", unsafe_allow_html=True)
 
-        # 3. PDF Download Button
+        # 3. PDF Download Button (Compact uniform styling)
         try:
             pdf_bytes = generate_pdf_report(
                 source=form_data["source"],
@@ -1273,12 +1280,15 @@ def render_plan_trip_page(
                 hotel=form_data["hotel"],
                 report_data=report,
             )
-            st.download_button(
-                label="Download Trip Report (PDF)",
-                data=pdf_bytes,
-                file_name=f"TripAI_{display_dest.replace(' ', '_')}_{form_data['month']}.pdf",
-                mime="application/pdf",
-                use_container_width=True,
-            )
+            c_pdf_1, c_pdf_2, c_pdf_3 = st.columns([1, 2, 1])
+            with c_pdf_2:
+                st.download_button(
+                    label="📄 Download Trip Report (PDF)",
+                    data=pdf_bytes,
+                    file_name=f"TripAI_{display_dest.replace(' ', '_')}_{form_data['month']}.pdf",
+                    mime="application/pdf",
+                    use_container_width=True,
+                    key="btn_download_pdf",
+                )
         except Exception as exc:
             st.info(f"PDF export temporarily unavailable: {exc}")

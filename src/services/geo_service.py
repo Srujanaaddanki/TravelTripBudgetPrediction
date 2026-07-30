@@ -66,6 +66,13 @@ class GeoService:
 
         return self._unknown_result(name)
 
+    def _safe_get(self, url: str, params: dict = None, headers: dict = None, timeout: int = 6) -> requests.Response:
+        """Execute HTTP GET with SSL fallback."""
+        try:
+            return requests.get(url, params=params, headers=headers, timeout=timeout)
+        except requests.exceptions.SSLError:
+            return requests.get(url, params=params, headers=headers, timeout=timeout, verify=False)
+
     # ------------------------------------------------------------------
     # Geoapify
     # ------------------------------------------------------------------
@@ -85,14 +92,14 @@ class GeoService:
                 "lang":   "en",
                 "filter": "countrycode:in",
             }
-            resp = requests.get(GEOAPIFY_URL, params=params, timeout=6)
+            resp = self._safe_get(GEOAPIFY_URL, params=params, timeout=6)
             data = resp.json()
             features = data.get("features", [])
 
             # Second attempt without country filter
             if not features:
                 params.pop("filter", None)
-                resp = requests.get(GEOAPIFY_URL, params=params, timeout=6)
+                resp = self._safe_get(GEOAPIFY_URL, params=params, timeout=6)
                 data = resp.json()
                 features = data.get("features", [])
 
@@ -122,11 +129,7 @@ class GeoService:
     # ------------------------------------------------------------------
 
     def _call_nominatim(self, name: str) -> Dict[str, Any]:
-        """Call Nominatim (OpenStreetMap) as a fallback geocoder.
-
-        Nominatim requires a User-Agent header and recommends
-        at least 1 second between requests to respect rate limits.
-        """
+        """Call Nominatim (OpenStreetMap) as a fallback geocoder."""
         try:
             params = {
                 "q":              f"{name}, India",
@@ -138,7 +141,7 @@ class GeoService:
                 "User-Agent": "TripAI/2.0 (srujana.addanki@example.com)",
                 "Accept-Language": "en",
             }
-            resp = requests.get(
+            resp = self._safe_get(
                 NOMINATIM_URL, params=params, headers=headers, timeout=8
             )
 
@@ -150,7 +153,7 @@ class GeoService:
             if not data:
                 # Retry without "India" constraint
                 params["q"] = name
-                resp = requests.get(
+                resp = self._safe_get(
                     NOMINATIM_URL, params=params, headers=headers, timeout=8
                 )
                 data = resp.json()

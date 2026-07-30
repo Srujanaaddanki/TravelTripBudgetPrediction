@@ -143,8 +143,14 @@ class DestinationCache:
                         timestamp           TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
                     )
                 """)
-                # Migrating existing table to add proxy_score and is_budget_exact if they don't exist
+                # Migrating existing tables to add missing columns if they don't exist
                 try:
+                    cursor = conn.execute("PRAGMA table_info(destination_intelligence_cache)")
+                    intel_cols = [row[1] for row in cursor.fetchall()]
+                    if intel_cols and "population_profile" not in intel_cols:
+                        conn.execute("ALTER TABLE destination_intelligence_cache ADD COLUMN population_profile TEXT DEFAULT 'medium'")
+                        log.info("Migrated destination_intelligence_cache: added population_profile column")
+
                     cursor = conn.execute("PRAGMA table_info(unknown_destination_history)")
                     columns = [row[1] for row in cursor.fetchall()]
                     if "proxy_score" not in columns:
@@ -154,7 +160,7 @@ class DestinationCache:
                         conn.execute("ALTER TABLE unknown_destination_history ADD COLUMN is_budget_exact BOOLEAN")
                         log.info("Migrated unknown_destination_history: added is_budget_exact column")
                 except Exception as migrate_exc:
-                    log.warning("Migration of unknown_destination_history columns failed: %s", migrate_exc)
+                    log.warning("Migration of table columns failed: %s", migrate_exc)
                 conn.commit()
                 log.info("destination_cache, destination_intelligence_cache and unknown_destination_history tables ready at %s", self._db_path)
         except Exception as exc:

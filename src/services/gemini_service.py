@@ -41,13 +41,29 @@ class GeminiService:
             self._init_gemini()
 
     def _init_gemini(self) -> None:
-        """Initialise the Gemini client."""
+        """Initialise the Gemini client with fallback models."""
         try:
             import google.generativeai as genai
             genai.configure(api_key=GEMINI_API_KEY)
-            self._model     = genai.GenerativeModel("gemini-1.5-flash")
-            self._available = True
-            log.info("Gemini API initialised successfully.")
+            candidate_models = [
+                "gemini-3.6-flash",
+                "gemini-3.5-flash",
+                "gemini-2.0-flash",
+                "gemini-flash-latest",
+            ]
+            self._model = None
+            for m_name in candidate_models:
+                try:
+                    model = genai.GenerativeModel(m_name)
+                    self._model = model
+                    break
+                except Exception:
+                    continue
+            if self._model is not None:
+                self._available = True
+                log.info("Gemini API initialised successfully.")
+            else:
+                self._available = False
         except Exception as exc:
             log.warning("Gemini init failed: %s", exc)
             self._available = False

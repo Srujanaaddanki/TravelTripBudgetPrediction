@@ -77,7 +77,7 @@ def _inject_css() -> None:
             with open(path, "r", encoding="utf-8") as f:
                 combined += f.read() + "\n"
 
-    # Light theme CSS variables
+    # Light theme CSS variables & high-contrast overrides
     if st.session_state.get("theme") == "light":
         combined += """
         :root {
@@ -88,20 +88,22 @@ def _inject_css() -> None:
           --bg-input:      #FFFFFF !important;
           --text-primary:  #0F172A !important;
           --text-secondary:#1E293B !important;
-          --text-muted:    #475569 !important;
+          --text-muted:    #334155 !important;
           --border-color:  rgba(0,0,0,0.15) !important;
           --border-hover:  rgba(0,0,0,0.3) !important;
         }
         .stApp { background-color: #F8FAFC !important; color: #0F172A !important; }
-        .stTextInput > div > div > input { background-color: #FFFFFF !important; color: #0F172A !important; border: 1.5px solid rgba(0,0,0,0.15) !important; }
+        .stTextInput > div > div > input { background-color: #FFFFFF !important; color: #0F172A !important; border: 1.5px solid rgba(0,0,0,0.2) !important; }
         .stTextInput > div > div > input::placeholder { color: #64748B !important; }
-        [data-baseweb="select"] > div { background-color: #FFFFFF !important; color: #0F172A !important; border: 1.5px solid rgba(0,0,0,0.15) !important; }
+        [data-baseweb="select"] > div { background-color: #FFFFFF !important; color: #0F172A !important; border: 1.5px solid rgba(0,0,0,0.2) !important; }
         [data-baseweb="select"] span { color: #0F172A !important; }
-        .form-label { color: #0F172A !important; }
-        [data-testid="stMarkdownContainer"] { color: #0F172A !important; }
-        div[data-testid="stMetricValue"] { color: #0F172A !important; }
-        .checklist-title, .checklist-text { color: #0F172A !important; }
-        .hero-budget-card, .map-card, .checklist-card { background-color: #FFFFFF !important; border: 1px solid rgba(0,0,0,0.1) !important; }
+        .form-label { color: #0F172A !important; font-weight: 700 !important; }
+        [data-testid="stMarkdownContainer"], [data-testid="stMarkdownContainer"] p, [data-testid="stMarkdownContainer"] span { color: #0F172A !important; }
+        div[data-testid="stMetricValue"] { color: #0F172A !important; font-weight: 800 !important; }
+        div[data-testid="stMetricLabel"] { color: #334155 !important; font-weight: 600 !important; }
+        .checklist-title, .checklist-text, .section-title { color: #0F172A !important; }
+        .hero-budget-card, .map-card, .checklist-card { background-color: #FFFFFF !important; border: 1px solid rgba(0,0,0,0.12) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important; }
+        .tripai-navbar { background: rgba(248, 250, 252, 0.95) !important; border-bottom: 1px solid rgba(0,0,0,0.1) !important; }
         """
 
     if combined:
@@ -153,37 +155,15 @@ tracker, maps_service, dataset_intel, travel_engine = init_services_v3()
 # ── 6. Navigation Bar & Theme Toggle ─────────────────────────────────────────
 render_navbar(theme=st.session_state.get("theme", "dark"))
 
-# Invisible overlay button for the theme toggle icon in the navbar
-_spacer, _theme_col = st.columns([11.2, 0.8])
-with _theme_col:
-    if st.button("Theme", key="btn_theme", use_container_width=True, type="secondary"):
-        # Toggle theme — do NOT clear prediction state
-        st.session_state["theme"] = (
-            "light" if st.session_state["theme"] == "dark" else "dark"
-        )
-        st.rerun()
+# Theme toggle button (icon only: 🌙 for dark mode, ☀️ for light mode)
+_curr_theme = st.session_state.get("theme", "dark")
+_theme_icon = "🌙" if _curr_theme == "dark" else "☀️"
 
-# Overlay style to place Streamlit's native button exactly over the navbar toggle
-st.markdown("""
-<style>
-  [data-testid="column"]:nth-child(2) [data-testid="stBaseButton-secondary"] {
-    position: absolute;
-    opacity: 0;
-    pointer-events: auto;
-    height: 38px;
-    width: 38px;
-    right: 32px;
-    top: -52px;
-    cursor: pointer;
-    z-index: 9999;
-    border-radius: 10px;
-  }
-  [data-testid="column"]:nth-child(2) {
-    position: relative;
-    overflow: visible;
-  }
-</style>
-""", unsafe_allow_html=True)
+_theme_container = st.container()
+with _theme_container:
+    if st.button(_theme_icon, key="btn_theme_toggle", help="Switch Theme"):
+        st.session_state["theme"] = "light" if _curr_theme == "dark" else "dark"
+        st.rerun()
 
 
 # ── 7. Render Plan Trip Page (single page only) ───────────────────────────────
