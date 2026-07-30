@@ -431,9 +431,10 @@ def render_analytics_page(
         st.plotly_chart(render_avg_duration_by_mode_bar(df), use_container_width=True, config={"displayModeBar": False})
     st.markdown("</div>", unsafe_allow_html=True)
 
-    # ── Creator Footer ────────────────────────────────────────────────
-    st.markdown("<div style='height:32px;'></div>", unsafe_allow_html=True)
-    st.markdown("""
+    from src.components.branding import logo_img_tag as _anl_logo_fn
+    _anl_logo = _anl_logo_fn(width=20, height=20,
+                              style="vertical-align:middle;margin-right:6px;border-radius:4px;")
+    st.markdown(f"""
     <div style="
       text-align:center;
       padding:28px 20px;
@@ -447,10 +448,10 @@ def render_analytics_page(
         background:linear-gradient(135deg,#4F46E5,#9333EA);
         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
         background-clip:text; margin-bottom:6px;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130" width="18" height="22" fill="url(#ag)" style="vertical-align:middle;margin-right:6px;"><defs><linearGradient id="ag" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#9333EA"/></linearGradient></defs><ellipse cx="50" cy="126" rx="40" ry="6" fill="#9333EA" opacity="0.3"/><rect x="38" y="2" width="8" height="30" rx="4"/><rect x="54" y="2" width="8" height="30" rx="4"/><rect x="36" y="2" width="28" height="9" rx="4.5"/><rect x="8" y="30" width="84" height="88" rx="12"/><circle cx="22" cy="119" r="9"/><circle cx="78" cy="119" r="9"/></svg> TraWell &#8212; AI Travel Intelligence Platform
+        {_anl_logo} TraWell &#8212; AI Travel Intelligence Platform
       </div>
       <div style="font-size:13px;color:#94A3B8;margin-bottom:16px;">
-        Built with ❤️ by <strong style="color:#F1F5F9;">Srujana Addanki</strong>
+        Built with &#10084;&#65039; by <strong style="color:#F1F5F9;">Srujana Addanki</strong>
       </div>
       <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
         <a href="https://github.com/Srujanaaddanki"
@@ -460,7 +461,7 @@ def render_analytics_page(
            border:1px solid rgba(79,70,229,0.3);
            border-radius:8px;text-decoration:none;
            font-size:12px;font-weight:600;color:#A78BFA;">
-          ⌥ GitHub
+          GitHub
         </a>
         <a href="https://www.linkedin.com/in/srujana-addanki/"
            target="_blank" style="
@@ -469,18 +470,10 @@ def render_analytics_page(
            border:1px solid rgba(6,182,212,0.3);
            border-radius:8px;text-decoration:none;
            font-size:12px;font-weight:600;color:#67E8F9;">
-          in LinkedIn
-        </a>
-        <a href="https://srujanaaddanki.github.io"
-           target="_blank" style="
-           display:inline-block;padding:8px 18px;
-           background:rgba(16,185,129,0.1);
-           border:1px solid rgba(16,185,129,0.3);
-           border-radius:8px;text-decoration:none;
-           font-size:12px;font-weight:600;color:#6EE7B7;">
-          🌐 Portfolio
+          LinkedIn
         </a>
       </div>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("<div style='height:16px;'></div>", unsafe_allow_html=True)
+
