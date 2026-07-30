@@ -1,8 +1,8 @@
 """
 ========================================================
-Component: Footer (Production Polish)
-Purpose: Renders the bottom footer bar with logo,
-         tagline, author credit, social links, copyright.
+Component: Footer
+Purpose: Bottom footer — TraWell brand, tagline, social links.
+         No portfolio icon. No theme button.
 Author: Srujana Addanki
 Project: TraWell — AI-Powered Travel Intelligence Platform
 ========================================================
@@ -12,7 +12,7 @@ import streamlit as st
 
 
 def render_footer() -> None:
-    """Render the full-width footer bar at the bottom of each page."""
+    """Render the full-width footer bar."""
     footer_html = """
     <style>
     .trawell-footer {
@@ -27,11 +27,7 @@ def render_footer() -> None:
       margin-top: 32px;
       font-family: 'Inter', sans-serif;
     }
-    .trawell-footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .trawell-footer-logo { display: flex; align-items: center; gap: 10px; }
     .trawell-footer-brand {
       font-family: 'Outfit', sans-serif;
       font-size: 15px;
@@ -41,29 +37,12 @@ def render_footer() -> None:
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .trawell-footer-tagline {
-      font-size: 10px;
-      color: #475569;
-      margin-top: 1px;
-    }
-    .trawell-footer-center {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-    .trawell-footer-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .trawell-footer-tagline { font-size: 10px; color: #475569; margin-top: 1px; font-style: italic; }
+    .trawell-footer-center { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .trawell-footer-right { display: flex; align-items: center; gap: 10px; }
     .trawell-footer-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 8px;
       border: 1.5px solid rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.05);
       color: #94A3B8;
@@ -76,14 +55,14 @@ def render_footer() -> None:
     </style>
     <div class="trawell-footer">
       <div class="trawell-footer-logo">
-        <span style="font-size:20px;">✈️</span>
+        <span style="font-size:22px;">🧳</span>
         <div>
           <div class="trawell-footer-brand">TraWell</div>
           <div class="trawell-footer-tagline">AI-Powered Travel Intelligence &amp; Budget Planning Platform</div>
         </div>
       </div>
       <div class="trawell-footer-center">
-        <span style="font-size:12px; color:#94A3B8;"><span style="color:#E879F9;">&#9829;</span> Love with Travel</span>
+        <span style="font-size:12px; color:#94A3B8; font-style:italic;">Travel far enough, you meet yourself.</span>
         <span style="font-size:12px; color:#475569;">|</span>
         <span style="font-size:12px; color:#94A3B8;">Made by <strong style="color:#A78BFA;">Srujana Addanki</strong></span>
       </div>

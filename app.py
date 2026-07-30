@@ -38,7 +38,7 @@ from src.pages.plan_trip import render_plan_trip_page
 # ── 1. Page Config ────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="TraWell — AI Travel Intelligence Platform",
-    page_icon="✈️",
+    page_icon="🧳",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -111,6 +111,77 @@ def _inject_css() -> None:
 
 
 _inject_css()
+
+# ── Splash Screen (auto-dismisses after 2.5s) ─────────────────────────────────
+if "splash_shown" not in st.session_state:
+    st.session_state["splash_shown"] = True
+    st.markdown("""
+    <style>
+    #trawell-splash {
+      position: fixed; inset: 0; z-index: 99999;
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 40%, #ff6b35 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      animation: splashFade 2.8s ease forwards;
+      font-family: 'Outfit', 'Inter', sans-serif;
+    }
+    @keyframes splashFade {
+      0%   { opacity: 1; }
+      70%  { opacity: 1; }
+      100% { opacity: 0; pointer-events: none; visibility: hidden; }
+    }
+    .splash-grid {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .splash-content {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; gap: 60px;
+      max-width: 900px; padding: 0 32px;
+    }
+    .splash-luggage { font-size: 140px; line-height: 1; animation: luggageBob 1.2s ease-in-out infinite alternate; }
+    @keyframes luggageBob { from { transform: rotate(-8deg) translateY(0); } to { transform: rotate(-4deg) translateY(-14px); } }
+    .splash-text { flex: 1; }
+    .splash-headline {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    }
+    .splash-headline span { color: #1a1a2e; }
+    .splash-sub {
+      font-size: 18px; color: rgba(255,255,255,0.88);
+      line-height: 1.6; font-weight: 400;
+    }
+    .splash-badge {
+      display: inline-block; margin-top: 20px;
+      padding: 6px 16px;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 20px;
+      font-size: 13px; font-weight: 600; color: #fff;
+      backdrop-filter: blur(4px);
+    }
+    </style>
+    <div id="trawell-splash">
+      <div class="splash-grid"></div>
+      <div class="splash-content">
+        <div class="splash-luggage">🧳</div>
+        <div class="splash-text">
+          <div class="splash-headline">
+            Discover places.<br>
+            <span>Predict budgets.</span><br>
+            Travel smarter.
+          </div>
+          <div class="splash-sub">AI-powered travel intelligence<br>for modern explorers.</div>
+          <div class="splash-badge">✨ TraWell — Plan Smarter. Travel Better.</div>
+        </div>
+      </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 
 # ── 4. ML Resource Loading ────────────────────────────────────────────────────

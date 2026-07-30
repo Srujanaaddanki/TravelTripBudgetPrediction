@@ -777,7 +777,7 @@ def _render_travel_quote() -> None:
         <span style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;
           background:linear-gradient(135deg,#4F46E5,#9333EA);
           -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-          background-clip:text;">Love with Travel</span>
+          background-clip:text;">Travel far enough, you meet yourself.</span>
       </div>
       <div style="font-size:12px;color:#94A3B8;line-height:1.6;">
         Travel is the only thing you buy that makes you
@@ -951,7 +951,7 @@ def render_plan_trip_page(
             # Hero Placeholder Card
             st.markdown("""
             <div class="hero-budget-card" style="background: linear-gradient(135deg, #1e1b4b 0%, #31108c 100%); border: 1px solid rgba(124, 58, 237, 0.3); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 36px 24px; min-height: 220px; border-radius: 16px;">
-              <div style="font-size: 36px; margin-bottom: 12px;">✈️</div>
+              <div style="font-size: 36px; margin-bottom: 12px;">🧳</div>
               <div style="font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: var(--text-primary); margin-bottom: 6px;">Plan your next journey with AI.</div>
               <div style="font-size: 14px; font-weight: 600; color: var(--text-secondary); margin-bottom: 10px;">Enter your travel details to estimate your budget.</div>
               <div style="font-size: 12px; color: var(--text-muted); max-width: 480px; line-height: 1.5;">TraWell combines Machine Learning, Travel APIs and Destination Intelligence to help you plan smarter.</div>

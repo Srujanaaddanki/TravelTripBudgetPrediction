@@ -1,20 +1,18 @@
 """
 ========================================================
-Component: Navbar (Production Polish)
-Purpose: Renders the sticky top navigation bar with logo,
-         official LinkedIn link, GitHub repository link only.
-         Theme toggle and Portfolio icon removed.
+Component: Navbar
+Purpose: Sticky top nav — Logo, LinkedIn, GitHub only.
+         No theme button. No portfolio icon.
 Author: Srujana Addanki
 Project: TraWell — AI-Powered Travel Intelligence Platform
 ========================================================
 """
 from __future__ import annotations
-
 import streamlit as st
 
 
 def render_navbar(theme: str = "dark") -> None:
-    """Render the top sticky navigation bar with Logo, LinkedIn, GitHub only."""
+    """Render the top sticky navigation bar: Logo + LinkedIn + GitHub only."""
     navbar_html = """
     <style>
     .trawell-navbar {
@@ -37,10 +35,7 @@ def render_navbar(theme: str = "dark") -> None:
       gap: 10px;
       text-decoration: none !important;
     }
-    .trawell-navbar-logo-text {
-      display: flex;
-      flex-direction: column;
-    }
+    .trawell-navbar-logo-text { display: flex; flex-direction: column; }
     .trawell-navbar-logo-title {
       font-size: 20px;
       font-weight: 800;
@@ -54,13 +49,10 @@ def render_navbar(theme: str = "dark") -> None:
       font-size: 10px;
       color: #94A3B8;
       font-weight: 500;
-      letter-spacing: 0.3px;
+      font-style: italic;
+      letter-spacing: 0.2px;
     }
-    .trawell-navbar-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .trawell-navbar-actions { display: flex; align-items: center; gap: 8px; }
     .trawell-nav-btn {
       display: inline-flex;
       align-items: center;
@@ -89,18 +81,16 @@ def render_navbar(theme: str = "dark") -> None:
       background: rgba(255,255,255,0.12) !important;
     }
     div.st-key-btn_theme_toggle {
-      position: fixed !important;
-      left: -9999px !important;
-      visibility: hidden !important;
-      pointer-events: none !important;
+      position: fixed !important; left: -9999px !important;
+      visibility: hidden !important; pointer-events: none !important;
     }
     </style>
     <nav class="trawell-navbar">
       <a class="trawell-navbar-logo" href="#">
-        <span style="font-size:28px;line-height:1;">✈️</span>
+        <span style="font-size:28px;line-height:1;">🧳</span>
         <div class="trawell-navbar-logo-text">
           <span class="trawell-navbar-logo-title">TraWell</span>
-          <span class="trawell-navbar-logo-sub">&#9829; Love with Travel</span>
+          <span class="trawell-navbar-logo-sub">Travel far enough, you meet yourself.</span>
         </div>
       </a>
       <div class="trawell-navbar-actions">

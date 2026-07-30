@@ -447,7 +447,7 @@ def render_analytics_page(
         background:linear-gradient(135deg,#4F46E5,#9333EA);
         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
         background-clip:text; margin-bottom:6px;">
-        ✈️ TripAI — AI Travel Intelligence Platform
+        🧳 TraWell — AI Travel Intelligence Platform
       </div>
       <div style="font-size:13px;color:#94A3B8;margin-bottom:16px;">
         Built with ❤️ by <strong style="color:#F1F5F9;">Srujana Addanki</strong>
