@@ -37,7 +37,7 @@ from src.pages.plan_trip import render_plan_trip_page
 
 # ── 1. Page Config ────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="TripAI — AI Travel Intelligence Platform",
+    page_title="TraWell — AI Travel Intelligence Platform",
     page_icon="✈️",
     layout="wide",
     initial_sidebar_state="collapsed",
@@ -103,7 +103,7 @@ def _inject_css() -> None:
         div[data-testid="stMetricLabel"] { color: #334155 !important; font-weight: 600 !important; }
         .checklist-title, .checklist-text, .section-title { color: #0F172A !important; }
         .hero-budget-card, .map-card, .checklist-card { background-color: #FFFFFF !important; border: 1px solid rgba(0,0,0,0.12) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important; }
-        .tripai-navbar { background: rgba(248, 250, 252, 0.95) !important; border-bottom: 1px solid rgba(0,0,0,0.1) !important; }
+        .trawell-navbar { background: rgba(248, 250, 252, 0.95) !important; border-bottom: 1px solid rgba(0,0,0,0.1) !important; }
         """
 
     if combined:

@@ -72,7 +72,9 @@ _BASE_LAYOUT = _base_layout("dark")
 # ── Plan Trip Charts ──────────────────────────────────────────────────────────
 
 def render_budget_donut(cost: float, travel_mode: str, theme: str = "dark") -> go.Figure:
-    """7-category budget donut chart for the Plan Trip breakdown card."""
+    """7-category budget donut chart for the Plan Trip breakdown card.
+    Legend colors are fixed — clicking a slice does NOT dim legend items.
+    """
     c = _theme_colors(theme)
     is_premium = travel_mode in ("Flight",)
     travel_w   = 0.30 if is_premium else 0.20
@@ -83,16 +85,34 @@ def render_budget_donut(cost: float, travel_mode: str, theme: str = "dark") -> g
 
     labels = ["Hotel", "Travel", "Food", "Local Transport",
               "Activities", "Shopping", "Emergency"]
+    # Fixed color mapping — never changes
+    FIXED_COLORS = [
+        "#818CF8",  # Hotel — Purple
+        "#2563EB",  # Travel — Blue
+        "#10B981",  # Food — Green
+        "#F59E0B",  # Local Transport — Orange
+        "#EC4899",  # Activities — Pink
+        "#06B6D4",  # Shopping — Cyan
+        "#94A3B8",  # Emergency — Gray
+    ]
     values = [cost * w for w in weights]
 
     fig = go.Figure(data=[go.Pie(
         labels=labels,
         values=values,
         hole=0.52,
-        marker=dict(colors=_DONUT_COLORS, line=dict(color="rgba(5,8,22,0.8)", width=2)),
+        marker=dict(
+            colors=FIXED_COLORS,
+            line=dict(color="rgba(5,8,22,0.8)", width=2)
+        ),
         textinfo="percent",
         hovertemplate="<b>%{label}</b><br>Rs.%{value:,.0f}<extra></extra>",
         textfont=dict(size=10, color=c["annotation"]),
+        # Prevent any pull/explode animation when clicking
+        pull=[0] * len(labels),
+        # Lock legend item colors by disabling click toggling
+        legendgroup="budget",
+        showlegend=True,
     )])
 
     fig.add_annotation(
@@ -110,6 +130,9 @@ def render_budget_donut(cost: float, travel_mode: str, theme: str = "dark") -> g
             x=1.02, y=0.5,
             font=dict(size=10, color=c["font"]),
             bgcolor=c["legend_bg"],
+            # Disable legend item click so colors never change
+            itemclick=False,
+            itemdoubleclick=False,
         ),
     )
     return fig

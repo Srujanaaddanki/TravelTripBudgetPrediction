@@ -528,9 +528,34 @@ def _resolve_destination(
 # ── Form renderer ─────────────────────────────────────────────────────────────
 
 def _render_sidebar_form(encoders: Dict[str, Any]) -> Dict[str, Any] | None:
-    """Render left sidebar form with standard inputs inside st.form."""
+    """Render left sidebar form with searchable city autocomplete and standard inputs."""
     trip_types  = [x.title() for x in encoders["Trip_Type"].classes_]
     hotel_types = [x.title() for x in encoders["Hotel_Quality"].classes_]
+
+    # Build combined city list: encoder classes + extras from maps + baseline profiles
+    _encoder_cities = [c.title() for c in encoders["Place"].classes_]
+    _extra_cities = [
+        "Agra", "Ahmedabad", "Alleppey", "Alappuzha", "Amaravati", "Amritsar",
+        "Amsterdam", "Anantapur", "Aruku Valley", "Aurangabad", "Aizawl",
+        "Ayodhya", "Badrinath", "Bangkok", "Barcelona", "Bengaluru", "Bikaner",
+        "Bhopal", "Bhubaneswar", "Chandigarh", "Chennai", "Cochin", "Coimbatore",
+        "Coorg", "Darjeeling", "Dehradun", "Delhi", "Dharamshala", "Dubai",
+        "Eluru", "Gangtok", "Goa", "Gokarna", "Gorakhpur", "Guntur",
+        "Guwahati", "Haridwar", "Hyderabad", "Imphal", "Indore", "Jaipur",
+        "Jaisalmer", "Jodhpur", "Kakinada", "Karimnagar", "Kedarnath",
+        "Khammam", "Kochi", "Kolkata", "Kovalam", "Kurnool", "Leh",
+        "Leh Ladakh", "Ladakh", "London", "Lucknow", "Madurai", "Manali",
+        "Mumbai", "Munnar", "Mussoorie", "Mysore", "Nagpur", "Nainital",
+        "Nellore", "New Delhi", "New York", "Nizamabad", "Ongole",
+        "Ooty", "Panaji", "Paris", "Patna", "Pondicherry", "Puducherry",
+        "Pune", "Puri", "Pushkar", "Rajahmundry", "Rajkot", "Ranchi",
+        "Rishikesh", "Rome", "Singapore", "Shillong", "Shimla", "Sonprayag",
+        "Srinagar", "Surat", "Sydney", "Thekkady", "Thiruvananthapuram",
+        "Tirupati", "Tokyo", "Trivandrum", "Udaipur", "Vadodara", "Vaishno Devi",
+        "Varanasi", "Varkala", "Vijayawada", "Visakhapatnam", "Vizag",
+        "Vrindavan", "Warangal", "Wayanad", "Zurich",
+    ]
+    all_cities = sorted(set(_encoder_cities + _extra_cities), key=str.lower)
 
     st.markdown("""
     <div style="padding:10px 16px 0;">
@@ -550,25 +575,32 @@ def _render_sidebar_form(encoders: Dict[str, Any]) -> Dict[str, Any] | None:
     """, unsafe_allow_html=True)
 
     with st.form("trip_search_form"):
-        # FROM
+        # FROM — searchable autocomplete
         st.markdown('<div class="form-label">FROM CITY</div>', unsafe_allow_html=True)
-        source_city = st.text_input(
-            "from_input", label_visibility="collapsed",
-            placeholder="Origin city (e.g. Vijayawada)",
-            key="from_city",
+        _from_default = st.session_state.get("from_city_sel", None)
+        _from_idx = all_cities.index(_from_default) if _from_default in all_cities else 0
+        source_city = st.selectbox(
+            "from_input", options=all_cities,
+            index=_from_idx,
+            label_visibility="collapsed",
+            key="from_city_sel",
         )
 
-        # TO — read destination_override if a suggestion was selected
+        # TO — searchable autocomplete with override support
         _dest_override = st.session_state.pop("destination_override", None)
         if _dest_override:
-            st.session_state["to_city"] = _dest_override
+            _dest_title = _dest_override.title()
+            if _dest_title in all_cities:
+                st.session_state["to_city_sel"] = _dest_title
         st.markdown('<div class="form-label" style="margin-top:8px;">DESTINATION</div>', unsafe_allow_html=True)
-        dest_city = st.text_input(
-            "to_input", label_visibility="collapsed",
-            placeholder="Destination (e.g. Goa, Manali)",
-            key="to_city",
+        _to_default = st.session_state.get("to_city_sel", None)
+        _to_idx = all_cities.index(_to_default) if _to_default in all_cities else 0
+        dest_city = st.selectbox(
+            "to_input", options=all_cities,
+            index=_to_idx,
+            label_visibility="collapsed",
+            key="to_city_sel",
         )
-
 
         col_m, col_d = st.columns(2)
         with col_m:
@@ -672,13 +704,15 @@ def _render_smart_budget_metrics(
     diff     = smart_budget - ml_pred
     diff_pct = (abs(diff) / ml_pred * 100) if ml_pred > 0 else 0
 
-    col1, col2, col3, col4, col5 = st.columns(5)
+    col1, col2, col3, col4 = st.columns(4)
     with col1:
         st.metric(
             "ML Prediction", f"Rs.{int(ml_pred):,}",
             help=(
-                "Random Forest model trained on 50,000+ real Indian trip records. "
-                "Accounts for destination, month, season, hotel, trip type and duration."
+                "**Random Forest ML Model**\n\n"
+                "Trained on 50,000+ real Indian trip records. "
+                "Predicts based on destination, season, hotel quality, trip type and duration. "
+                "This is the primary base estimate before blending."
             )
         )
     with col2:
@@ -686,34 +720,30 @@ def _render_smart_budget_metrics(
         st.metric(
             "Historical Avg", hist_label,
             help=(
-                "Average actual spend by past travelers to this destination with similar settings. "
-                "Used to validate and blend with the ML prediction."
+                "**Historical Average Spend**\n\n"
+                "Average actual spend by past travelers to this destination with similar trip settings. "
+                "Used to validate and blend with the ML prediction for higher accuracy."
             )
         )
     with col3:
-        st.metric(
-            "Transport Cost", f"Rs.{int(transport_cost):,}",
-            help=(
-                "Estimated round-trip transport cost breakdown includes: "
-                "Train/Flight/Bus fare + local taxi transfers + last-mile transport. "
-                "Based on distance and selected travel mode."
-            )
-        )
-    with col4:
         formula = (
             "35% ML + 25% Historical + 20% Transport + 20% Duration"
             if is_known
             else "50% ML + 30% Transport + 20% Duration (New Destination)"
         )
-        
         budget_str = format_budget_display(smart_budget, conf_sc)
         st.metric(
             "Smart Budget", budget_str,
             delta=f"{'up' if diff >= 0 else 'down'} Rs.{int(abs(diff)):,} ({diff_pct:.1f}%)" if conf_sc >= 70 else None,
             delta_color="inverse" if diff > 0 else "normal",
-            help=f"Final blended budget formula: {formula}",
+            help=(
+                f"**Final Smart Budget**\n\n"
+                f"Blended formula: {formula}\n\n"
+                "Combines ML prediction, historical averages, transport estimates "
+                "and duration multipliers for the most accurate budget."
+            ),
         )
-    with col5:
+    with col4:
         pred_source_label = "🟢 Dataset"
         if not is_known:
             if conf_sc < 50:
@@ -722,11 +752,16 @@ def _render_smart_budget_metrics(
                 pred_source_label = "🟡 API Estimation"
             else:
                 pred_source_label = "🟣 Proxy Destination"
-                
         st.metric(
             "Prediction Source", pred_source_label,
             delta=f"Confidence: {conf_sc}%",
-            help="Prediction Source indicates the trust level and geocoding details used to generate the budget.",
+            help=(
+                "**Prediction Source & Trust Level**\n\n"
+                "🟢 Dataset Verified — Destination found in training data, highest accuracy.\n\n"
+                "🟡 API Estimation — Geocoded via external API, good accuracy.\n\n"
+                "🟣 Proxy Destination — Similar city used as proxy, moderate accuracy.\n\n"
+                "🔴 Low Confidence — Limited data, treat as rough estimate."
+            ),
         )
 
 
@@ -919,7 +954,7 @@ def render_plan_trip_page(
               <div style="font-size: 36px; margin-bottom: 12px;">✈️</div>
               <div style="font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: var(--text-primary); margin-bottom: 6px;">Plan your next journey with AI.</div>
               <div style="font-size: 14px; font-weight: 600; color: var(--text-secondary); margin-bottom: 10px;">Enter your travel details to estimate your budget.</div>
-              <div style="font-size: 12px; color: var(--text-muted); max-width: 480px; line-height: 1.5;">TripAI combines Machine Learning, Travel APIs and Destination Intelligence to help you plan smarter.</div>
+              <div style="font-size: 12px; color: var(--text-muted); max-width: 480px; line-height: 1.5;">TraWell combines Machine Learning, Travel APIs and Destination Intelligence to help you plan smarter.</div>
             </div>
             """, unsafe_allow_html=True)
         else:
