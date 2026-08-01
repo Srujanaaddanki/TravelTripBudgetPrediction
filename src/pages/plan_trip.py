@@ -556,6 +556,7 @@ def _render_sidebar_form(encoders: Dict[str, Any]) -> Dict[str, Any] | None:
         "Vrindavan", "Warangal", "Wayanad", "Zurich",
     ]
     all_cities = sorted(set(_encoder_cities + _extra_cities), key=str.lower)
+    city_options = ["Enter details"] + all_cities
 
     st.markdown("""
     <div style="padding:10px 16px 0;">
@@ -577,12 +578,11 @@ def _render_sidebar_form(encoders: Dict[str, Any]) -> Dict[str, Any] | None:
     with st.form("trip_search_form"):
         # FROM — searchable autocomplete sorted alphabetically
         st.markdown('<div class="form-label">FROM CITY <span style="font-size:11px;color:#94A3B8;font-weight:400;text-transform:none;">— (Select departure location)</span></div>', unsafe_allow_html=True)
-        _from_default = st.session_state.get("from_city_sel", None)
-        _from_idx = all_cities.index(_from_default) if _from_default in all_cities else None
+        _from_default = st.session_state.get("from_city_sel", "Enter details")
+        _from_idx = city_options.index(_from_default) if _from_default in city_options else 0
         source_city = st.selectbox(
-            "from_input", options=all_cities,
+            "from_input", options=city_options,
             index=_from_idx,
-            placeholder="Enter details",
             label_visibility="collapsed",
             key="from_city_sel",
         )
@@ -594,12 +594,11 @@ def _render_sidebar_form(encoders: Dict[str, Any]) -> Dict[str, Any] | None:
             if _dest_title in all_cities:
                 st.session_state["to_city_sel"] = _dest_title
         st.markdown('<div class="form-label" style="margin-top:8px;">DESTINATION <span style="font-size:11px;color:#94A3B8;font-weight:400;text-transform:none;">— search or select destination</span></div>', unsafe_allow_html=True)
-        _to_default = st.session_state.get("to_city_sel", None)
-        _to_idx = all_cities.index(_to_default) if _to_default in all_cities else None
+        _to_default = st.session_state.get("to_city_sel", "Enter details")
+        _to_idx = city_options.index(_to_default) if _to_default in city_options else 0
         dest_city = st.selectbox(
-            "to_input", options=all_cities,
+            "to_input", options=city_options,
             index=_to_idx,
-            placeholder="Enter details",
             label_visibility="collapsed",
             key="to_city_sel",
         )
