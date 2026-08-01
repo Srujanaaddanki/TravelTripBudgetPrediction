@@ -575,29 +575,31 @@ def _render_sidebar_form(encoders: Dict[str, Any]) -> Dict[str, Any] | None:
     """, unsafe_allow_html=True)
 
     with st.form("trip_search_form"):
-        # FROM — searchable autocomplete
-        st.markdown('<div class="form-label">FROM CITY</div>', unsafe_allow_html=True)
+        # FROM — searchable autocomplete sorted alphabetically
+        st.markdown('<div class="form-label">FROM CITY <span style="font-size:11px;color:#94A3B8;font-weight:400;text-transform:none;">— (Select departure location)</span></div>', unsafe_allow_html=True)
         _from_default = st.session_state.get("from_city_sel", None)
-        _from_idx = all_cities.index(_from_default) if _from_default in all_cities else 0
+        _from_idx = all_cities.index(_from_default) if _from_default in all_cities else None
         source_city = st.selectbox(
             "from_input", options=all_cities,
             index=_from_idx,
+            placeholder="Enter details",
             label_visibility="collapsed",
             key="from_city_sel",
         )
 
-        # TO — searchable autocomplete with override support
+        # TO — searchable autocomplete with override support sorted alphabetically
         _dest_override = st.session_state.pop("destination_override", None)
         if _dest_override:
             _dest_title = _dest_override.title()
             if _dest_title in all_cities:
                 st.session_state["to_city_sel"] = _dest_title
-        st.markdown('<div class="form-label" style="margin-top:8px;">DESTINATION</div>', unsafe_allow_html=True)
+        st.markdown('<div class="form-label" style="margin-top:8px;">DESTINATION <span style="font-size:11px;color:#94A3B8;font-weight:400;text-transform:none;">— search or select destination</span></div>', unsafe_allow_html=True)
         _to_default = st.session_state.get("to_city_sel", None)
-        _to_idx = all_cities.index(_to_default) if _to_default in all_cities else 0
+        _to_idx = all_cities.index(_to_default) if _to_default in all_cities else None
         dest_city = st.selectbox(
             "to_input", options=all_cities,
             index=_to_idx,
+            placeholder="Enter details",
             label_visibility="collapsed",
             key="to_city_sel",
         )
@@ -1065,6 +1067,26 @@ def render_plan_trip_page(
                     config={"displayModeBar": False},
                 )
 
+            st.markdown("<div style='height:12px;'></div>", unsafe_allow_html=True)
+
+            # 4. Interactive Route Map — placed exactly below the pie chart
+            route_info = report.get("route", {})
+            route_info["source"]      = form_data["source"]
+            route_info["destination"] = display_dest
+            render_route_map(route_info, travel_mode=form_data["travel_mode"])
+
+            # 4b. Alternate route
+            try:
+                alt_route = get_alternate_route(
+                    source=form_data["source"],
+                    destination=display_dest,
+                    preferred_mode=form_data["travel_mode"],
+                )
+                if alt_route:
+                    st.markdown(format_alternate_route_html(alt_route), unsafe_allow_html=True)
+            except Exception:
+                pass
+
     # RIGHT Panel: Checklists
     with col_right:
         if not has_prediction or form_data is None or validation_failed:
@@ -1258,22 +1280,7 @@ def render_plan_trip_page(
         route_info["destination"] = display_dest
         theme = st.session_state.get("theme", "dark")
 
-        st.markdown("<div style='height:12px;'></div>", unsafe_allow_html=True)
 
-        # 1. Interactive map — pass travel_mode so correct icon is shown
-        render_route_map(route_info, travel_mode=form_data["travel_mode"])
-
-        # 1b. Alternate route — show when no direct access for the selected mode
-        try:
-            alt_route = get_alternate_route(
-                source=form_data["source"],
-                destination=display_dest,
-                preferred_mode=form_data["travel_mode"],
-            )
-            if alt_route:
-                st.markdown(format_alternate_route_html(alt_route), unsafe_allow_html=True)
-        except Exception:
-            pass
 
         st.markdown("""
         <div style="margin-top: 14px; margin-bottom: 6px;">

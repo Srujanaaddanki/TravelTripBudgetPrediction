@@ -407,6 +407,8 @@ def format_alternate_route_html(route: Dict[str, Any]) -> str:
     if not route:
         return ""
 
+    import textwrap
+
     segments_html = ""
     for i, seg in enumerate(route["segments"]):
         mode_icon = {
@@ -414,7 +416,7 @@ def format_alternate_route_html(route: Dict[str, Any]) -> str:
             "Car": "🚗", "Bike": "🏍️", "Trek": "🥾",
         }.get(seg["mode"], "🔀")
 
-        segments_html += f"""
+        segments_html += textwrap.dedent(f"""
         <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;">
           <div style="font-size:20px;min-width:28px;text-align:center;">{mode_icon}</div>
           <div>
@@ -426,7 +428,7 @@ def format_alternate_route_html(route: Dict[str, Any]) -> str:
             </div>
           </div>
         </div>
-        """
+        """).strip()
         if i < len(route["segments"]) - 1:
             segments_html += '<div style="width:2px;height:12px;background:rgba(147,51,234,0.4);margin-left:14px;margin-bottom:4px;"></div>'
 
@@ -434,16 +436,13 @@ def format_alternate_route_html(route: Dict[str, Any]) -> str:
     total_h_int = int(total_h)
     total_m_int = int((total_h % 1) * 60)
 
-    return f"""
-    <div style="background:rgba(79,70,229,0.08);border:1px solid rgba(79,70,229,0.25);
-                border-radius:12px;padding:16px;margin:12px 0;">
-      <div style="font-family:'Outfit',sans-serif;font-weight:700;color:#A78BFA;
-                  font-size:14px;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+    raw_html = f"""
+    <div style="background:rgba(79,70,229,0.08);border:1px solid rgba(79,70,229,0.25);border-radius:12px;padding:16px;margin:12px 0;">
+      <div style="font-family:'Outfit',sans-serif;font-weight:700;color:#A78BFA;font-size:14px;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
         🔀 Alternate Route (No Direct Access)
       </div>
       {segments_html}
-      <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);
-                  display:flex;gap:20px;flex-wrap:wrap;">
+      <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);display:flex;gap:20px;flex-wrap:wrap;">
         <div style="font-size:11px;color:#94A3B8;">
           <span style="color:#F1F5F9;font-weight:600;">Total Distance:</span>
           {route['total_km']:.0f} km
@@ -459,3 +458,4 @@ def format_alternate_route_html(route: Dict[str, Any]) -> str:
       </div>
     </div>
     """
+    return textwrap.dedent(raw_html).strip()

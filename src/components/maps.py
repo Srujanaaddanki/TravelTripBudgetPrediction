@@ -189,7 +189,7 @@ def render_route_map(route_info: Dict[str, Any], travel_mode: str = "Car") -> No
     Works everywhere — no folium, no external tile servers, no API tokens.
     """
     st.markdown(
-        '<div style="font-family:\'Outfit\',sans-serif;font-size:15px;font-weight:700;'
+        '<div id="interactive-route-map" style="font-family:\'Outfit\',sans-serif;font-size:15px;font-weight:700;'
         'color:var(--text-primary);display:flex;align-items:center;gap:8px;margin-bottom:8px;">'
         '🗺️ Interactive Route Map</div>',
         unsafe_allow_html=True,
