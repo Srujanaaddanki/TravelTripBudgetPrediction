@@ -39,68 +39,67 @@ Planning travel across India often involves dealing with fragmented data:
 
 TripAI enforces a clean Model-View-Controller design to decouple components and ensure interview-readiness:
 
-### Workflow Diagram
+### High-Level System Architecture
 
 ```mermaid
-graph TD
-    User([User inputs]) --> APP[app.py Router]
-    
-    subgraph UI ["Presentation Layer (View)"]
-        APP --> UI_C[src/components/]
-        APP --> DB_C[src/pages/]
-        APP --> CS[src/styles/]
-    end
-    
-    subgraph Controller ["Service Layer (Controller)"]
-        APP --> TIE[src/services/travel_intelligence.py]
-        TIE --> WE[src/services/weather_service.py]
-        TIE --> BU[src/services/budget_engine.py]
-        TIE --> CO[src/services/confidence_engine.py]
-        TIE --> RE[src/services/recommendation_engine.py]
-        TIE --> EX[src/services/report_exporter.py]
-    end
-    
-    subgraph Model ["Data & Intelligence Layer (Model)"]
-        BU --> MAPS[src/data/maps_service.py]
-        RE --> DB[(src/data/database.py)]
-        TIE --> DS[src/intelligence/dataset_intelligence.py]
-        DS --> RF[models/final_model.pkl]
-    end
+flowchart TD
+    A["👤 User Input<br/>Origin • Destination • Trip Details"]
+
+    B["📍 Destination Resolution<br/>Cache • Known Data • Geo APIs<br/>AI Resolution • Fuzzy Fallback"]
+
+    C["🧠 Travel Intelligence Engine<br/>ML Prediction • Historical Data<br/>Distance • Transport • Weather<br/>Proxy Intelligence"]
+
+    D["💰 Smart Budget & Confidence<br/>Budget Estimation<br/>Confidence Verification"]
+
+    E["📊 TraWell Dashboard<br/>Budget • Weather • Routes<br/>Charts • Recommendations<br/>Checklists • PDF"]
+
+    F["🌐 External Services<br/>Geoapify • Nominatim OSM<br/>OpenRouteService • Open-Meteo<br/>Google Gemini AI"]
+
+    G["🗄️ Data & Persistence<br/>Historical Dataset<br/>Random Forest Model<br/>SQLite Cache & Search History"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+
+    F --> B
+    F --> C
+
+    G --> C
+    G --> D
 ```
+
+### Core Intelligence Components
+
+* **Destination Resolution** — Identifies and validates destinations using cached, known, geocoded, AI, and fuzzy matching approaches.
+* **ML Prediction** — Provides the base budget prediction from the trained Random Forest model.
+* **Travel Intelligence** — Combines ML prediction, historical data, transportation, duration, and other travel signals.
+* **Confidence Engine** — Evaluates the reliability and confidence level of the resulting estimate.
+* **External Services** — Provide live geocoding, route mapping, weather forecasts, and AI intelligence.
+* **SQLite Persistence** — Stores cache, unknown destination tracking, and user search history.
 
 ### Decoupled Folder Structure
 
 ```
 TravelTripBudgetPrediction/
-├── app.py                      # Application Entry Point
-├── train_model.py              # ML Model Training Pipeline
+├── app.py                      # Application Entry Point & Service Bootstrap
+├── train_model.py              # Random Forest Model Training Pipeline
 ├── requirements.txt            # Package Dependencies
 ├── runtime.txt                 # Deployment Runtime Version
 ├── LICENSE                     # Project License
 ├── .gitignore                  # Git Ignore Rules
-├── config/                     # Global Config
-│   ├── settings.py             # System Path Settings
-│   └── constants.py            # Platform Constants
-├── data/                       # Dataset Storage
-│   └── traveltripdata.csv      # Raw Traveler Survey Dataset
-├── models/                     # Pickled Models & Encoders
-│   ├── final_model.pkl         
-│   ├── encoders.pkl            
-│   └── model_accuracy.pkl      
-├── docs/                       # Documentation Guides
-│   ├── GOOGLE_MAPS_SETUP.md    # API Configuration Instructions
-│   └── RESUME_POINTS.md        # Recruiter Placement Bullets
-├── tests/                      # Verification Tests
-│   ├── test_geo.py             
-│   ├── test_route.py           
-│   ├── test_checklists_and_routes.py
-│   └── test_search_tracking.py 
+├── config/                     # System Settings & Constants
+├── data/                       # Historical Traveler Survey Dataset (traveltripdata.csv)
+├── models/                     # Pickled Random Forest Model & Label Encoders
+├── docs/                       # API Setup & Documentation Guides
+├── tests/                      # Automated Verification & Integration Tests
 ├── src/                        # Core Source Code
-│   ├── components/             # Reusable UI Widgets (Navbar, Footer, Hero, Maps)
-│   ├── pages/                  # Streamlit Page Views (Plan Trip, Analytics)
-│   ├── services/               # Engine Controllers (Weather, Budget, Gemini)
-│   ├── intelligence/           # Dataset Intelligence & Knowledge Bases
-│   └── styles/                 # Tailwind/SaaS Custom CSS Variables
+│   ├── components/             # UI Components (Navbar, Hero, Charts, Maps, Checklists)
+│   ├── data/                   # Maps Service, Database Schema & Search Tracking
+│   ├── intelligence/           # Dataset Intelligence & Destination Knowledge Bases
+│   ├── pages/                  # Streamlit Dashboard Views (Plan Trip, Analytics)
+│   ├── services/               # Controllers (Weather, Budget, Gemini, Geo, Route, Confidence, Export)
+│   └── styles/                 # Custom CSS Design Tokens & Responsive Stylesheet
 ```
 
 ---

@@ -41,7 +41,7 @@ def render_navbar(theme: str = "dark") -> None:
       background-clip: text; letter-spacing: -0.3px;
     }}
     .tw-nav-sub {{
-      font-size: 10px; color: #94A3B8; font-style: italic; letter-spacing: 0.2px;
+      font-size: 12.5px; color: #CBD5E1; font-style: italic; letter-spacing: 0.2px; line-height: 1.2; margin-top: 1px;
     }}
     .tw-nav-actions {{ display: flex; align-items: center; gap: 8px; }}
     .tw-nav-btn {{

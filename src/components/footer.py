@@ -59,7 +59,7 @@ def render_footer() -> None:
         </div>
       </div>
       <div class="tw-footer-center">
-        <span style="font-size:12px;color:#94A3B8;font-style:italic;">Travel far enough, you meet yourself.</span>
+        <span style="font-size:13.5px;color:#CBD5E1;font-style:italic;">Travel far enough, you meet yourself.</span>
         <span style="font-size:12px;color:#475569;">|</span>
         <span style="font-size:12px;color:#94A3B8;">Made by <strong style="color:#A78BFA;">Srujana Addanki</strong></span>
       </div>
