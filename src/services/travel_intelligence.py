@@ -118,7 +118,7 @@ class TravelIntelligenceEngine:
             weather_info = cached_data.get("weather", {})
             if not weather_info:
                 try:
-                    weather_info = self._weather.get_weather(destination)
+                    weather_info = self._weather.get_weather(destination, coords=dst_coords)
                 except Exception:
                     weather_info = {}
 
@@ -157,15 +157,47 @@ class TravelIntelligenceEngine:
             )
             smart_budget = budget_details["smart_budget"]
 
-            gemini_intel = {
-                "packing_checklist":    cached_data.get("packing", []),
-                "pre_travel_checklist": cached_data.get("pretravel", []),
-                "seasonal_tips":        cached_data.get("travel_tips", []),
-                "health_suggestions":   [],
-                "safety_tips":          [],
-                "local_recommendations":[],
-                "source":               "SQLite Cache (Instant)",
-            }
+            # Regenerate checklists if cached trip parameters differ from
+            # the current request (month, travel_mode, trip_type) so the
+            # checklist is always relevant to the user's actual trip.
+            cached_month = cached_data.get("month", "")
+            cached_mode  = cached_data.get("travel_mode", "")
+            cached_packing   = cached_data.get("packing", [])
+            cached_pretravel = cached_data.get("pretravel", [])
+
+            trip_params_match = (
+                cached_month.lower() == month.lower()
+                and cached_mode.lower() == travel_mode.lower()
+                and cached_packing  # non-empty
+            )
+
+            if trip_params_match:
+                gemini_intel = {
+                    "packing_checklist":    cached_packing,
+                    "pre_travel_checklist": cached_pretravel,
+                    "seasonal_tips":        cached_data.get("travel_tips", []),
+                    "health_suggestions":   [],
+                    "safety_tips":          [],
+                    "local_recommendations":[],
+                    "source":               "SQLite Cache (Instant)",
+                }
+            else:
+                # Trip parameters changed — regenerate checklist for current trip
+                country = get_destination_country(destination)
+                altitude = get_destination_altitude(destination)
+                permits_required = get_destination_permits_required(destination)
+                gemini_intel = self._gemini.get_destination_intelligence(
+                    destination=destination,
+                    month=month,
+                    travel_mode=travel_mode,
+                    duration_days=duration_days,
+                    season=season,
+                    trip_type=trip_type,
+                    weather=weather_info,
+                    country=country,
+                    altitude=altitude,
+                    permits_required=permits_required,
+                )
 
             pref_exp = dataset_insights.get(
                 "preferred_experience", "Nature & Sightseeing"
@@ -188,7 +220,7 @@ class TravelIntelligenceEngine:
             )
             # ── Step 2: Weather ────────────────────────────
             try:
-                weather_info = self._weather.get_weather(destination)
+                weather_info = self._weather.get_weather(destination, coords=dst_coords)
             except Exception:
                 weather_info = {}
 

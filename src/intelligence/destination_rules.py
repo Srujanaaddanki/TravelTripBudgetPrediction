@@ -69,24 +69,48 @@ _DESTINATION_PROFILES = [
         ]
     },
     {
-        "keywords": ["tirupati", "tirumala", "venkateswara", "balaji"],
+        "keywords": ["tirupati", "tirumala", "venkateswara", "balaji", "annavaram", "shirdi", "puri",
+                     "varanasi", "kashi", "rishikesh", "haridwar", "madurai", "rameswaram", "somnath",
+                     "dwarka", "ujjain", "ayodhya", "guruvayur", "yadadri", "badrachalam", "bhadrachalam"],
         "country": "India",
-        "altitude_m": 800,
+        "altitude_m": 300,
         "permits": True,
-        "nearest_railway": "Tirupati",
-        "nearest_airport": "Tirupati",
-        "nearest_road": "Tirupati",
         "packing": [
-            "Temple dress code",
-            "ID proof",
-            "Cash for offerings",
+            "Traditional temple attire (Dhoti/Kurta, Saree/Salwar)",
+            "Slip-on sandals or flip-flops",
+            "Cash in small denominations for offerings and pooja",
+            "Physical government ID proof",
+            "Cotton clothing for warm daytime weather",
+            "Socks for walking on stone temple pathways",
         ],
         "pretravel": [
-            "Darshan ticket booking",
-            "Temple dress code",
-            "ID proof",
-            "Special entry ticket",
-            "Cash for offerings",
+            "Darshan and Seva / Vratham online booking",
+            "Devasthanam or hotel accommodation booking",
+            "Special entry ticket confirmation",
+            "Government photo ID proof",
+            "Temple dress code compliance check",
+        ]
+    },
+    {
+        "keywords": ["hampi", "khajuraho", "ajanta", "ellora", "mahabalipuram", "konark",
+                     "badami", "pattadakal", "hampi ruins", "fatehpur sikri"],
+        "country": "India",
+        "altitude_m": 450,
+        "permits": False,
+        "packing": [
+            "Sturdy walking / trekking shoes for rocky terrain",
+            "Wide-brimmed sun hat and UV sunglasses",
+            "High-capacity power bank and camera gear",
+            "Hydration pack or reusable water bottle",
+            "Light breathable cotton clothing",
+            "Sunscreen SPF 50+",
+        ],
+        "pretravel": [
+            "ASI Monument Entry Passes (ticket booking)",
+            "Offline GPS map of heritage ruins",
+            "Local certified guide reservation",
+            "Bicycle / scooter rental arrangement",
+            "Hotel / guesthouse confirmation",
         ]
     },
     {
@@ -163,6 +187,27 @@ _DESTINATION_PROFILES = [
         "pretravel": [
             "Hotel bookings",
             "Rohtang Pass permit if driving",
+        ]
+    },
+    {
+        "keywords": ["munnar", "ooty", "kodaikanal", "coorg", "wayanad", "darjeeling", "gangtok",
+                     "shillong", "araku", "araku valley", "chikmagalur", "mahableshwar", "mount abu"],
+        "country": "India",
+        "altitude_m": 1500,
+        "permits": False,
+        "packing": [
+            "Warm layers / light jacket or cardigan",
+            "Comfortable walking shoes for plantation trails",
+            "Compact umbrella or rain poncho",
+            "Thermos flask for warm tea/water",
+            "Insect / mosquito repellent",
+            "Camera and power bank",
+        ],
+        "pretravel": [
+            "Hotel / resort or tea estate homestay booking",
+            "Sightseeing cab / local transport booking",
+            "National park / viewpoint entry tickets (e.g. Eravikulam, Botanical Gardens)",
+            "Offline route maps for ghat roads",
         ]
     },
     {

@@ -54,6 +54,7 @@ for _key in [
     "last_display_dest", "last_is_known", "last_weather",
     "validation_failed", "ai_suggestion", "failed_input_destination",
     "fuzzy_pending", "gemini_pending", "destination_override",
+    "to_city_input",
 ]:
     if _key not in st.session_state:
         st.session_state[_key] = None if "report" in _key or "data" in _key else (

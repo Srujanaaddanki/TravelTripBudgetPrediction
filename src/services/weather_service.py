@@ -33,21 +33,25 @@ class WeatherService:
         """
         self._maps = maps_service
 
-    def get_weather(self, destination: str) -> Dict[str, Any]:
-        """Fetch current weather for a destination."""
+    def get_weather(self, destination: str, coords: Optional[Any] = None) -> Dict[str, Any]:
+        """Fetch current weather for a destination, prioritizing pre-resolved coordinates."""
         try:
-            # Step 1: Look up coordinates for the destination
-            coords = self._maps.get_coordinates(destination)
-            if coords:
-                lat, lng = None, None
-                if isinstance(coords, dict):
-                    lat = coords.get("lat")
-                    lng = coords.get("lng")
-                elif isinstance(coords, (tuple, list)) and len(coords) >= 2:
-                    lat, lng = coords[0], coords[1]
-                
-                if lat is not None and lng is not None:
-                    return self._call_open_meteo_api(lat, lng)
+            # Step 1: Use provided coords or look up coordinates for the destination
+            if not coords:
+                coords = self._maps.get_coordinates(destination)
+
+            lat, lng = None, None
+            if isinstance(coords, dict):
+                lat = coords.get("lat") if coords.get("lat") is not None else coords.get("latitude")
+                lng = coords.get("lng") if coords.get("lng") is not None else coords.get("longitude")
+            elif isinstance(coords, (tuple, list)) and len(coords) >= 2:
+                lat, lng = coords[0], coords[1]
+
+            if lat is not None and lng is not None and (float(lat) != 0.0 or float(lng) != 0.0):
+                weather_res = self._call_open_meteo_api(float(lat), float(lng))
+                weather_res["latitude"] = float(lat)
+                weather_res["longitude"] = float(lng)
+                return weather_res
         except Exception as err:
             log.warning("Weather fetch failed for %s: %s", destination, err)
 

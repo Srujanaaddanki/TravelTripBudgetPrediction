@@ -141,8 +141,32 @@ _MODE_EMOJI: Dict[str, str] = {
 }
 
 
+def _parse_coords(coords: Any) -> Optional[Tuple[float, float]]:
+    """Safely parse coordinates from tuple, list, or dict."""
+    if isinstance(coords, (tuple, list)) and len(coords) >= 2:
+        try:
+            lat, lon = float(coords[0]), float(coords[1])
+            if -90 <= lat <= 90 and -180 <= lon <= 180:
+                return (lat, lon)
+        except (ValueError, TypeError):
+            pass
+    elif isinstance(coords, dict):
+        lat = coords.get("lat") if coords.get("lat") is not None else coords.get("latitude")
+        lon = coords.get("lng") if coords.get("lng") is not None else (coords.get("lon") if coords.get("lon") is not None else coords.get("longitude"))
+        if lat is not None and lon is not None:
+            try:
+                lat_f, lon_f = float(lat), float(lon)
+                if -90 <= lat_f <= 90 and -180 <= lon_f <= 180:
+                    return (lat_f, lon_f)
+            except (ValueError, TypeError):
+                pass
+    return None
+
+
 def _resolve_coords(city: str) -> Optional[Tuple[float, float]]:
-    """Resolve city name to (lat, lon). Tries local dict then maps_service."""
+    """Resolve city name to (lat, lon). Tries local dict, maps_service, and geo validator."""
+    if not city or not isinstance(city, str):
+        return None
     norm = city.strip().lower()
     if norm in _CITY_COORDS:
         return _CITY_COORDS[norm]
@@ -156,6 +180,17 @@ def _resolve_coords(city: str) -> Optional[Tuple[float, float]]:
                 return (lat, lon)
     except Exception:
         pass
+
+    # Dynamic fallback via Geoapify / Nominatim
+    try:
+        from src.services.geo_service import GeoapifyService
+        geo = GeoapifyService()
+        val = geo.validate_destination(city)
+        if val.get("valid") and val.get("lat") and val.get("lng"):
+            return (float(val["lat"]), float(val["lng"]))
+    except Exception:
+        pass
+
     return None
 
 
@@ -230,9 +265,9 @@ def render_route_map(route_info: Dict[str, Any], travel_mode: str = "Car") -> No
         """
         st.markdown(bars_html, unsafe_allow_html=True)
 
-    # Resolve coordinates
-    src_coords  = route_info.get("source_coords") or _resolve_coords(source)
-    dest_coords = route_info.get("dest_coords")   or _resolve_coords(destination)
+    # Resolve coordinates prioritizing pre-calculated route_info coordinates
+    src_coords  = _parse_coords(route_info.get("source_coords")) or _resolve_coords(source)
+    dest_coords = _parse_coords(route_info.get("dest_coords"))   or _resolve_coords(destination)
 
     if not src_coords or not dest_coords:
         st.info(

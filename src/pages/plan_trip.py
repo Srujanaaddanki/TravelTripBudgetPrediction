@@ -255,7 +255,10 @@ def get_ml_proxy_destination(
             best_score = score
             best_proxy = canonical
 
-    return best_proxy, float(best_score)
+    # Normalize score from raw 0-105 scale to 0-100% percentage
+    _MAX_RAW_SCORE = 105.0  # 30 + 30 + 15 + 15 + 10 + 5
+    normalized_score = min((best_score / _MAX_RAW_SCORE) * 100.0, 100.0) if best_score > 0 else 0.0
+    return best_proxy, normalized_score
 
 
 def _resolve_destination(
@@ -430,7 +433,7 @@ def _resolve_destination(
         return {
             "matched_dest": proxy,
             "proxy_score":  score,
-            "display_dest": geo_result.get("display_name", user_input).title(),
+            "display_dest": user_input.strip().title(),
             "match_tier":   "geo_validated",
             "geo_result":   geo_result,
             "suggestions":  [],
@@ -587,20 +590,18 @@ def _render_sidebar_form(encoders: Dict[str, Any]) -> Dict[str, Any] | None:
             key="from_city_sel",
         )
 
-        # TO — searchable autocomplete with override support sorted alphabetically
+        # TO — free-text destination input
         _dest_override = st.session_state.pop("destination_override", None)
         if _dest_override:
-            _dest_title = _dest_override.title()
-            if _dest_title in all_cities:
-                st.session_state["to_city_sel"] = _dest_title
-        st.markdown('<div class="form-label" style="margin-top:8px;">DESTINATION <span style="font-size:11px;color:#94A3B8;font-weight:400;text-transform:none;">— search or select destination</span></div>', unsafe_allow_html=True)
-        _to_default = st.session_state.get("to_city_sel", "Enter details")
-        _to_idx = city_options.index(_to_default) if _to_default in city_options else 0
-        dest_city = st.selectbox(
-            "to_input", options=city_options,
-            index=_to_idx,
+            st.session_state["to_city_input"] = _dest_override.title()
+        st.markdown('<div class="form-label" style="margin-top:8px;">DESTINATION <span style="font-size:11px;color:#94A3B8;font-weight:400;text-transform:none;">— (e.g., Annavaram, Goa, Hampi)</span></div>', unsafe_allow_html=True)
+        _to_default = st.session_state.get("to_city_input", "")
+        dest_city = st.text_input(
+            "to_input",
+            value=_to_default,
+            placeholder="Enter destination (e.g. Annavaram, Goa)...",
             label_visibility="collapsed",
-            key="to_city_sel",
+            key="to_city_input",
         )
 
         col_m, col_d = st.columns(2)
@@ -1072,6 +1073,10 @@ def render_plan_trip_page(
             route_info = report.get("route", {})
             route_info["source"]      = form_data["source"]
             route_info["destination"] = display_dest
+            if not route_info.get("source_coords"):
+                route_info["source_coords"] = src_coords
+            if not route_info.get("dest_coords"):
+                route_info["dest_coords"] = dst_coords
             render_route_map(route_info, travel_mode=form_data["travel_mode"])
 
             # 4b. Alternate route
@@ -1103,7 +1108,7 @@ def render_plan_trip_page(
         mode  = new_form_data["travel_mode"]
         hotel = new_form_data["hotel"]
 
-        if not src or not dst:
+        if not src or src == "Enter details" or not dst or not dst.strip():
             st.warning("⚠️ Both From and To fields are required.")
             st.stop()
 
@@ -1206,7 +1211,7 @@ def render_plan_trip_page(
 
             report = travel_engine.generate_report(
                 source=src,
-                destination=matched_dest,
+                destination=display_dest,
                 month=month,
                 duration_days=days,
                 travel_mode=mode,

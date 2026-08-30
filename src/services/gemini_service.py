@@ -41,18 +41,19 @@ class GeminiService:
             self._init_gemini()
 
     def _init_gemini(self) -> None:
-        """Initialise the Gemini client with fallback models."""
+        """Initialise the Gemini client with active candidate models."""
         try:
             import google.generativeai as genai
             genai.configure(api_key=GEMINI_API_KEY)
-            candidate_models = [
-                "gemini-3.6-flash",
+            self._candidate_models = [
                 "gemini-3.5-flash",
-                "gemini-2.0-flash",
+                "gemini-3.1-flash-lite",
+                "gemini-3-flash-preview",
                 "gemini-flash-latest",
+                "gemini-3.6-flash",
             ]
             self._model = None
-            for m_name in candidate_models:
+            for m_name in self._candidate_models:
                 try:
                     model = genai.GenerativeModel(m_name)
                     self._model = model
@@ -67,6 +68,24 @@ class GeminiService:
         except Exception as exc:
             log.warning("Gemini init failed: %s", exc)
             self._available = False
+
+    def _generate_content(self, prompt: str) -> Optional[str]:
+        """Try generating content across candidate models with automatic rollover."""
+        if not self._available:
+            return None
+        import google.generativeai as genai
+        models_to_try = self._candidate_models if hasattr(self, "_candidate_models") else ["gemini-3.5-flash"]
+        for m_name in models_to_try:
+            try:
+                model = genai.GenerativeModel(m_name)
+                response = model.generate_content(prompt)
+                if response and response.text:
+                    self._model = model
+                    return response.text
+            except Exception as exc:
+                log.info("Gemini model %s failed (%s), trying next candidate...", m_name, exc)
+                continue
+        return None
 
     # ------------------------------------------------------------------
     # Public API
@@ -121,6 +140,26 @@ class GeminiService:
             permits_required=permits_required,
         )
 
+    @staticmethod
+    def _flatten_list(val: Any) -> List[str]:
+        """Ensure checklist values are returned as a flat list of clean strings."""
+        if isinstance(val, list):
+            items = []
+            for x in val:
+                if isinstance(x, str) and x.strip():
+                    items.append(x.strip())
+                elif isinstance(x, (list, dict)):
+                    items.extend(GeminiService._flatten_list(x))
+            return items
+        elif isinstance(val, dict):
+            items = []
+            for v in val.values():
+                items.extend(GeminiService._flatten_list(v))
+            return items
+        elif isinstance(val, str) and val.strip():
+            return [val.strip()]
+        return []
+
     def resolve_unknown_destination_metadata(
         self, destination: str, state: str = "", country: str = ""
     ) -> Dict[str, Any]:
@@ -150,10 +189,13 @@ Return ONLY a valid JSON object (no markdown, no extra text, no ```json wrapper)
   "population_profile": "One of: high, medium, low (classification of population density/city type)"
 }}
 """
+        raw_text = self._generate_content(prompt)
+        if not raw_text:
+            return fallback
+
         try:
-            response = self._model.generate_content(prompt)
-            raw_text = self._strip_markdown(response.text.strip())
-            data = json.loads(raw_text)
+            cleaned = self._strip_markdown(raw_text.strip())
+            data = json.loads(cleaned)
             
             # Normalize keys and values
             res = {
@@ -220,11 +262,13 @@ Return ONLY a valid JSON object — no markdown, no extra text, no ```json wrapp
 If you cannot identify ANY real or similar place, set "valid" to false and
 set latitude/longitude to 0.
 """
+        raw_text = self._generate_content(prompt)
+        if not raw_text:
+            return self._unknown_suggestion()
+
         try:
-            response  = self._model.generate_content(prompt)
-            raw_text  = response.text.strip()
-            raw_text  = self._strip_markdown(raw_text)
-            result    = json.loads(raw_text)
+            cleaned = self._strip_markdown(raw_text.strip())
+            result = json.loads(cleaned)
             result.setdefault("latitude",          0.0)
             result.setdefault("longitude",         0.0)
             result.setdefault("village",           "")
@@ -301,8 +345,8 @@ Rules:
    trekking shoes, altitude sickness medicine, thermal wear, rain jacket.
 6. Ladakh/Leh/Spiti: MUST include inner line permit, altitude medication (Diamox),
    oxygen can, heavy down jacket.
-7. Tirupati/Balaji: MUST include temple dress code, darshan ticket booking, ID proof,
-   no shorts/sleeveless, cash for offerings.
+7. Tirupati/Balaji/Annavaram/Temple: MUST include temple dress code, darshan ticket booking, ID proof,
+   modest clothing, cash for offerings/pooja.
 8. Goa/beach destination: MUST include swimwear, sunscreen SPF50+, flip-flops, hat.
 9. Winter destinations (Manali/Shimla): MUST include thermals, heavy jacket, snow boots.
 10. International destinations: MUST include visa requirements, travel insurance,
@@ -312,21 +356,23 @@ Rules:
 
 IMPORTANT: Your response must be destination-specific. Do not repeat the same items
 for Kedarnath and Goa. Each destination has unique requirements."""
+        raw_text = self._generate_content(prompt)
+        if not raw_text:
+            return None
+
         try:
-            response = self._model.generate_content(prompt)
-            raw_text = self._strip_markdown(response.text.strip())
-            data     = json.loads(raw_text)
+            cleaned = self._strip_markdown(raw_text.strip())
+            data = json.loads(cleaned)
 
-            required_keys = [
-                "packing_checklist", "pre_travel_checklist", "seasonal_tips",
-                "health_suggestions", "safety_tips", "local_recommendations",
-            ]
-            for k in required_keys:
-                data.setdefault(k, [])
-
-            data["source"] = "Gemini AI"
-            return data
-
+            return {
+                "packing_checklist": self._flatten_list(data.get("packing_checklist")),
+                "pre_travel_checklist": self._flatten_list(data.get("pre_travel_checklist")),
+                "seasonal_tips": self._flatten_list(data.get("seasonal_tips")),
+                "health_suggestions": self._flatten_list(data.get("health_suggestions")),
+                "safety_tips": self._flatten_list(data.get("safety_tips")),
+                "local_recommendations": self._flatten_list(data.get("local_recommendations")),
+                "source": "Gemini AI",
+            }
         except Exception as exc:
             log.warning(
                 "Gemini response parse error for '%s': %s", destination, exc
