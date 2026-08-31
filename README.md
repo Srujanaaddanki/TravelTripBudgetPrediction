@@ -1,72 +1,191 @@
-# TripAI — AI-Powered Travel Intelligence & Budget Planning Platform
+# 🌍 TraWell – AI-Powered Travel Budget Predictor
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge.svg)](https://traveltripbudgetprediction.streamlit.app/)
+> **Travel far enough, you meet yourself.**
 
-TripAI is a modern, production-grade Travel Intelligence Platform designed to predict, verify, and plan travel budgets across India. It integrates machine learning (Random Forest), live API services, SQLite tracking, and structured dataset analysis to deliver a premium MakeMyTrip/Airbnb-style travel planner.
+TraWell is an AI-powered travel planning application that helps users estimate their travel budget and plan trips using Machine Learning, travel APIs, weather information, route data, and destination intelligence.
 
----
-
-## 🔗 Live Demo & Repository
-
-* **Live Demo**: [https://traveltripbudgetprediction.streamlit.app/](https://traveltripbudgetprediction.streamlit.app/)
-* **GitHub Repository**: [https://github.com/Srujanaaddanki/TravelTripBudgetPrediction](https://github.com/Srujanaaddanki/TravelTripBudgetPrediction)
+The application allows users to enter both popular and lesser-known destinations and generates an approximate travel budget along with useful travel information.
 
 ---
 
-## 📖 Project Overview
+## 🚀 Live Demo
 
-Planning travel across India often involves dealing with fragmented data:
-* Budget estimates from machine learning models are usually decoupled from live transit routes and fuel/ticket price changes.
-* Traditional systems rely on generic recommendations rather than historical dataset feedback from real travelers.
-* Network failures or API quota limits can cause travel planning apps to crash when querying remote locations.
-
-**TripAI** solves this by establishing a decoupled Model-View-Controller (MVC) architecture. It aligns base machine learning budget predictions (trained on historical traveler feedback) with dynamic geographic distance calculations, live transit multipliers, current weather forecasts, and a 3-tier local SQLite cache.
+🌐 **TraWell:**  
+https://trawell-ai.streamlit.app/
 
 ---
 
-## ⚡ Features
+## 📌 Project Overview
 
-* **AI Budget Predictions**: Employs a Random Forest Regressor trained on real Indian traveler records to estimate budgets based on destination, season, hotel quality tier, stay duration, and trip type.
-* **3-Tier Caching System**: Optimizes external API latency and usage costs by resolving coordinates and routing maps through local SQLite caching first, falling back to a pre-seeded offline city catalog, and lastly querying live APIs only on cache misses.
-* **Live Weather Integration**: Connects to the keyless Open-Meteo API to recursively pull real-time weather forecasts (temperature, wind, precipitation) for any destination coordinates.
-* **Geospatial Mapping**: Renders interactive satellite/road travel route maps dynamically using Folium and Streamlit-Folium, with custom icons and alternative waypoint routes.
-* **SaaS Analytics Dashboard**: Captures local search history in an SQLite database (using Write-Ahead Logging for concurrency) to display trending destinations, average travel budgets, and transit mode shares.
-* **Exportable Reports**: Dynamically compiles predicted budgets, packing checklists, destination safety alerts, and seasonal tips into a downloadable PDF report.
+Planning a trip can be difficult when travelers need to consider transportation, accommodation, trip duration, weather, destination characteristics, and other expenses.
+
+TraWell combines **Machine Learning + APIs + AI-based destination intelligence** to provide a smarter travel planning experience.
+
+The user provides:
+
+- Departure city
+- Destination
+- Month of travel
+- Trip duration
+- Trip type
+- Travel mode
+- Hotel quality
+
+TraWell then processes the information and provides an estimated travel budget and destination-specific travel information.
 
 ---
 
-## 🏗️ Architecture
+## ✨ Key Features
 
-TripAI enforces a clean Model-View-Controller design to decouple components and ensure interview-readiness:
+### 🤖 Machine Learning Budget Prediction
 
-### High-Level System Architecture
+TraWell uses a Machine Learning model to predict an estimated travel budget based on the user's trip details.
 
-```mermaid
-flowchart TD
-    A["👤 User Input<br/>Origin • Destination • Trip Details"]
+The prediction considers factors such as:
 
-    B["📍 Destination Resolution<br/>Cache • Known Data • Geo APIs<br/>AI Resolution • Fuzzy Fallback"]
+- Destination
+- Travel month
+- Trip duration
+- Trip type
+- Travel mode
+- Hotel quality
 
-    C["🧠 Travel Intelligence Engine<br/>ML Prediction • Historical Data<br/>Distance • Transport • Weather<br/>Proxy Intelligence"]
+---
 
-    D["💰 Smart Budget & Confidence<br/>Budget Estimation<br/>Confidence Verification"]
+### 🌍 Unknown Destination Support
 
-    E["📊 TraWell Dashboard<br/>Budget • Weather • Routes<br/>Charts • Recommendations<br/>Checklists • PDF"]
+TraWell is not limited to destinations available in a predefined list.
 
-    F["🌐 External Services<br/>Geoapify • Nominatim OSM<br/>OpenRouteService • Open-Meteo<br/>Google Gemini AI"]
+Users can enter destinations manually, including lesser-known destinations.
 
-    G["🗄️ Data & Persistence<br/>Historical Dataset<br/>Random Forest Model<br/>SQLite Cache & Search History"]
+The application resolves destinations using its destination-resolution pipeline and can use geographical/API information when historical dataset information is unavailable.
 
-    A --> B
-    B --> C
-    C --> D
-    D --> E
+This allows users to search for destinations such as:
 
-    F --> B
-    F --> C
+- Annavaram
+- Goa
+- Doraha Fort
+- Hampi
+- Other valid destinations
 
-    G --> C
-    G --> D
+---
+
+### 🗺️ Interactive Route Map
+
+TraWell provides an interactive route map between the departure city and the actual destination entered by the user.
+
+The map uses the resolved destination information to calculate and display the route.
+
+---
+
+### 🌦️ Live Weather Information
+
+TraWell provides weather information for the selected destination using weather APIs.
+
+The weather information helps users understand the current conditions at their destination and supports travel planning.
+
+---
+
+### 🎒 Destination-Specific Packing Checklist
+
+TraWell generates a packing checklist based on the user's destination and trip information.
+
+The checklist can consider factors such as:
+
+- Destination
+- Weather
+- Travel month
+- Travel mode
+- Trip type
+- Destination characteristics
+
+---
+
+### ✅ Pre-Travel Checklist
+
+TraWell also provides a pre-travel checklist to help users prepare before starting their journey.
+
+Examples include:
+
+- Government ID
+- Travel tickets
+- Hotel booking confirmation
+- Important travel essentials
+
+---
+
+### 🧠 AI Travel Intelligence
+
+TraWell uses AI-based destination intelligence to provide additional travel-related recommendations and information.
+
+The application combines AI with API information to make the travel planning experience more useful and personalized.
+
+---
+
+## 💰 Budget Estimation
+
+TraWell presents the estimated travel budget as a range rather than a single fixed value.
+
+Example:
+
+**Estimated Budget: ₹4,200 – ₹7,000**
+
+The application can also provide an approximate daily budget based on the trip duration.
+
+> Budget values are estimates and may vary depending on actual travel prices, availability, and destination conditions.
+
+---
+
+## 🏗️ Project Architecture
+
+```text
+                    ┌─────────────────────┐
+                    │      User Input     │
+                    │─────────────────────│
+                    │ From City           │
+                    │ Destination         │
+                    │ Month               │
+                    │ Duration            │
+                    │ Trip Type           │
+                    │ Travel Mode         │
+                    │ Hotel Quality       │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ Destination         │
+                    │ Resolution          │
+                    │                     │
+                    │ Cache / Alias       │
+                    │ Exact Match         │
+                    │ Geo APIs            │
+                    │ AI Resolution       │
+                    │ Fuzzy Matching      │
+                    └──────────┬──────────┘
+                               │
+                ┌──────────────┼──────────────┐
+                │              │              │
+                ▼              ▼              ▼
+        ┌────────────┐  ┌────────────┐  ┌────────────┐
+        │ ML Model   │  │ Travel APIs│  │ Weather API│
+        │            │  │            │  │            │
+        │ Prediction │  │ Route/Geo  │  │ Weather    │
+        └─────┬──────┘  └─────┬──────┘  └─────┬──────┘
+              │               │               │
+              └───────────────┼───────────────┘
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │   TraWell Report    │
+                    │─────────────────────│
+                    │ Budget Prediction   │
+                    │ Weather             │
+                    │ Route Map           │
+                    │ Packing Checklist   │
+                    │ Pre-Travel Checklist│
+                    │ AI Recommendations  │
+                    └─────────────────────┘
+
 ```
 
 ### Core Intelligence Components
@@ -113,7 +232,38 @@ TravelTripBudgetPrediction/
 * **APIs & Networks**: Open-Meteo API, Google Maps Distance Matrix API
 
 ---
+## 🧠 Destination Resolution Flow
+One of TraWell's important capabilities is handling destinations that are not available in the historical ML dataset.
 
+                    User enters destination
+                              │
+                              ▼
+                       Cache Lookup
+                              │
+                     ┌────────┴────────┐
+                     │                 │
+                   Found             Not Found
+                     │                 │
+                     ▼                 ▼
+                Use cached       Known Data Check
+                coordinates            │
+                                 ┌─────┴─────┐
+                                 │           │
+                               Found       Not Found
+                                 │           │
+                                 ▼           ▼
+                              Resolve      Geo API
+                                           Lookup
+                                              │
+                                              ▼
+                                      AI / Fuzzy Fallback
+                                              │
+                                              ▼
+                                      Resolved Destination
+                                      
+The resolved destination is then used for destination-dependent services such as route information, weather, recommendations, and checklists.
+
+---
 ## ⚡ Installation
 
 ### 1. Clone the repository
@@ -146,10 +296,27 @@ streamlit run app.py
 *(Screenshots of planning forms, interactive map routes, confidence metrics, and SaaS analytics dashboard here during portfolio hosting)*
 
 ---
+## 🔗 Access Links
 
-## 💼 Highlights
+| Resource | Link |
+|----------|------|
+| 📊 Live Demo | https://trawell-ai.streamlit.app/ |
+| 💻 GitHub Repository | https://github.com/Srujanaaddanki/TravelTripBudgetPrediction |
+| 📁 Dataset | https://docs.google.com/spreadsheets/d/1j_kxCGl5NBICDFKOrWRxWOOJ3uc6MGg5/edit?gid=159424351#gid=159424351 |
+| 💼 LinkedIn Post | https://www.linkedin.com/feed/update/urn:li:activity:7493453225753419776/ |
 
-* **Machine Learning Performance**: Engineered a Random Forest Regressor (200 decision trees) achieving a **~95% $R^2$ accuracy score** in predicting travel budgets across India.
-* **Advanced Caching Architecture**: Created a **3-tier cache structure** in SQLite (WAL mode) for coordinate lookup and route matrices, protecting API quotas and reducing external latency.
-* **Robust Fallback Engine**: Designed a graceful fallback system mapping traveler feedback datasets and pre-seeded rules to ensure continuous operation during API offline states.
-* **Modular Clean Code**: Built a decoupled MVC codebase, maintaining individual file sizes under 300 lines with type hints and automated unit tests.
+---
+
+## 👤 Author
+
+**Srujana Addanki**
+
+Aspiring Data Analyst | Python | Machine Learning | Data Visualization
+
+🔗 LinkedIn, GitHub, and project links are included for reference.
+
+---
+
+⭐ If you find this project useful, feel free to star the repository!
+
+**TraWell — Travel far enough, you meet yourself.** 🌍
