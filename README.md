@@ -291,9 +291,53 @@ streamlit run app.py
 
 ---
 
-## 🖼️ Screenshots
+## 🖼️ Application Screenshots
 
-*(Screenshots of planning forms, interactive map routes, confidence metrics, and SaaS analytics dashboard here during portfolio hosting)*
+Explore the key features of **TraWell — AI Travel Intelligence Platform** through the screenshots below.
+
+### 1. 📝 Trip Planning Interface
+
+Enter your departure city, destination, travel month, duration, trip type, and travel preferences to get started.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/5305cb16-6934-4039-b6f3-0948070030fd" width="850" alt="TraWell Trip Planning Interface"/>
+</p>
+
+### 2. 🌍 Trip Planning for Known & Unknown Destinations
+
+Plan trips to both dataset-supported and previously unknown destinations. TraWell combines Machine Learning, geolocation APIs, and destination intelligence to generate trip estimates even for destinations outside the historical dataset.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/5e959d50-b844-4ea7-ae0c-a3928de133d3" width="850" alt="TraWell Known and Unknown Destination Planning"/>
+</p>
+
+### 3. 🧠 Smart Budget Generation
+
+Get estimated travel budgets powered by Machine Learning, historical travel insights, and destination intelligence.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f0fcc3b8-269b-4252-b817-8ac0cc9b52ab" width="850" alt="TraWell Smart Budget Dashboard"/>
+</p>
+
+### 4. 🗺️ Interactive Route Map & Travel Cost Comparison
+
+Explore interactive travel routes and compare estimated transportation costs across different travel modes.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/033fed03-6051-4b6d-a1cb-d6eb4e6006a5" width="850" alt="TraWell Interactive Route Map"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1e5aedf3-2a09-4acd-b0f2-bdcf87667e57" width="850" alt="TraWell Travel Mode Cost Comparison"/>
+</p>
+
+### 5. 📄 Downloadable Trip Report
+
+Download your trip report as a PDF for convenient offline access, future reference, and better trip planning.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8ebf765b-ac00-42fb-9b8d-ada57ff36937" width="850" alt="TraWell PDF Trip Report Download"/>
+</p>
 
 ---
 ## 🔗 Access Links
@@ -320,3 +364,11 @@ Aspiring Data Analyst | Python | Machine Learning | Data Visualization
 ⭐ If you find this project useful, feel free to star the repository!
 
 **TraWell — Travel far enough, you meet yourself.** 🌍
+
+
+---
+
+
+## 📄 License
+
+This project is licensed under the **MIT License**. You are free to use, modify, distribute, and integrate this software into personal and enterprise projects.
